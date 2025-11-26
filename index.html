@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Just A Buck – Smashburger, Loaded Fries & Fried Chicken</title>
+  <meta name="description" content="Just A Buck: ehrliches Fastfood aus Kempten – Smashburger, Loaded Fries & Fried Chicken. Frisch, bezahlbar, handgemacht." />
+  <link rel="canonical" href="https://justabuck.example/" />
+
+  <!-- Open Graph / Social -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Just A Buck" />
+  <meta property="og:description" content="Smashburger, Loaded Fries & Fried Chicken – ehrlich, frisch, bezahlbar." />
+  <meta property="og:image" content="https://justabuck.example/og.jpg" />
+  <meta property="og:url" content="https://justabuck.example/" />
+  <meta name="theme-color" content="#6b21a8" />
+
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="preload" as="image" href="img/hero-poster.jpg" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Skiplink für Tastatur -->
+  <a class="skip-link" href="#main">Zum Inhalt springen</a>
+
+  <!-- 🔔 Announcement Bar -->
+  <div class="announce" role="status" aria-live="polite">
+    <div class="announce-inner">
+      <span class="announce-text">
+        🚚 Pop-Up Season: Termine & Spots droppen zuerst auf Instagram & WhatsApp!
+        <a href="https://instagram.com/" target="_blank" rel="noopener">Follow</a>
+        ·
+        <a href="https://wa.me/4917612345678?text=Hi%20Just%20A%20Buck!%20Add%20me%20to%20updates."
+           target="_blank" rel="noopener">WhatsApp Updates</a>
+      </span>
+      <button class="announce-close" aria-label="Hinweis schließen" title="Schließen">✕</button>
+    </div>
+  </div>
+
+  <!-- 🔹 NAVIGATIONSBEREICH -->
+  <header>
+    <nav class="navbar" aria-label="Hauptnavigation">
+      <a href="/" class="brand" aria-label="Startseite">
+        <img src="img/logo.png" alt="Just A Buck Logo" class="logo" />
+      </a>
+
+      <ul id="primary-nav" class="nav-links" role="list">
+        <li><a href="#menu">Menü</a></li>
+        <li><a href="#locations">Wo findet Ihr uns?</a></li>
+        <li><a href="#careers">Karriere</a></li>
+        <li><a href="#about">Über uns</a></li>
+        <li><a href="#community">Community</a></li>
+        <li><a href="#merch">Merch</a></li>
+      </ul>
+
+      <a href="/order" class="order-btn">Order Now</a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Menü öffnen">☰</button>
+    </nav>
+  </header>
+
+  <main id="main">
+    <!-- 🔹 HERO-SEKTION MIT VIDEO -->
+    <section class="hero-video" aria-label="Hero">
+      <video class="background-video"
+             autoplay muted loop playsinline
+             poster="img/hero-poster.jpg">
+        <source src="video/hero.webm" type="video/webm" />
+        <source src="video/hero.mp4" type="video/mp4" />
+        Dein Browser unterstützt kein Video-Tag.
+      </video>
+      <div class="overlay-content">
+        <h1>Just A Buck</h1>
+        <a href="/order" class="order-btn">Bestelle jetzt</a>
+      </div>
+    </section>
+
+    <!-- 🔹 PHILOSOPHIE UND TEAM-BEREICH -->
+    <section id="about" class="mission-section" aria-labelledby="aboutTitle">
+      <div class="image-column" aria-hidden="true">
+        <img src="img/crew1.jpg" alt="Crew bereitet Burger vor" loading="lazy" width="240" height="320">
+        <img src="img/crew2.jpg" alt="Team am Grill" loading="lazy" width="240" height="340">
+        <img src="img/crew3.jpg" alt="Frisch frittierte Chicken Pieces" loading="lazy" width="240" height="300">
+        <img src="img/crew4.jpg" alt="Service am Foodtruck" loading="lazy" width="240" height="330">
+      </div>
+
+      <div class="mission-text">
+        <h2 id="aboutTitle">UNSERE PHILOSOPHIE</h2>
+        <p class="slogan">„Bezahlbares Essen, frisch und handgemacht.“</p>
+        <p class="subtext">
+          Wir stehen für echtes Streetfood mit Charakter – hausgemacht, bezahlbar und ohne Kompromisse.
+          Mit selbstgemachten Zutaten, viel Leidenschaft und klarer Haltung bringen wir ehrliches Essen dorthin,
+          wo es hingehört: zu euch auf die Straße.
+        </p>
+        <a href="/about" class="btn-purple">Mehr erfahren</a>
+        <p class="tagline">Fast Food, das bleibt.</p>
+      </div>
+    </section>
+
+    <!-- 🔹 PRODUKT-HIGHLIGHTS -->
+    <section id="menu" class="product-bar" aria-labelledby="menuTitle">
+      <h2 id="menuTitle" class="section-title">Unsere Highlights</h2>
+
+      <div class="product-row">
+        <article class="product-box">
+          <img src="img/product1.jpg" alt="Box Combo – Fries, Chicken & Dip"
+               loading="lazy" width="640" height="440">
+          <h3>Box Combo</h3>
+        </article>
+
+        <article class="product-box special" aria-label="Aktuelles Special">
+          <img src="img/product2.jpg" alt="Chicken Special – Signature Sauce"
+               loading="lazy" width="640" height="440">
+          <h3>🔥 Chicken Special</h3>
+          <p class="special-info">Unser aktuelles Special – nur diese Woche!</p>
+        </article>
+
+        <article class="product-box">
+          <img src="img/product3.jpg" alt="3 Finger Combo – knusprig & saftig"
+               loading="lazy" width="640" height="440">
+          <h3>3 Finger Combo</h3>
+        </article>
+      </div>
+    </section>
+
+    <!-- 🔹 CATERING -->
+    <section class="catering-section" aria-labelledby="cateringTitle">
+      <div class="catering-overlay">
+        <h2 id="cateringTitle">Catering mit Buck</h2>
+        <p>
+          Ob Firmenfeier, Festival, Geburtstag oder Junggesellenabschied – unser Team bringt authentisches Streetfood direkt zu deinem Event.
+          Zuverlässig. Frisch. Unvergesslich.
+        </p>
+        <a href="mailto:justin.buck@sportbuck.com" class="contact-btn">Contact Us</a>
+        <p class="contact-email">📧 justin.buck@sportbuck.com</p>
+      </div>
+    </section>
+
+    <!-- 🔹 SOCIAL MEDIA -->
+    <section id="community" class="social-hub" aria-labelledby="socialTitle">
+      <h2 id="socialTitle">📲 Bleib am Ball mit uns</h2>
+      <p class="social-subline">Unsere neuesten Standorte, Aktionen & Gewinnspiele direkt aufs Handy!</p>
+
+      <div class="social-boxes">
+        <a href="https://instagram.com/" target="_blank" rel="noopener" class="social-card highlight" aria-label="Instagram öffnen">
+          <img src="img/social/instagram.png" alt="Instagram Logo" width="40" height="40" />
+          <h3>Instagram</h3>
+          <p>Standorte, Aktionen & exklusive Einblicke – verpasse kein Gewinnspiel mehr!</p>
+        </a>
+
+        <a href="https://wa.me/4917612345678?text=Hi%20Just%20A%20Buck!%20Ich%20will%20Updates%20zu%20Standorten%20und%20Specials." target="_blank" rel="noopener" class="social-card highlight" aria-label="WhatsApp-Kanal öffnen">
+          <img src="img/social/whatsapp.png" alt="WhatsApp Logo" width="40" height="40" />
+          <h3>WhatsApp-Kanal</h3>
+          <p>Standorte, Specials & Gewinnspiele direkt aufs Handy!</p>
+        </a>
+
+        <a href="https://tiktok.com/" target="_blank" rel="noopener" class="social-card" aria-label="TikTok öffnen">
+          <img src="img/social/tiktok.png" alt="TikTok Logo" width="40" height="40" />
+          <h3>TikTok</h3>
+          <p>Behind-the-Scenes, Trends & Challenges</p>
+        </a>
+
+        <a href="https://x.com/" target="_blank" rel="noopener" class="social-card" aria-label="X (Twitter) öffnen">
+          <img src="img/social/twitter.png" alt="X Logo" width="40" height="40" />
+          <h3>X (ehem. Twitter)</h3>
+          <p>News, Payment-Updates & mehr.</p>
+        </a>
+      </div>
+
+      <a href="https://wa.me/4917612345678?text=Hi%20Just%20A%20Buck!%20Ich%20will%20Updates%20zu%20Standorten%20und%20Specials." target="_blank" rel="noopener" class="join-now-btn">💬 Jetzt WhatsApp-Kanal beitreten</a>
+    </section>
+
+    <!-- 🔹 STANDORTE -->
+    <section id="locations" class="location-section" aria-labelledby="locTitle">
+      <div class="location-wrapper">
+        <!-- Karte als statisches Bild, volle linke Hälfte -->
+        <div class="location-map-full" role="img" aria-label="Karte von Kempten (Allgäu)">
+          <a href="https://www.google.com/maps/place/Kempten+%28Allgäu%29/" target="_blank" rel="noopener">
+            <img src="img/kempten-map.png" alt="Kempten Karte" title="Kempten in Google Maps öffnen" loading="lazy" width="1200" height="900" />
+          </a>
+        </div>
+
+        <!-- Textinhalt rechte Hälfte -->
+        <div class="location-content-full">
+          <h2 id="locTitle">📍 Standorte & Pop-Ups</h2>
+          <p>
+            Wir kommen aus <strong>Kempten (Allgäu)</strong> – aber wir sind <strong>noch nicht an einen festen Standort gebunden</strong>.
+          </p>
+          <p>
+            Stattdessen findest du uns dort, wo du uns brauchst: bei Festivals, Firmenfeiern oder spontanen Pop-Ups in der Stadt.
+          </p>
+          <p>
+            Wo wir als Nächstes stehen? Das erfährst du <strong>exklusiv</strong> hier auf unserer Website,
+            oder in unserem <strong>Instagram</strong>-Kanal und <strong>WhatsApp-Broadcast</strong>, um nichts zu verpassen!
+          </p>
+          <a href="/events" class="btn-locations">📅 Kommende Events & Standorte anzeigen</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 🔹 Karriere (Placeholder, damit #careers funktioniert) -->
+    <section id="careers" class="placeholder-section" aria-labelledby="careersTitle">
+      <div class="placeholder-inner">
+        <h2 id="careersTitle">Karriere – Werde Teil von Just A Buck</h2>
+        <p>Wir sind im Aufbau. Wenn du Bock auf ehrliches Fastfood & Teamspirit hast, trag dich kurz ein.</p>
+        <div class="placeholder-actions">
+          <a class="btn-primary"
+             href="https://wa.me/4917612345678?text=Hi%20Just%20A%20Buck!%20Ich%20interessiere%20mich%20f%C3%BCr%20einen%20Job.%20Rolle:%20Service/K%C3%BCche%20(%C3%A4ndern)%2C%20Erfahrung:%20kurz%2C%20Name:%20[Dein%20Name]"
+             target="_blank" rel="noopener">💬 Interesse per WhatsApp</a>
+          <a class="btn-ghost" href="mailto:justin.buck@sportbuck.com?subject=Initiativbewerbung%20Just%20A%20Buck">E-Mail senden</a>
+        </div>
+        <small class="helper">Wir melden uns, sobald Termine & Schichten feststehen.</small>
+      </div>
+    </section>
+
+    <!-- 🔹 Merch (Placeholder, damit #merch funktioniert) -->
+    <section id="merch" class="placeholder-section" aria-labelledby="merchTitle">
+      <div class="placeholder-inner">
+        <h2 id="merchTitle">Merch – Coming Soon</h2>
+        <p>Caps, Shirts & Hoodies in Planung. Trag dich ein und wir pingen dich, sobald der Drop live geht.</p>
+        <div class="placeholder-actions">
+          <a class="btn-primary"
+             href="https://wa.me/4917612345678?text=Hi%20Just%20A%20Buck!%20Bitte%20benachrichtigt%20mich%2C%20wenn%20der%20Merch%20Drop%20live%20geht.%20Name:%20[Dein%20Name]"
+             target="_blank" rel="noopener">💬 WhatsApp Benachrichtigung</a>
+          <a class="btn-ghost" href="mailto:justin.buck@sportbuck.com?subject=Merch%20Benachrichtigung&body=Bitte%20informiert%20mich%20beim%20n%C3%A4chsten%20Drop.">Per E-Mail vormerken</a>
+        </div>
+        <small class="helper">Tipp: Folge uns auf Instagram/WhatsApp-Kanal für Sneak Peeks.</small>
+      </div>
+    </section>
+  </main>
+
+  <!-- 🔹 FOOTER (Rechtliches) -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="img/logo.png" alt="Just A Buck" class="footer-logo">
+        <div class="footer-meta">
+          <strong>Just A Buck</strong><br>
+          <small>© <span id="y"></span> Just A Buck</small>
+        </div>
+      </div>
+
+      <nav class="footer-nav" aria-label="Rechtliches">
+        <a href="/impressum.html">Impressum</a>
+        <a href="/datenschutz.html">Datenschutz</a>
+        <a href="/allergen.html">Allergene</a>
+      </nav>
+
+      <div class="footer-contact">
+        <a href="mailto:justin.buck@sportbuck.com" class="footer-link">Kontakt</a>
+        <a href="/order" class="footer-cta">Jetzt bestellen</a>
+      </div>
+    </div>
+
+    <div class="footer-sub">
+      <small>
+        Plattform der EU-Kommission zur Online-Streitbeilegung:
+        <a href="https://ec.europa.eu/consumers/odr" rel="noopener" target="_blank">ec.europa.eu/consumers/odr</a>
+        (Wir sind weder verpflichtet noch bereit, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.)
+      </small>
+    </div>
+  </footer>
+
+  <!-- Strukturierte Daten (SEO) -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"FoodEstablishment",
+    "name":"Just A Buck",
+    "servesCuisine":["Burgers","Fried Chicken","Fries"],
+    "address":{"@type":"PostalAddress","addressLocality":"Kempten","addressCountry":"DE"},
+    "url":"https://justabuck.example/",
+    "sameAs":[
+      "https://www.instagram.com/justabuck",
+      "https://www.tiktok.com/@justabuck"
+    ],
+    "priceRange":"€",
+    "hasMenu":"https://justabuck.example/menu"
+  }
+  </script>
+
+  <!-- Ein kompakter Script-Block für Jahr, Announcement-Bar & Mobile-Menü -->
+  <script>
+    (function () {
+      // © Jahr automatisch
+      const yEl = document.getElementById('y');
+      if (yEl) yEl.textContent = new Date().getFullYear();
+
+      // Announcement-Bar schließen + merken
+      const KEY = 'jab_banner_dismissed_v1';
+      const bar = document.querySelector('.announce');
+      const btn = document.querySelector('.announce-close');
+      if (bar) {
+        if (localStorage.getItem(KEY) === '1') {
+          bar.style.display = 'none';
+        } else {
+          btn?.addEventListener('click', () => {
+            bar.classList.add('is-hiding');
+            setTimeout(() => { bar.style.display = 'none'; }, 260);
+            localStorage.setItem(KEY, '1');
+          });
+        }
+      }
+
+      // Mobile-Menü (Burger)
+      const toggle = document.querySelector('.nav-toggle');
+      const nav = document.getElementById('primary-nav');
+      toggle?.addEventListener('click', () => {
+        const open = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', String(!open));
+        nav?.classList.toggle('is-open');
+      });
+      // Menü schließen nach Klick
+      nav?.querySelectorAll('a').forEach(a => {
+        a.addEventListener('click', () => {
+          nav.classList.remove('is-open');
+          toggle?.setAttribute('aria-expanded', 'false');
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

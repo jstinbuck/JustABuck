@@ -1,0 +1,326 @@
+/* =========================
+   Just A Buck — CSS v2 (scoped)
+   ========================= */
+
+/* --- Design Tokens --- */
+:root{
+  --brand: #6b21a8;          /* Primär (Lila) */
+  --ink: #1f1f1f;
+  --muted: #666;
+  --bg: #ffffff;
+  --surface: #f9f9f9;
+  --cream: #f9f8ff;
+  --accent: #25D366;         /* WhatsApp-Grün */
+  --line: #eee;
+
+  --radius: 12px;
+  --shadow-sm: 0 2px 5px rgba(0,0,0,.08);
+  --shadow-md: 0 6px 16px rgba(0,0,0,.10);
+}
+
+/* --- Base / Reset (minimal) --- */
+*{ box-sizing: border-box; }
+html, body { margin:0; padding:0; }
+body{ font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, "Helvetica Neue", sans-serif; color:var(--ink); background:var(--bg); line-height:1.6; }
+img{ max-width:100%; height:auto; display:block; }
+a{ color:inherit; }
+
+/* Smooth scroll und Sticky-Header-Offset für Sektionen */
+html{ scroll-behavior:smooth; }
+#menu, #about, #community, #locations, #careers, #merch{ scroll-margin-top: 140px; }
+
+/* Skiplink (A11y) */
+.skip-link{ position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden; }
+.skip-link:focus{ left:16px; top:16px; width:auto; height:auto; background:#000; color:#fff; padding:.5rem .75rem; border-radius:8px; z-index:1001; }
+
+/* =========================
+   Header / Navbar (SCOPE!)
+   ========================= */
+
+.navbar{
+  display:flex; justify-content:space-between; align-items:center;
+  padding: 1.5rem 2rem; background: #fff; box-shadow: var(--shadow-sm);
+  position: sticky; top: 0; z-index: 1000;
+}
+
+/* Logo NUR in der Navbar ansprechen */
+.navbar .logo{
+  height: 80px; width:auto; object-fit: contain;
+}
+
+/* Nav-Links NUR unter .navbar stylen */
+.navbar .nav-links{
+  list-style:none; display:flex; gap:2rem; margin:0; padding:0;
+}
+.navbar .nav-links a{
+  text-decoration:none; color:#000; font-weight:600;
+}
+
+/* Order-Button NUR in der Navbar */
+.navbar .order-btn{
+  background: var(--brand); color:#fff; padding:.6rem 1.2rem;
+  border-radius:6px; text-decoration:none; font-weight:700;
+  box-shadow: var(--shadow-md);
+}
+
+/* Optional: Burger-Button (falls vorhanden) */
+.nav-toggle{ display:none; }
+@media (max-width:900px){
+  .navbar .nav-links{
+    position:absolute; top:70px; right:16px; background:#fff; border-radius:12px;
+    box-shadow: 0 10px 24px rgba(0,0,0,.12); padding:1rem; gap:.75rem;
+    display:none; flex-direction:column; min-width:220px; z-index:1001;
+  }
+  .navbar .nav-links.is-open{ display:flex; }
+  .nav-toggle{ display:inline-block; background:var(--brand); color:#fff; border:none; border-radius:8px; padding:.6rem .9rem; }
+  .navbar .logo{ max-height:64px; }
+}
+
+/* =========================
+   Hero
+   ========================= */
+.hero-video{
+  position:relative; width:100%; height:80vh; overflow:hidden;
+  display:flex; align-items:center; justify-content:center;
+}
+.background-video{
+  position:absolute; inset:0; width:100%; height:100%;
+  object-fit:cover; object-position:center; z-index:-1;
+}
+.hero-video .overlay-content{
+  position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+  text-align:center; color:#fff;
+}
+.hero-video .overlay-content h1{ font-size:2.5rem; margin:0 0 1rem; }
+
+/* Bewegungen reduzieren */
+@media (prefers-reduced-motion: reduce){
+  .background-video{ display:none; }
+  .hero-video{ background:#000 url('img/hero-poster.jpg') center/cover no-repeat; }
+}
+
+/* =========================
+   Mission / About
+   ========================= */
+.mission-section{
+  display:flex; flex-direction:row; justify-content:space-between; align-items:flex-start;
+  padding:4rem 2rem; gap:3rem; flex-wrap:wrap; background:#fff;
+}
+.mission-text{ max-width:700px; margin:4rem auto; text-align:left; padding:0 1rem; }
+.mission-text h2{ font-size:2.2rem; font-weight:900; color:var(--brand); margin:0 0 1rem; }
+.mission-text .slogan{ font-style:italic; font-size:1.4rem; margin:.25rem 0 1rem; }
+.mission-text .subtext{ font-size:1rem; line-height:1.7; margin:0 0 1.5rem; }
+.mission-text .btn-purple{ background:var(--brand); color:#fff; padding:.7rem 1.4rem; border-radius:6px; text-decoration:none; font-weight:700; }
+.mission-text .tagline{ font-size:1.2rem; font-weight:600; color:var(--brand); margin-top:2rem; text-align:right; }
+
+/* Crewbilder */
+.image-column{ display:flex; gap:1rem; justify-content:center; margin-bottom:2rem; }
+.image-column img{ width:160px; border-radius:16px; object-fit:cover; box-shadow:0 6px 12px rgba(0,0,0,.1); transition:transform .3s ease; }
+.image-column img:nth-child(1){ height:320px; margin-top:40px; }
+.image-column img:nth-child(2){ height:340px; margin-top:20px; }
+.image-column img:nth-child(3){ height:300px; margin-top:60px; }
+.image-column img:nth-child(4){ height:330px; margin-top:30px; }
+
+@media (max-width:768px){
+  .image-column{ overflow-x:auto; gap:.75rem; padding-bottom:1rem; }
+  .image-column img{ height:260px; width:auto; }
+}
+
+/* =========================
+   Produkte / Highlights
+   ========================= */
+.product-bar{ padding:4rem 2rem; background:var(--surface); text-align:center; }
+.section-title{
+  font-size:2rem; margin:1rem 0 2rem; color:var(--brand); font-weight:900;
+  background:#fff; display:inline-block; padding:.3rem 1rem; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,.05);
+}
+.product-row{ display:flex; gap:2rem; overflow-x:auto; padding-bottom:1rem; justify-content:center;
+  scroll-snap-type:x mandatory; scroll-padding:1rem; }
+.product-row::-webkit-scrollbar{ height:8px; }
+.product-row::-webkit-scrollbar-thumb{ background:#d9d9d9; border-radius:999px; }
+
+.product-box{
+  min-width:320px; max-width:320px; background:#fff; border-radius:12px; padding:1.2rem;
+  box-shadow:0 4px 10px rgba(0,0,0,.1); flex-shrink:0; transition:transform .3s ease;
+  display:flex; flex-direction:column; align-items:center; justify-content:flex-start;
+  scroll-snap-align:start;
+}
+.product-box:hover{ transform:translateY(-5px); }
+.product-box img{ width:100%; height:220px; object-fit:cover; border-radius:8px; margin-bottom:1rem; border-top:none; }
+.product-box h3{ margin:.25rem 0 0; font-size:1rem; font-weight:800; }
+.product-box.special{ border:3px solid var(--brand); box-shadow:0 6px 20px rgba(107,33,168,.2); transform:scale(1.05); }
+.special-info{ font-size:.9rem; color:var(--brand); margin-top:.5rem; font-style:italic; text-align:center; }
+
+/* =========================
+   Catering
+   ========================= */
+.catering-section{
+  position:relative; background-image:url('img/catering.jpg'); background-size:cover; background-position:center;
+  padding:6rem 2rem; color:#fff; text-align:center; margin-top:4rem;
+}
+.catering-overlay{
+  background:rgba(0,0,0,.55); padding:4rem 2rem; border-radius:12px; max-width:800px; margin:0 auto;
+  box-shadow:0 6px 20px rgba(0,0,0,.3);
+}
+.catering-overlay h2{ font-size:2.5rem; margin:0 0 1rem; color:#fff; }
+.catering-overlay p{ font-size:1.2rem; line-height:1.6; margin:0 0 2rem; }
+.contact-btn{ background:var(--brand); color:#fff; padding:.8rem 1.6rem; border-radius:8px; text-decoration:none; font-weight:800; box-shadow:0 4px 12px rgba(107,33,168,.4); }
+.contact-btn:hover{ filter:brightness(.96); }
+.contact-email{ margin-top:1rem; font-size:.95rem; color:#e0e0e0; font-style:italic; }
+
+/* =========================
+   Social Hub
+   ========================= */
+.social-hub{ background:#fff; padding:4rem 2rem; text-align:center; }
+.social-hub h2{ font-size:2.2rem; font-weight:900; color:var(--brand); }
+.social-subline{ font-size:1.1rem; margin-bottom:2rem; color:#555; }
+.social-boxes{ display:flex; flex-wrap:wrap; justify-content:center; gap:2rem; }
+
+.social-card{
+  background:#f9f9f9; border-radius:16px; padding:1.5rem; width:250px; text-decoration:none; color:#000;
+  box-shadow:0 4px 12px rgba(0,0,0,.05); transition:transform .3s, box-shadow .3s; position:relative;
+}
+.social-card:hover{ transform:translateY(-5px); box-shadow:0 8px 20px rgba(0,0,0,.1); }
+.social-card img{ height:40px; margin-bottom:1rem; }
+.social-card h3{ font-size:1.2rem; color:var(--brand); margin-bottom:.5rem; }
+
+/* Highlights (WhatsApp/Instagram) */
+.social-card.highlight{ background:var(--brand); color:#fff; }
+.social-card.highlight h3{ color:#fff; }
+.social-card.highlight:hover{ box-shadow:0 8px 25px rgba(107,33,168,.3); }
+
+.join-now-btn{
+  display:inline-block; margin-top:3rem; padding:.9rem 1.6rem; background:var(--accent); color:#fff; font-weight:800;
+  border-radius:8px; text-decoration:none; font-size:1rem; box-shadow:0 4px 12px rgba(0,0,0,.1);
+}
+.join-now-btn:hover{ filter:brightness(.96); }
+
+/* =========================
+   Locations
+   ========================= */
+.location-section{ padding:0; background:var(--cream); display:flex; justify-content:center; }
+.location-wrapper{ display:flex; flex-direction:row; width:100%; min-height:550px; }
+.location-map-full{ flex:1; overflow:hidden; }
+.location-map-full img{ width:100%; height:100%; object-fit:cover; display:block; }
+.location-content-full{
+  flex:1; padding:60px 50px; background:var(--cream);
+  display:flex; flex-direction:column; justify-content:center; font-family:'Poppins', system-ui, sans-serif;
+  color:#222; font-size:17px; line-height:1.7;
+}
+.location-content-full h2{ font-size:34px; color:var(--brand); font-weight:700; margin-bottom:20px; letter-spacing:-.5px; }
+.location-content-full p{ margin-bottom:16px; font-weight:400; color:#444; }
+.location-content-full strong{ color:var(--brand); font-weight:600; }
+.btn-locations{
+  display:inline-block; margin-top:20px; background:var(--brand); color:#fff; padding:12px 20px;
+  border-radius:8px; text-decoration:none; font-weight:700; transition:filter .2s;
+}
+.btn-locations:hover{ filter:brightness(.96); }
+
+/* =========================
+   Placeholder Sections (Careers/Merch)
+   ========================= */
+.placeholder-section{ background:#fff; border-top:1px solid var(--line); border-bottom:1px solid var(--line); padding:3rem 1rem; }
+.placeholder-inner{ max-width:900px; margin:0 auto; text-align:left; }
+.placeholder-inner h2{ margin:0 0 .5rem; font-size:2rem; color:var(--brand); }
+.placeholder-inner p{ margin:.25rem 0 1rem; color:#333; }
+.placeholder-actions{ display:flex; gap:.75rem; flex-wrap:wrap; margin:.5rem 0 1rem; }
+.btn-primary{
+  background:var(--brand); color:#fff; text-decoration:none; padding:.75rem 1.1rem; border-radius:10px; font-weight:800;
+  display:inline-block; box-shadow:0 6px 16px rgba(107,33,168,.12);
+}
+.btn-primary:hover{ filter:brightness(.96); }
+.btn-ghost{
+  background:#f6f3ff; color:var(--brand); text-decoration:none; padding:.75rem 1.1rem; border-radius:10px; font-weight:700; display:inline-block; border:1px solid #e8defa;
+}
+.btn-ghost:hover{ background:#efe7ff; }
+.helper{ color:var(--muted); }
+@media (max-width:700px){ .placeholder-inner h2{ font-size:1.6rem; } }
+
+/* =========================
+   Footer (voll getrennt!)
+   ========================= */
+.site-footer{
+  margin-top:3rem; border-top:1px solid var(--line); background:#fff;
+}
+.footer-inner{
+  max-width:1100px; margin:0 auto; padding:1.25rem 1rem;
+  display:grid; grid-template-columns:1.2fr 1fr 1fr; gap:1rem; align-items:center;
+}
+.footer-brand{ display:flex; align-items:center; gap:.75rem; }
+.footer-logo{ max-height:42px; width:auto; object-fit:contain; }
+.footer-meta small{ color:var(--muted); }
+
+/* Footer Links – nur hier stylen */
+.site-footer .footer-nav{ display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; }
+.site-footer .footer-nav a,
+.site-footer .footer-nav a:visited{
+  color:var(--brand); text-decoration:none; font-weight:600;
+}
+.site-footer .footer-nav a:hover{ text-decoration:underline; }
+
+.site-footer .footer-contact{ display:flex; gap:.75rem; justify-content:flex-end; flex-wrap:wrap; }
+.site-footer .footer-link,
+.site-footer .footer-link:visited{ color:#222; text-decoration:none; }
+.site-footer .footer-link:hover{ text-decoration:underline; }
+.footer-cta{
+  background:var(--brand); color:#fff; text-decoration:none; padding:.6rem 1rem; border-radius:8px; font-weight:700; box-shadow:var(--shadow-md);
+}
+.footer-cta:hover{ filter:brightness(.96); }
+
+.footer-sub{
+  border-top:1px solid var(--line); color:var(--muted); font-size:.85rem; padding:.75rem 1rem 1.25rem; text-align:center;
+}
+
+/* Responsive Footer */
+@media (max-width:900px){
+  .footer-inner{ grid-template-columns:1fr; gap:1rem; text-align:center; }
+  .footer-brand, .footer-contact, .footer-nav{ justify-content:center; }
+}
+
+/* === Announcement Bar === */
+.announce{
+  background: #f6f3ff;
+  border-bottom: 1px solid var(--line);
+  color: var(--ink);
+  font-size: .95rem;
+}
+.announce-inner{
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: .6rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .75rem;
+}
+.announce a{
+  color: var(--brand);
+  font-weight: 700;
+  text-decoration: none;
+}
+.announce a:hover{ text-decoration: underline; }
+
+.announce-close{
+  border: 1px solid rgba(0,0,0,.08);
+  background: #fff;
+  color: #444;
+  border-radius: 999px;
+  padding: .2rem .55rem;
+  cursor: pointer;
+  line-height: 1;
+  box-shadow: 0 2px 5px rgba(0,0,0,.08);
+}
+.announce-close:hover{ filter: brightness(.96); }
+
+/* kleines Ausblend-Animation */
+.announce.is-hiding{
+  animation: announceHide .25s ease forwards;
+}
+@keyframes announceHide{
+  to { opacity: 0; transform: translateY(-6px); height: 0; padding: 0; margin: 0; }
+}
+
+@media (max-width: 600px){
+  .announce-inner{ flex-wrap: wrap; }
+  .announce-close{ margin-left: auto; }
+}
