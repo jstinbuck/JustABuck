@@ -6,77 +6,86 @@
 
   <title>Just A Buck – Smashburger, Loaded Fries & Fried Chicken</title>
   <meta name="description" content="Just A Buck: ehrliches Fastfood aus Kempten – Smashburger, Loaded Fries & Fried Chicken. Frisch, bezahlbar, handgemacht." />
-  <link rel="canonical" href="https://justabuck.example/" />
+  <link rel="canonical" href="https://justabuck.de/" />
 
   <!-- Open Graph / Social -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Just A Buck" />
   <meta property="og:description" content="Smashburger, Loaded Fries & Fried Chicken – ehrlich, frisch, bezahlbar." />
-  <meta property="og:image" content="https://justabuck.example/og.jpg" />
-  <meta property="og:url" content="https://justabuck.example/" />
+  <meta property="og:image" content="img/catering.jpg" />
+  <meta property="og:url" content="https://justabuck.de/" />
   <meta name="theme-color" content="#6b21a8" />
 
   <link rel="icon" href="/favicon.ico" />
-  <link rel="preload" as="image" href="img/hero-poster.jpg" />
+  <link rel="preload" as="image" href="img/catering.jpg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <!-- Skiplink für Tastatur -->
+  <!-- Skiplink -->
   <a class="skip-link" href="#main">Zum Inhalt springen</a>
 
-  <!-- 🔔 Announcement Bar -->
+  <!-- Announcement Bar -->
   <div class="announce" role="status" aria-live="polite">
     <div class="announce-inner">
       <span class="announce-text">
-        🚚 Pop-Up Season: Termine & Spots droppen zuerst auf Instagram & WhatsApp!
+        🔥 Pop-Up Season: Termine & Spots droppen zuerst auf Instagram & WhatsApp!
         <a href="https://instagram.com/" target="_blank" rel="noopener">Follow</a>
         ·
         <a href="https://wa.me/4917612345678?text=Hi%20Just%20A%20Buck!%20Add%20me%20to%20updates."
            target="_blank" rel="noopener">WhatsApp Updates</a>
       </span>
-      <button class="announce-close" aria-label="Hinweis schließen" title="Schließen">✕</button>
+      <button class="announce-close" aria-label="Hinweis schließen" title="Schließen">×</button>
     </div>
   </div>
 
-  <!-- 🔹 NAVIGATIONSBEREICH -->
+  <!-- NAVIGATION -->
   <header>
     <nav class="navbar" aria-label="Hauptnavigation">
-      <a href="/" class="brand" aria-label="Startseite">
-        <img src="img/logo.png" alt="Just A Buck Logo" class="logo" />
-      </a>
+      <div class="nav-inner">
+        <a href="/" class="brand" aria-label="Startseite">
+          <img src="img/logo.png" alt="Just A Buck Logo" class="logo" />
+        </a>
 
-      <ul id="primary-nav" class="nav-links" role="list">
-        <li><a href="#menu">Menü</a></li>
-        <li><a href="#locations">Wo findet Ihr uns?</a></li>
-        <li><a href="#careers">Karriere</a></li>
-        <li><a href="#about">Über uns</a></li>
-        <li><a href="#community">Community</a></li>
-        <li><a href="#merch">Merch</a></li>
-      </ul>
+        <ul id="primary-nav" class="nav-links" role="list">
+          <li><a href="#menu">Menü</a></li>
+          <li><a href="#locations">Wo findet ihr uns?</a></li>
+          <li><a href="#careers">Karriere</a></li>
+          <li><a href="#about">Über uns</a></li>
+          <li><a href="#community">Community</a></li>
+          <li><a href="#giftcards">Giftcards</a></li>
+          <li><a href="#merch">Merch</a></li>
+          <li class="nav-cta"><a href="/order">Order Now</a></li>
+        </ul>
 
-      <a href="/order" class="order-btn">Order Now</a>
-      <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Menü öffnen">☰</button>
+        <a href="/order" class="order-btn">Order Now</a>
+        <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Menü öffnen">
+          <span aria-hidden="true">☰</span>
+        </button>
+      </div>
     </nav>
   </header>
 
   <main id="main">
-    <!-- 🔹 HERO-SEKTION MIT VIDEO -->
+    <!-- HERO -->
     <section class="hero-video" aria-label="Hero">
       <video class="background-video"
              autoplay muted loop playsinline
-             poster="img/hero-poster.jpg">
-        <source src="video/hero.webm" type="video/webm" />
-        <source src="video/hero.mp4" type="video/mp4" />
+             poster="img/catering.jpg">
+        <source src="Video/hero.mp4" type="video/mp4" />
         Dein Browser unterstützt kein Video-Tag.
       </video>
       <div class="overlay-content">
         <h1>Just A Buck</h1>
+        <p class="hero-tag">Smashburger • Loaded Fries • Fried Chicken</p>
         <a href="/order" class="order-btn">Bestelle jetzt</a>
       </div>
     </section>
 
-    <!-- 🔹 PHILOSOPHIE UND TEAM-BEREICH -->
+    <!-- ABOUT -->
     <section id="about" class="mission-section" aria-labelledby="aboutTitle">
       <div class="image-column" aria-hidden="true">
         <img src="img/crew1.jpg" alt="Crew bereitet Burger vor" loading="lazy" width="240" height="320">
@@ -86,11 +95,11 @@
       </div>
 
       <div class="mission-text">
-        <h2 id="aboutTitle">UNSERE PHILOSOPHIE</h2>
+        <h2 id="aboutTitle">Unsere Philosophie</h2>
         <p class="slogan">„Bezahlbares Essen, frisch und handgemacht.“</p>
         <p class="subtext">
           Wir stehen für echtes Streetfood mit Charakter – hausgemacht, bezahlbar und ohne Kompromisse.
-          Mit selbstgemachten Zutaten, viel Leidenschaft und klarer Haltung bringen wir ehrliches Essen dorthin,
+          Mit eigenen Zutaten, viel Leidenschaft und klarer Haltung bringen wir ehrliches Essen dorthin,
           wo es hingehört: zu euch auf die Straße.
         </p>
         <a href="/about" class="btn-purple">Mehr erfahren</a>
@@ -98,33 +107,145 @@
       </div>
     </section>
 
-    <!-- 🔹 PRODUKT-HIGHLIGHTS -->
+    <!-- PRODUKT-HIGHLIGHTS -->
     <section id="menu" class="product-bar" aria-labelledby="menuTitle">
-      <h2 id="menuTitle" class="section-title">Unsere Highlights</h2>
+      <div class="section-head">
+        <p class="eyebrow">Best Seller</p>
+        <h2 id="menuTitle" class="section-title">Unsere Highlights</h2>
+        <p class="section-sub">Signature Smashburger, Loaded Fries und mehr – frisch, crispy, handgemacht.</p>
+      </div>
 
-      <div class="product-row">
-        <article class="product-box">
-          <img src="img/product1.jpg" alt="Box Combo – Fries, Chicken & Dip"
-               loading="lazy" width="640" height="440">
-          <h3>Box Combo</h3>
-        </article>
+      <div class="product-slider" data-slider="products">
+        <button class="product-arrow prev" type="button" aria-label="Vorheriges Produkt">‹</button>
+        <div class="product-row">
+          <article class="product-box">
+            <div class="product-top">
+              <span class="pill">Combo</span>
+              <img src="img/product1.jpg" alt="Box Combo – Fries, Chicken & Dip"
+                   loading="lazy" width="640" height="440">
+            </div>
+            <div class="product-meta">
+              <h3>Box Combo</h3>
+              <p>Fries, Chicken & Dip im Team-Pack.</p>
+            </div>
+          </article>
 
-        <article class="product-box special" aria-label="Aktuelles Special">
-          <img src="img/product2.jpg" alt="Chicken Special – Signature Sauce"
-               loading="lazy" width="640" height="440">
-          <h3>🔥 Chicken Special</h3>
-          <p class="special-info">Unser aktuelles Special – nur diese Woche!</p>
-        </article>
+          <article class="product-box special" aria-label="Aktuelles Special">
+            <div class="product-top">
+              <span class="pill pill-hot">🔥 Weekly Special</span>
+              <img src="img/product2.jpg" alt="Chicken Special – Signature Sauce"
+                   loading="lazy" width="640" height="440">
+            </div>
+            <div class="product-meta">
+              <h3>Chicken Special</h3>
+              <p class="special-info">Smash-Patty, Signature Sauce, doppelt Cheese.</p>
+            </div>
+          </article>
 
-        <article class="product-box">
-          <img src="img/product3.jpg" alt="3 Finger Combo – knusprig & saftig"
-               loading="lazy" width="640" height="440">
-          <h3>3 Finger Combo</h3>
-        </article>
+          <article class="product-box">
+            <div class="product-top">
+              <span class="pill">Loaded</span>
+              <img src="img/product1.jpg" alt="Loaded Fries mit Crunch"
+                   loading="lazy" width="640" height="440">
+            </div>
+            <div class="product-meta">
+              <h3>Loaded Fries</h3>
+              <p>Crispy Fries mit Sauce & Crunch.</p>
+            </div>
+          </article>
+
+          <article class="product-box">
+            <div class="product-top">
+              <span class="pill pill-veg">⭐ Fan Favorite</span>
+              <img src="img/product2.jpg" alt="Classic Buck Burger"
+                   loading="lazy" width="640" height="440">
+            </div>
+            <div class="product-meta">
+              <h3>Classic Buck Burger</h3>
+              <p>Saftig, smash-gegrillt, viel Crunch.</p>
+            </div>
+          </article>
+
+          <article class="product-box">
+            <div class="product-top">
+              <span class="pill">Spicy</span>
+              <img src="img/product2.jpg" alt="Spicy Chicken Burger"
+                   loading="lazy" width="640" height="440">
+            </div>
+            <div class="product-meta">
+              <h3>Spicy Chicken Burger</h3>
+              <p>Krosses Chicken, feurige Sauce.</p>
+            </div>
+          </article>
+
+          <article class="product-box">
+            <div class="product-top">
+              <span class="pill">Share</span>
+              <img src="img/product1.jpg" alt="Party Fries Tray"
+                   loading="lazy" width="640" height="440">
+            </div>
+            <div class="product-meta">
+              <h3>Party Fries Tray</h3>
+              <p>Großes Tray zum Teilen.</p>
+            </div>
+          </article>
+
+          <article class="product-box">
+            <div class="product-top">
+              <span class="pill">Classic</span>
+              <img src="img/product2.jpg" alt="Double Smash Burger"
+                   loading="lazy" width="640" height="440">
+            </div>
+            <div class="product-meta">
+              <h3>Double Smash</h3>
+              <p>Zwei Patties, viel Cheese, keine Kompromisse.</p>
+            </div>
+          </article>
+
+          <article class="product-box">
+            <div class="product-top">
+              <span class="pill">Crispy</span>
+              <img src="img/product1.jpg" alt="Fries mit Dip"
+                   loading="lazy" width="640" height="440">
+            </div>
+            <div class="product-meta">
+              <h3>Crunchy Fries</h3>
+              <p>Extra crispy, mit Dip nach Wahl.</p>
+            </div>
+          </article>
+
+          <article class="product-box">
+            <div class="product-top">
+              <span class="pill pill-veg">⭐ Veggie</span>
+              <img src="img/product2.jpg" alt="Veggie Burger"
+                   loading="lazy" width="640" height="440">
+            </div>
+            <div class="product-meta">
+              <h3>Veggie Buck</h3>
+              <p>Plant-based Patty, volle Buck-Flavor.</p>
+            </div>
+          </article>
+
+          <article class="product-box">
+            <div class="product-top">
+              <span class="pill">Sweet</span>
+              <img src="img/product1.jpg" alt="Sweet Potato Fries"
+                   loading="lazy" width="640" height="440">
+            </div>
+            <div class="product-meta">
+              <h3>Sweet Potato Fries</h3>
+              <p>Süß, salzig, perfect crunch.</p>
+            </div>
+          </article>
+        </div>
+        <button class="product-arrow next" type="button" aria-label="Nächstes Produkt">›</button>
+      </div>
+      <div class="menu-cta">
+        <a class="btn-primary menu-btn" href="/menu.html">Speisekarte</a>
       </div>
     </section>
 
-    <!-- 🔹 CATERING -->
+    <!-- CATERING -->
     <section class="catering-section" aria-labelledby="cateringTitle">
       <div class="catering-overlay">
         <h2 id="cateringTitle">Catering mit Buck</h2>
@@ -137,9 +258,9 @@
       </div>
     </section>
 
-    <!-- 🔹 SOCIAL MEDIA -->
+    <!-- SOCIAL MEDIA -->
     <section id="community" class="social-hub" aria-labelledby="socialTitle">
-      <h2 id="socialTitle">📲 Bleib am Ball mit uns</h2>
+      <h2 id="socialTitle">🎯 Bleib am Ball mit uns</h2>
       <p class="social-subline">Unsere neuesten Standorte, Aktionen & Gewinnspiele direkt aufs Handy!</p>
 
       <div class="social-boxes">
@@ -168,22 +289,20 @@
         </a>
       </div>
 
-      <a href="https://wa.me/4917612345678?text=Hi%20Just%20A%20Buck!%20Ich%20will%20Updates%20zu%20Standorten%20und%20Specials." target="_blank" rel="noopener" class="join-now-btn">💬 Jetzt WhatsApp-Kanal beitreten</a>
+      <a href="https://wa.me/4917612345678?text=Hi%20Just%20A%20Buck!%20Ich%20will%20Updates%20zu%20Standorten%20und%20Specials." target="_blank" rel="noopener" class="join-now-btn">📲 Jetzt WhatsApp-Kanal beitreten</a>
     </section>
 
-    <!-- 🔹 STANDORTE -->
+    <!-- STANDORTE -->
     <section id="locations" class="location-section" aria-labelledby="locTitle">
       <div class="location-wrapper">
-        <!-- Karte als statisches Bild, volle linke Hälfte -->
         <div class="location-map-full" role="img" aria-label="Karte von Kempten (Allgäu)">
-          <a href="https://www.google.com/maps/place/Kempten+%28Allgäu%29/" target="_blank" rel="noopener">
+          <a href="https://www.google.com/maps/place/Kempten+%28Allg%C3%A4u%29/" target="_blank" rel="noopener">
             <img src="img/kempten-map.png" alt="Kempten Karte" title="Kempten in Google Maps öffnen" loading="lazy" width="1200" height="900" />
           </a>
         </div>
 
-        <!-- Textinhalt rechte Hälfte -->
         <div class="location-content-full">
-          <h2 id="locTitle">📍 Standorte & Pop-Ups</h2>
+          <h2 id="locTitle">🧭 Standorte & Pop-Ups</h2>
           <p>
             Wir kommen aus <strong>Kempten (Allgäu)</strong> – aber wir sind <strong>noch nicht an einen festen Standort gebunden</strong>.
           </p>
@@ -194,43 +313,84 @@
             Wo wir als Nächstes stehen? Das erfährst du <strong>exklusiv</strong> hier auf unserer Website,
             oder in unserem <strong>Instagram</strong>-Kanal und <strong>WhatsApp-Broadcast</strong>, um nichts zu verpassen!
           </p>
-          <a href="/events" class="btn-locations">📅 Kommende Events & Standorte anzeigen</a>
+          <a href="/events" class="btn-locations">📍 Kommende Events & Standorte anzeigen</a>
         </div>
       </div>
     </section>
 
-    <!-- 🔹 Karriere (Placeholder, damit #careers funktioniert) -->
-    <section id="careers" class="placeholder-section" aria-labelledby="careersTitle">
-      <div class="placeholder-inner">
-        <h2 id="careersTitle">Karriere – Werde Teil von Just A Buck</h2>
-        <p>Wir sind im Aufbau. Wenn du Bock auf ehrliches Fastfood & Teamspirit hast, trag dich kurz ein.</p>
-        <div class="placeholder-actions">
-          <a class="btn-primary"
-             href="https://wa.me/4917612345678?text=Hi%20Just%20A%20Buck!%20Ich%20interessiere%20mich%20f%C3%BCr%20einen%20Job.%20Rolle:%20Service/K%C3%BCche%20(%C3%A4ndern)%2C%20Erfahrung:%20kurz%2C%20Name:%20[Dein%20Name]"
-             target="_blank" rel="noopener">💬 Interesse per WhatsApp</a>
-          <a class="btn-ghost" href="mailto:justin.buck@sportbuck.com?subject=Initiativbewerbung%20Just%20A%20Buck">E-Mail senden</a>
+    <!-- Merch & Giftcards Duo -->
+    <section class="duo-section" aria-label="Merch und Giftcards">
+      <div id="giftcards" class="duo-card giftcard-card">
+        <div class="duo-copy">
+          <p class="eyebrow">GIFT CARD</p>
+          <h2>Verschenk Buck-Love</h2>
+          <p class="giftcard-text">
+            Smashburger zum Geburtstag, Loaded Fries als Dankeschön oder einfach so:
+            Unsere Just A Buck Giftcard bringt Streetfood-Vibes direkt aufs Handy.
+          </p>
+          <ul class="giftcard-list">
+            <li>Digitale Karte per Mail in Minuten</li>
+            <li>Wert frei wählbar (ab 15 €)</li>
+            <li>Einlösbar bei allen Pop-Ups & Events</li>
+          </ul>
+          <div class="giftcard-actions">
+            <a class="btn-primary" href="/giftcards">🎁 Giftcard holen</a>
+            <a class="btn-ghost" href="mailto:justin.buck@sportbuck.com?subject=Frage%20zu%20Giftcards">Fragen? Schreib uns</a>
+          </div>
         </div>
-        <small class="helper">Wir melden uns, sobald Termine & Schichten feststehen.</small>
+        <div class="duo-visual" aria-hidden="true">
+          <img src="img/GiftcardMain.png" alt="Just A Buck Giftcard" loading="lazy" width="560" height="360">
+        </div>
+      </div>
+
+      <div id="merch" class="duo-card merch-card">
+        <div class="duo-copy">
+          <p class="eyebrow">MERCH DROP</p>
+          <h2>Merch – Coming Soon</h2>
+          <p class="giftcard-text">
+            Caps, Shirts & Hoodies in Planung. Trag dich ein und wir pingen dich, sobald der Drop live geht.
+          </p>
+          <ul class="giftcard-list">
+            <li>Limitierte Drops, solange der Vorrat reicht</li>
+            <li>Pre-Launch Sneak Peeks über Insta/WhatsApp</li>
+            <li>Classic Purple & Street Collabs</li>
+          </ul>
+          <div class="giftcard-actions">
+            <a class="btn-primary"
+               href="https://wa.me/4917612345678?text=Hi%20Just%20A%20Buck!%20Bitte%20benachrichtigt%20mich%2C%20wenn%20der%20Merch%20Drop%20live%20geht.%20Name:%20[Dein%20Name]"
+               target="_blank" rel="noopener">🚀 WhatsApp Benachrichtigung</a>
+            <a class="btn-ghost" href="mailto:justin.buck@sportbuck.com?subject=Merch%20Benachrichtigung&body=Bitte%20informiert%20mich%20beim%20n%C3%A4chsten%20Drop.">Per E-Mail vormerken</a>
+          </div>
+          <small class="helper">Tipp: Folge uns auf Instagram/WhatsApp-Kanal für Sneak Peeks.</small>
+        </div>
+        <div class="duo-visual" aria-hidden="true">
+          <img src="img/MerchBierPong.png" alt="Just A Buck Merch Preview" loading="lazy" width="560" height="360">
+        </div>
       </div>
     </section>
 
-    <!-- 🔹 Merch (Placeholder, damit #merch funktioniert) -->
-    <section id="merch" class="placeholder-section" aria-labelledby="merchTitle">
-      <div class="placeholder-inner">
-        <h2 id="merchTitle">Merch – Coming Soon</h2>
-        <p>Caps, Shirts & Hoodies in Planung. Trag dich ein und wir pingen dich, sobald der Drop live geht.</p>
-        <div class="placeholder-actions">
-          <a class="btn-primary"
-             href="https://wa.me/4917612345678?text=Hi%20Just%20A%20Buck!%20Bitte%20benachrichtigt%20mich%2C%20wenn%20der%20Merch%20Drop%20live%20geht.%20Name:%20[Dein%20Name]"
-             target="_blank" rel="noopener">💬 WhatsApp Benachrichtigung</a>
-          <a class="btn-ghost" href="mailto:justin.buck@sportbuck.com?subject=Merch%20Benachrichtigung&body=Bitte%20informiert%20mich%20beim%20n%C3%A4chsten%20Drop.">Per E-Mail vormerken</a>
+    <section id="careers" class="placeholder-section career-spotlight" aria-labelledby="careersTitle">
+      <div class="placeholder-inner careers-card">
+        <div class="careers-copy">
+          <p class="eyebrow">JOIN THE CREW</p>
+          <h2 id="careersTitle">Karriere – Werde Teil von Just A Buck</h2>
+          <p>Wir sind im Aufbau. Wenn du Bock auf ehrliches Fastfood & Teamspirit hast, trag dich kurz ein.</p>
+          <div class="placeholder-actions">
+            <a class="btn-primary"
+               href="https://wa.me/4917612345678?text=Hi%20Just%20A%20Buck!%20Ich%20interessiere%20mich%20f%C3%BCr%20einen%20Job.%20Rolle:%20Service/K%C3%BCche%20(%C3%A4ndern)%2C%20Erfahrung:%20kurz%2C%20Name:%20[Dein%20Name]"
+               target="_blank" rel="noopener">🎯 Interesse per WhatsApp</a>
+            <a class="btn-ghost" href="mailto:justin.buck@sportbuck.com?subject=Initiativbewerbung%20Just%20A%20Buck">E-Mail senden</a>
+          </div>
+          <small class="helper">Wir melden uns, sobald Termine & Schichten feststehen.</small>
         </div>
-        <small class="helper">Tipp: Folge uns auf Instagram/WhatsApp-Kanal für Sneak Peeks.</small>
+        <div class="careers-visual" aria-hidden="true">
+          <img src="img/Kariere.png" alt="Crew und Teamspirit" loading="lazy" width="520" height="340">
+        </div>
       </div>
     </section>
   </main>
 
-  <!-- 🔹 FOOTER (Rechtliches) -->
+  <!-- FOOTER -->
   <footer class="site-footer" role="contentinfo">
     <div class="footer-inner">
       <div class="footer-brand">
@@ -262,7 +422,7 @@
     </div>
   </footer>
 
-  <!-- Strukturierte Daten (SEO) -->
+  <!-- Schema -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
@@ -270,55 +430,16 @@
     "name":"Just A Buck",
     "servesCuisine":["Burgers","Fried Chicken","Fries"],
     "address":{"@type":"PostalAddress","addressLocality":"Kempten","addressCountry":"DE"},
-    "url":"https://justabuck.example/",
+    "url":"https://justabuck.de/",
     "sameAs":[
       "https://www.instagram.com/justabuck",
       "https://www.tiktok.com/@justabuck"
     ],
-    "priceRange":"€",
-    "hasMenu":"https://justabuck.example/menu"
+    "priceRange":"€€",
+    "hasMenu":"https://justabuck.de/menu"
   }
   </script>
 
-  <!-- Ein kompakter Script-Block für Jahr, Announcement-Bar & Mobile-Menü -->
-  <script>
-    (function () {
-      // © Jahr automatisch
-      const yEl = document.getElementById('y');
-      if (yEl) yEl.textContent = new Date().getFullYear();
-
-      // Announcement-Bar schließen + merken
-      const KEY = 'jab_banner_dismissed_v1';
-      const bar = document.querySelector('.announce');
-      const btn = document.querySelector('.announce-close');
-      if (bar) {
-        if (localStorage.getItem(KEY) === '1') {
-          bar.style.display = 'none';
-        } else {
-          btn?.addEventListener('click', () => {
-            bar.classList.add('is-hiding');
-            setTimeout(() => { bar.style.display = 'none'; }, 260);
-            localStorage.setItem(KEY, '1');
-          });
-        }
-      }
-
-      // Mobile-Menü (Burger)
-      const toggle = document.querySelector('.nav-toggle');
-      const nav = document.getElementById('primary-nav');
-      toggle?.addEventListener('click', () => {
-        const open = toggle.getAttribute('aria-expanded') === 'true';
-        toggle.setAttribute('aria-expanded', String(!open));
-        nav?.classList.toggle('is-open');
-      });
-      // Menü schließen nach Klick
-      nav?.querySelectorAll('a').forEach(a => {
-        a.addEventListener('click', () => {
-          nav.classList.remove('is-open');
-          toggle?.setAttribute('aria-expanded', 'false');
-        });
-      });
-    })();
-  </script>
+  <script src="JS/main.js"></script>
 </body>
 </html>
