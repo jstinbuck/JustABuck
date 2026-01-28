@@ -79,4 +79,246 @@
       resizeTimer = setTimeout(() => goTo(current, 'auto'), 80);
     });
   });
+
+  // =========================
+  // OPTISCHE UPGRADES
+  // =========================
+
+  // Scroll Progress Bar
+  const createScrollProgress = () => {
+    const progressBar = document.createElement('div');
+    progressBar.className = 'scroll-progress';
+    document.body.appendChild(progressBar);
+
+    const updateProgress = () => {
+      const windowHeight = window.innerHeight;
+      const documentHeight = document.documentElement.scrollHeight - windowHeight;
+      const scrolled = window.scrollY;
+      const progress = (scrolled / documentHeight) * 100;
+      progressBar.style.width = `${Math.min(progress, 100)}%`;
+    };
+
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    updateProgress();
+  };
+
+  // Scroll Animations (Fade In)
+  const initScrollAnimations = () => {
+    const observerOptions = {
+      threshold: 0.15,
+      rootMargin: '0px 0px -100px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+        }
+      });
+    }, observerOptions);
+
+    // Elements to animate
+    const selectors = [
+      '.product-box',
+      '.menu-card',
+      '.social-card',
+      '.duo-card',
+      '.mission-text',
+      '.image-column img',
+      '.location-content-full',
+      '.careers-card'
+    ];
+
+    selectors.forEach(selector => {
+      document.querySelectorAll(selector).forEach(el => {
+        el.classList.add('animate-on-scroll');
+        observer.observe(el);
+      });
+    });
+  };
+
+  // Back to Top Button
+  const createBackToTop = () => {
+    let backToTop = document.querySelector('.back-to-top');
+
+    // Create if doesn't exist
+    if (!backToTop) {
+      backToTop = document.createElement('button');
+      backToTop.className = 'back-to-top';
+      backToTop.setAttribute('aria-label', 'Zurück nach oben');
+      backToTop.innerHTML = '↑';
+      document.body.appendChild(backToTop);
+    }
+
+    // Show/Hide on scroll
+    const toggleVisibility = () => {
+      if (window.scrollY > 400) {
+        backToTop.classList.add('visible');
+      } else {
+        backToTop.classList.remove('visible');
+      }
+    };
+
+    // Scroll to top on click
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+    window.addEventListener('scroll', toggleVisibility, { passive: true });
+    toggleVisibility();
+  };
+
+  // Scroll Indicator (Hero)
+  const createScrollIndicator = () => {
+    const hero = document.querySelector('.hero-video');
+    if (!hero) return;
+
+    const indicator = document.createElement('div');
+    indicator.className = 'scroll-indicator';
+    indicator.setAttribute('aria-hidden', 'true');
+    hero.appendChild(indicator);
+
+    // Hide after scroll
+    const hideIndicator = () => {
+      if (window.scrollY > 100) {
+        indicator.style.opacity = '0';
+      } else {
+        indicator.style.opacity = '1';
+      }
+    };
+
+    window.addEventListener('scroll', hideIndicator, { passive: true });
+  };
+
+  // Parallax Effect for Catering Section
+  const initParallax = () => {
+    const cateringSection = document.querySelector('.catering-section');
+    if (!cateringSection) return;
+
+    const parallaxScroll = () => {
+      const scrolled = window.scrollY;
+      const rect = cateringSection.getBoundingClientRect();
+      const offset = rect.top + scrolled;
+      const diff = scrolled - offset + window.innerHeight;
+
+      if (diff > 0 && rect.top < window.innerHeight) {
+        const yPos = -(diff * 0.3);
+        cateringSection.style.backgroundPosition = `center ${yPos}px`;
+      }
+    };
+
+    window.addEventListener('scroll', parallaxScroll, { passive: true });
+  };
+
+  // Enhanced Button Ripple Effect
+  const initButtonRipple = () => {
+    const buttons = document.querySelectorAll('.btn-primary, .order-btn, .contact-btn');
+
+    buttons.forEach(button => {
+      button.addEventListener('click', function(e) {
+        const rect = this.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        const ripple = document.createElement('span');
+        ripple.style.cssText = `
+          position: absolute;
+          left: ${x}px;
+          top: ${y}px;
+          width: 0;
+          height: 0;
+          border-radius: 50%;
+          background: rgba(255,255,255,0.4);
+          transform: translate(-50%, -50%);
+          pointer-events: none;
+        `;
+
+        this.appendChild(ripple);
+
+        // Animate
+        ripple.animate([
+          { width: '0px', height: '0px', opacity: 1 },
+          { width: '300px', height: '300px', opacity: 0 }
+        ], {
+          duration: 600,
+          easing: 'ease-out'
+        }).onfinish = () => ripple.remove();
+      });
+    });
+  };
+
+  // Active Nav Link on Scroll (for index.html)
+  const initActiveNav = () => {
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+
+    if (!sections.length || !navLinks.length) return;
+
+    const updateActiveLink = () => {
+      const scrollY = window.scrollY + 200;
+
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.offsetHeight;
+        const sectionId = section.getAttribute('id');
+
+        if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+          navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${sectionId}`) {
+              link.classList.add('active');
+            }
+          });
+        }
+      });
+    };
+
+    window.addEventListener('scroll', updateActiveLink, { passive: true });
+  };
+
+  // Performance: Use RequestAnimationFrame for smooth animations
+  let ticking = false;
+  const rafCallbacks = [];
+
+  const onScroll = () => {
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        rafCallbacks.forEach(cb => cb());
+        ticking = false;
+      });
+      ticking = true;
+    }
+  };
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  // Initialize all enhancements
+  const init = () => {
+    // Check if reduced motion is preferred
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    createScrollProgress();
+    createBackToTop();
+    createScrollIndicator();
+    initButtonRipple();
+    initActiveNav();
+
+    if (!prefersReducedMotion) {
+      initScrollAnimations();
+      initParallax();
+    }
+
+    // Add loaded class for fade-in effect
+    document.documentElement.classList.add('loaded');
+  };
+
+  // Run on DOM ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
 })();

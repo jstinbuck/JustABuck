@@ -84,8 +84,27 @@ header{
 .navbar .nav-links a{
   font-weight:700; letter-spacing:.01em;
   padding:.25rem 0;
+  position: relative;
+  transition: color 0.3s ease;
 }
-.navbar .nav-links a:hover{ color:var(--brand); }
+.navbar .nav-links a::after{
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--brand) 0%, var(--hot) 100%);
+  transition: width 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.navbar .nav-links a:hover,
+.navbar .nav-links a.active{
+  color:var(--brand);
+}
+.navbar .nav-links a:hover::after,
+.navbar .nav-links a.active::after{
+  width: 100%;
+}
 .navbar .nav-links .nav-cta{ display:none; }
 
 .order-btn{
@@ -634,6 +653,96 @@ header{
   margin-top:3rem; border-top:1px solid var(--line);
   background: linear-gradient(180deg,#fff 0%, #faf8ff 100%);
 }
+
+/* New detailed footer for menu page */
+.site-footer:has(.footer-content){
+  padding: 3rem 1.5rem 1rem;
+}
+
+.footer-content{
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.footer-section h3{
+  color: var(--brand);
+  font-size: 1.3rem;
+  margin: 0 0 0.5rem;
+  font-weight: 800;
+}
+
+.footer-section h4{
+  color: var(--brand);
+  font-size: 1.1rem;
+  margin: 0 0 0.75rem;
+  font-weight: 700;
+}
+
+.footer-section p{
+  color: #444;
+  margin: 0;
+  line-height: 1.7;
+}
+
+.footer-section a{
+  color: var(--brand);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-section a:hover{
+  color: var(--brand-dark);
+  text-decoration: underline;
+}
+
+.footer-section ul{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-section ul li{
+  margin-bottom: 0.5rem;
+}
+
+.social-links{
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.social-links a{
+  padding: 0.5rem 1rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.social-links a:hover{
+  background: var(--brand);
+  color: #fff;
+  text-decoration: none;
+}
+
+.footer-bottom{
+  border-top: 1px solid var(--line);
+  padding-top: 1.5rem;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.footer-bottom p{
+  margin: 0;
+}
+
+/* Original footer styles (for homepage) */
 .footer-inner{
   max-width:1100px; margin:0 auto; padding:1.5rem 1.25rem;
   display:grid; grid-template-columns:1.1fr 1fr 1fr; gap:1.25rem; align-items:center;
@@ -669,6 +778,19 @@ header{
 @media (max-width:900px){
   .footer-inner{ grid-template-columns:1fr; gap:1rem; text-align:center; }
   .footer-brand, .footer-contact, .footer-nav{ justify-content:center; }
+
+  .footer-content{
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .footer-section{
+    text-align: center;
+  }
+
+  .social-links{
+    justify-content: center;
+  }
 }
 
 /* =========================
@@ -738,3 +860,507 @@ header{
 @media (min-width:901px){
   .navbar .nav-links{ flex:1; justify-content:center; }
 }
+
+/* =========================
+   OPTISCHE UPGRADES
+   ========================= */
+
+/* --- Scroll Progress Bar --- */
+.scroll-progress{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--brand) 0%, var(--hot) 100%);
+  z-index: 9999;
+  transition: width 0.1s cubic-bezier(0.33, 1, 0.68, 1);
+  box-shadow: 0 2px 8px rgba(168,85,247,.4);
+}
+
+/* --- Scroll Animations (Fade In) --- */
+.animate-on-scroll{
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.animate-on-scroll.is-visible{
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Staggered animations for multiple items */
+.animate-on-scroll:nth-child(1){ transition-delay: 0.1s; }
+.animate-on-scroll:nth-child(2){ transition-delay: 0.2s; }
+.animate-on-scroll:nth-child(3){ transition-delay: 0.3s; }
+.animate-on-scroll:nth-child(4){ transition-delay: 0.4s; }
+.animate-on-scroll:nth-child(5){ transition-delay: 0.5s; }
+.animate-on-scroll:nth-child(6){ transition-delay: 0.6s; }
+
+/* --- Verbesserte Product Card Hover mit Zoom --- */
+.product-box{
+  overflow: hidden;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+              border-color 0.4s ease;
+}
+
+.product-box:hover{
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 20px 48px rgba(107,33,168,.24);
+  border-color: var(--hot);
+}
+
+.product-top{
+  overflow: hidden;
+}
+
+.product-top img{
+  transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.product-box:hover .product-top img{
+  transform: scale(1.1) rotate(2deg);
+}
+
+/* --- Text Gradient für Headlines --- */
+.hero-video .overlay-content h1,
+.section-title,
+.mission-text h2,
+.catering-overlay h2{
+  background: linear-gradient(135deg, var(--brand) 0%, var(--hot) 60%, #c084fc 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-size: 3.5rem;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+}
+
+.hero-video .overlay-content h1{
+  font-size: 4.5rem;
+  text-shadow: 0 4px 20px rgba(0,0,0,.3);
+  -webkit-text-fill-color: #fff;
+  background: none;
+}
+
+@media (max-width:768px){
+  .hero-video .overlay-content h1{ font-size: 3rem; }
+  .section-title{ font-size: 2.5rem; }
+}
+
+/* --- Stärkere Glassmorphism-Effekte --- */
+.navbar{
+  background: rgba(255,255,255,.88);
+  backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid rgba(107,33,168,.12);
+  box-shadow: 0 4px 24px rgba(107,33,168,.08);
+}
+
+.catering-overlay{
+  background: rgba(15,10,25,.82);
+  backdrop-filter: blur(24px) saturate(140%);
+  border: 1px solid rgba(255,255,255,.14);
+  box-shadow: 0 16px 56px rgba(0,0,0,.45),
+              inset 0 1px 0 rgba(255,255,255,.1);
+}
+
+/* --- Pulse Animation für Special Badges --- */
+@keyframes pulse-glow{
+  0%, 100%{
+    box-shadow: 0 6px 16px rgba(168,85,247,.28);
+    transform: scale(1);
+  }
+  50%{
+    box-shadow: 0 8px 28px rgba(168,85,247,.48);
+    transform: scale(1.05);
+  }
+}
+
+.pill-hot{
+  animation: pulse-glow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Animated Badge for Special Product Box */
+.product-box.special{
+  animation: special-pulse 3s ease-in-out infinite;
+}
+
+@keyframes special-pulse{
+  0%, 100%{
+    box-shadow: 0 14px 36px rgba(107,33,168,.22);
+    transform: translateY(-4px);
+  }
+  50%{
+    box-shadow: 0 18px 48px rgba(168,85,247,.32);
+    transform: translateY(-6px);
+  }
+}
+
+/* --- Back to Top Button (Global) --- */
+.back-to-top{
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  width: 56px;
+  height: 56px;
+  background: linear-gradient(135deg, var(--brand) 0%, var(--hot) 100%);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  font-size: 24px;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  z-index: 1000;
+  box-shadow: 0 8px 24px rgba(107,33,168,.32);
+  display: grid;
+  place-items: center;
+}
+
+.back-to-top.visible{
+  opacity: 1;
+  pointer-events: all;
+}
+
+.back-to-top:hover{
+  transform: translateY(-4px) scale(1.1);
+  box-shadow: 0 12px 32px rgba(168,85,247,.44);
+}
+
+.back-to-top:active{
+  transform: translateY(-2px) scale(1.05);
+}
+
+/* --- Smooth Button Ripple Effect --- */
+.btn-primary, .order-btn, .contact-btn, .btn-locations{
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.3s ease,
+              filter 0.3s ease;
+}
+
+.btn-primary::before, .order-btn::before, .contact-btn::before{
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255,255,255,.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s ease, height 0.6s ease;
+}
+
+.btn-primary:active::before, .order-btn:active::before{
+  width: 300px;
+  height: 300px;
+}
+
+/* --- Enhanced Hero CTA Animation --- */
+.hero-video .order-btn{
+  animation: hero-cta-pulse 2.5s ease-in-out infinite;
+}
+
+@keyframes hero-cta-pulse{
+  0%, 100%{
+    transform: scale(1);
+  }
+  50%{
+    transform: scale(1.05);
+  }
+}
+
+/* --- Parallax Scroll Effect Helper --- */
+.parallax-section{
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* --- Enhanced Menu Card Hover --- */
+.menu-card{
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.4s ease;
+}
+
+.menu-card:hover{
+  transform: translateY(-8px);
+  box-shadow: 0 16px 42px rgba(107,33,168,.18);
+}
+
+.menu-card img{
+  transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1),
+              filter 0.3s ease;
+}
+
+.menu-card:hover img{
+  transform: scale(1.08);
+  filter: brightness(1.05) saturate(1.1);
+}
+
+/* --- Social Cards Enhanced --- */
+.social-card{
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.4s ease;
+}
+
+.social-card:hover{
+  transform: translateY(-8px) scale(1.03);
+}
+
+.social-card.highlight:hover{
+  box-shadow: 0 16px 42px rgba(107,33,168,.42);
+}
+
+/* --- Crew Images Enhanced Hover --- */
+.image-column img{
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.4s ease,
+              filter 0.3s ease;
+}
+
+.image-column img:hover{
+  transform: translateY(-10px) scale(1.05) rotate(2deg);
+  box-shadow: 0 18px 42px rgba(107,33,168,.28);
+  filter: brightness(1.05);
+}
+
+/* --- Scroll Indicator Arrow --- */
+.scroll-indicator{
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 32px;
+  height: 48px;
+  border: 2px solid rgba(255,255,255,.6);
+  border-radius: 24px;
+  z-index: 2;
+}
+
+.scroll-indicator::before{
+  content: '';
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  width: 6px;
+  height: 6px;
+  background: #fff;
+  border-radius: 50%;
+  transform: translateX(-50%);
+  animation: scroll-down 2s ease-in-out infinite;
+}
+
+@keyframes scroll-down{
+  0%{
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+  100%{
+    opacity: 0;
+    transform: translateX(-50%) translateY(24px);
+  }
+}
+
+/* --- Loading Skeleton (for future use) --- */
+.skeleton{
+  background: linear-gradient(90deg,
+    rgba(240,240,240,1) 0%,
+    rgba(250,250,250,1) 50%,
+    rgba(240,240,240,1) 100%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s ease-in-out infinite;
+}
+
+@keyframes skeleton-loading{
+  0%{ background-position: 200% 0; }
+  100%{ background-position: -200% 0; }
+}
+
+/* --- Enhanced Announcement Bar --- */
+.announce{
+  background: linear-gradient(135deg, #f6f3ff 0%, #f1e8ff 60%, #ede4ff 100%);
+  box-shadow: 0 2px 12px rgba(107,33,168,.08);
+}
+
+.announce-inner{
+  animation: announce-slide-in 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes announce-slide-in{
+  from{
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  to{
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --- Enhanced Giftcard 3D Tilt Effect --- */
+.duo-visual img{
+  transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.duo-card:hover .duo-visual img{
+  transform: perspective(1000px) rotateY(5deg) rotateX(2deg) scale(1.05);
+}
+
+/* --- Floating Animation for Pills --- */
+.pill{
+  animation: float-badge 3s ease-in-out infinite;
+}
+
+@keyframes float-badge{
+  0%, 100%{
+    transform: translateY(0);
+  }
+  50%{
+    transform: translateY(-4px);
+  }
+}
+
+/* --- Noise Texture Overlay (subtle) --- */
+body::before{
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23noise)" opacity="0.03"/></svg>');
+  pointer-events: none;
+  z-index: 9998;
+  opacity: 0.4;
+}
+
+/* --- Enhanced Focus States (A11y) --- */
+a:focus-visible, button:focus-visible{
+  outline: 3px solid var(--hot);
+  outline-offset: 4px;
+  border-radius: 8px;
+}
+
+/* --- Smooth Page Transitions --- */
+@media (prefers-reduced-motion: no-preference){
+  html{
+    scroll-behavior: smooth;
+  }
+}
+
+/* Disable animations for reduced motion preference */
+@media (prefers-reduced-motion: reduce){
+  *,
+  *::before,
+  *::after{
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .back-to-top,
+  .scroll-progress{
+    transition: opacity 0.01ms;
+  }
+}
+
+/* =========================
+   Mobile Optimizations for New Effects
+   ========================= */
+
+@media (max-width: 768px){
+  /* Smaller text gradients on mobile */
+  .hero-video .overlay-content h1{
+    font-size: 2.8rem;
+  }
+
+  .section-title{
+    font-size: 2rem;
+  }
+
+  /* Back to top - smaller on mobile */
+  .back-to-top{
+    width: 48px;
+    height: 48px;
+    bottom: 20px;
+    right: 20px;
+    font-size: 20px;
+  }
+
+  /* Reduce parallax on mobile for performance */
+  .parallax-section{
+    background-attachment: scroll;
+  }
+
+  /* Simplified animations on mobile */
+  .product-box:hover{
+    transform: translateY(-6px) scale(1.01);
+  }
+
+  .menu-card:hover{
+    transform: translateY(-4px);
+  }
+
+  /* Scroll indicator adjustment */
+  .scroll-indicator{
+    bottom: 20px;
+    width: 28px;
+    height: 40px;
+  }
+
+  /* Reduce gradient complexity on mobile */
+  body::before{
+    opacity: 0.2;
+  }
+
+  /* Nav links - remove underline animation on mobile menu */
+  @media (max-width:900px){
+    .navbar .nav-links a::after{
+      display: none;
+    }
+  }
+}
+
+/* Tablet optimizations */
+@media (min-width: 769px) and (max-width: 1024px){
+  .hero-video .overlay-content h1{
+    font-size: 3.8rem;
+  }
+
+  .section-title{
+    font-size: 2.8rem;
+  }
+}
+
+/* Extra large screens */
+@media (min-width: 1920px){
+  .hero-video .overlay-content h1{
+    font-size: 5.5rem;
+  }
+
+  .section-title{
+    font-size: 4rem;
+  }
+}
+
+/* High refresh rate displays - smoother animations */
+@media (min-resolution: 120dpi){
+  .product-box,
+  .menu-card,
+  .social-card{
+    transition-duration: 0.25s;
+  }
+}
+
+/* Dark mode support (future-proofing) */
+/* @media (prefers-color-scheme: dark){
+  :root{
+    Dark mode variables would go here
+  }
+} */

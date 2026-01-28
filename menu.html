@@ -4,7 +4,34 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Speisekarte – Just A Buck</title>
+  <meta name="description" content="Entdecke unsere Speisekarte mit saftigen Smashburgern, knusprigem Chicken, loaded Fries und cremigen Shakes. Bestelle jetzt online!">
+  <meta name="keywords" content="Smashburger, Chicken, Burger, Fries, Shakes, Fast Food, Just A Buck, Speisekarte">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Speisekarte – Just A Buck">
+  <meta property="og:description" content="Entdecke unsere Speisekarte mit saftigen Smashburgern, knusprigem Chicken, loaded Fries und cremigen Shakes.">
+  <meta property="og:image" content="img/logo.png">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Speisekarte – Just A Buck">
+  <meta name="twitter:description" content="Entdecke unsere Speisekarte mit saftigen Smashburgern, knusprigem Chicken, loaded Fries und cremigen Shakes.">
+  <meta name="twitter:image" content="img/logo.png">
+
   <link rel="stylesheet" href="style.css">
+  <style>
+    html { scroll-behavior: smooth; }
+    .menu-tabs a.active { font-weight: bold; border-bottom: 3px solid currentColor; }
+    .back-to-top { position: fixed; bottom: 30px; right: 30px; background: #000; color: #fff; border: none; border-radius: 50%; width: 50px; height: 50px; cursor: pointer; opacity: 0; transition: opacity 0.3s; z-index: 1000; font-size: 20px; }
+    .back-to-top.visible { opacity: 0.8; }
+    .back-to-top:hover { opacity: 1; }
+    .menu-card-actions { margin-top: 10px; }
+    .btn-order { display: inline-block; padding: 8px 16px; background: #000; color: #fff; text-decoration: none; border-radius: 4px; font-size: 14px; transition: background 0.3s; }
+    .btn-order:hover { background: #333; }
+    .allergen-note { font-size: 12px; color: #666; margin-top: 5px; font-style: italic; }
+    .menu-price [itemprop="price"] { display: none; }
+  </style>
 </head>
 <body class="menu-page">
   <header class="menu-hero">
@@ -42,36 +69,64 @@
         <p>Smash-gegrillt, viel Cheese, unsere Signature-Sauce.</p>
       </div>
       <div class="menu-grid">
-        <article class="menu-card">
-          <img src="img/product2.jpg" alt="Classic Buck Burger" loading="lazy" width="320" height="220">
+        <article class="menu-card" itemscope itemtype="https://schema.org/MenuItem">
+          <img src="img/product2.jpg" alt="Classic Buck Burger" loading="lazy" width="320" height="220" itemprop="image">
           <div>
-            <h3>Classic Buck</h3>
-            <p class="menu-price">€8,50</p>
-            <p>Smash-Patty, doppelt Cheese, Pickles, Buck Sauce.</p>
+            <h3 itemprop="name">Classic Buck</h3>
+            <p class="menu-price" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+              <span itemprop="price">8.50</span>
+              <meta itemprop="priceCurrency" content="EUR">€8,50
+            </p>
+            <p itemprop="description">Smash-Patty, doppelt Cheese, Pickles, Buck Sauce.</p>
+            <p class="allergen-note">Allergene: Gluten, Milch, Senf</p>
+            <div class="menu-card-actions">
+              <a href="order.html" class="btn-order">Jetzt bestellen</a>
+            </div>
           </div>
         </article>
-        <article class="menu-card">
-          <img src="img/product2.jpg" alt="Double Smash" loading="lazy" width="320" height="220">
+        <article class="menu-card" itemscope itemtype="https://schema.org/MenuItem">
+          <img src="img/product2.jpg" alt="Double Smash" loading="lazy" width="320" height="220" itemprop="image">
           <div>
-            <h3>Double Smash</h3>
-            <p class="menu-price">€10,50</p>
-            <p>Zwei Patties, viel Cheese, knuspriger Rand.</p>
+            <h3 itemprop="name">Double Smash</h3>
+            <p class="menu-price" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+              <span itemprop="price">10.50</span>
+              <meta itemprop="priceCurrency" content="EUR">€10,50
+            </p>
+            <p itemprop="description">Zwei Patties, viel Cheese, knuspriger Rand.</p>
+            <p class="allergen-note">Allergene: Gluten, Milch, Senf</p>
+            <div class="menu-card-actions">
+              <a href="order.html" class="btn-order">Jetzt bestellen</a>
+            </div>
           </div>
         </article>
-        <article class="menu-card">
-          <img src="img/product2.jpg" alt="Spicy Buck" loading="lazy" width="320" height="220">
+        <article class="menu-card" itemscope itemtype="https://schema.org/MenuItem">
+          <img src="img/product2.jpg" alt="Spicy Buck" loading="lazy" width="320" height="220" itemprop="image">
           <div>
-            <h3>Spicy Buck</h3>
-            <p class="menu-price">€9,20</p>
-            <p>Jalapeños, Spicy Sauce, extra Crunch.</p>
+            <h3 itemprop="name">Spicy Buck</h3>
+            <p class="menu-price" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+              <span itemprop="price">9.20</span>
+              <meta itemprop="priceCurrency" content="EUR">€9,20
+            </p>
+            <p itemprop="description">Jalapeños, Spicy Sauce, extra Crunch.</p>
+            <p class="allergen-note">Allergene: Gluten, Milch, Senf</p>
+            <div class="menu-card-actions">
+              <a href="order.html" class="btn-order">Jetzt bestellen</a>
+            </div>
           </div>
         </article>
-        <article class="menu-card">
-          <img src="img/product2.jpg" alt="Veggie Buck" loading="lazy" width="320" height="220">
+        <article class="menu-card" itemscope itemtype="https://schema.org/MenuItem">
+          <img src="img/product2.jpg" alt="Veggie Buck" loading="lazy" width="320" height="220" itemprop="image">
           <div>
-            <h3>Veggie Buck</h3>
-            <p class="menu-price">€8,90</p>
-            <p>Plant-based Patty, alles andere wie beim Original.</p>
+            <h3 itemprop="name">Veggie Buck</h3>
+            <p class="menu-price" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+              <span itemprop="price">8.90</span>
+              <meta itemprop="priceCurrency" content="EUR">€8,90
+            </p>
+            <p itemprop="description">Plant-based Patty, alles andere wie beim Original.</p>
+            <p class="allergen-note">Allergene: Gluten, Senf, Soja</p>
+            <div class="menu-card-actions">
+              <a href="order.html" class="btn-order">Jetzt bestellen</a>
+            </div>
           </div>
         </article>
       </div>
@@ -83,36 +138,64 @@
         <p>Knusprig paniert, saftig inside, perfekt gewürzt.</p>
       </div>
       <div class="menu-grid">
-        <article class="menu-card">
-          <img src="img/product1.jpg" alt="Chicken Bites" loading="lazy" width="320" height="220">
+        <article class="menu-card" itemscope itemtype="https://schema.org/MenuItem">
+          <img src="img/product1.jpg" alt="Chicken Bites" loading="lazy" width="320" height="220" itemprop="image">
           <div>
-            <h3>Chicken Bites</h3>
-            <p class="menu-price">€7,50</p>
-            <p>Hand-breaded, mit Dip nach Wahl.</p>
+            <h3 itemprop="name">Chicken Bites</h3>
+            <p class="menu-price" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+              <span itemprop="price">7.50</span>
+              <meta itemprop="priceCurrency" content="EUR">€7,50
+            </p>
+            <p itemprop="description">Hand-breaded, mit Dip nach Wahl.</p>
+            <p class="allergen-note">Allergene: Gluten, Ei, Milch</p>
+            <div class="menu-card-actions">
+              <a href="order.html" class="btn-order">Jetzt bestellen</a>
+            </div>
           </div>
         </article>
-        <article class="menu-card">
-          <img src="img/product1.jpg" alt="3 Finger Combo" loading="lazy" width="320" height="220">
+        <article class="menu-card" itemscope itemtype="https://schema.org/MenuItem">
+          <img src="img/product1.jpg" alt="3 Finger Combo" loading="lazy" width="320" height="220" itemprop="image">
           <div>
-            <h3>3 Finger Combo</h3>
-            <p class="menu-price">€9,80</p>
-            <p>3 Chicken Fingers, Fries, Signature Dip.</p>
+            <h3 itemprop="name">3 Finger Combo</h3>
+            <p class="menu-price" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+              <span itemprop="price">9.80</span>
+              <meta itemprop="priceCurrency" content="EUR">€9,80
+            </p>
+            <p itemprop="description">3 Chicken Fingers, Fries, Signature Dip.</p>
+            <p class="allergen-note">Allergene: Gluten, Ei, Milch</p>
+            <div class="menu-card-actions">
+              <a href="order.html" class="btn-order">Jetzt bestellen</a>
+            </div>
           </div>
         </article>
-        <article class="menu-card">
-          <img src="img/product1.jpg" alt="Crispy Chicken Burger" loading="lazy" width="320" height="220">
+        <article class="menu-card" itemscope itemtype="https://schema.org/MenuItem">
+          <img src="img/product1.jpg" alt="Crispy Chicken Burger" loading="lazy" width="320" height="220" itemprop="image">
           <div>
-            <h3>Crispy Chicken Burger</h3>
-            <p class="menu-price">€8,90</p>
-            <p>Buttermilk Chicken, Slaw, Pickles, Sauce.</p>
+            <h3 itemprop="name">Crispy Chicken Burger</h3>
+            <p class="menu-price" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+              <span itemprop="price">8.90</span>
+              <meta itemprop="priceCurrency" content="EUR">€8,90
+            </p>
+            <p itemprop="description">Buttermilk Chicken, Slaw, Pickles, Sauce.</p>
+            <p class="allergen-note">Allergene: Gluten, Ei, Milch, Senf</p>
+            <div class="menu-card-actions">
+              <a href="order.html" class="btn-order">Jetzt bestellen</a>
+            </div>
           </div>
         </article>
-        <article class="menu-card">
-          <img src="img/product1.jpg" alt="Hot Honey Chicken" loading="lazy" width="320" height="220">
+        <article class="menu-card" itemscope itemtype="https://schema.org/MenuItem">
+          <img src="img/product1.jpg" alt="Hot Honey Chicken" loading="lazy" width="320" height="220" itemprop="image">
           <div>
-            <h3>Hot Honey Chicken</h3>
-            <p class="menu-price">€9,40</p>
-            <p>Honig-Chili-Glaze, Buttermilk Chicken, Slaw.</p>
+            <h3 itemprop="name">Hot Honey Chicken</h3>
+            <p class="menu-price" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+              <span itemprop="price">9.40</span>
+              <meta itemprop="priceCurrency" content="EUR">€9,40
+            </p>
+            <p itemprop="description">Honig-Chili-Glaze, Buttermilk Chicken, Slaw.</p>
+            <p class="allergen-note">Allergene: Gluten, Ei, Milch</p>
+            <div class="menu-card-actions">
+              <a href="order.html" class="btn-order">Jetzt bestellen</a>
+            </div>
           </div>
         </article>
       </div>
@@ -124,36 +207,64 @@
         <p>Kross, cheesy, loaded – immer mit Crunch.</p>
       </div>
       <div class="menu-grid">
-        <article class="menu-card">
-          <img src="img/product1.jpg" alt="Classic Fries" loading="lazy" width="320" height="220">
+        <article class="menu-card" itemscope itemtype="https://schema.org/MenuItem">
+          <img src="img/product1.jpg" alt="Classic Fries" loading="lazy" width="320" height="220" itemprop="image">
           <div>
-            <h3>Classic Fries</h3>
-            <p class="menu-price">€4,20</p>
-            <p>Knusprige Fries mit Dip nach Wahl.</p>
+            <h3 itemprop="name">Classic Fries</h3>
+            <p class="menu-price" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+              <span itemprop="price">4.20</span>
+              <meta itemprop="priceCurrency" content="EUR">€4,20
+            </p>
+            <p itemprop="description">Knusprige Fries mit Dip nach Wahl.</p>
+            <p class="allergen-note">Allergene: Kann Spuren von Gluten enthalten</p>
+            <div class="menu-card-actions">
+              <a href="order.html" class="btn-order">Jetzt bestellen</a>
+            </div>
           </div>
         </article>
-        <article class="menu-card">
-          <img src="img/product1.jpg" alt="Loaded Fries" loading="lazy" width="320" height="220">
+        <article class="menu-card" itemscope itemtype="https://schema.org/MenuItem">
+          <img src="img/product1.jpg" alt="Loaded Fries" loading="lazy" width="320" height="220" itemprop="image">
           <div>
-            <h3>Loaded Fries</h3>
-            <p class="menu-price">€6,90</p>
-            <p>Cheese Sauce, Crunch, Jalapeños.</p>
+            <h3 itemprop="name">Loaded Fries</h3>
+            <p class="menu-price" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+              <span itemprop="price">6.90</span>
+              <meta itemprop="priceCurrency" content="EUR">€6,90
+            </p>
+            <p itemprop="description">Cheese Sauce, Crunch, Jalapeños.</p>
+            <p class="allergen-note">Allergene: Milch, Gluten</p>
+            <div class="menu-card-actions">
+              <a href="order.html" class="btn-order">Jetzt bestellen</a>
+            </div>
           </div>
         </article>
-        <article class="menu-card">
-          <img src="img/product1.jpg" alt="Party Fries Tray" loading="lazy" width="320" height="220">
+        <article class="menu-card" itemscope itemtype="https://schema.org/MenuItem">
+          <img src="img/product1.jpg" alt="Party Fries Tray" loading="lazy" width="320" height="220" itemprop="image">
           <div>
-            <h3>Party Fries Tray</h3>
-            <p class="menu-price">€11,50</p>
-            <p>Großes Tray zum Teilen. Auf Wunsch spicy.</p>
+            <h3 itemprop="name">Party Fries Tray</h3>
+            <p class="menu-price" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+              <span itemprop="price">11.50</span>
+              <meta itemprop="priceCurrency" content="EUR">€11,50
+            </p>
+            <p itemprop="description">Großes Tray zum Teilen. Auf Wunsch spicy.</p>
+            <p class="allergen-note">Allergene: Kann Spuren von Gluten enthalten</p>
+            <div class="menu-card-actions">
+              <a href="order.html" class="btn-order">Jetzt bestellen</a>
+            </div>
           </div>
         </article>
-        <article class="menu-card">
-          <img src="img/product1.jpg" alt="Sweet Potato Fries" loading="lazy" width="320" height="220">
+        <article class="menu-card" itemscope itemtype="https://schema.org/MenuItem">
+          <img src="img/product1.jpg" alt="Sweet Potato Fries" loading="lazy" width="320" height="220" itemprop="image">
           <div>
-            <h3>Sweet Potato Fries</h3>
-            <p class="menu-price">€5,20</p>
-            <p>Süß, salzig, mit Dip nach Wahl.</p>
+            <h3 itemprop="name">Sweet Potato Fries</h3>
+            <p class="menu-price" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+              <span itemprop="price">5.20</span>
+              <meta itemprop="priceCurrency" content="EUR">€5,20
+            </p>
+            <p itemprop="description">Süß, salzig, mit Dip nach Wahl.</p>
+            <p class="allergen-note">Allergene: Kann Spuren von Gluten enthalten</p>
+            <div class="menu-card-actions">
+              <a href="order.html" class="btn-order">Jetzt bestellen</a>
+            </div>
           </div>
         </article>
       </div>
@@ -165,36 +276,60 @@
         <p>Softdrinks, Eistee, hausgemachte Limos.</p>
       </div>
       <div class="menu-grid">
-        <article class="menu-card">
-          <img src="img/product2.jpg" alt="Fresh Lemonade" loading="lazy" width="320" height="220">
+        <article class="menu-card" itemscope itemtype="https://schema.org/MenuItem">
+          <img src="img/product2.jpg" alt="Fresh Lemonade" loading="lazy" width="320" height="220" itemprop="image">
           <div>
-            <h3>Fresh Lemonade</h3>
-            <p class="menu-price">€3,90</p>
-            <p>Zitronig, nicht zu süß, eisgekühlt.</p>
+            <h3 itemprop="name">Fresh Lemonade</h3>
+            <p class="menu-price" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+              <span itemprop="price">3.90</span>
+              <meta itemprop="priceCurrency" content="EUR">€3,90
+            </p>
+            <p itemprop="description">Zitronig, nicht zu süß, eisgekühlt.</p>
+            <div class="menu-card-actions">
+              <a href="order.html" class="btn-order">Jetzt bestellen</a>
+            </div>
           </div>
         </article>
-        <article class="menu-card">
-          <img src="img/product2.jpg" alt="Iced Tea" loading="lazy" width="320" height="220">
+        <article class="menu-card" itemscope itemtype="https://schema.org/MenuItem">
+          <img src="img/product2.jpg" alt="Iced Tea" loading="lazy" width="320" height="220" itemprop="image">
           <div>
-            <h3>Iced Tea</h3>
-            <p class="menu-price">€3,50</p>
-            <p>Schwarztee, Zitrone, optional halb/halb mit Limo.</p>
+            <h3 itemprop="name">Iced Tea</h3>
+            <p class="menu-price" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+              <span itemprop="price">3.50</span>
+              <meta itemprop="priceCurrency" content="EUR">€3,50
+            </p>
+            <p itemprop="description">Schwarztee, Zitrone, optional halb/halb mit Limo.</p>
+            <div class="menu-card-actions">
+              <a href="order.html" class="btn-order">Jetzt bestellen</a>
+            </div>
           </div>
         </article>
-        <article class="menu-card">
-          <img src="img/product2.jpg" alt="Soft Drinks" loading="lazy" width="320" height="220">
+        <article class="menu-card" itemscope itemtype="https://schema.org/MenuItem">
+          <img src="img/product2.jpg" alt="Soft Drinks" loading="lazy" width="320" height="220" itemprop="image">
           <div>
-            <h3>Soft Drinks</h3>
-            <p class="menu-price">€2,80</p>
-            <p>Cola, Zero, Orange, Water.</p>
+            <h3 itemprop="name">Soft Drinks</h3>
+            <p class="menu-price" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+              <span itemprop="price">2.80</span>
+              <meta itemprop="priceCurrency" content="EUR">€2,80
+            </p>
+            <p itemprop="description">Cola, Zero, Orange, Water.</p>
+            <div class="menu-card-actions">
+              <a href="order.html" class="btn-order">Jetzt bestellen</a>
+            </div>
           </div>
         </article>
-        <article class="menu-card">
-          <img src="img/product2.jpg" alt="Water" loading="lazy" width="320" height="220">
+        <article class="menu-card" itemscope itemtype="https://schema.org/MenuItem">
+          <img src="img/product2.jpg" alt="Water" loading="lazy" width="320" height="220" itemprop="image">
           <div>
-            <h3>Water</h3>
-            <p class="menu-price">€2,20</p>
-            <p>Still oder spritzig.</p>
+            <h3 itemprop="name">Water</h3>
+            <p class="menu-price" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+              <span itemprop="price">2.20</span>
+              <meta itemprop="priceCurrency" content="EUR">€2,20
+            </p>
+            <p itemprop="description">Still oder spritzig.</p>
+            <div class="menu-card-actions">
+              <a href="order.html" class="btn-order">Jetzt bestellen</a>
+            </div>
           </div>
         </article>
       </div>
@@ -206,40 +341,145 @@
         <p>Hand-spun Shakes, Cremiges für danach.</p>
       </div>
       <div class="menu-grid">
-        <article class="menu-card">
-          <img src="img/product2.jpg" alt="Vanilla Shake" loading="lazy" width="320" height="220">
+        <article class="menu-card" itemscope itemtype="https://schema.org/MenuItem">
+          <img src="img/product2.jpg" alt="Vanilla Shake" loading="lazy" width="320" height="220" itemprop="image">
           <div>
-            <h3>Vanilla Shake</h3>
-            <p class="menu-price">€4,90</p>
-            <p>Classic Vanilla, optional mit Whipped Cream.</p>
+            <h3 itemprop="name">Vanilla Shake</h3>
+            <p class="menu-price" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+              <span itemprop="price">4.90</span>
+              <meta itemprop="priceCurrency" content="EUR">€4,90
+            </p>
+            <p itemprop="description">Classic Vanilla, optional mit Whipped Cream.</p>
+            <p class="allergen-note">Allergene: Milch</p>
+            <div class="menu-card-actions">
+              <a href="order.html" class="btn-order">Jetzt bestellen</a>
+            </div>
           </div>
         </article>
-        <article class="menu-card">
-          <img src="img/product2.jpg" alt="Chocolate Shake" loading="lazy" width="320" height="220">
+        <article class="menu-card" itemscope itemtype="https://schema.org/MenuItem">
+          <img src="img/product2.jpg" alt="Chocolate Shake" loading="lazy" width="320" height="220" itemprop="image">
           <div>
-            <h3>Chocolate Shake</h3>
-            <p class="menu-price">€5,20</p>
-            <p>Dunkle Schokolade, dick & cremig.</p>
+            <h3 itemprop="name">Chocolate Shake</h3>
+            <p class="menu-price" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+              <span itemprop="price">5.20</span>
+              <meta itemprop="priceCurrency" content="EUR">€5,20
+            </p>
+            <p itemprop="description">Dunkle Schokolade, dick & cremig.</p>
+            <p class="allergen-note">Allergene: Milch, Soja</p>
+            <div class="menu-card-actions">
+              <a href="order.html" class="btn-order">Jetzt bestellen</a>
+            </div>
           </div>
         </article>
-        <article class="menu-card">
-          <img src="img/product2.jpg" alt="Strawberry Shake" loading="lazy" width="320" height="220">
+        <article class="menu-card" itemscope itemtype="https://schema.org/MenuItem">
+          <img src="img/product2.jpg" alt="Strawberry Shake" loading="lazy" width="320" height="220" itemprop="image">
           <div>
-            <h3>Strawberry Shake</h3>
-            <p class="menu-price">€5,20</p>
-            <p>Fruchtig, leicht, mit echter Erdbeere.</p>
+            <h3 itemprop="name">Strawberry Shake</h3>
+            <p class="menu-price" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+              <span itemprop="price">5.20</span>
+              <meta itemprop="priceCurrency" content="EUR">€5,20
+            </p>
+            <p itemprop="description">Fruchtig, leicht, mit echter Erdbeere.</p>
+            <p class="allergen-note">Allergene: Milch</p>
+            <div class="menu-card-actions">
+              <a href="order.html" class="btn-order">Jetzt bestellen</a>
+            </div>
           </div>
         </article>
-        <article class="menu-card">
-          <img src="img/product2.jpg" alt="Float" loading="lazy" width="320" height="220">
+        <article class="menu-card" itemscope itemtype="https://schema.org/MenuItem">
+          <img src="img/product2.jpg" alt="Float" loading="lazy" width="320" height="220" itemprop="image">
           <div>
-            <h3>Float</h3>
-            <p class="menu-price">€4,50</p>
-            <p>Softdrink + Eis. Mix nach Wahl.</p>
+            <h3 itemprop="name">Float</h3>
+            <p class="menu-price" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+              <span itemprop="price">4.50</span>
+              <meta itemprop="priceCurrency" content="EUR">€4,50
+            </p>
+            <p itemprop="description">Softdrink + Eis. Mix nach Wahl.</p>
+            <p class="allergen-note">Allergene: Milch</p>
+            <div class="menu-card-actions">
+              <a href="order.html" class="btn-order">Jetzt bestellen</a>
+            </div>
           </div>
         </article>
       </div>
     </section>
   </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="img/logo.png" alt="Just A Buck" class="footer-logo">
+        <div class="footer-meta">
+          <strong>Just A Buck</strong><br>
+          <small>© <span id="y"></span> Just A Buck</small>
+        </div>
+      </div>
+
+      <nav class="footer-nav" aria-label="Rechtliches">
+        <a href="impressum.html">Impressum</a>
+        <a href="datenschutz.html">Datenschutz</a>
+        <a href="agb.html">AGB</a>
+        <a href="widerruf.html">Widerruf</a>
+        <a href="allergen.html">Allergene</a>
+      </nav>
+
+      <div class="footer-contact">
+        <a href="mailto:justin.buck@sportbuck.com" class="footer-link">Kontakt</a>
+        <a href="order.html" class="footer-cta">Jetzt bestellen</a>
+      </div>
+    </div>
+
+    <div class="footer-sub">
+      <small>
+        Plattform der EU-Kommission zur Online-Streitbeilegung:
+        <a href="https://ec.europa.eu/consumers/odr" rel="noopener" target="_blank">ec.europa.eu/consumers/odr</a>
+        (Wir sind weder verpflichtet noch bereit, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.)
+      </small>
+    </div>
+  </footer>
+
+  <script src="JS/main.js"></script>
+  <script>
+    // Aktive Tab-Markierung beim Scrollen
+    const sections = document.querySelectorAll('.menu-section');
+    const navLinks = document.querySelectorAll('.menu-tabs a');
+
+    function setActiveTab() {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if (window.scrollY >= (sectionTop - 200)) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === '#' + current) {
+          link.classList.add('active');
+        }
+      });
+    }
+
+    window.addEventListener('scroll', setActiveTab);
+    window.addEventListener('load', setActiveTab);
+
+    // Back to Top Button
+    const backToTop = document.getElementById('backToTop');
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        backToTop.classList.add('visible');
+      } else {
+        backToTop.classList.remove('visible');
+      }
+    });
+
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
 </body>
 </html>
