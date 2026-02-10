@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Feedback - Just A Buck</title>
+  <meta name="description" content="Feedback und Verbesserungsvorschläge an Just A Buck senden.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="menu-page reviews-page">
+  <header class="menu-hero">
+    <div class="menu-hero-inner">
+      <div class="menu-hero-logo">
+        <a href="index.html" aria-label="Zur Startseite">
+          <img src="img/logo.png" alt="Just A Buck Logo" class="menu-logo" width="120" height="60">
+        </a>
+      </div>
+      <div class="menu-hero-text">
+        <p class="eyebrow">Feedback Bereich</p>
+        <h1>Feedback senden</h1>
+        <p>Teile uns mit, was dir gefallen hat und was wir verbessern können.</p>
+      </div>
+      <div class="menu-hero-actions">
+        <a class="btn-primary" href="index.html#reviews">Zurück zu Feedback</a>
+        <a class="btn-ghost" href="index.html">Zur Startseite</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="menu-content">
+    <section class="reviews-section" aria-labelledby="reviewsFormTitle">
+      <div class="reviews-head">
+        <p class="eyebrow">Anonymes Feedback</p>
+        <h2 id="reviewsFormTitle">Feedback & Verbesserungsvorschläge</h2>
+        <p>Dein Feedback wird anonym an uns gesendet – wir sehen keine E-Mail-Adresse oder persönliche Daten.</p>
+      </div>
+
+      <div class="reviews-public-wrap">
+        <form id="feedbackForm" class="review-form" novalidate>
+          <input type="hidden" name="access_key" value="71d595b3-21dd-41f2-805b-842943262a0b">
+          <input type="hidden" name="subject" value="Neues anonymes Feedback – Just A Buck">
+          <input type="hidden" name="from_name" value="Just A Buck Feedback">
+          <!-- Honeypot gegen Spam -->
+          <input type="checkbox" name="botcheck" style="display:none">
+
+          <h3>Feedback einreichen</h3>
+          <p class="review-form-hint">Komplett anonym – wir sehen nur, was du hier einträgst. Kein Name nötig.</p>
+
+          <label for="feedbackName">Name oder Spitzname (optional)</label>
+          <input id="feedbackName" name="Name" type="text" maxlength="80" placeholder="z. B. Burger-Fan, oder einfach leer lassen">
+
+          <div class="review-form-row">
+            <div>
+              <label for="feedbackRating">Zufriedenheit</label>
+              <select id="feedbackRating" name="Bewertung" required>
+                <option value="5 Sterne – Top!" selected>5 – Top!</option>
+                <option value="4 Sterne – Sehr gut">4 – Sehr gut</option>
+                <option value="3 Sterne – Geht so">3 – Geht so</option>
+                <option value="2 Sterne – Nicht so gut">2 – Nicht so gut</option>
+                <option value="1 Stern – Schlecht">1 – Schlecht</option>
+              </select>
+            </div>
+            <div>
+              <label for="feedbackDate">Besuchsdatum (optional)</label>
+              <input id="feedbackDate" name="Besuchsdatum" type="date">
+            </div>
+          </div>
+
+          <label for="feedbackText">Dein Feedback</label>
+          <textarea id="feedbackText" name="Feedback" rows="4" required maxlength="1000" placeholder="Was hat dir gefallen? Was können wir besser machen? Jede Kritik hilft uns!"></textarea>
+
+          <button class="btn-primary" type="submit" id="feedbackSubmit">Anonym absenden</button>
+          <p id="feedbackStatus" class="review-form-status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="img/logo.png" alt="Just A Buck" class="footer-logo">
+        <div class="footer-meta">
+          <strong>Just A Buck</strong><br>
+          <small>© <span id="y"></span> Just A Buck</small>
+        </div>
+      </div>
+
+      <nav class="footer-nav" aria-label="Rechtliches">
+        <a href="impressum.html">Impressum</a>
+        <a href="datenschutz.html">Datenschutz</a>
+        <a href="allergen.html">Allergene</a>
+      </nav>
+
+      <div class="footer-contact">
+        <a href="mailto:justin.buck@sportbuck.com" class="footer-link">Kontakt</a>
+        <a href="order.html" class="footer-cta">Jetzt bestellen</a>
+      </div>
+    </div>
+
+    <div class="footer-sub">
+      <small>
+        Plattform der EU-Kommission zur Online-Streitbeilegung:
+        <a href="https://ec.europa.eu/consumers/odr" rel="noopener" target="_blank">ec.europa.eu/consumers/odr</a>
+        (Wir sind weder verpflichtet noch bereit, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.)
+      </small>
+    </div>
+  </footer>
+
+  <script src="JS/main.js"></script>
+</body>
+</html>

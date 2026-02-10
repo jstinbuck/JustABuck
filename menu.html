@@ -20,18 +20,6 @@
   <meta name="twitter:image" content="img/logo.png">
 
   <link rel="stylesheet" href="style.css">
-  <style>
-    html { scroll-behavior: smooth; }
-    .menu-tabs a.active { font-weight: bold; border-bottom: 3px solid currentColor; }
-    .back-to-top { position: fixed; bottom: 30px; right: 30px; background: #000; color: #fff; border: none; border-radius: 50%; width: 50px; height: 50px; cursor: pointer; opacity: 0; transition: opacity 0.3s; z-index: 1000; font-size: 20px; }
-    .back-to-top.visible { opacity: 0.8; }
-    .back-to-top:hover { opacity: 1; }
-    .menu-card-actions { margin-top: 10px; }
-    .btn-order { display: inline-block; padding: 8px 16px; background: #000; color: #fff; text-decoration: none; border-radius: 4px; font-size: 14px; transition: background 0.3s; }
-    .btn-order:hover { background: #333; }
-    .allergen-note { font-size: 12px; color: #666; margin-top: 5px; font-style: italic; }
-    .menu-price [itemprop="price"] { display: none; }
-  </style>
 </head>
 <body class="menu-page">
   <header class="menu-hero">
@@ -419,8 +407,6 @@
       <nav class="footer-nav" aria-label="Rechtliches">
         <a href="impressum.html">Impressum</a>
         <a href="datenschutz.html">Datenschutz</a>
-        <a href="agb.html">AGB</a>
-        <a href="widerruf.html">Widerruf</a>
         <a href="allergen.html">Allergene</a>
       </nav>
 
@@ -440,46 +426,5 @@
   </footer>
 
   <script src="JS/main.js"></script>
-  <script>
-    // Aktive Tab-Markierung beim Scrollen
-    const sections = document.querySelectorAll('.menu-section');
-    const navLinks = document.querySelectorAll('.menu-tabs a');
-
-    function setActiveTab() {
-      let current = '';
-      sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
-        if (window.scrollY >= (sectionTop - 200)) {
-          current = section.getAttribute('id');
-        }
-      });
-
-      navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === '#' + current) {
-          link.classList.add('active');
-        }
-      });
-    }
-
-    window.addEventListener('scroll', setActiveTab);
-    window.addEventListener('load', setActiveTab);
-
-    // Back to Top Button
-    const backToTop = document.getElementById('backToTop');
-
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 300) {
-        backToTop.classList.add('visible');
-      } else {
-        backToTop.classList.remove('visible');
-      }
-    });
-
-    backToTop.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-  </script>
 </body>
 </html>

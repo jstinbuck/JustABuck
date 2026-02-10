@@ -122,11 +122,13 @@
       '.product-box',
       '.menu-card',
       '.social-card',
+      '.review-card',
       '.duo-card',
       '.mission-text',
       '.image-column img',
       '.location-content-full',
-      '.careers-card'
+      '.careers-card',
+      '.feedback-container'
     ];
 
     selectors.forEach(selector => {
@@ -279,6 +281,57 @@
     window.addEventListener('scroll', updateActiveLink, { passive: true });
   };
 
+  // Web3Forms Feedback Submission
+  const initFeedbackForm = () => {
+    const form = document.getElementById('feedbackForm');
+    if (!form) return;
+
+    const statusEl = document.getElementById('feedbackStatus');
+    const submitBtn = document.getElementById('feedbackSubmit');
+
+    const setStatus = (message, isError = false) => {
+      if (!statusEl) return;
+      statusEl.textContent = message;
+      statusEl.classList.toggle('is-error', isError);
+    };
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      setStatus('');
+
+      const feedbackText = form.querySelector('[name="Feedback"]');
+      if (!feedbackText || !feedbackText.value.trim()) {
+        setStatus('Bitte schreib dein Feedback ins Textfeld.', true);
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Wird gesendet...';
+
+      try {
+        const formData = new FormData(form);
+        const response = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          body: formData
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+          form.reset();
+          setStatus('Danke! Dein Feedback wurde anonym gesendet.');
+        } else {
+          setStatus('Senden fehlgeschlagen. Bitte versuche es erneut.', true);
+        }
+      } catch (_error) {
+        setStatus('Verbindungsfehler. Bitte pruefe deine Internetverbindung.', true);
+      }
+
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Anonym absenden';
+    });
+  };
+
   // Performance: Use RequestAnimationFrame for smooth animations
   let ticking = false;
   const rafCallbacks = [];
@@ -299,16 +352,22 @@
   const init = () => {
     // Check if reduced motion is preferred
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const isRefinedHome = document.body.classList.contains('home-refined');
 
-    createScrollProgress();
+    if (!isRefinedHome) {
+      createScrollProgress();
+      createScrollIndicator();
+      initButtonRipple();
+    }
     createBackToTop();
-    createScrollIndicator();
-    initButtonRipple();
     initActiveNav();
+    initFeedbackForm();
 
     if (!prefersReducedMotion) {
       initScrollAnimations();
-      initParallax();
+      if (!isRefinedHome) {
+        initParallax();
+      }
     }
 
     // Add loaded class for fade-in effect
