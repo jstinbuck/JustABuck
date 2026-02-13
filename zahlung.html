@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Zahlungsmethoden – Just A Buck</title>
+  <meta name="description" content="Alle Zahlungsmethoden bei Just A Buck: Karte, Bar, PayPal & Krypto. Aktuell in der Beta – verfügbar bei Vor-Ort-Events und Catering." />
+  <meta name="theme-color" content="#6b21a8" />
+
+  <link rel="icon" type="image/png" href="img/logo.png" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <a class="skip-link" href="#main">Zum Inhalt springen</a>
+
+  <!-- NAVIGATION -->
+  <header>
+    <nav class="navbar" aria-label="Hauptnavigation">
+      <div class="nav-inner">
+        <a href="index.html" class="brand" aria-label="Startseite">
+          <img src="img/logo.png" alt="Just A Buck Logo" class="logo" />
+        </a>
+
+        <ul id="primary-nav" class="nav-links" role="list">
+          <li><a href="index.html#menu">Menü</a></li>
+          <li><a href="index.html#locations">Wo findet ihr uns?</a></li>
+          <li><a href="index.html#about">Über uns</a></li>
+          <li class="nav-cta"><a href="order.html">Jetzt bestellen</a></li>
+        </ul>
+
+        <a href="order.html" class="order-btn">Jetzt bestellen</a>
+        <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Menü öffnen">
+          <span aria-hidden="true">☰</span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+
+    <!-- Scanner Hero -->
+    <section class="scanner-hero" aria-label="Zahlungsmethoden Animation">
+      <div class="scanner-hero-container">
+        <canvas id="particleCanvas"></canvas>
+        <canvas id="scannerCanvas"></canvas>
+        <div class="scanner-hero-scanner"></div>
+        <div class="card-stream" id="cardStream">
+          <div class="card-line" id="cardLine"></div>
+        </div>
+      </div>
+      <div class="scanner-hero-overlay">
+        <span class="zahlung-beta-pill">BETA</span>
+        <h1 class="zahlung-hero-title">Zahlungsmethoden</h1>
+        <p class="zahlung-hero-sub">Flexibel bezahlen bei Just A Buck &ndash; wir machen es euch so einfach wie möglich.</p>
+      </div>
+    </section>
+
+    <!-- Availability Notice -->
+    <section class="zahlung-notice">
+      <div class="zahlung-notice-inner">
+        <span class="zahlung-notice-icon">&#9432;</span>
+        <p>Unsere erweiterten Zahlungsoptionen befinden sich aktuell in der <strong>Beta-Phase</strong> und sind ausschließlich bei <strong>Vor-Ort-Events</strong> und <strong>Catering-Buchungen</strong> verfügbar. Online-Zahlung folgt in Zukunft.</p>
+      </div>
+    </section>
+
+    <!-- Payment Methods Grid -->
+    <section class="zahlung-grid-section">
+      <div class="zahlung-grid">
+
+        <!-- Karte -->
+        <article class="zahlung-card">
+          <div class="zahlung-card-icon">💳</div>
+          <h2>Kartenzahlung</h2>
+          <p>Visa, Mastercard, EC-Karte &ndash; kontaktlos oder mit Chip. Schnell, sicher und unkompliziert.</p>
+          <ul class="zahlung-card-details">
+            <li>Kontaktlos (NFC) verfügbar</li>
+            <li>Visa, Mastercard, Maestro, girocard</li>
+            <li>Keine Mindestbeträge</li>
+          </ul>
+          <span class="zahlung-status zahlung-status--live">Verfügbar</span>
+        </article>
+
+        <!-- Bar -->
+        <article class="zahlung-card">
+          <div class="zahlung-card-icon">💵</div>
+          <h2>Barzahlung</h2>
+          <p>Cash is King &ndash; klassisch mit Bargeld bezahlen, natürlich mit Wechselgeld.</p>
+          <ul class="zahlung-card-details">
+            <li>Immer akzeptiert</li>
+            <li>Wechselgeld vorhanden</li>
+            <li>Keine Gebühren</li>
+          </ul>
+          <span class="zahlung-status zahlung-status--live">Verfügbar</span>
+        </article>
+
+        <!-- PayPal -->
+        <article class="zahlung-card">
+          <div class="zahlung-card-icon zahlung-pp-icon">P</div>
+          <h2>PayPal</h2>
+          <p>Bezahlt bequem per PayPal &ndash; direkt per QR-Code am Stand oder beim Catering.</p>
+          <ul class="zahlung-card-details">
+            <li>QR-Code-Zahlung am Stand</li>
+            <li>PayPal-Guthaben & verknüpfte Konten</li>
+            <li>Käuferschutz inklusive</li>
+          </ul>
+          <span class="zahlung-status zahlung-status--beta">Beta</span>
+        </article>
+
+        <!-- Krypto -->
+        <article class="zahlung-card">
+          <div class="zahlung-card-icon">&#x20BF;</div>
+          <h2>Krypto</h2>
+          <p>Streetfood meets Zukunft &ndash; bezahlt mit Bitcoin, Ethereum, Solana und mehr. Innovativ und dezentral.</p>
+          <ul class="zahlung-card-details">
+            <li>Bitcoin (BTC), Ethereum (ETH)</li>
+            <li>Solana (SOL), Litecoin (LTC)</li>
+            <li>Stablecoins (USDT / USDC)</li>
+            <li>Bitcoin Cash (BCH)</li>
+            <li>Zahlung per Wallet-QR-Code</li>
+          </ul>
+          <span class="zahlung-status zahlung-status--beta">Beta</span>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="zahlung-faq">
+      <h2>Häufige Fragen</h2>
+      <div class="zahlung-faq-list">
+        <details class="zahlung-faq-item">
+          <summary>Wo kann ich diese Zahlungsmethoden nutzen?</summary>
+          <p>Aktuell sind PayPal und Krypto ausschließlich bei unseren Vor-Ort-Events und Catering-Aufträgen verfügbar. Karte und Bar gehen natürlich immer.</p>
+        </details>
+        <details class="zahlung-faq-item">
+          <summary>Welche Kryptowährungen akzeptiert ihr?</summary>
+          <p>Wir akzeptieren Bitcoin (BTC), Ethereum (ETH), Solana (SOL), Litecoin (LTC), Bitcoin Cash (BCH) sowie Stablecoins (USDT / USDC).</p>
+        </details>
+        <details class="zahlung-faq-item">
+          <summary>Gibt es einen Mindestbetrag?</summary>
+          <p>Nein. Ob Pommes für 3 &euro; oder ein ganzes Catering-Paket &ndash; alle Zahlungsmethoden funktionieren ohne Mindestbetrag.</p>
+        </details>
+        <details class="zahlung-faq-item">
+          <summary>Wann wird Online-Zahlung verfügbar sein?</summary>
+          <p>Wir arbeiten daran! Sobald es soweit ist, erfahrt ihr es als Erstes über unseren Instagram- und WhatsApp-Kanal.</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="zahlung-cta">
+      <p>Fragen zu unseren Zahlungsmethoden?</p>
+      <a href="mailto:justin.buck@sportbuck.com?subject=Frage%20zu%20Zahlungsmethoden" class="zahlung-cta-btn">Kontakt aufnehmen</a>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="img/logo.png" alt="Just A Buck" class="footer-logo">
+        <div class="footer-meta">
+          <strong>Just A Buck</strong><br>
+          <small>&copy; <span id="y"></span> Just A Buck</small>
+        </div>
+      </div>
+
+      <nav class="footer-nav" aria-label="Rechtliches">
+        <a href="impressum.html">Impressum</a>
+        <a href="datenschutz.html">Datenschutz</a>
+        <a href="allergen.html">Allergene</a>
+      </nav>
+
+      <div class="footer-contact">
+        <a href="mailto:justin.buck@sportbuck.com" class="footer-link">Kontakt</a>
+        <a href="order.html" class="footer-cta">Jetzt bestellen</a>
+      </div>
+    </div>
+
+    <div class="footer-sub">
+      <small>
+        Plattform der EU-Kommission zur Online-Streitbeilegung:
+        <a href="https://ec.europa.eu/consumers/odr" rel="noopener" target="_blank">ec.europa.eu/consumers/odr</a>
+      </small>
+    </div>
+  </footer>
+
+  <script src="JS/main.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="JS/zahlung.js"></script>
+</body>
+</html>

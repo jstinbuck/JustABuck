@@ -348,6 +348,41 @@
 
   window.addEventListener('scroll', onScroll, { passive: true });
 
+  // Highlight Product Popup
+  const initHighlightPopup = () => {
+    const popup = document.getElementById('highlightPopup');
+    if (!popup) return;
+
+    const POPUP_KEY = 'jab_highlight_popup_seen';
+    if (sessionStorage.getItem(POPUP_KEY) === '1') return;
+
+    const closeBtn = popup.querySelector('.highlight-popup-close');
+    const backdrop = popup.querySelector('.highlight-popup-backdrop');
+    const ctaBtn = document.getElementById('popupNewsletterBtn');
+
+    const closePopup = () => {
+      popup.classList.remove('is-active');
+      sessionStorage.setItem(POPUP_KEY, '1');
+    };
+
+    closeBtn?.addEventListener('click', closePopup);
+    backdrop?.addEventListener('click', closePopup);
+
+    ctaBtn?.addEventListener('click', () => {
+      closePopup();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && popup.classList.contains('is-active')) {
+        closePopup();
+      }
+    });
+
+    setTimeout(() => {
+      popup.classList.add('is-active');
+    }, 1500);
+  };
+
   // Initialize all enhancements
   const init = () => {
     // Check if reduced motion is preferred
@@ -362,6 +397,7 @@
     createBackToTop();
     initActiveNav();
     initFeedbackForm();
+    initHighlightPopup();
 
     if (!prefersReducedMotion) {
       initScrollAnimations();

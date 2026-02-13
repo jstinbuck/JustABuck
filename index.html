@@ -67,6 +67,27 @@
     </nav>
   </header>
 
+  <!-- HIGHLIGHT POPUP -->
+  <div id="highlightPopup" class="highlight-popup" role="dialog" aria-modal="true" aria-label="Produkt-Highlight">
+    <div class="highlight-popup-backdrop"></div>
+    <div class="highlight-popup-card">
+      <button class="highlight-popup-close" aria-label="Schließen">&times;</button>
+      <div class="highlight-popup-img">
+        <img src="img/CEESEBURGER ROYAL.png" alt="Ceeseburger Royal" width="640" height="440">
+        <span class="highlight-popup-badge">NEW</span>
+      </div>
+      <div class="highlight-popup-body">
+        <p class="highlight-popup-quote">SCHON DEN <strong>CEESEBURGER ROYAL</strong> PROBIERT?</p>
+        <p class="highlight-popup-sub">Unser neues Highlight – royal, cheesy, unwiderstehlich.</p>
+        <p class="highlight-popup-reward">Folge uns auf Insta & WhatsApp, um keine <strong>Gratis-Aktionen</strong> zu verpassen – wer zuerst kommt, sahnt ab!</p>
+        <div class="highlight-popup-socials">
+          <a href="https://instagram.com/" target="_blank" rel="noopener" class="highlight-popup-cta" id="popupNewsletterBtn">Instagram folgen</a>
+          <a href="https://wa.me/4917612345678?text=Hi%20Just%20A%20Buck!%20Ich%20will%20Updates%20zu%20Standorten%20und%20Specials." target="_blank" rel="noopener" class="highlight-popup-cta highlight-popup-cta--wa">WhatsApp beitreten</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <main id="main">
     <!-- HERO -->
     <section class="hero-video" aria-label="Hero">
@@ -100,6 +121,11 @@
           Mit eigenen Zutaten, viel Leidenschaft und klarer Haltung bringen wir ehrliches Essen dorthin,
           wo es hingehört: zu euch auf die Straße.
         </p>
+        <p class="subtext">
+          Während Streetfood anderswo oft zum Luxus wird, bleiben wir unserer Linie treu: faire Preise,
+          großzügige Portionen und Qualität, die sich jeder leisten kann. Denn gutes Essen soll nicht
+          die Ausnahme sein – sondern für alle zugänglich.
+        </p>
         <a href="#about" class="btn-purple">Mehr erfahren</a>
         <p class="tagline">Fast Food, das bleibt.</p>
       </div>
@@ -131,12 +157,12 @@
           <article class="product-box special" aria-label="Aktuelles Special">
             <div class="product-top">
               <span class="pill pill-hot">🔥 Weekly Special</span>
-              <img src="img/product2.jpg" alt="Chicken Special – Signature Sauce"
+              <img src="img/CEESEBURGER ROYAL.png" alt="Ceeseburger Royal"
                    loading="lazy" width="640" height="440">
             </div>
             <div class="product-meta">
-              <h3>Chicken Special</h3>
-              <p class="special-info">Smash-Patty, Signature Sauce, doppelt Cheese.</p>
+              <h3>Ceeseburger Royal</h3>
+              <p class="special-info">Unser Royal – saftig, cheesy, königlich gut.</p>
             </div>
           </article>
 
@@ -609,6 +635,37 @@
         </div>
       </div>
 
+    </section>
+
+    <!-- PAYMENT BETA -->
+    <section class="payment-beta" aria-labelledby="paymentTitle">
+      <div class="payment-beta-inner">
+        <div class="payment-beta-badge">BETA</div>
+        <div class="payment-beta-content">
+          <h3 id="paymentTitle" class="payment-beta-title">Zahlungsmethoden</h3>
+          <p class="payment-beta-sub">Flexibel bezahlen bei Vor-Ort-Events & Catering &ndash; mehr Optionen, mehr Freiheit.</p>
+          <div class="payment-beta-methods">
+            <div class="payment-method-chip">
+              <span class="payment-method-icon">💳</span>
+              <span>Karte</span>
+            </div>
+            <div class="payment-method-chip">
+              <span class="payment-method-icon">💵</span>
+              <span>Bar</span>
+            </div>
+            <div class="payment-method-chip">
+              <span class="payment-method-icon payment-pp">P</span>
+              <span>PayPal</span>
+            </div>
+            <div class="payment-method-chip">
+              <span class="payment-method-icon">&#x20BF;</span>
+              <span>Krypto</span>
+            </div>
+          </div>
+          <p class="payment-beta-note">Aktuell nur bei <strong>Vor-Ort-Events</strong> & <strong>Catering</strong> verf&uuml;gbar.</p>
+          <a href="zahlung.html" class="payment-beta-link">Mehr erfahren &rarr;</a>
+        </div>
+      </div>
     </section>
 
   </main>

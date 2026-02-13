@@ -301,29 +301,29 @@ header{
    ========================= */
 .mission-section{
   display:flex; flex-direction:row; justify-content:space-between; align-items:flex-start;
-  padding:4.5rem 2rem; gap:3rem; flex-wrap:wrap; background:#fff;
+  padding:2.5rem 2rem; gap:2rem; flex-wrap:wrap; background:#fff;
 }
-.mission-text{ max-width:720px; margin:2rem auto; text-align:left; padding:0 1rem; }
-.mission-text h2{ font-size:2.3rem; font-weight:900; color:var(--brand); margin:0 0 1rem; letter-spacing:-0.01em; }
-.mission-text .slogan{ font-style:italic; font-size:1.35rem; margin:.25rem 0 1rem; color:var(--brand-dark); }
-.mission-text .subtext{ font-size:1rem; line-height:1.8; margin:0 0 1.5rem; color:var(--muted); }
+.mission-text{ max-width:720px; margin:1rem auto; text-align:left; padding:0 1rem; }
+.mission-text h2{ font-size:2rem; font-weight:900; color:var(--brand); margin:0 0 .6rem; letter-spacing:-0.01em; }
+.mission-text .slogan{ font-style:italic; font-size:1.2rem; margin:.2rem 0 .6rem; color:var(--brand-dark); }
+.mission-text .subtext{ font-size:.95rem; line-height:1.7; margin:0 0 .8rem; color:var(--muted); }
 .mission-text .btn-purple{
-  background: var(--brand); color:#fff; padding:.75rem 1.5rem; border-radius:10px; text-decoration:none; font-weight:800; box-shadow: var(--shadow-md);
+  background: var(--brand); color:#fff; padding:.6rem 1.3rem; border-radius:10px; text-decoration:none; font-weight:800; box-shadow: var(--shadow-md);
 }
 .mission-text .btn-purple:hover{ filter:brightness(.96); }
-.mission-text .tagline{ font-size:1.1rem; font-weight:700; color:var(--brand); margin-top:1.5rem; text-align:right; }
+.mission-text .tagline{ font-size:1rem; font-weight:700; color:var(--brand); margin-top:1rem; text-align:right; }
 
 /* Crewbilder */
-.image-column{ display:flex; gap:1rem; justify-content:center; margin-bottom:2rem; flex-wrap:wrap; }
+.image-column{ display:flex; gap:1rem; justify-content:center; margin-bottom:0; flex-wrap:wrap; align-items:center; }
 .image-column img{
-  width:160px; border-radius:16px; object-fit:cover;
+  width:180px; border-radius:16px; object-fit:cover;
   box-shadow:0 8px 18px rgba(0,0,0,.12); transition:transform .3s ease, box-shadow .3s ease;
 }
 .image-column img:hover{ transform:translateY(-6px); box-shadow:0 12px 28px rgba(0,0,0,.16); }
-.image-column img:nth-child(1){ height:320px; margin-top:40px; }
-.image-column img:nth-child(2){ height:340px; margin-top:20px; }
-.image-column img:nth-child(3){ height:300px; margin-top:60px; }
-.image-column img:nth-child(4){ height:330px; margin-top:30px; }
+.image-column img:nth-child(1){ height:350px; margin-top:30px; }
+.image-column img:nth-child(2){ height:370px; margin-top:10px; }
+.image-column img:nth-child(3){ height:330px; margin-top:50px; }
+.image-column img:nth-child(4){ height:360px; margin-top:20px; }
 
 @media (max-width:768px){
   .mission-section .image-column{
@@ -2903,7 +2903,10 @@ body.home-refined::before {
   letter-spacing: .04em;
 }
 
-.home-refined .mission-section,
+.home-refined .mission-section {
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+}
 .home-refined .product-bar,
 .home-refined .social-hub,
 .home-refined .reviews-section,
@@ -2977,5 +2980,795 @@ body.home-refined::before {
   .home-refined .social-card:hover,
   .home-refined .image-column img:hover {
     transform: none;
+  }
+}
+
+/* =========================
+   Highlight Product Popup
+   ========================= */
+.highlight-popup{
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .35s ease;
+}
+
+.highlight-popup.is-active{
+  opacity: 1;
+  pointer-events: all;
+}
+
+.highlight-popup-backdrop{
+  position: absolute;
+  inset: 0;
+  background: rgba(10,5,20,.6);
+  backdrop-filter: blur(8px);
+}
+
+.highlight-popup-card{
+  position: relative;
+  width: 92%;
+  max-width: 420px;
+  background: #fff;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 32px 80px rgba(107,33,168,.32), 0 0 0 1px rgba(168,85,247,.12);
+  transform: translateY(30px) scale(.95);
+  transition: transform .4s cubic-bezier(.34,1.56,.64,1);
+}
+
+.highlight-popup.is-active .highlight-popup-card{
+  transform: translateY(0) scale(1);
+}
+
+.highlight-popup-close{
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 2;
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(0,0,0,.45);
+  color: #fff;
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  backdrop-filter: blur(6px);
+  transition: background .2s;
+}
+
+.highlight-popup-close:hover{
+  background: rgba(0,0,0,.7);
+}
+
+.highlight-popup-img{
+  position: relative;
+  height: 240px;
+  overflow: hidden;
+}
+
+.highlight-popup-img img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.highlight-popup-badge{
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  padding: .35rem .9rem;
+  font-size: .8rem;
+  font-weight: 800;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: #fff;
+  background: linear-gradient(135deg, var(--brand) 0%, var(--hot) 100%);
+  border-radius: 999px;
+  box-shadow: 0 4px 14px rgba(168,85,247,.4);
+}
+
+.highlight-popup-body{
+  padding: 1.6rem 1.8rem 1.8rem;
+  text-align: center;
+}
+
+.highlight-popup-quote{
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0 0 .5rem;
+  line-height: 1.35;
+}
+
+.highlight-popup-quote strong{
+  color: var(--brand);
+}
+
+.highlight-popup-sub{
+  font-size: .95rem;
+  color: var(--muted);
+  margin: 0 0 .6rem;
+  line-height: 1.5;
+}
+
+.highlight-popup-reward{
+  font-size: .88rem;
+  color: var(--brand-dark);
+  background: linear-gradient(135deg, #f6f0ff 0%, #ede4ff 100%);
+  border: 1px solid rgba(168,85,247,.18);
+  border-radius: 10px;
+  padding: .6rem .9rem;
+  margin: 0 0 1.2rem;
+  line-height: 1.45;
+}
+
+.highlight-popup-reward strong{
+  color: var(--brand);
+}
+
+.highlight-popup-socials{
+  display: flex;
+  gap: .6rem;
+}
+
+.highlight-popup-cta{
+  flex: 1;
+  display: inline-block;
+  padding: .65rem .8rem;
+  font-size: .85rem;
+  font-weight: 800;
+  color: #fff;
+  background: linear-gradient(135deg, #E1306C 0%, #C13584 100%);
+  border-radius: 12px;
+  text-decoration: none;
+  text-align: center;
+  box-shadow: 0 6px 20px rgba(225,48,108,.25);
+  transition: transform .25s cubic-bezier(.34,1.56,.64,1), box-shadow .25s ease;
+}
+
+.highlight-popup-cta:hover{
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 10px 28px rgba(225,48,108,.35);
+}
+
+.highlight-popup-cta--wa{
+  background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+  box-shadow: 0 6px 20px rgba(37,211,102,.25);
+}
+
+.highlight-popup-cta--wa:hover{
+  box-shadow: 0 10px 28px rgba(37,211,102,.35);
+}
+
+@media (max-width: 480px){
+  .highlight-popup-card{
+    max-width: 340px;
+  }
+
+  .highlight-popup-img{
+    height: 190px;
+  }
+
+  .highlight-popup-quote{
+    font-size: 1.15rem;
+  }
+
+  .highlight-popup-body{
+    padding: 1.3rem 1.4rem 1.5rem;
+  }
+}
+
+/* =========================
+   Payment Beta Banner
+   ========================= */
+.payment-beta{
+  padding: 2rem 1.5rem;
+  background: linear-gradient(135deg, #f8f5ff 0%, #ede7fa 50%, #f0e9ff 100%);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.payment-beta-inner{
+  max-width: 720px;
+  margin: 0 auto;
+  position: relative;
+  background: #fff;
+  border-radius: 20px;
+  padding: 2rem 2.5rem;
+  box-shadow: 0 8px 30px rgba(107,33,168,.1);
+  border: 1px solid rgba(168,85,247,.15);
+  text-align: center;
+}
+
+.payment-beta-badge{
+  position: absolute;
+  top: -12px;
+  right: 24px;
+  background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+  color: #fff;
+  font-size: .7rem;
+  font-weight: 900;
+  letter-spacing: .12em;
+  padding: .35rem .9rem;
+  border-radius: 999px;
+  box-shadow: 0 4px 12px rgba(238,90,111,.35);
+  animation: badge-float 3s ease-in-out infinite;
+}
+
+.payment-beta-title{
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--brand);
+  margin: 0 0 .4rem;
+}
+
+.payment-beta-sub{
+  color: var(--muted);
+  font-size: .92rem;
+  margin: 0 0 1.2rem;
+  line-height: 1.5;
+}
+
+.payment-beta-methods{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: .75rem;
+  margin-bottom: 1rem;
+}
+
+.payment-method-chip{
+  display: flex;
+  align-items: center;
+  gap: .45rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: .5rem 1.1rem;
+  font-size: .88rem;
+  font-weight: 600;
+  color: var(--ink);
+  transition: all .25s ease;
+}
+
+.payment-method-chip:hover{
+  border-color: var(--hot);
+  background: #f3edff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(168,85,247,.15);
+}
+
+.payment-method-icon{
+  font-size: 1.1rem;
+  width: 24px;
+  text-align: center;
+}
+
+.payment-method-icon.payment-pp{
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: .95rem;
+  color: #003087;
+  font-style: italic;
+}
+
+.payment-beta-note{
+  font-size: .82rem;
+  color: var(--muted);
+  margin: .6rem 0 .8rem;
+}
+
+.payment-beta-link{
+  display: inline-block;
+  font-size: .88rem;
+  font-weight: 700;
+  color: var(--brand);
+  text-decoration: none;
+  padding: .4rem .9rem;
+  border-radius: 10px;
+  transition: all .25s ease;
+}
+
+.payment-beta-link:hover{
+  background: var(--surface);
+  color: var(--brand-dark);
+}
+
+@media (max-width: 600px){
+  .payment-beta-inner{
+    padding: 1.5rem 1.2rem;
+    border-radius: 16px;
+  }
+  .payment-beta-title{
+    font-size: 1.1rem;
+  }
+  .payment-method-chip{
+    padding: .4rem .85rem;
+    font-size: .82rem;
+  }
+}
+
+/* =========================
+   Zahlung Detail Page
+   ========================= */
+/* Scanner Hero */
+.scanner-hero{
+  position: relative;
+  overflow: hidden;
+  background: #1a1a2e;
+}
+
+.scanner-hero-container{
+  position: relative;
+  width: 100%;
+  height: 420px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.scanner-hero-overlay{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  padding: 3rem 2rem 2rem;
+  background: linear-gradient(to top, rgba(0,0,0,.85) 0%, rgba(0,0,0,.4) 60%, transparent 100%);
+  z-index: 20;
+  pointer-events: none;
+}
+
+.scanner-hero-overlay .zahlung-beta-pill{
+  pointer-events: auto;
+}
+
+.zahlung-beta-pill{
+  display: inline-block;
+  background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+  color: #fff;
+  font-size: .7rem;
+  font-weight: 900;
+  letter-spacing: .15em;
+  padding: .35rem 1rem;
+  border-radius: 999px;
+  margin-bottom: .8rem;
+}
+
+.scanner-hero .zahlung-hero-title{
+  font-family: var(--font-heading);
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #fff;
+  margin: 0 0 .5rem;
+  text-shadow: 0 2px 20px rgba(0,0,0,.5);
+}
+
+.scanner-hero .zahlung-hero-sub{
+  color: rgba(255,255,255,.7);
+  font-size: 1.05rem;
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* Card Stream */
+.scanner-hero .card-stream{
+  position: absolute;
+  width: 100%;
+  height: 180px;
+  display: flex;
+  align-items: center;
+  overflow: visible;
+}
+
+.scanner-hero .card-line{
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  white-space: nowrap;
+  cursor: grab;
+  user-select: none;
+  will-change: transform;
+}
+
+.scanner-hero .card-line:active,
+.scanner-hero .card-line.dragging{
+  cursor: grabbing;
+}
+
+.sh-card-wrapper{
+  position: relative;
+  width: 360px;
+  height: 220px;
+  flex-shrink: 0;
+}
+
+.sh-card{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 360px;
+  height: 220px;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.sh-card-normal{
+  background: transparent;
+  box-shadow: 0 15px 40px rgba(0,0,0,.4);
+  z-index: 2;
+  clip-path: inset(0 0 0 var(--clip-right, 0%));
+}
+
+.sh-card-image{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 15px;
+  filter: brightness(1.1) contrast(1.1);
+  transition: filter .3s ease;
+}
+
+.sh-card-image:hover{
+  filter: brightness(1.2) contrast(1.2);
+}
+
+.sh-card-ascii{
+  background: transparent;
+  z-index: 1;
+  clip-path: inset(0 calc(100% - var(--clip-left, 0%)) 0 0);
+}
+
+.sh-ascii-content{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  color: rgba(196, 181, 253, 0.6);
+  font-family: "Courier New", monospace;
+  font-size: 11px;
+  line-height: 13px;
+  overflow: hidden;
+  white-space: pre;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  box-sizing: border-box;
+  animation: sh-glitch 0.1s infinite linear alternate-reverse;
+  -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,.8) 30%, rgba(0,0,0,.6) 50%, rgba(0,0,0,.4) 80%, rgba(0,0,0,.2) 100%);
+  mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,.8) 30%, rgba(0,0,0,.6) 50%, rgba(0,0,0,.4) 80%, rgba(0,0,0,.2) 100%);
+}
+
+@keyframes sh-glitch{
+  0%{ opacity: 1; }
+  15%{ opacity: 0.9; }
+  16%{ opacity: 1; }
+  49%{ opacity: 0.8; }
+  50%{ opacity: 1; }
+  99%{ opacity: 0.9; }
+  100%{ opacity: 1; }
+}
+
+.sh-scan-effect{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(168,85,247,.4), transparent);
+  animation: sh-scan-fx .6s ease-out;
+  pointer-events: none;
+  z-index: 5;
+}
+
+@keyframes sh-scan-fx{
+  0%{ transform: translateX(-100%); opacity: 0; }
+  50%{ opacity: 1; }
+  100%{ transform: translateX(100%); opacity: 0; }
+}
+
+/* Scanner line (CSS, hidden - canvas handles it) */
+.scanner-hero-scanner{
+  display: none;
+}
+
+/* Canvas layers */
+.scanner-hero #particleCanvas{
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: 100%;
+  height: 220px;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.scanner-hero #scannerCanvas{
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: 100%;
+  height: 280px;
+  z-index: 15;
+  pointer-events: none;
+}
+
+/* Notice */
+.zahlung-notice{
+  padding: 0 2rem;
+  margin-top: 1.5rem;
+}
+
+.zahlung-notice-inner{
+  max-width: 720px;
+  margin: 0 auto;
+  display: flex;
+  align-items: flex-start;
+  gap: .8rem;
+  background: linear-gradient(135deg, #fff8e1 0%, #fff3cd 100%);
+  border: 1px solid #ffe082;
+  border-radius: 14px;
+  padding: 1rem 1.4rem;
+  font-size: .9rem;
+  color: #5d4e37;
+  line-height: 1.55;
+}
+
+.zahlung-notice-icon{
+  font-size: 1.3rem;
+  flex-shrink: 0;
+  margin-top: .1rem;
+}
+
+.zahlung-notice-inner p{
+  margin: 0;
+}
+
+/* Grid */
+.zahlung-grid-section{
+  padding: 3rem 2rem;
+}
+
+.zahlung-grid{
+  max-width: 960px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+.zahlung-card{
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 2rem 1.5rem 1.5rem;
+  text-align: center;
+  position: relative;
+  transition: all .35s ease;
+}
+
+.zahlung-card:hover{
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(107,33,168,.14);
+  border-color: var(--hot);
+}
+
+.zahlung-card-icon{
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  background: var(--surface);
+  border-radius: 16px;
+  border: 1px solid var(--line);
+}
+
+.zahlung-pp-icon{
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-style: italic;
+  color: #003087;
+  font-size: 1.6rem;
+}
+
+.zahlung-card h2{
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 800;
+  margin: 0 0 .5rem;
+  color: var(--ink);
+}
+
+.zahlung-card > p{
+  color: var(--muted);
+  font-size: .88rem;
+  margin: 0 0 1rem;
+  line-height: 1.5;
+}
+
+.zahlung-card-details{
+  list-style: none;
+  margin: 0 0 1.2rem;
+  padding: 0;
+  text-align: left;
+}
+
+.zahlung-card-details li{
+  font-size: .82rem;
+  color: var(--muted);
+  padding: .3rem 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.zahlung-card-details li::before{
+  content: '✓ ';
+  color: var(--brand);
+  font-weight: 700;
+}
+
+.zahlung-card-details li:last-child{
+  border-bottom: none;
+}
+
+.zahlung-status{
+  display: inline-block;
+  font-size: .72rem;
+  font-weight: 800;
+  letter-spacing: .08em;
+  padding: .3rem .8rem;
+  border-radius: 999px;
+}
+
+.zahlung-status--live{
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.zahlung-status--beta{
+  background: #fff3e0;
+  color: #e65100;
+}
+
+/* FAQ */
+.zahlung-faq{
+  padding: 2rem 2rem 3rem;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.zahlung-faq h2{
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  font-weight: 800;
+  text-align: center;
+  margin: 0 0 1.5rem;
+  color: var(--ink);
+}
+
+.zahlung-faq-list{
+  display: flex;
+  flex-direction: column;
+  gap: .6rem;
+}
+
+.zahlung-faq-item{
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  overflow: hidden;
+  transition: border-color .25s;
+}
+
+.zahlung-faq-item[open]{
+  border-color: var(--hot);
+}
+
+.zahlung-faq-item summary{
+  padding: 1rem 1.3rem;
+  font-weight: 700;
+  font-size: .95rem;
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.zahlung-faq-item summary::after{
+  content: '+';
+  font-size: 1.2rem;
+  font-weight: 300;
+  color: var(--brand);
+  transition: transform .25s;
+}
+
+.zahlung-faq-item[open] summary::after{
+  transform: rotate(45deg);
+}
+
+.zahlung-faq-item summary::-webkit-details-marker{
+  display: none;
+}
+
+.zahlung-faq-item p{
+  padding: 0 1.3rem 1rem;
+  margin: 0;
+  font-size: .88rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+/* CTA */
+.zahlung-cta{
+  text-align: center;
+  padding: 2rem 2rem 3rem;
+  background: var(--surface);
+  border-top: 1px solid var(--line);
+}
+
+.zahlung-cta p{
+  color: var(--muted);
+  font-size: .95rem;
+  margin: 0 0 .8rem;
+}
+
+.zahlung-cta-btn{
+  display: inline-block;
+  background: linear-gradient(120deg, var(--brand) 0%, var(--brand-dark) 100%);
+  color: #fff;
+  font-weight: 800;
+  font-size: .92rem;
+  padding: .7rem 1.6rem;
+  border-radius: 12px;
+  text-decoration: none;
+  box-shadow: 0 6px 20px rgba(107,33,168,.25);
+  transition: all .25s ease;
+}
+
+.zahlung-cta-btn:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(107,33,168,.35);
+}
+
+@media (max-width: 600px){
+  .scanner-hero-container{
+    height: 320px;
+  }
+  .scanner-hero .zahlung-hero-title{
+    font-size: 1.6rem;
+  }
+  .sh-card-wrapper,
+  .sh-card{
+    width: 280px;
+    height: 170px;
+  }
+  .scanner-hero .card-line{
+    gap: 30px;
+  }
+  .zahlung-grid{
+    grid-template-columns: 1fr;
+  }
+  .zahlung-notice-inner{
+    flex-direction: column;
+    text-align: center;
   }
 }
