@@ -1,0 +1,151 @@
+@import url("https://fonts.googleapis.com/css?family=Press+Start+2P");
+body {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: #1a0f2b;
+  font-family: "Press Start 2P", cursive;
+  padding: 16px 0 24px;
+}
+
+.merch-info {
+  width: min(980px, calc(100% - 28px));
+  margin: 0 auto 14px;
+  padding: 20px 18px 16px;
+  background: linear-gradient(135deg, #2d1650 0%, #1d1036 100%);
+  color: #fff;
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  border-radius: 14px;
+}
+
+.merch-back {
+  color: #ffd27f;
+  text-decoration: none;
+  font-size: 11px;
+}
+
+.merch-info h1 {
+  margin: 12px 0 10px;
+  font-size: 20px;
+  line-height: 1.3;
+}
+
+.merch-intro,
+.merch-note {
+  margin: 0;
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+.merch-actions {
+  margin: 12px 0;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.merch-btn {
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: transparent;
+  color: #fff;
+  font-family: inherit;
+  font-size: 11px;
+  text-decoration: none;
+  padding: 10px 14px;
+  cursor: pointer;
+}
+
+.merch-btn-shop {
+  background: #f5b43c;
+  color: #1e102f;
+  border-color: #f5b43c;
+}
+
+.merch-btn-soon {
+  opacity: 0.75;
+  cursor: not-allowed;
+}
+
+.game-shell {
+  position: relative;
+  flex: 0 0 auto;
+  width: min(980px, calc(100% - 28px));
+  height: clamp(360px, 62vh, 620px);
+  margin: 0 auto;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 2px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.35);
+}
+
+canvas.game {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+}
+
+#controls {
+  position: absolute;
+  bottom: 20px;
+  min-width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+#controls div {
+  display: grid;
+  grid-template-columns: 50px 50px 50px;
+  gap: 10px;
+}
+
+#controls button {
+  width: 100%;
+  height: 40px;
+  background-color: white;
+  border: 1px solid lightgray;
+  box-shadow: 3px 5px 0px 0px rgba(0, 0, 0, 0.75);
+  cursor: pointer;
+  outline: none;
+}
+
+#controls button:first-of-type {
+  grid-column: 1/-1;
+}
+
+#score {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+
+  font-size: 2em;
+  color: white;
+}
+
+#result-container {
+  position: absolute;
+  min-width: 100%;
+  min-height: 100%;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  visibility: hidden;
+
+  #result {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    padding: 20px;
+  }
+
+  button {
+    background-color: red;
+    padding: 20px 50px 20px 50px;
+    font-family: inherit;
+    font-size: inherit;
+    cursor: pointer;
+  }
+}

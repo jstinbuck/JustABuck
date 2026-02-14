@@ -1588,6 +1588,14 @@ header{
   transform: translateY(-2px);
 }
 
+.merch-game-note{
+  margin: 1rem 0 0;
+  color: #2a2042;
+  font-size: 1rem;
+  line-height: 1.55;
+  font-weight: 600;
+}
+
 /* =========================
    Story & Team Section - NEU
    ========================= */

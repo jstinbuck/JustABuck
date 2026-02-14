@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Merchdrop Game</title>
+  <link rel="stylesheet" href="merchdrop.css" />
+</head>
+<body>
+  <section class="merch-info" id="store">
+    <a class="merch-back" href="index.html#merch">Zurueck zur Startseite</a>
+    <h1>Shop & Coming Soon</h1>
+    <p class="merch-intro">
+      Neue Caps, Shirts und Hoodies sind in Arbeit. Hier findest du alle Updates zum Merchdrop.
+    </p>
+    <div class="merch-actions">
+      <a class="merch-btn merch-btn-shop" href="mailto:justin.buck@sportbuck.com?subject=Merch%20Shop">
+        Shop
+      </a>
+      <button class="merch-btn merch-btn-soon" type="button" disabled aria-disabled="true">
+        Coming Soon
+      </button>
+    </div>
+    <p class="merch-note">
+      Um die Wartezeit angenehmer zu machen: kleines Spiel. Schick uns gerne einen Screenshot,
+      wenn du den aktuellen Highscore knackst (47), dann gibt es einen Burger plus Getraenk
+      nach Wahl aufs Haus.
+    </p>
+  </section>
+
+  <div class="game-shell">
+    <canvas class="game"></canvas>
+    <div id="controls">
+      <div>
+        <button id="forward">&#9650;</button>
+        <button id="left">&#9664;</button>
+        <button id="backward">&#9660;</button>
+        <button id="right">&#9654;</button>
+      </div>
+    </div>
+    <div id="score">0</div>
+    <div id="result-container">
+      <div id="result">
+        <h1>Game Over</h1>
+        <p>Your score: <span id="final-score"></span></p>
+        <button id="retry">Retry</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="JS/merchdrop.js"></script>
+</body>
+</html>
