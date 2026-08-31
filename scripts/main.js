@@ -4,29 +4,6 @@
   const yEl = document.getElementById('y');
   if (yEl) yEl.textContent = new Date().getFullYear();
 
-  // Announcement-Bar schließen + merken
-  const KEY = 'jab_banner_dismissed_v1';
-  const bar = document.querySelector('.announce');
-  const btn = document.querySelector('.announce-close');
-  const setOffset = () => {
-    const h = (bar && bar.style.display !== 'none') ? bar.offsetHeight : 0;
-    document.documentElement.style.setProperty('--announce-offset', `${h}px`);
-  };
-  if (bar) {
-    if (localStorage.getItem(KEY) === '1') {
-      bar.style.display = 'none';
-      setOffset();
-    } else {
-      btn?.addEventListener('click', () => {
-        bar.classList.add('is-hiding');
-        setTimeout(() => { bar.style.display = 'none'; }, 260);
-        localStorage.setItem(KEY, '1');
-        setTimeout(setOffset, 280);
-      });
-    }
-  }
-  setOffset();
-
   // Mobile-Menü (Burger)
   const toggle = document.querySelector('.nav-toggle');
   const nav = document.getElementById('primary-nav');
@@ -56,7 +33,7 @@
     if (!cards.length) return;
     let current = Math.floor(cards.length / 2);
     const specialIdx = cards.findIndex(card => card.classList.contains('special'));
-    const favIdx = cards.findIndex(card => card.querySelector('.pill-veg'));
+    const favIdx = cards.findIndex(card => card.querySelector('.pill--featured'));
     if (specialIdx >= 0) current = specialIdx;
     else if (favIdx >= 0) current = favIdx;
 
@@ -217,7 +194,7 @@
 
   // Enhanced Button Ripple Effect
   const initButtonRipple = () => {
-    const buttons = document.querySelectorAll('.btn-primary, .order-btn, .contact-btn');
+    const buttons = document.querySelectorAll('.btn-primary, .contact-btn');
 
     buttons.forEach(button => {
       button.addEventListener('click', function(e) {

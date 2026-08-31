@@ -9,12 +9,12 @@
 
 - The site is a plain HTML/CSS static site with no build tooling. Content and behavior live in `index.html`; styles live in `style.css`.
 - The page is oriented toward accessibility and SEO: many `aria-` attributes, `loading="lazy"` on images, and a JSON-LD block for `FoodEstablishment`.
-- Small interactive behaviors are implemented inline in `index.html` (announcement banner close, mobile nav toggle, year injection). For larger scripts, add code to `JS/main.js` and include it via a script tag near the end of the body.
+- The compact site announcement is static. Small interactive behaviors such as the mobile nav, year injection, and visual effects live in `scripts/main.js`.
 
 # Project-specific patterns & conventions (do not change lightly)
 
 - Accessibility-first: elements use explicit `aria-label`, `role`, and `aria-expanded` attributes (example: mobile menu button toggles `aria-expanded` and `.nav-links.is-open`). Keep these attributes in sync with DOM changes.
-- Announcement dismissal uses a persistent localStorage key: `jab_banner_dismissed_v1`. Respect and reuse this key when altering banner logic.
+- The persistent `.site-announcement` is 32 px high and intentionally has no close control. Keep its text short enough to remain on one line.
 - CSS is organized as a single scoped stylesheet. Comments mark sections and scope rules to specific containers (e.g. `.navbar .logo` vs global `img`). Follow the existing scoping approach when adding styles to avoid unintended global overrides.
 - Images use `loading="lazy"` and fixed width/height where included; maintain these attributes for layout stability and CLS reduction.
 
@@ -34,7 +34,7 @@ python -m http.server 8000; Start-Process "http://localhost:8000"
 ```powershell
 npx serve -s . -l 8000
 ```
-- Debugging: use browser DevTools. Inspect `localStorage` for the key `jab_banner_dismissed_v1` when testing the announcement bar. Check `aria-expanded` on `.nav-toggle` when testing responsive menu.
+- Debugging: use browser DevTools. Check that the announcement remains 32 px high and `aria-expanded` changes correctly on `.nav-toggle` when testing the responsive menu.
 
 # Where to change common pieces
 
@@ -44,17 +44,17 @@ npx serve -s . -l 8000
 
 # Integration & external links
 
-- The site links out to WhatsApp, Instagram, Google Maps and external ordering URL (`/order`). These are simple anchors (no server callbacks). When changing contact links, update the hrefs in `index.html`.
+- The site links out to WhatsApp, Instagram, Google Maps and the contact email address. These are simple anchors (no server callbacks). When changing contact links, update the `mailto:` hrefs across the HTML pages.
 - Structured data is embedded in `index.html` (`application/ld+json`) and should be kept accurate for SEO.
 
 # Testing & deployment notes
 
-- There are no automated tests. Validate changes manually by running the local server and checking accessibility (tab order, skip link), responsive menu, and the announcement dismissal flow.
+- There are no automated tests. Validate changes manually by running the local server and checking accessibility (tab order, skip link), the responsive menu, and the visible site announcement.
 - For deployment to case-sensitive hosts, ensure file/folder casing matches references in HTML.
 
 # Example snippets (preserve the intent)
 
-- Announcement close logic uses `localStorage.setItem('jab_banner_dismissed_v1','1')` and animation class `is-hiding` — keep this same key if you extend the behavior.
+- The static announcement uses `.site-announcement`; keep it persistent rather than adding a dismiss action unless the design explicitly changes.
 - Mobile menu toggles `aria-expanded` and `.nav-links.is-open`. Example: `toggle.setAttribute('aria-expanded', String(!open)); nav?.classList.toggle('is-open');` — keep both DOM state and attributes in sync.
 
 # If you need more

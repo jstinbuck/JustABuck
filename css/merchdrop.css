@@ -1,26 +1,57 @@
 @import url("https://fonts.googleapis.com/css?family=Press+Start+2P");
+
+:root {
+  --brand: #6A35A5;
+  --brand-strong: #542A84;
+  --cta: #C83A2A;
+  --ink: #21171D;
+  --bg: #FFFFFF;
+  --surface: #FFFFFF;
+  --line: #E6DDEB;
+  --on-color: #FFFFFF;
+}
+
 body {
   margin: 0;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background: #1a0f2b;
+  background: var(--bg);
+  color: var(--ink);
   font-family: "Press Start 2P", cursive;
-  padding: 16px 0 24px;
+  padding: 0 0 24px;
+}
+
+.site-announcement {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  margin-bottom: 16px;
+  padding: 0 8px;
+  overflow: hidden;
+  background: var(--cta);
+  color: #fff;
+  font-family: Arial, sans-serif;
+  font-size: clamp(8px, 2.2vw, 12px);
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
 }
 
 .merch-info {
   width: min(980px, calc(100% - 28px));
   margin: 0 auto 14px;
   padding: 20px 18px 16px;
-  background: linear-gradient(135deg, #2d1650 0%, #1d1036 100%);
-  color: #fff;
+  background: linear-gradient(135deg, var(--brand) 0%, var(--brand-strong) 100%);
+  color: var(--on-color);
   border: 2px solid rgba(255, 255, 255, 0.15);
   border-radius: 14px;
 }
 
 .merch-back {
-  color: #ffd27f;
+  color: var(--on-color);
   text-decoration: none;
   font-size: 11px;
 }
@@ -57,9 +88,9 @@ body {
 }
 
 .merch-btn-shop {
-  background: #f5b43c;
-  color: #1e102f;
-  border-color: #f5b43c;
+  background: var(--cta);
+  color: var(--on-color);
+  border-color: var(--cta);
 }
 
 .merch-btn-soon {
@@ -75,7 +106,7 @@ body {
   margin: 0 auto;
   border-radius: 16px;
   overflow: hidden;
-  border: 2px solid rgba(255, 255, 255, 0.18);
+  border: 2px solid var(--brand);
   box-shadow: 0 14px 30px rgba(0, 0, 0, 0.35);
 }
 
@@ -103,8 +134,9 @@ canvas.game {
 #controls button {
   width: 100%;
   height: 40px;
-  background-color: white;
-  border: 1px solid lightgray;
+  background-color: var(--surface);
+  color: var(--ink);
+  border: 1px solid var(--line);
   box-shadow: 3px 5px 0px 0px rgba(0, 0, 0, 0.75);
   cursor: pointer;
   outline: none;
@@ -137,12 +169,15 @@ canvas.game {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: white;
+    background-color: var(--surface);
+    color: var(--ink);
     padding: 20px;
   }
 
   button {
-    background-color: red;
+    background-color: var(--cta);
+    color: var(--on-color);
+    border: 0;
     padding: 20px 50px 20px 50px;
     font-family: inherit;
     font-size: inherit;

@@ -12,54 +12,39 @@
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Just A Buck" />
   <meta property="og:description" content="Smashburger, Loaded Fries & Fried Chicken – ehrlich, frisch, bezahlbar." />
-  <meta property="og:image" content="img/catering.jpg" />
+  <meta property="og:image" content="assets/images/catering.jpg" />
   <meta property="og:url" content="https://justabuck.de/" />
-  <meta name="theme-color" content="#6b21a8" />
+  <meta name="theme-color" content="#6A35A5" />
 
-  <link rel="icon" type="image/png" href="img/logo.png" />
-  <link rel="preload" as="image" href="img/catering.jpg" />
-  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/png" href="assets/images/logo.png" />
+  <link rel="preload" as="image" href="assets/images/catering.jpg" />
+  <link rel="stylesheet" href="css/site.css" />
 </head>
 <body class="home-refined">
 
   <!-- Skiplink -->
   <a class="skip-link" href="#main">Zum Inhalt springen</a>
 
-  <!-- Announcement Bar -->
-  <div class="announce" role="status" aria-live="polite">
-    <div class="announce-inner">
-      <span class="announce-text">
-        🔥 Pop-Up Season: Termine & Spots droppen zuerst auf Instagram & WhatsApp!
-        <a href="https://instagram.com/" target="_blank" rel="noopener">Follow</a>
-        ·
-        <a href="https://wa.me/4917612345678?text=Hi%20Just%20A%20Buck!%20Add%20me%20to%20updates."
-           target="_blank" rel="noopener">WhatsApp Updates</a>
-      </span>
-      <button class="announce-close" aria-label="Hinweis schließen" title="Schließen">×</button>
-    </div>
-  </div>
+  <div class="site-announcement" role="note">Burger-Catering &amp; Pop-ups in Kempten und im Allgäu</div>
 
   <!-- NAVIGATION -->
   <header>
     <nav class="navbar" aria-label="Hauptnavigation">
       <div class="nav-inner">
         <a href="index.html" class="brand" aria-label="Startseite">
-          <img src="img/logo.png" alt="Just A Buck Logo" class="logo" />
+          <img src="assets/images/logo.png" alt="Just A Buck Logo" class="logo" />
         </a>
 
         <ul id="primary-nav" class="nav-links" role="list">
           <li><a href="#menu">Menü</a></li>
           <li><a href="#locations">Wo findet ihr uns?</a></li>
-          <li><a href="#careers">Karriere</a></li>
           <li><a href="#about">Über uns</a></li>
           <li><a href="#community">Community</a></li>
           <li><a href="#reviews">Feedback</a></li>
-          <li><a href="#giftcards">Giftcards</a></li>
-          <li><a href="#merch">Merch</a></li>
-          <li class="nav-cta"><a href="order.html">Jetzt bestellen</a></li>
+          <li class="nav-cta"><a href="#event-anfragen">Event anfragen</a></li>
         </ul>
 
-        <a href="order.html" class="order-btn">Jetzt bestellen</a>
+        <a href="#event-anfragen" class="contact-btn" aria-label="Event anfragen – zur Catering-Anfrage springen">Event anfragen</a>
         <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Menü öffnen">
           <span aria-hidden="true">☰</span>
         </button>
@@ -73,7 +58,7 @@
     <div class="highlight-popup-card">
       <button class="highlight-popup-close" aria-label="Schließen">&times;</button>
       <div class="highlight-popup-img">
-        <img src="img/CEESEBURGER ROYAL.png" alt="Ceeseburger Royal" width="640" height="440">
+        <img src="assets/images/ceeseburger-royal.png" alt="Ceeseburger Royal" width="640" height="440">
         <span class="highlight-popup-badge">NEW</span>
       </div>
       <div class="highlight-popup-body">
@@ -93,24 +78,32 @@
     <section class="hero-video" aria-label="Hero">
       <video class="background-video"
              autoplay muted loop playsinline
-             poster="img/catering.jpg">
-        <source src="Video/hero.mp4" type="video/mp4" />
+             poster="assets/images/catering.jpg">
+        <source src="assets/video/hero.mp4" type="video/mp4" />
         Dein Browser unterstützt kein Video-Tag.
       </video>
       <div class="overlay-content">
-        <h1>Just A Buck</h1>
-        <p class="hero-tag">Smashburger • Loaded Fries • Fried Chicken</p>
-        <a href="order.html" class="order-btn">Bestelle jetzt</a>
+        <h1 class="hero-title">
+          <span class="hero-title__eyebrow">Für Events im Allgäu</span>
+          <span class="hero-title__main">Catering</span>
+        </h1>
+        <p class="hero-desc">Frisches Streetfood &ndash; direkt bei euch zubereitet.</p>
+        <div class="hero-actions">
+          <a href="#event-anfragen" class="contact-btn" aria-label="Event anfragen – zur Catering-Anfrage springen">Event anfragen</a>
+          <a href="menu.html" class="hero-link-secondary" aria-label="Speisekarte ansehen">
+            Speisekarte ansehen <span aria-hidden="true">&rarr;</span>
+          </a>
+        </div>
       </div>
     </section>
 
     <!-- ABOUT -->
     <section id="about" class="mission-section" aria-labelledby="aboutTitle">
       <div class="image-column" aria-hidden="true">
-        <img src="img/crew1.jpg" alt="Crew bereitet Burger vor" loading="lazy" width="240" height="320">
-        <img src="img/crew2.jpg" alt="Team am Grill" loading="lazy" width="240" height="340">
-        <img src="img/crew3.jpg" alt="Frisch frittierte Chicken Pieces" loading="lazy" width="240" height="300">
-        <img src="img/crew4.jpg" alt="Service am Foodtruck" loading="lazy" width="240" height="330">
+        <img src="assets/images/crew1.jpg" alt="Crew bereitet Burger vor" loading="lazy" width="240" height="320">
+        <img src="assets/images/crew2.jpg" alt="Team am Grill" loading="lazy" width="240" height="340">
+        <img src="assets/images/crew3.jpg" alt="Frisch frittierte Chicken Pieces" loading="lazy" width="240" height="300">
+        <img src="assets/images/crew4.jpg" alt="Service am Foodtruck" loading="lazy" width="240" height="330">
       </div>
 
       <div class="mission-text">
@@ -145,7 +138,7 @@
           <article class="product-box">
             <div class="product-top">
               <span class="pill">Combo</span>
-              <img src="img/product1.jpg" alt="Box Combo – Fries, Chicken & Dip"
+              <img src="assets/images/product1.jpg" alt="Box Combo – Fries, Chicken & Dip"
                    loading="lazy" width="640" height="440">
             </div>
             <div class="product-meta">
@@ -154,10 +147,10 @@
             </div>
           </article>
 
-          <article class="product-box special" aria-label="Aktuelles Special">
+          <article class="product-box special product-box--deluxe" aria-label="Aktuelles Special">
             <div class="product-top">
-              <span class="pill pill-hot">🔥 Weekly Special</span>
-              <img src="img/CEESEBURGER ROYAL.png" alt="Ceeseburger Royal"
+              <span class="pill pill--special">🔥 Weekly Special</span>
+              <img src="assets/images/ceeseburger-royal.png" alt="Ceeseburger Royal"
                    loading="lazy" width="640" height="440">
             </div>
             <div class="product-meta">
@@ -169,7 +162,7 @@
           <article class="product-box">
             <div class="product-top">
               <span class="pill">Loaded</span>
-              <img src="img/product1.jpg" alt="Loaded Fries mit Crunch"
+              <img src="assets/images/product1.jpg" alt="Loaded Fries mit Crunch"
                    loading="lazy" width="640" height="440">
             </div>
             <div class="product-meta">
@@ -180,8 +173,8 @@
 
           <article class="product-box">
             <div class="product-top">
-              <span class="pill pill-veg">⭐ Fan Favorite</span>
-              <img src="img/product2.jpg" alt="Classic Buck Burger"
+              <span class="pill pill--featured">⭐ Fan Favorite</span>
+              <img src="assets/images/product2.jpg" alt="Classic Buck Burger"
                    loading="lazy" width="640" height="440">
             </div>
             <div class="product-meta">
@@ -192,8 +185,8 @@
 
           <article class="product-box">
             <div class="product-top">
-              <span class="pill">Spicy</span>
-              <img src="img/product2.jpg" alt="Spicy Chicken Burger"
+              <span class="pill pill--spicy">Spicy</span>
+              <img src="assets/images/product2.jpg" alt="Spicy Chicken Burger"
                    loading="lazy" width="640" height="440">
             </div>
             <div class="product-meta">
@@ -205,7 +198,7 @@
           <article class="product-box">
             <div class="product-top">
               <span class="pill">Share</span>
-              <img src="img/product1.jpg" alt="Party Fries Tray"
+              <img src="assets/images/product1.jpg" alt="Party Fries Tray"
                    loading="lazy" width="640" height="440">
             </div>
             <div class="product-meta">
@@ -217,7 +210,7 @@
           <article class="product-box">
             <div class="product-top">
               <span class="pill">Classic</span>
-              <img src="img/product2.jpg" alt="Double Smash Burger"
+              <img src="assets/images/product2.jpg" alt="Double Smash Burger"
                    loading="lazy" width="640" height="440">
             </div>
             <div class="product-meta">
@@ -229,7 +222,7 @@
           <article class="product-box">
             <div class="product-top">
               <span class="pill">Crispy</span>
-              <img src="img/product1.jpg" alt="Fries mit Dip"
+              <img src="assets/images/product1.jpg" alt="Fries mit Dip"
                    loading="lazy" width="640" height="440">
             </div>
             <div class="product-meta">
@@ -240,8 +233,8 @@
 
           <article class="product-box">
             <div class="product-top">
-              <span class="pill pill-veg">⭐ Veggie</span>
-              <img src="img/product2.jpg" alt="Veggie Burger"
+              <span class="pill pill--vegan">⭐ Veggie</span>
+              <img src="assets/images/product2.jpg" alt="Veggie Burger"
                    loading="lazy" width="640" height="440">
             </div>
             <div class="product-meta">
@@ -253,7 +246,7 @@
           <article class="product-box">
             <div class="product-top">
               <span class="pill">Sweet</span>
-              <img src="img/product1.jpg" alt="Sweet Potato Fries"
+              <img src="assets/images/product1.jpg" alt="Sweet Potato Fries"
                    loading="lazy" width="640" height="440">
             </div>
             <div class="product-meta">
@@ -270,7 +263,7 @@
     </section>
 
     <!-- CATERING -->
-    <section class="catering-section" aria-labelledby="cateringTitle">
+    <section id="event-anfragen" class="catering-section" aria-labelledby="cateringTitle">
       <div class="catering-overlay">
         <h2 id="cateringTitle">Catering mit Buck</h2>
         <p>
@@ -289,25 +282,25 @@
 
       <div class="social-boxes">
         <a href="https://instagram.com/" target="_blank" rel="noopener" class="social-card highlight" aria-label="Instagram öffnen">
-          <img src="img/social/instagram.png" alt="Instagram Logo" width="40" height="40" />
+          <img src="assets/images/social/instagram.png" alt="Instagram Logo" width="40" height="40" />
           <h3>Instagram</h3>
           <p>Standorte, Aktionen & exklusive Einblicke – verpasse kein Gewinnspiel mehr!</p>
         </a>
 
         <a href="https://wa.me/4917612345678?text=Hi%20Just%20A%20Buck!%20Ich%20will%20Updates%20zu%20Standorten%20und%20Specials." target="_blank" rel="noopener" class="social-card highlight" aria-label="WhatsApp-Kanal öffnen">
-          <img src="img/social/whatsapp.png" alt="WhatsApp Logo" width="40" height="40" />
+          <img src="assets/images/social/whatsapp.png" alt="WhatsApp Logo" width="40" height="40" />
           <h3>WhatsApp-Kanal</h3>
           <p>Standorte, Specials & Gewinnspiele direkt aufs Handy!</p>
         </a>
 
         <a href="https://tiktok.com/" target="_blank" rel="noopener" class="social-card" aria-label="TikTok öffnen">
-          <img src="img/social/tiktok.png" alt="TikTok Logo" width="40" height="40" />
+          <img src="assets/images/social/tiktok.png" alt="TikTok Logo" width="40" height="40" />
           <h3>TikTok</h3>
           <p>Behind-the-Scenes, Trends & Challenges</p>
         </a>
 
         <a href="https://x.com/" target="_blank" rel="noopener" class="social-card" aria-label="X (Twitter) öffnen">
-          <img src="img/social/twitter.png" alt="X Logo" width="40" height="40" />
+          <img src="assets/images/social/twitter.png" alt="X Logo" width="40" height="40" />
           <h3>X (ehem. Twitter)</h3>
           <p>News, Payment-Updates & mehr.</p>
         </a>
@@ -461,7 +454,7 @@
       <div class="location-wrapper">
         <div class="location-map-full" role="img" aria-label="Karte von Kempten (Allgäu)">
           <a href="https://www.google.com/maps/place/Kempten+%28Allg%C3%A4u%29/" target="_blank" rel="noopener">
-            <img src="img/kempten-map.png" alt="Kempten Karte" title="Kempten in Google Maps öffnen" loading="lazy" width="1200" height="900" />
+            <img src="assets/images/kempten-map.png" alt="Kempten Karte" title="Kempten in Google Maps öffnen" loading="lazy" width="1200" height="900" />
           </a>
         </div>
 
@@ -480,163 +473,6 @@
           <a href="#locations" class="btn-locations">📍 Kommende Events & Standorte anzeigen</a>
         </div>
       </div>
-    </section>
-
-    <!-- Giftcards & Merch Section - Neu Designed -->
-    <section class="lifestyle-section" aria-label="Giftcards und Merch">
-      <div class="lifestyle-grid">
-
-        <!-- Giftcard Card -->
-        <article id="giftcards" class="lifestyle-card giftcard-special">
-          <div class="lifestyle-badge">
-            <span class="badge-icon">🎁</span>
-            <span class="badge-text">Perfektes Geschenk</span>
-          </div>
-          <div class="lifestyle-visual">
-            <img src="img/GiftcardMain.png" alt="Just A Buck Giftcard" loading="lazy">
-          </div>
-          <div class="lifestyle-content">
-            <h3 class="lifestyle-title">Buck-Love verschenken</h3>
-            <p class="lifestyle-intro">
-              Ob zum Geburtstag, als Dankeschön oder einfach so – unsere Giftcard bringt
-              Streetfood-Vibes direkt aufs Handy! 🍔💜
-            </p>
-            <ul class="lifestyle-features">
-              <li><span class="feature-icon">⚡</span> Digitale Karte in Minuten</li>
-              <li><span class="feature-icon">💰</span> Wert frei wählbar (ab 15 €)</li>
-              <li><span class="feature-icon">🎯</span> Bei allen Pop-Ups einlösbar</li>
-            </ul>
-            <div class="lifestyle-cta">
-              <a class="cta-primary pulse-btn" href="mailto:justin.buck@sportbuck.com?subject=Giftcard%20Bestellung">
-                Jetzt Giftcard holen
-              </a>
-              <a class="cta-secondary" href="mailto:justin.buck@sportbuck.com?subject=Frage%20zu%20Giftcards">
-                Fragen?
-              </a>
-            </div>
-          </div>
-        </article>
-
-        <!-- Merch Card -->
-        <article id="merch" class="lifestyle-card merch-special">
-          <div class="lifestyle-badge coming-soon">
-            <span class="badge-icon">🚀</span>
-            <span class="badge-text">Coming Soon</span>
-          </div>
-          <div class="lifestyle-visual">
-            <img src="img/MerchBierPong.png" alt="Just A Buck Merch Preview" loading="lazy">
-          </div>
-          <div class="lifestyle-content">
-            <h3 class="lifestyle-title">Merch Drop Incoming</h3>
-            <p class="lifestyle-intro">
-              Caps, Shirts & Hoodies in Classic Purple. Limitiert. Authentisch. Buck-Style.
-              Auf der neuen Merchdrop-Seite findest du Store-Infos und die Online Challenge.
-            </p>
-            <ul class="lifestyle-features">
-              <li><span class="feature-icon">&#10024;</span> Limitierte Drops</li>
-              <li><span class="feature-icon">&#128064;</span> Sneak Peeks &uuml;ber Instagram</li>
-              <li><span class="feature-icon">&#127912;</span> Exclusive Street Collabs</li>
-            </ul>
-            <div class="lifestyle-cta">
-              <a class="cta-primary pulse-btn" href="merchdrop.html#store">
-                Store
-              </a>
-              <a class="cta-secondary" href="merchdrop.html">
-                Online Challenge
-              </a>
-            </div>
-            <p class="merch-game-note">
-              Um die Wartezeit angenehmer zu machen: kleines Spiel auf der Merchdrop-Seite.
-              Schick uns gerne einen Screenshot, wenn du den aktuellen Highscore knackst (47) -
-              dann gibt es einen Burger plus Getr&auml;nk nach Wahl aufs Haus.
-            </p>
-          </div>
-        </article>
-
-      </div>
-    </section>
-
-    <!-- Story & Team Section - Neu Designed -->
-    <section class="story-team-section" aria-label="Unsere Story und Team">
-
-      <!-- Story Block -->
-      <div class="story-block" aria-labelledby="storyTitle">
-        <div class="story-container">
-          <div class="story-images">
-            <div class="story-img-main">
-              <img src="img/crew2.jpg" alt="Justin am Grill" loading="lazy">
-            </div>
-            <div class="story-accent">
-              <span class="accent-emoji">🍔</span>
-            </div>
-          </div>
-          <div class="story-content">
-            <span class="story-label">Unsere Story</span>
-            <h2 id="storyTitle" class="story-heading">Warum Just A Buck?</h2>
-            <div class="story-text">
-              <p>
-                Angefangen hat alles mit der Idee, <strong>ehrliches Streetfood bezahlbar zu machen</strong>.
-                Ohne Schnickschnack, dafür mit Leidenschaft, Handarbeit und richtig gutem Geschmack.
-              </p>
-              <p>
-                Wir kochen so, wie wir selbst essen wollen – frisch, direkt und mit Liebe zum Detail.
-              </p>
-              <p class="story-quote">
-                "Fast Food muss nicht Fast sein – es muss ehrlich sein."
-              </p>
-              <p class="story-signature">– Justin & das Buck-Team 💜</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Careers/Join Block -->
-      <div id="careers" class="join-block" aria-labelledby="careersTitle">
-        <div class="join-container">
-          <div class="join-visual">
-            <img src="img/Kariere.png" alt="Join the Buck Crew" loading="lazy">
-            <div class="join-overlay">
-              <span class="join-emoji">🤝</span>
-            </div>
-          </div>
-          <div class="join-content">
-            <span class="join-label">Werde Teil der Crew</span>
-            <h2 id="careersTitle" class="join-heading">Werde Teil von Buck</h2>
-            <p class="join-intro">
-              Wir sind im Aufbau und suchen Leute mit <strong>Herzblut</strong> für gutes Essen,
-              <strong>Teamspirit</strong> und echte <strong>Streetfood-Vibes</strong>.
-              Bock drauf? Dann meld dich! 🔥
-            </p>
-            <div class="join-perks">
-              <div class="perk-item">
-                <span class="perk-icon">🌟</span>
-                <span>Cooles Team</span>
-              </div>
-              <div class="perk-item">
-                <span class="perk-icon">💪</span>
-                <span>Flexible Zeiten</span>
-              </div>
-              <div class="perk-item">
-                <span class="perk-icon">🎉</span>
-                <span>Events & Pop-Ups</span>
-              </div>
-            </div>
-            <div class="join-cta">
-              <a class="cta-primary glow-btn"
-                 href="https://wa.me/4917612345678?text=Hi%20Just%20A%20Buck!%20Ich%20interessiere%20mich%20f%C3%BCr%20einen%20Job.%20Rolle:%20Service/K%C3%BCche%20(%C3%A4ndern)%2C%20Erfahrung:%20kurz%2C%20Name:%20[Dein%20Name]"
-                 target="_blank" rel="noopener">
-                💬 Per WhatsApp bewerben
-              </a>
-              <a class="cta-secondary"
-                 href="mailto:justin.buck@sportbuck.com?subject=Initiativbewerbung%20Just%20A%20Buck">
-                📧 Per E-Mail bewerben
-              </a>
-            </div>
-            <small class="join-note">Wir melden uns, sobald neue Termine & Schichten feststehen.</small>
-          </div>
-        </div>
-      </div>
-
     </section>
 
     <!-- PAYMENT BETA -->
@@ -676,7 +512,7 @@
   <footer class="site-footer" role="contentinfo">
     <div class="footer-inner">
       <div class="footer-brand">
-        <img src="img/logo.png" alt="Just A Buck" class="footer-logo">
+        <img src="assets/images/logo.png" alt="Just A Buck" class="footer-logo">
         <div class="footer-meta">
           <strong>Just A Buck</strong><br>
           <small>© <span id="y"></span> Just A Buck</small>
@@ -690,8 +526,7 @@
       </nav>
 
       <div class="footer-contact">
-        <a href="mailto:justin.buck@sportbuck.com" class="footer-link">Kontakt</a>
-        <a href="order.html" class="footer-cta">Jetzt bestellen</a>
+        <a href="mailto:justin.buck@sportbuck.com?subject=Anfrage%20an%20Just%20A%20Buck" class="footer-cta">Kontakt</a>
       </div>
     </div>
 
@@ -722,6 +557,6 @@
   }
   </script>
 
-  <script src="JS/main.js"></script>
+  <script src="scripts/main.js"></script>
 </body>
 </html>

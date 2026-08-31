@@ -6,6 +6,14 @@
 const codeChars =
   "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789(){}[]<>;:,._-+=!@#$%^&*|\\/\"'`~?";
 
+const PAYMENT_COLORS = Object.freeze({
+  brand: "#6A35A5",
+  brandStrong: "#542A84",
+  ink: "#21171D",
+  white: "#FFFFFF",
+  brandRgb: "106, 53, 165"
+});
+
 class CardStreamController {
   constructor() {
     this.container = document.getElementById("cardStream");
@@ -216,14 +224,14 @@ class CardStreamController {
     var ctx = canvas.getContext("2d");
 
     var gradients = [
-      ["#6b21a8", "#a855f7"],
-      ["#4b0f85", "#7c3aed"],
-      ["#7c3aed", "#c084fc"],
-      ["#581c87", "#a855f7"],
-      ["#3b0764", "#9333ea"],
-      ["#6d28d9", "#c4b5fd"],
-      ["#4c1d95", "#8b5cf6"],
-      ["#5b21b6", "#d8b4fe"],
+      [PAYMENT_COLORS.brand, PAYMENT_COLORS.brandStrong],
+      [PAYMENT_COLORS.brandStrong, PAYMENT_COLORS.ink],
+      [PAYMENT_COLORS.brand, PAYMENT_COLORS.ink],
+      [PAYMENT_COLORS.ink, PAYMENT_COLORS.brand],
+      [PAYMENT_COLORS.brandStrong, PAYMENT_COLORS.brand],
+      [PAYMENT_COLORS.brand, PAYMENT_COLORS.brandStrong],
+      [PAYMENT_COLORS.ink, PAYMENT_COLORS.brandStrong],
+      [PAYMENT_COLORS.brandStrong, PAYMENT_COLORS.ink],
     ];
 
     var pair = gradients[index % gradients.length];
@@ -432,9 +440,9 @@ class ZahlungParticleSystem {
     var half = 50;
 
     var gradient = ctx.createRadialGradient(half, half, 0, half, half, half);
-    gradient.addColorStop(0.025, "#fff");
-    gradient.addColorStop(0.1, "hsl(270, 61%, 33%)");
-    gradient.addColorStop(0.25, "hsl(270, 64%, 6%)");
+    gradient.addColorStop(0.025, PAYMENT_COLORS.white);
+    gradient.addColorStop(0.1, PAYMENT_COLORS.brand);
+    gradient.addColorStop(0.25, PAYMENT_COLORS.ink);
     gradient.addColorStop(1, "transparent");
 
     ctx.fillStyle = gradient;
@@ -612,8 +620,8 @@ class ZahlungParticleScanner {
     var half = 8;
     var gradient = this.gradientCtx.createRadialGradient(half, half, 0, half, half, half);
     gradient.addColorStop(0, "rgba(255, 255, 255, 1)");
-    gradient.addColorStop(0.3, "rgba(196, 181, 253, 0.8)");
-    gradient.addColorStop(0.7, "rgba(139, 92, 246, 0.4)");
+    gradient.addColorStop(0.3, "rgba(" + PAYMENT_COLORS.brandRgb + ", 0.8)");
+    gradient.addColorStop(0.7, "rgba(" + PAYMENT_COLORS.brandRgb + ", 0.4)");
     gradient.addColorStop(1, "transparent");
 
     this.gradientCtx.fillStyle = gradient;
@@ -722,9 +730,9 @@ class ZahlungParticleScanner {
 
     // Glow 1
     var g1 = this.ctx.createLinearGradient(lbx - lw * 2, 0, lbx + lw * 2, 0);
-    g1.addColorStop(0, "rgba(139, 92, 246, 0)");
-    g1.addColorStop(0.5, "rgba(196, 181, 253, " + (0.8 * gi) + ")");
-    g1.addColorStop(1, "rgba(139, 92, 246, 0)");
+    g1.addColorStop(0, "rgba(" + PAYMENT_COLORS.brandRgb + ", 0)");
+    g1.addColorStop(0.5, "rgba(" + PAYMENT_COLORS.brandRgb + ", " + (0.8 * gi) + ")");
+    g1.addColorStop(1, "rgba(" + PAYMENT_COLORS.brandRgb + ", 0)");
     this.ctx.globalAlpha = this.scanningActive ? 1.0 : 0.8;
     this.ctx.fillStyle = g1;
     this.ctx.beginPath();
@@ -733,9 +741,9 @@ class ZahlungParticleScanner {
 
     // Glow 2
     var g2 = this.ctx.createLinearGradient(lbx - lw * 4, 0, lbx + lw * 4, 0);
-    g2.addColorStop(0, "rgba(139, 92, 246, 0)");
-    g2.addColorStop(0.5, "rgba(139, 92, 246, " + (0.4 * gi) + ")");
-    g2.addColorStop(1, "rgba(139, 92, 246, 0)");
+    g2.addColorStop(0, "rgba(" + PAYMENT_COLORS.brandRgb + ", 0)");
+    g2.addColorStop(0.5, "rgba(" + PAYMENT_COLORS.brandRgb + ", " + (0.4 * gi) + ")");
+    g2.addColorStop(1, "rgba(" + PAYMENT_COLORS.brandRgb + ", 0)");
     this.ctx.globalAlpha = this.scanningActive ? 0.8 : 0.6;
     this.ctx.fillStyle = g2;
     this.ctx.beginPath();
@@ -745,9 +753,9 @@ class ZahlungParticleScanner {
     // Extra glow when scanning
     if (this.scanningActive) {
       var g3 = this.ctx.createLinearGradient(lbx - lw * 8, 0, lbx + lw * 8, 0);
-      g3.addColorStop(0, "rgba(139, 92, 246, 0)");
-      g3.addColorStop(0.5, "rgba(139, 92, 246, 0.2)");
-      g3.addColorStop(1, "rgba(139, 92, 246, 0)");
+      g3.addColorStop(0, "rgba(" + PAYMENT_COLORS.brandRgb + ", 0)");
+      g3.addColorStop(0.5, "rgba(" + PAYMENT_COLORS.brandRgb + ", 0.2)");
+      g3.addColorStop(1, "rgba(" + PAYMENT_COLORS.brandRgb + ", 0)");
       this.ctx.globalAlpha = 0.6;
       this.ctx.fillStyle = g3;
       this.ctx.beginPath();
