@@ -23,40 +23,6 @@
     });
   });
 
-  // Slider mit Pfeilen (Startseite)
-  document.querySelectorAll('.product-slider').forEach(slider => {
-    const row = slider.querySelector('.product-row');
-    const prev = slider.querySelector('.product-arrow.prev');
-    const next = slider.querySelector('.product-arrow.next');
-    if (!row) return;
-    const cards = Array.from(row.querySelectorAll('.product-box'));
-    if (!cards.length) return;
-    let current = Math.floor(cards.length / 2);
-    const specialIdx = cards.findIndex(card => card.classList.contains('special'));
-    const favIdx = cards.findIndex(card => card.querySelector('.pill--featured'));
-    if (specialIdx >= 0) current = specialIdx;
-    else if (favIdx >= 0) current = favIdx;
-
-    const goTo = (idx, behavior = 'smooth') => {
-      const clamped = Math.max(0, Math.min(cards.length - 1, idx));
-      const card = cards[clamped];
-      const left = card.offsetLeft - (row.clientWidth - card.offsetWidth) / 2;
-      row.scrollTo({ left: Math.max(left, 0), behavior });
-      current = clamped;
-    };
-
-    prev?.addEventListener('click', () => goTo(current - 1));
-    next?.addEventListener('click', () => goTo(current + 1));
-
-    goTo(current, 'auto');
-
-    let resizeTimer;
-    window.addEventListener('resize', () => {
-      clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(() => goTo(current, 'auto'), 80);
-    });
-  });
-
   // =========================
   // OPTISCHE UPGRADES
   // =========================
@@ -96,13 +62,10 @@
 
     // Elements to animate
     const selectors = [
-      '.product-box',
       '.menu-card',
       '.social-card',
       '.review-card',
       '.duo-card',
-      '.mission-text',
-      '.image-column img',
       '.location-content-full',
       '.careers-card',
       '.feedback-container'
