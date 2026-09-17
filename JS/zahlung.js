@@ -172,7 +172,7 @@ class CardStreamController {
       "function tick(t) { const dt = 0.016; }",
       "const state = { intensity: 1.2, particles: 800 };",
       "ctx.globalCompositeOperation = 'lighter';",
-      "const gradient = ctx.createRadialGradient(x, y, 0, x, y, r);",
+      "ctx.fillStyle = '#6A35A5';",
       "for (let i = 0; i < count; i++) { update(particles[i]); }",
       "requestAnimationFrame(tick);",
     ];
@@ -209,28 +209,24 @@ class CardStreamController {
     var normalCard = document.createElement("div");
     normalCard.className = "sh-card sh-card-normal";
 
-    // Generate gradient card image
+    // Generate flat-color card image
     var canvas = document.createElement("canvas");
     canvas.width = 360;
     canvas.height = 220;
     var ctx = canvas.getContext("2d");
 
-    var gradients = [
-      ["#6b21a8", "#a855f7"],
-      ["#4b0f85", "#7c3aed"],
-      ["#7c3aed", "#c084fc"],
-      ["#581c87", "#a855f7"],
-      ["#3b0764", "#9333ea"],
-      ["#6d28d9", "#c4b5fd"],
-      ["#4c1d95", "#8b5cf6"],
-      ["#5b21b6", "#d8b4fe"],
+    var cardColors = [
+      "#6A35A5",
+      "#4A235A",
+      "#C83A2A",
+      "#21171D",
+      "#6A35A5",
+      "#4A235A",
+      "#C83A2A",
+      "#21171D",
     ];
 
-    var pair = gradients[index % gradients.length];
-    var grad = ctx.createLinearGradient(0, 0, 360, 220);
-    grad.addColorStop(0, pair[0]);
-    grad.addColorStop(1, pair[1]);
-    ctx.fillStyle = grad;
+    ctx.fillStyle = cardColors[index % cardColors.length];
     ctx.beginPath();
     ctx.roundRect(0, 0, 360, 220, 15);
     ctx.fill();
@@ -431,13 +427,7 @@ class ZahlungParticleSystem {
     var ctx = texCanvas.getContext("2d");
     var half = 50;
 
-    var gradient = ctx.createRadialGradient(half, half, 0, half, half, half);
-    gradient.addColorStop(0.025, "#fff");
-    gradient.addColorStop(0.1, "hsl(270, 61%, 33%)");
-    gradient.addColorStop(0.25, "hsl(270, 64%, 6%)");
-    gradient.addColorStop(1, "transparent");
-
-    ctx.fillStyle = gradient;
+    ctx.fillStyle = "#6A35A5";
     ctx.beginPath();
     ctx.arc(half, half, half, 0, Math.PI * 2);
     ctx.fill();
@@ -610,13 +600,7 @@ class ZahlungParticleScanner {
     this.gradientCanvas.height = 16;
 
     var half = 8;
-    var gradient = this.gradientCtx.createRadialGradient(half, half, 0, half, half, half);
-    gradient.addColorStop(0, "rgba(255, 255, 255, 1)");
-    gradient.addColorStop(0.3, "rgba(196, 181, 253, 0.8)");
-    gradient.addColorStop(0.7, "rgba(139, 92, 246, 0.4)");
-    gradient.addColorStop(1, "transparent");
-
-    this.gradientCtx.fillStyle = gradient;
+    this.gradientCtx.fillStyle = "#6A35A5";
     this.gradientCtx.beginPath();
     this.gradientCtx.arc(half, half, half, 0, Math.PI * 2);
     this.gradientCtx.fill();
@@ -694,72 +678,13 @@ class ZahlungParticleScanner {
     var lbx = this.getLightBarX();
     var lw = this.lightBarWidth;
 
-    var vertGrad = this.ctx.createLinearGradient(0, 0, 0, this.h);
-    vertGrad.addColorStop(0, "rgba(255, 255, 255, 0)");
-    vertGrad.addColorStop(this.fadeZone / this.h, "rgba(255, 255, 255, 1)");
-    vertGrad.addColorStop(1 - this.fadeZone / this.h, "rgba(255, 255, 255, 1)");
-    vertGrad.addColorStop(1, "rgba(255, 255, 255, 0)");
-
-    this.ctx.globalCompositeOperation = "lighter";
-
-    var targetGlow = this.scanningActive ? 3.5 : 1;
-    this.currentGlowIntensity += (targetGlow - this.currentGlowIntensity) * this.transitionSpeed;
-    var gi = this.currentGlowIntensity;
-
-    // Core
-    var coreGrad = this.ctx.createLinearGradient(lbx - lw / 2, 0, lbx + lw / 2, 0);
-    coreGrad.addColorStop(0, "rgba(255, 255, 255, 0)");
-    coreGrad.addColorStop(0.3, "rgba(255, 255, 255, " + (0.9 * gi) + ")");
-    coreGrad.addColorStop(0.5, "rgba(255, 255, 255, " + (1 * gi) + ")");
-    coreGrad.addColorStop(0.7, "rgba(255, 255, 255, " + (0.9 * gi) + ")");
-    coreGrad.addColorStop(1, "rgba(255, 255, 255, 0)");
-
+    this.ctx.globalCompositeOperation = "source-over";
+    this.ctx.globalAlpha = this.scanningActive ? 1 : 0.75;
+    this.ctx.fillStyle = this.scanningActive ? "#C83A2A" : "#6A35A5";
+    this.ctx.beginPath();
+    this.ctx.roundRect(lbx - lw / 2, 0, lw, this.h, 4);
+    this.ctx.fill();
     this.ctx.globalAlpha = 1;
-    this.ctx.fillStyle = coreGrad;
-    this.ctx.beginPath();
-    this.ctx.roundRect(lbx - lw / 2, 0, lw, this.h, 15);
-    this.ctx.fill();
-
-    // Glow 1
-    var g1 = this.ctx.createLinearGradient(lbx - lw * 2, 0, lbx + lw * 2, 0);
-    g1.addColorStop(0, "rgba(139, 92, 246, 0)");
-    g1.addColorStop(0.5, "rgba(196, 181, 253, " + (0.8 * gi) + ")");
-    g1.addColorStop(1, "rgba(139, 92, 246, 0)");
-    this.ctx.globalAlpha = this.scanningActive ? 1.0 : 0.8;
-    this.ctx.fillStyle = g1;
-    this.ctx.beginPath();
-    this.ctx.roundRect(lbx - lw * 2, 0, lw * 4, this.h, 25);
-    this.ctx.fill();
-
-    // Glow 2
-    var g2 = this.ctx.createLinearGradient(lbx - lw * 4, 0, lbx + lw * 4, 0);
-    g2.addColorStop(0, "rgba(139, 92, 246, 0)");
-    g2.addColorStop(0.5, "rgba(139, 92, 246, " + (0.4 * gi) + ")");
-    g2.addColorStop(1, "rgba(139, 92, 246, 0)");
-    this.ctx.globalAlpha = this.scanningActive ? 0.8 : 0.6;
-    this.ctx.fillStyle = g2;
-    this.ctx.beginPath();
-    this.ctx.roundRect(lbx - lw * 4, 0, lw * 8, this.h, 35);
-    this.ctx.fill();
-
-    // Extra glow when scanning
-    if (this.scanningActive) {
-      var g3 = this.ctx.createLinearGradient(lbx - lw * 8, 0, lbx + lw * 8, 0);
-      g3.addColorStop(0, "rgba(139, 92, 246, 0)");
-      g3.addColorStop(0.5, "rgba(139, 92, 246, 0.2)");
-      g3.addColorStop(1, "rgba(139, 92, 246, 0)");
-      this.ctx.globalAlpha = 0.6;
-      this.ctx.fillStyle = g3;
-      this.ctx.beginPath();
-      this.ctx.roundRect(lbx - lw * 8, 0, lw * 16, this.h, 45);
-      this.ctx.fill();
-    }
-
-    // Mask with vertical fade
-    this.ctx.globalCompositeOperation = "destination-in";
-    this.ctx.globalAlpha = 1;
-    this.ctx.fillStyle = vertGrad;
-    this.ctx.fillRect(0, 0, this.w, this.h);
   }
 
   render() {

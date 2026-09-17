@@ -45,7 +45,7 @@ function Texture(width, height, rects) {
   canvas.width = width;
   canvas.height = height;
   const context = canvas.getContext("2d");
-  context.fillStyle = "#ffffff";
+  context.fillStyle = "#FFFFFF";
   context.fillRect(0, 0, width, height);
   context.fillStyle = "rgba(0,0,0,0.6)";
   rects.forEach((rect) => {
@@ -253,7 +253,7 @@ function Player() {
   const body = new THREE.Mesh(
     new THREE.BoxGeometry(15, 15, 20),
     new THREE.MeshLambertMaterial({
-      color: "white",
+      color: "#FFFFFF",
       flatShading: true,
     })
   );
