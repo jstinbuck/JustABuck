@@ -194,7 +194,7 @@ a{ color:inherit; text-decoration:none; }
 
 /* Smooth scroll und Sticky-Header-Offset für Sektionen */
 html{ scroll-behavior:smooth; }
-#menu, #about, #community, #reviews, #locations, #event-anfragen{ scroll-margin-top: 140px; }
+#menu, #about, #community, #reviews, #locations, #event-anfragen, #catering-angebote{ scroll-margin-top: 140px; }
 
 /* Skiplink (A11y) */
 .skip-link{ position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden; }
@@ -825,6 +825,73 @@ header{
   font-weight:700;
   border-radius:0 0 3px 3px;
 }
+.catering-offers{ margin-top:clamp(3.5rem, 6vw, 5rem); }
+.catering-offers-heading{
+  display:grid;
+  grid-template-columns:minmax(0, 1fr) minmax(0, .85fr);
+  align-items:end;
+  gap:1.5rem 3rem;
+  margin-bottom:2rem;
+}
+.catering-offers-heading .catering-eyebrow{ margin-bottom:1rem; }
+.catering-offers-heading :is(h2, h3){
+  margin:0;
+  font-family:var(--font-display);
+  font-size:clamp(2.3rem, 4vw, 3.75rem);
+  font-weight:400;
+  line-height:1.1;
+  text-transform:uppercase;
+}
+.catering-offers-heading > p{ max-width:440px; margin:0; color:var(--muted); font-size:.98rem; line-height:1.75; }
+.catering-offer-grid{ display:grid; grid-template-columns:repeat(3, minmax(0, 1fr)); gap:1.25rem; }
+.catering-offer{
+  display:flex;
+  flex-direction:column;
+  min-width:0;
+  padding:clamp(1.25rem, 2.3vw, 2rem);
+  border:1px solid var(--catering-rule);
+  border-top:3px solid var(--brand);
+  border-radius:3px;
+  background:var(--surface);
+}
+.catering-offer-topline{ display:flex; align-items:center; gap:.85rem; margin-bottom:1.75rem; }
+.catering-offer-number{ color:var(--brand); font-family:var(--font-display); font-size:1.65rem; line-height:1; }
+.catering-offer-topline p{ margin:0; color:var(--muted); font-size:.72rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase; }
+.catering-offer :is(h3, h4){ margin:0 0 .85rem; font-size:clamp(1.3rem, 1.75vw, 1.55rem); line-height:1.25; letter-spacing:-.035em; overflow-wrap:anywhere; }
+.catering-offer-description{ margin:0 0 1.75rem; color:var(--muted); font-size:.9rem; line-height:1.7; }
+.catering-offer-label{ margin:0 0 .8rem; font-size:.7rem; font-weight:700; letter-spacing:.07em; text-transform:uppercase; }
+.catering-offer-menu{ display:grid; gap:.8rem; margin:0 0 2rem; padding:0; list-style:none; }
+.catering-offer-menu li{ position:relative; padding-left:1rem; font-size:.86rem; line-height:1.6; }
+.catering-offer-menu li::before{ content:""; position:absolute; top:.65em; left:0; width:5px; height:5px; border-radius:50%; background:var(--brand); }
+.catering-offer-action{ margin-top:auto; padding-top:1.25rem; border-top:1px solid var(--line); }
+.catering-offer-price{ margin:0 0 .85rem; color:var(--muted); font-size:.8rem; }
+.catering-offer-link{ display:flex; align-items:center; justify-content:space-between; gap:.6rem; min-height:48px; padding:.8rem .9rem; border:1px solid var(--line); border-radius:4px; color:var(--brand); font-size:.8rem; font-weight:700; line-height:1.5; transition:background .2s ease, border-color .2s ease; }
+.catering-offer-link > span:last-child{ flex-shrink:0; font-size:1.15rem; line-height:1; }
+.catering-offer-link:hover{ background:var(--surface-brand); border-color:var(--brand); }
+.catering-offer--variety{ border-color:var(--brand); background:var(--brand-strong); color:var(--on-color); }
+.catering-offer--variety .catering-offer-number{ color:var(--on-color); }
+.catering-offer--variety .catering-offer-topline p,
+.catering-offer--variety .catering-offer-description,
+.catering-offer--variety .catering-offer-price{ color:var(--on-dark-muted); }
+.catering-offer--variety .catering-offer-menu li::before{ background:var(--on-color); }
+.catering-offer--variety .catering-offer-action{ border-color:rgba(255,255,255,.25); }
+.catering-offer--variety .catering-offer-link{ border-color:var(--on-color); background:var(--on-color); color:var(--brand-strong); }
+.catering-offer--variety .catering-offer-link:hover{ background:var(--surface-brand-strong); }
+.catering-offers-common{ display:flex; align-items:baseline; justify-content:space-between; flex-wrap:wrap; gap:.7rem 2rem; padding:1.5rem 0 2rem; font-size:.86rem; line-height:1.7; }
+.catering-offers-common p{ margin:0; color:var(--muted); }
+.catering-offers-common strong{ color:var(--ink); }
+.catering-offers-common a{ display:inline-flex; align-items:center; gap:.8rem; min-height:44px; color:var(--brand); font-weight:700; text-decoration:underline; text-underline-offset:4px; }
+.catering-quote-details{ display:grid; grid-template-columns:minmax(0, 1fr) minmax(0, 1.1fr); gap:2rem 4rem; padding:2rem; background:rgba(255,255,255,.6); border:1px solid var(--catering-rule); border-radius:3px; }
+.catering-quote-intro .catering-eyebrow{ margin-bottom:1rem; font-size:.68rem; }
+.catering-quote-intro :is(h3, h4){ margin:0 0 .9rem; max-width:360px; font-size:1.5rem; line-height:1.3; letter-spacing:-.025em; }
+.catering-quote-intro > p:last-child{ margin:0; color:var(--muted); font-size:.88rem; line-height:1.75; }
+.catering-quote-factors{ margin:0; }
+.catering-quote-factors > div + div{ margin-top:1rem; padding-top:1rem; border-top:1px solid var(--catering-rule); }
+.catering-quote-factors dt{ margin-bottom:.3rem; font-size:.9rem; font-weight:700; }
+.catering-quote-factors dd{ margin:0; color:var(--muted); font-size:.85rem; line-height:1.65; }
+.catering-offer-link:focus-visible,
+.catering-offers-common a:focus-visible{ outline:3px solid var(--brand); outline-offset:5px; }
+.catering-offer--variety .catering-offer-link:focus-visible{ outline-color:var(--on-color); }
 .catering-steps{
   display:grid;
   grid-template-columns:repeat(3, minmax(0, 1fr));
@@ -846,7 +913,7 @@ header{
   padding-top:2.5rem;
   border-top:1px solid var(--catering-rule);
 }
-.catering-invitation h3{ margin:0 0 .65rem; font-size:clamp(1.5rem, 2.5vw, 2rem); letter-spacing:-.03em; line-height:1.25; }
+.catering-invitation :is(h2, h3){ margin:0 0 .65rem; font-size:clamp(1.5rem, 2.5vw, 2rem); letter-spacing:-.03em; line-height:1.25; }
 .catering-invitation p{ max-width:540px; margin:0; color:var(--muted); font-size:.95rem; line-height:1.7; }
 .catering-contact{ display:flex; flex-direction:column; align-items:center; gap:.85rem; }
 .catering-cta{
@@ -878,6 +945,13 @@ header{
   .catering-steps{ gap:1.5rem; }
   .catering-steps li{ gap:.6rem; }
   .catering-invitation{ gap:2rem; }
+  .catering-offer-grid{ gap:.85rem; }
+  .catering-offer{ padding:1.25rem; }
+  .catering-offer-link{ padding:.75rem; }
+  .catering-quote-details{ gap:2rem; }
+}
+@media (min-width:761px) and (max-width:1000px){
+  .catering-offer :is(h3, h4){ min-height:2.5em; }
 }
 @media (max-width:760px){
   .catering-intro{ grid-template-columns:minmax(0, 1fr); grid-template-areas:"copy" "photo" "person"; gap:2rem; }
@@ -891,6 +965,17 @@ header{
   .catering-steps p{ font-size:.95rem; }
   .catering-invitation{ grid-template-columns:minmax(0, 1fr); padding-top:2rem; }
   .catering-contact{ align-items:flex-start; }
+  .catering-offers-heading{ grid-template-columns:minmax(0, 1fr); gap:1.25rem; }
+  .catering-offers-heading > p{ max-width:560px; }
+  .catering-offer-grid{ grid-template-columns:minmax(0, 1fr); gap:1.25rem; }
+  .catering-offer{ padding:1.5rem; }
+  .catering-offer-topline{ margin-bottom:1.25rem; }
+  .catering-offer :is(h3, h4){ font-size:1.5rem; }
+  .catering-offer-description{ margin-bottom:1.5rem; }
+  .catering-offer-menu{ margin-bottom:1.5rem; }
+  .catering-offer-link{ font-size:.88rem; }
+  .catering-offers-common{ padding-bottom:1.5rem; }
+  .catering-quote-details{ grid-template-columns:minmax(0, 1fr); padding:1.5rem; }
 }
 @media (max-width:480px){
   .catering-title{ font-size:clamp(2.35rem, 10.8vw, 3.3rem); }
@@ -898,6 +983,36 @@ header{
   .catering-lead{ font-size:1rem; }
   .catering-contact{ align-items:center; }
   .catering-cta{ width:100%; padding:.95rem 1rem; font-size:.9rem; gap:.65rem; }
+}
+
+/* Compact homepage entry; full offers live on catering.html. */
+.catering-teaser .catering-intro{
+  grid-template-columns:minmax(0, 1.05fr) minmax(0, 1fr);
+  grid-template-areas:"copy photo";
+  gap:clamp(2rem, 5vw, 4rem);
+}
+.catering-teaser .catering-title{ font-size:clamp(2.3rem, 4.8vw, 4.5rem); }
+.catering-teaser .catering-lead{ max-width:480px; margin-bottom:1.5rem; }
+.catering-teaser-actions{ display:flex; flex-wrap:wrap; align-items:center; gap:.65rem 1.4rem; }
+.catering-direct-link{ display:inline-flex; align-items:center; min-height:44px; color:var(--brand); font-size:.87rem; font-weight:700; text-decoration:underline; text-underline-offset:4px; }
+.catering-direct-link:hover{ color:var(--brand-strong); }
+.catering-teaser-options{ display:grid; grid-template-columns:repeat(3, minmax(0, 1fr)); gap:0; margin:2.5rem 0 0; padding:1.5rem 0 0; border-top:1px solid var(--catering-rule); list-style:none; }
+.catering-teaser-options li{ min-width:0; }
+.catering-teaser-options li + li{ border-left:1px solid var(--catering-rule); }
+.catering-teaser-options a{ display:flex; align-items:center; justify-content:space-between; gap:1rem; min-height:80px; padding:.5rem 1.5rem; }
+.catering-teaser-options li:first-child a{ padding-left:0; }
+.catering-teaser-options li:last-child a{ padding-right:0; }
+.catering-teaser-options strong{ display:block; margin-bottom:.35rem; font-size:1rem; line-height:1.4; }
+.catering-teaser-options a > span:first-child > span{ display:block; color:var(--muted); font-size:.82rem; line-height:1.6; }
+.catering-teaser-arrow{ flex-shrink:0; color:var(--brand); font-size:1.3rem; }
+.catering-teaser-options a:hover strong{ color:var(--brand); }
+.catering-direct-link:focus-visible,
+.catering-teaser-options a:focus-visible{ outline:3px solid var(--brand); outline-offset:5px; }
+@media (max-width:760px){
+  .catering-teaser .catering-intro{ grid-template-columns:minmax(0, 1fr); grid-template-areas:"copy" "photo"; gap:2rem; }
+  .catering-teaser-options{ grid-template-columns:minmax(0, 1fr); margin-top:2rem; padding-top:0; }
+  .catering-teaser-options li + li{ border-left:0; border-top:1px solid var(--catering-rule); }
+  .catering-teaser-options a{ padding:1rem 0; }
 }
 
 .contact-btn{
