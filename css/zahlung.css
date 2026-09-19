@@ -1,0 +1,431 @@
+/* Zahlungsseite: Inhalte unter der Kartenanimation. Der Scanner-Hero bleibt in site.css. */
+:root{
+  --zahlung-paper:#f6f3ec;
+  --zahlung-rule:#d9d1cd;
+}
+
+.zahlung-inner{
+  max-width:1180px;
+  margin:0 auto;
+}
+
+.zahlung-eyebrow{
+  margin:0 0 1rem;
+  color:var(--brand);
+  font-size:.72rem;
+  font-weight:700;
+  line-height:1.4;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+
+.zahlung-heading h2,
+.zahlung-crypto-intro h2,
+.zahlung-faq h2,
+.zahlung-cta h2{
+  margin:0;
+  font-family:var(--font-display);
+  font-weight:400;
+  line-height:1.05;
+  letter-spacing:-.01em;
+  text-transform:uppercase;
+}
+
+/* Überblick: vor Ort und Catering nebeneinander */
+.zahlung-overview{
+  padding:clamp(3.5rem,7vw,6rem) 1.5rem clamp(3rem,6vw,5rem);
+}
+.zahlung-heading{
+  max-width:760px;
+  margin-bottom:clamp(2.25rem,4vw,3.25rem);
+}
+.zahlung-heading h2{
+  color:var(--brand-strong);
+  font-size:clamp(2.6rem,5.6vw,4.75rem);
+}
+.zahlung-heading h2 span,
+.zahlung-crypto-intro h2 span{ display:block; }
+@supports (-webkit-text-stroke:1px black){
+  .zahlung-heading h2 span{ color:transparent; -webkit-text-stroke:1.5px var(--brand-strong); }
+  .zahlung-crypto-intro h2 span{ color:transparent; -webkit-text-stroke:1.5px var(--zahlung-paper); }
+}
+.zahlung-lead{
+  max-width:52ch;
+  margin:1.25rem 0 0;
+  color:var(--muted);
+  font-size:1.05rem;
+  line-height:1.7;
+}
+
+.zahlung-contexts{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:1.5rem;
+}
+.zahlung-context{
+  display:flex;
+  flex-direction:column;
+  min-width:0;
+  padding:clamp(1.5rem,3vw,2.5rem);
+  border-radius:6px;
+  scroll-margin-top:140px;
+}
+.zahlung-context--onsite{
+  color:var(--zahlung-paper);
+  background:var(--brand-strong);
+}
+.zahlung-context--catering{
+  color:var(--ink);
+  background:var(--zahlung-paper);
+  border:1px solid var(--zahlung-rule);
+}
+.zahlung-context-label{
+  display:flex;
+  align-items:center;
+  gap:.7rem;
+  margin:0;
+  font-size:.72rem;
+  font-weight:700;
+  line-height:1.4;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+.zahlung-context-label span{
+  font-family:var(--font-display);
+  font-size:1.15rem;
+  font-weight:400;
+  letter-spacing:0;
+}
+.zahlung-context h3{
+  margin:1.1rem 0 .6rem;
+  font-family:var(--font-display);
+  font-size:clamp(1.9rem,3vw,2.6rem);
+  font-weight:400;
+  line-height:1.05;
+  letter-spacing:-.01em;
+  text-transform:uppercase;
+}
+.zahlung-context-intro{ margin:0; font-size:.95rem; line-height:1.65; }
+.zahlung-context--onsite .zahlung-context-intro{ color:var(--on-dark-muted); }
+.zahlung-context--catering :is(.zahlung-context-label, h3){ color:var(--brand-strong); }
+.zahlung-context--catering .zahlung-context-intro{ color:var(--muted); }
+
+.zahlung-methods{
+  flex:1;
+  margin:1.75rem 0 2rem;
+  padding:0;
+  list-style:none;
+}
+.zahlung-methods li{
+  display:grid;
+  grid-template-columns:44px minmax(0,1fr);
+  align-items:start;
+  gap:1rem;
+  padding:1.1rem 0;
+  border-top:1px solid var(--zahlung-rule);
+}
+.zahlung-context--onsite .zahlung-methods li{ border-color:rgba(246,243,236,.22); }
+.zahlung-method-icon{
+  display:grid;
+  place-items:center;
+  width:44px;
+  height:44px;
+  border:1px solid var(--zahlung-rule);
+  border-radius:50%;
+  color:var(--brand-strong);
+  font-size:1.2rem;
+  font-weight:700;
+  line-height:1;
+}
+.zahlung-context--onsite .zahlung-method-icon{ border-color:rgba(246,243,236,.4); color:var(--zahlung-paper); }
+.zahlung-method--crypto .zahlung-method-icon{ color:var(--zahlung-paper); background:var(--brand-strong); border-color:var(--brand-strong); }
+.zahlung-context--onsite .zahlung-method--crypto .zahlung-method-icon{ color:var(--brand-strong); background:var(--zahlung-paper); border-color:var(--zahlung-paper); }
+.zahlung-methods strong{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:.35rem .6rem;
+  margin-bottom:.2rem;
+  font-size:1.02rem;
+  line-height:1.4;
+}
+.zahlung-methods div > span{ display:block; font-size:.88rem; line-height:1.6; }
+.zahlung-context--onsite .zahlung-methods div > span{ color:var(--on-dark-muted); }
+.zahlung-context--catering .zahlung-methods div > span{ color:var(--muted); }
+.zahlung-methods a{
+  font-weight:700;
+  white-space:nowrap;
+  text-decoration:underline;
+  text-underline-offset:3px;
+}
+.zahlung-context--onsite .zahlung-methods a{ color:var(--zahlung-paper); }
+.zahlung-context--catering .zahlung-methods a{ color:var(--brand); }
+.zahlung-method-tag{
+  padding:.2rem .5rem;
+  border-radius:999px;
+  color:var(--zahlung-paper);
+  background:var(--brand-strong);
+  font-size:.64rem;
+  font-style:normal;
+  font-weight:700;
+  line-height:1.3;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+.zahlung-context--onsite .zahlung-method-tag{ color:var(--brand-strong); background:var(--zahlung-paper); }
+
+.zahlung-context-link{
+  align-self:flex-start;
+  display:inline-flex;
+  align-items:center;
+  gap:1.25rem;
+  min-height:48px;
+  padding:.8rem 1.15rem;
+  border-radius:5px;
+  font-weight:700;
+  line-height:1.4;
+  transition:transform .2s ease,box-shadow .2s ease;
+}
+.zahlung-context-link span{ font-size:1.3rem; }
+.zahlung-context--onsite .zahlung-context-link{ color:var(--brand-strong); background:var(--zahlung-paper); }
+.zahlung-context--onsite .zahlung-context-link:hover{ transform:translate(-2px,-2px); box-shadow:4px 4px 0 rgba(246,243,236,.3); }
+.zahlung-context--catering .zahlung-context-link{ color:var(--zahlung-paper); background:var(--brand-strong); }
+.zahlung-context--catering .zahlung-context-link:hover{ transform:translate(-2px,-2px); box-shadow:4px 4px 0 rgba(var(--brand-rgb),.25); }
+.zahlung-context--onsite :is(.zahlung-context-link, .zahlung-methods a):focus-visible{ outline:3px solid var(--zahlung-paper); outline-offset:4px; }
+.zahlung-context--catering :is(.zahlung-context-link, .zahlung-methods a):focus-visible{ outline:3px solid var(--brand); outline-offset:4px; }
+
+.zahlung-note{
+  display:flex;
+  align-items:center;
+  gap:.6rem;
+  margin:1.5rem 0 0;
+  color:var(--muted);
+  font-size:.88rem;
+  line-height:1.6;
+}
+.zahlung-note::before{ content:""; flex-shrink:0; width:.9rem; height:2px; background:var(--brand); }
+
+/* Krypto: Coins je Anlass, Memecoins ausgeschlossen */
+.zahlung-crypto{
+  padding:clamp(3.5rem,7vw,6rem) 1.5rem;
+  color:var(--zahlung-paper);
+  background:var(--ink);
+  scroll-margin-top:100px;
+}
+.zahlung-crypto-grid{
+  display:grid;
+  grid-template-columns:minmax(0,.85fr) minmax(0,1.4fr);
+  align-items:start;
+  gap:2.5rem clamp(2rem,6vw,6rem);
+}
+.zahlung-crypto .zahlung-eyebrow{ color:var(--on-dark-muted); }
+.zahlung-crypto-intro{ min-width:0; }
+.zahlung-crypto-intro h2{ color:var(--zahlung-paper); font-size:clamp(2.6rem,5vw,4.25rem); }
+.zahlung-crypto-intro h2 + p{
+  max-width:40ch;
+  margin:1.25rem 0 0;
+  color:var(--on-dark-muted);
+  font-size:1rem;
+  line-height:1.7;
+}
+.zahlung-coin-groups{ min-width:0; }
+.zahlung-coin-group{ padding:1.5rem 0; border-top:1px solid rgba(246,243,236,.18); }
+.zahlung-coin-group:first-child{ padding-top:0; border-top:0; }
+.zahlung-coin-group:last-child{ padding-bottom:0; }
+.zahlung-coin-group h3{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:baseline;
+  gap:.3rem .8rem;
+  margin:0 0 .4rem;
+  font-size:1.2rem;
+  font-weight:700;
+  line-height:1.4;
+}
+.zahlung-coin-group h3 span{
+  color:var(--on-dark-muted);
+  font-size:.7rem;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+.zahlung-coin-group p{
+  margin:0 0 1rem;
+  color:var(--on-dark-muted);
+  font-size:.92rem;
+  line-height:1.65;
+}
+.zahlung-coins{
+  display:flex;
+  flex-wrap:wrap;
+  gap:.5rem;
+  margin:0;
+  padding:0;
+  list-style:none;
+}
+.zahlung-coins li{
+  display:inline-flex;
+  align-items:center;
+  gap:.5rem;
+  min-height:38px;
+  padding:.4rem .85rem;
+  border:1px solid rgba(246,243,236,.28);
+  border-radius:999px;
+  color:var(--on-dark-muted);
+  font-size:.85rem;
+  line-height:1.3;
+}
+.zahlung-coins b{ color:var(--zahlung-paper); font-weight:700; letter-spacing:.04em; }
+.zahlung-coins--fast li{ color:var(--muted); background:var(--zahlung-paper); border-color:var(--zahlung-paper); }
+.zahlung-coins--fast b{ color:var(--brand-strong); }
+.zahlung-coins--excluded li{ border-style:dashed; color:var(--on-dark-subtle); }
+.zahlung-coins--excluded b{ color:var(--on-dark-subtle); text-decoration:line-through; text-decoration-thickness:2px; }
+
+.zahlung-steps{
+  grid-column:1 / -1;
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:1.5rem clamp(1.5rem,3vw,3rem);
+  margin:clamp(1rem,3vw,2rem) 0 0;
+  padding:2rem 0 0;
+  border-top:1px solid rgba(246,243,236,.18);
+  list-style:none;
+}
+.zahlung-steps li{ min-width:0; }
+.zahlung-step-number{
+  display:block;
+  margin-bottom:.75rem;
+  color:var(--on-dark-subtle);
+  font-family:var(--font-display);
+  font-size:2rem;
+  line-height:1;
+}
+.zahlung-steps strong{ display:block; margin-bottom:.35rem; font-size:1.05rem; line-height:1.4; }
+.zahlung-steps p{ margin:0; color:var(--on-dark-muted); font-size:.9rem; line-height:1.65; }
+
+/* FAQ */
+.zahlung-faq{ padding:clamp(3.5rem,7vw,6rem) 1.5rem; }
+.zahlung-faq-grid{
+  display:grid;
+  grid-template-columns:minmax(0,.8fr) minmax(0,1.4fr);
+  align-items:start;
+  gap:2rem clamp(2rem,6vw,6rem);
+}
+.zahlung-faq h2{ color:var(--brand-strong); font-size:clamp(2.4rem,4.5vw,3.75rem); }
+.zahlung-faq-list{ min-width:0; border-bottom:1px solid var(--zahlung-rule); }
+.zahlung-faq-item{ border-top:1px solid var(--zahlung-rule); }
+.zahlung-faq-item summary{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:1.5rem;
+  min-height:44px;
+  padding:1.25rem 0;
+  font-size:1.05rem;
+  font-weight:700;
+  line-height:1.45;
+  list-style:none;
+  cursor:pointer;
+}
+.zahlung-faq-item summary::-webkit-details-marker{ display:none; }
+.zahlung-faq-item summary::after{
+  content:"";
+  flex-shrink:0;
+  width:14px;
+  height:14px;
+  background:
+    linear-gradient(var(--brand),var(--brand)) center / 100% 2px no-repeat,
+    linear-gradient(var(--brand),var(--brand)) center / 2px 100% no-repeat;
+  transition:transform .25s ease;
+}
+.zahlung-faq-item[open] summary::after{ transform:rotate(45deg); }
+.zahlung-faq-item summary:focus-visible{ outline:3px solid var(--brand); outline-offset:4px; }
+.zahlung-faq-item p{
+  max-width:62ch;
+  margin:0;
+  padding:0 0 1.35rem;
+  color:var(--muted);
+  font-size:.95rem;
+  line-height:1.7;
+}
+
+/* Abschluss */
+.zahlung-cta{
+  padding:clamp(3rem,6vw,4.5rem) 1.5rem;
+  background:var(--zahlung-paper);
+  border-top:1px solid var(--zahlung-rule);
+}
+main:has(> .zahlung-cta) + .site-footer{ margin-top:0; }
+.zahlung-cta-inner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:2rem 3rem;
+}
+.zahlung-cta h2{ color:var(--brand-strong); font-size:clamp(2.2rem,4.2vw,3.5rem); }
+.zahlung-cta p{
+  max-width:48ch;
+  margin:.75rem 0 0;
+  color:var(--muted);
+  font-size:1rem;
+  line-height:1.65;
+}
+.zahlung-cta-actions{
+  display:flex;
+  flex-wrap:wrap;
+  flex-shrink:0;
+  align-items:center;
+  gap:.75rem 1.5rem;
+}
+.zahlung-cta-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:1.25rem;
+  min-height:48px;
+  padding:.85rem 1.25rem;
+  border-radius:5px;
+  color:var(--zahlung-paper);
+  background:var(--brand-strong);
+  font-weight:700;
+  line-height:1.4;
+  transition:transform .2s ease,box-shadow .2s ease;
+}
+.zahlung-cta-btn span{ font-size:1.3rem; }
+.zahlung-cta-btn:hover{ transform:translate(-2px,-2px); box-shadow:4px 4px 0 rgba(var(--brand-rgb),.25); }
+.zahlung-cta-link{
+  display:inline-flex;
+  align-items:center;
+  min-height:44px;
+  color:var(--brand-strong);
+  font-weight:700;
+  text-decoration:underline;
+  text-underline-offset:4px;
+}
+.zahlung-cta :is(.zahlung-cta-btn, .zahlung-cta-link):focus-visible{ outline:3px solid var(--brand); outline-offset:4px; }
+
+@media (max-width:900px){
+  .zahlung-contexts,
+  .zahlung-crypto-grid,
+  .zahlung-faq-grid{ grid-template-columns:minmax(0,1fr); }
+  .zahlung-cta-inner{ flex-direction:column; align-items:flex-start; }
+}
+@media (max-width:640px){
+  .zahlung-overview,
+  .zahlung-crypto,
+  .zahlung-faq,
+  .zahlung-cta{ padding-left:1.25rem; padding-right:1.25rem; }
+  .zahlung-methods li{ grid-template-columns:40px minmax(0,1fr); gap:.85rem; }
+  .zahlung-method-icon{ width:40px; height:40px; }
+  .zahlung-steps{ grid-template-columns:minmax(0,1fr); }
+}
+@media (prefers-reduced-motion:reduce){
+  .zahlung-context-link,
+  .zahlung-cta-btn,
+  .zahlung-faq-item summary::after{ transition:none; }
+  .zahlung-context-link:hover,
+  .zahlung-cta-btn:hover{ transform:none; }
+}
+@media (forced-colors:active){
+  .zahlung-heading h2 span,
+  .zahlung-crypto-intro h2 span{ color:CanvasText; -webkit-text-stroke:0; }
+  .zahlung-faq-item summary::after{ content:"+"; width:auto; height:auto; background:none; }
+}

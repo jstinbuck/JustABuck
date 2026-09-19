@@ -10,9 +10,31 @@ const PAYMENT_COLORS = Object.freeze({
   brand: "#6A35A5",
   brandStrong: "#542A84",
   ink: "#21171D",
+  paper: "#F6F3EC",
   white: "#FFFFFF",
   brandRgb: "106, 53, 165"
 });
+
+// Kartenfarben: Lila, Dunkel und Papier wie auf der restlichen Seite.
+const CARD_THEMES = Object.freeze({
+  brand: { from: PAYMENT_COLORS.brand, to: PAYMENT_COLORS.brandStrong, text: PAYMENT_COLORS.paper, muted: "rgba(246, 243, 236, .62)", line: "rgba(246, 243, 236, .12)" },
+  ink: { from: PAYMENT_COLORS.brandStrong, to: PAYMENT_COLORS.ink, text: PAYMENT_COLORS.paper, muted: "rgba(246, 243, 236, .55)", line: "rgba(246, 243, 236, .10)" },
+  paper: { from: PAYMENT_COLORS.paper, to: "#E6DCEF", text: PAYMENT_COLORS.brandStrong, muted: "rgba(84, 42, 132, .62)", line: "rgba(84, 42, 132, .14)" }
+});
+
+// Die Karten zeigen die Zahlungsarten der Seite; Krypto-Karten tragen Ticker und Wallet-QR statt Chip.
+const CARD_DESIGNS = [
+  { theme: "brand", method: "VISA", number: "•••• •••• •••• 4821" },
+  { theme: "ink", method: "SOLANA", ticker: "SOL", number: "7fKq … 9xDe" },
+  { theme: "paper", method: "GIROCARD", number: "•••• •••• •••• 0387" },
+  { theme: "brand", method: "PAYPAL", number: "•••• •••• •••• 1126" },
+  { theme: "ink", method: "LIGHTNING", ticker: "BTC ⚡", number: "lnbc … q8f2" },
+  { theme: "paper", method: "MASTERCARD", number: "•••• •••• •••• 5530" },
+  { theme: "brand", method: "LITECOIN", ticker: "LTC", number: "ltc1 … 7k2m" },
+  { theme: "ink", method: "USDC", ticker: "USDC", number: "Gh3w … Tr5b" },
+  { theme: "paper", method: "ÜBERWEISUNG", number: "DE•• •••• •••• •••• 26" },
+  { theme: "brand", method: "ETHEREUM", ticker: "ETH", number: "0x7a … b91c" }
+];
 
 class CardStreamController {
   constructor() {
@@ -22,8 +44,12 @@ class CardStreamController {
 
     this.heroEl = document.querySelector(".scanner-hero-container");
 
+    // Bei reduzierter Bewegung stehen die Karten still und lassen sich nur ziehen.
+    var reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    this.baseVelocity = reducedMotion ? 0 : 120;
+
     this.position = 0;
-    this.velocity = 120;
+    this.velocity = this.baseVelocity;
     this.direction = -1;
     this.isAnimating = true;
     this.isDragging = false;
@@ -32,7 +58,7 @@ class CardStreamController {
     this.lastMouseX = 0;
     this.mouseVelocity = 0;
     this.friction = 0.95;
-    this.minVelocity = 30;
+    this.minVelocity = reducedMotion ? 0 : 30;
 
     this.containerWidth = 0;
     this.cardLineWidth = 0;
@@ -47,6 +73,15 @@ class CardStreamController {
     this.updateCardPosition();
     this.animate();
     this.startPeriodicUpdates();
+
+    // Canvas nutzt Webfonts erst nach dem Laden; danach Karten einmal neu zeichnen.
+    if (document.fonts && document.fonts.load) {
+      Promise.all([
+        document.fonts.load("400 22px Anton"),
+        document.fonts.load("600 17px 'Space Grotesk'"),
+        document.fonts.load("700 13px 'Space Grotesk'")
+      ]).then(function() { this.redrawCards(); }.bind(this)).catch(function() {});
+    }
   }
 
   getHeroWidth() {
@@ -122,7 +157,7 @@ class CardStreamController {
       this.velocity = Math.abs(this.mouseVelocity);
       this.direction = this.mouseVelocity > 0 ? 1 : -1;
     } else {
-      this.velocity = 120;
+      this.velocity = this.baseVelocity;
     }
 
     this.isAnimating = true;
@@ -167,26 +202,27 @@ class CardStreamController {
     var pick = function(arr) { return arr[randInt(0, arr.length - 1)]; };
 
     var library = [
-      "// compiled preview - scanner demo",
-      "const SCAN_WIDTH = 8;",
-      "const FADE_ZONE = 35;",
-      "const MAX_PARTICLES = 2500;",
-      "function clamp(n, a, b) { return Math.max(a, Math.min(b, n)); }",
-      "function lerp(a, b, t) { return a + (b - a) * t; }",
-      "const now = () => performance.now();",
-      "class Particle { constructor(x, y) { this.x = x; this.y = y; } }",
-      "const scanner = { x: Math.floor(w / 2), width: 8, glow: 3.5 };",
-      "function drawParticle(ctx, p) { ctx.globalAlpha = p.a; }",
-      "function tick(t) { const dt = 0.016; }",
-      "const state = { intensity: 1.2, particles: 800 };",
-      "ctx.globalCompositeOperation = 'lighter';",
-      "const gradient = ctx.createRadialGradient(x, y, 0, x, y, r);",
-      "for (let i = 0; i < count; i++) { update(particles[i]); }",
-      "requestAnimationFrame(tick);",
+      "// just-a-buck/checkout",
+      "const order = cart.total('EUR');",
+      "await terminal.charge(order);",
+      "const rate = await fx.quote(coin, 'EUR');",
+      "assert(!coin.isMeme);",
+      "const tx = await wallet.pay(order, { network: 'solana' });",
+      "lightning.pay(invoice);",
+      "paypal.qr(order).scan();",
+      "if (tx.confirmed) receipt.print();",
+      "order.status = 'paid';",
+      "grill.smash(patty, { cheese: 2 });",
+      "fries.load({ cheese: true, jalapenos: true });",
+      "queue.next();",
+      "invoice.send({ method: 'transfer' });",
     ];
 
-    for (var i = 0; i < 30; i++) {
-      library.push("const v" + i + " = (" + randInt(1,9) + " + " + randInt(10,99) + ") * 0." + randInt(1,9) + ";");
+    var hex = "0123456789abcdef";
+    for (var i = 0; i < 12; i++) {
+      var hash = "";
+      for (var j = 0; j < 8; j++) hash += hex[randInt(0, 15)];
+      library.push("const tx" + i + " = '0x" + hash + "';");
     }
 
     var flow = library.join(" ").replace(/\s+/g, " ").trim();
@@ -210,6 +246,169 @@ class CardStreamController {
     return { width: Math.floor(cardWidth / 6), height: Math.floor(cardHeight / 13), fontSize: 11, lineHeight: 13 };
   }
 
+  // Zeichnet eine Karte in doppelter Auflösung, damit sie auf Retina-Displays scharf bleibt.
+  drawCard(index) {
+    var design = CARD_DESIGNS[index % CARD_DESIGNS.length];
+    var theme = CARD_THEMES[design.theme];
+    var w = 360;
+    var h = 220;
+    var scale = 2;
+
+    var canvas = document.createElement("canvas");
+    canvas.width = w * scale;
+    canvas.height = h * scale;
+    var ctx = canvas.getContext("2d");
+    ctx.scale(scale, scale);
+
+    ctx.save();
+    ctx.beginPath();
+    ctx.roundRect(0, 0, w, h, 15);
+    ctx.clip();
+
+    var grad = ctx.createLinearGradient(0, 0, w, h);
+    grad.addColorStop(0, theme.from);
+    grad.addColorStop(1, theme.to);
+    ctx.fillStyle = grad;
+    ctx.fillRect(0, 0, w, h);
+
+    // Kreise wie im Pop-up-Bereich der Startseite
+    ctx.strokeStyle = theme.line;
+    ctx.lineWidth = 1;
+    [70, 115, 160].forEach(function(r) {
+      ctx.beginPath();
+      ctx.arc(w - 20, 30, r, 0, Math.PI * 2);
+      ctx.stroke();
+    });
+
+    // Diagonaler Lichtreflex
+    var sheen = ctx.createLinearGradient(0, 0, w, h);
+    sheen.addColorStop(0.3, "rgba(255, 255, 255, 0)");
+    sheen.addColorStop(0.45, "rgba(255, 255, 255, .13)");
+    sheen.addColorStop(0.6, "rgba(255, 255, 255, 0)");
+    ctx.fillStyle = sheen;
+    ctx.fillRect(0, 0, w, h);
+    ctx.restore();
+
+    ctx.strokeStyle = theme.line;
+    ctx.beginPath();
+    ctx.roundRect(0.5, 0.5, w - 1, h - 1, 15);
+    ctx.stroke();
+
+    ctx.fillStyle = theme.text;
+    ctx.font = "400 22px Anton, 'Space Grotesk', sans-serif";
+    ctx.letterSpacing = "1px";
+    ctx.fillText("JUST A BUCK", 24, 44);
+
+    if (design.ticker) {
+      this.drawTicker(ctx, theme, design.ticker, w - 24, 26);
+      this.drawWalletQr(ctx, theme, 24, 70, index + 1);
+    } else {
+      this.drawContactless(ctx, theme, w - 42, 36);
+      this.drawChip(ctx, 24, 76);
+    }
+
+    ctx.fillStyle = theme.text;
+    ctx.font = "600 17px 'Space Grotesk', monospace";
+    ctx.letterSpacing = "2px";
+    ctx.fillText(design.number, 24, 156);
+
+    ctx.fillStyle = theme.muted;
+    ctx.font = "700 9px 'Space Grotesk', sans-serif";
+    ctx.letterSpacing = "1.5px";
+    ctx.fillText("KEMPTEN · ALLGÄU", 24, 196);
+
+    ctx.fillStyle = theme.text;
+    ctx.font = "700 13px 'Space Grotesk', sans-serif";
+    ctx.textAlign = "right";
+    ctx.fillText(design.method, w - 24, 196);
+
+    return canvas.toDataURL();
+  }
+
+  drawChip(ctx, x, y) {
+    var metal = ctx.createLinearGradient(x, y, x + 42, y + 32);
+    metal.addColorStop(0, "#EDE6D6");
+    metal.addColorStop(0.5, "#C9BDA2");
+    metal.addColorStop(1, "#E8E0CC");
+    ctx.fillStyle = metal;
+    ctx.beginPath();
+    ctx.roundRect(x, y, 42, 32, 6);
+    ctx.fill();
+
+    ctx.strokeStyle = "rgba(33, 23, 29, .28)";
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(x, y + 11); ctx.lineTo(x + 14, y + 11);
+    ctx.moveTo(x, y + 21); ctx.lineTo(x + 14, y + 21);
+    ctx.moveTo(x + 28, y + 11); ctx.lineTo(x + 42, y + 11);
+    ctx.moveTo(x + 28, y + 21); ctx.lineTo(x + 42, y + 21);
+    ctx.roundRect(x + 14, y + 6, 14, 20, 3);
+    ctx.stroke();
+  }
+
+  drawContactless(ctx, theme, x, y) {
+    ctx.strokeStyle = theme.text;
+    ctx.lineWidth = 1.8;
+    ctx.lineCap = "round";
+    ctx.globalAlpha = 0.85;
+    [5, 10, 15].forEach(function(r) {
+      ctx.beginPath();
+      ctx.arc(x, y, r, -Math.PI / 4, Math.PI / 4);
+      ctx.stroke();
+    });
+    ctx.globalAlpha = 1;
+  }
+
+  drawTicker(ctx, theme, text, right, top) {
+    ctx.font = "700 11px 'Space Grotesk', sans-serif";
+    ctx.letterSpacing = "1px";
+    var pillWidth = ctx.measureText(text).width + 18;
+    ctx.strokeStyle = theme.text;
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.roundRect(right - pillWidth, top, pillWidth, 22, 11);
+    ctx.stroke();
+    ctx.fillStyle = theme.text;
+    ctx.textAlign = "center";
+    ctx.fillText(text, right - pillWidth / 2, top + 15);
+    ctx.textAlign = "left";
+  }
+
+  // Angedeuteter Wallet-QR-Code mit festem Muster pro Karte
+  drawWalletQr(ctx, theme, x, y, seed) {
+    var cells = 9;
+    var size = 5;
+    var state = seed * 7919;
+    var rand = function() {
+      state = (state * 9301 + 49297) % 233280;
+      return state / 233280;
+    };
+
+    ctx.fillStyle = theme.text;
+    for (var row = 0; row < cells; row++) {
+      for (var col = 0; col < cells; col++) {
+        var inFinder = (row < 3 && col < 3) || (row < 3 && col > 5) || (row > 5 && col < 3);
+        if (!inFinder && rand() > 0.5) ctx.fillRect(x + col * size, y + row * size, size - 0.6, size - 0.6);
+      }
+    }
+
+    ctx.strokeStyle = theme.text;
+    ctx.lineWidth = 1.6;
+    [[0, 0], [0, 6], [6, 0]].forEach(function(corner) {
+      var fx = x + corner[1] * size;
+      var fy = y + corner[0] * size;
+      ctx.strokeRect(fx + 0.8, fy + 0.8, size * 3 - 1.6, size * 3 - 1.6);
+      ctx.fillRect(fx + size, fy + size, size, size);
+    });
+  }
+
+  redrawCards() {
+    var images = this.cardLine.querySelectorAll(".sh-card-image");
+    for (var i = 0; i < images.length; i++) {
+      images[i].src = this.drawCard(i);
+    }
+  }
+
   createCardWrapper(index) {
     var wrapper = document.createElement("div");
     wrapper.className = "sh-card-wrapper";
@@ -217,60 +416,10 @@ class CardStreamController {
     var normalCard = document.createElement("div");
     normalCard.className = "sh-card sh-card-normal";
 
-    // Generate gradient card image
-    var canvas = document.createElement("canvas");
-    canvas.width = 360;
-    canvas.height = 220;
-    var ctx = canvas.getContext("2d");
-
-    var gradients = [
-      [PAYMENT_COLORS.brand, PAYMENT_COLORS.brandStrong],
-      [PAYMENT_COLORS.brandStrong, PAYMENT_COLORS.ink],
-      [PAYMENT_COLORS.brand, PAYMENT_COLORS.ink],
-      [PAYMENT_COLORS.ink, PAYMENT_COLORS.brand],
-      [PAYMENT_COLORS.brandStrong, PAYMENT_COLORS.brand],
-      [PAYMENT_COLORS.brand, PAYMENT_COLORS.brandStrong],
-      [PAYMENT_COLORS.ink, PAYMENT_COLORS.brandStrong],
-      [PAYMENT_COLORS.brandStrong, PAYMENT_COLORS.ink],
-    ];
-
-    var pair = gradients[index % gradients.length];
-    var grad = ctx.createLinearGradient(0, 0, 360, 220);
-    grad.addColorStop(0, pair[0]);
-    grad.addColorStop(1, pair[1]);
-    ctx.fillStyle = grad;
-    ctx.beginPath();
-    ctx.roundRect(0, 0, 360, 220, 15);
-    ctx.fill();
-
-    // Add chip
-    ctx.fillStyle = "rgba(255,255,255,.15)";
-    ctx.beginPath();
-    ctx.roundRect(25, 75, 40, 30, 5);
-    ctx.fill();
-
-    // Add logo text
-    ctx.font = "bold 14px 'Space Grotesk', sans-serif";
-    ctx.fillStyle = "rgba(255,255,255,.7)";
-    ctx.fillText("JUST A BUCK", 25, 50);
-
-    // Add card number
-    ctx.font = "600 18px 'Space Grotesk', monospace";
-    ctx.fillStyle = "rgba(255,255,255,.6)";
-    ctx.fillText("•••• •••• •••• " + (1000 + index * 111), 25, 145);
-
-    // Add payment label
-    var labels = ["VISA", "MASTERCARD", "PAYPAL", "BTC", "ETH", "SOL", "USDT", "LTC"];
-    ctx.font = "bold 12px 'Space Grotesk', sans-serif";
-    ctx.fillStyle = "rgba(255,255,255,.5)";
-    ctx.textAlign = "right";
-    ctx.fillText(labels[index % labels.length], 335, 200);
-    ctx.textAlign = "left";
-
     var cardImage = document.createElement("img");
     cardImage.className = "sh-card-image";
-    cardImage.src = canvas.toDataURL();
-    cardImage.alt = "Payment Card";
+    cardImage.src = this.drawCard(index);
+    cardImage.alt = "";
     normalCard.appendChild(cardImage);
 
     var asciiCard = document.createElement("div");

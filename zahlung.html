@@ -5,11 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <title>Zahlungsmethoden – Just A Buck</title>
-  <meta name="description" content="Alle Zahlungsmethoden bei Just A Buck: Karte, Bar, PayPal & Krypto. Aktuell in der Beta – verfügbar bei Vor-Ort-Events und Catering." />
+  <meta name="description" content="Bezahlen bei Just A Buck: am Stand mit Karte, Bar, PayPal oder schnellen Coins, beim Catering per Überweisung, bar oder mit allen etablierten Kryptowährungen." />
   <meta name="theme-color" content="#6A35A5" />
 
   <link rel="icon" type="image/png" href="assets/images/logo.png" />
   <link rel="stylesheet" href="css/site.css" />
+  <link rel="stylesheet" href="css/zahlung.css" />
 </head>
 <body>
 
@@ -42,8 +43,8 @@
   <main id="main">
 
     <!-- Scanner Hero -->
-    <section class="scanner-hero" aria-label="Zahlungsmethoden Animation">
-      <div class="scanner-hero-container">
+    <section class="scanner-hero" aria-labelledby="zahlungHeroTitle">
+      <div class="scanner-hero-container" aria-hidden="true">
         <canvas id="particleCanvas"></canvas>
         <canvas id="scannerCanvas"></canvas>
         <div class="scanner-hero-scanner"></div>
@@ -52,109 +53,195 @@
         </div>
       </div>
       <div class="scanner-hero-overlay">
-        <span class="zahlung-beta-pill">BETA</span>
-        <h1 class="zahlung-hero-title">Zahlungsmethoden</h1>
-        <p class="zahlung-hero-sub">Flexibel bezahlen bei Just A Buck &ndash; wir machen es euch so einfach wie möglich.</p>
+        <h1 id="zahlungHeroTitle" class="zahlung-hero-title">
+          <span class="zahlung-hero-eyebrow">Zahlungsmethoden</span>
+          <span class="zahlung-hero-main">Zahl, wie du <span>willst.</span></span>
+        </h1>
+        <p class="zahlung-hero-sub">Karte, Bar, PayPal, Überweisung oder Krypto. Du entscheidest.</p>
       </div>
     </section>
 
-    <!-- Availability Notice -->
-    <section class="zahlung-notice">
-      <div class="zahlung-notice-inner">
-        <span class="zahlung-notice-icon">&#9432;</span>
-        <p>Karte, Bar &amp; PayPal sind überall verfügbar. <strong>Krypto-Zahlungen</strong> befinden sich aktuell in der <strong>Beta-Phase</strong> und sind ausschließlich bei <strong>Vor-Ort-Events</strong> und <strong>Catering-Buchungen</strong> nutzbar.</p>
+    <!-- Zahlungsarten nach Anlass: am Stand oder per Catering-Buchung -->
+    <section class="zahlung-overview" aria-labelledby="zahlungOverviewTitle">
+      <div class="zahlung-inner">
+        <div class="zahlung-heading">
+          <p class="zahlung-eyebrow">Bezahlen bei Just A Buck</p>
+          <h2 id="zahlungOverviewTitle">Am Stand <span>oder beim Catering.</span></h2>
+          <p class="zahlung-lead">Je nachdem, wo du uns triffst, zahlst du ein bisschen anders. Hier siehst du alles auf einen Blick.</p>
+        </div>
+
+        <div class="zahlung-contexts">
+          <article id="vor-ort" class="zahlung-context zahlung-context--onsite" aria-labelledby="zahlungOnsiteTitle">
+            <p class="zahlung-context-label"><span aria-hidden="true">01</span> Vor Ort</p>
+            <h3 id="zahlungOnsiteTitle">Pop-ups &amp; Event-Stand</h3>
+            <p class="zahlung-context-intro">Du bestellst direkt an unserem Stand und zahlst sofort.</p>
+            <ul class="zahlung-methods" role="list">
+              <li>
+                <span class="zahlung-method-icon" aria-hidden="true">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" focusable="false"><rect x="2.5" y="5" width="19" height="14" rx="2.5" /><path d="M2.5 9.5h19M6 15h4" stroke-linecap="round" /></svg>
+                </span>
+                <div><strong>Karte</strong><span>Visa, Mastercard, Maestro und girocard. Kontaktlos oder mit Chip.</span></div>
+              </li>
+              <li>
+                <span class="zahlung-method-icon" aria-hidden="true">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" focusable="false"><rect x="2.5" y="6" width="19" height="12" rx="2" /><circle cx="12" cy="12" r="2.6" /><path d="M6 9.5v5M18 9.5v5" stroke-linecap="round" /></svg>
+                </span>
+                <div><strong>Bar</strong><span>Klassisch mit Bargeld. Wechselgeld haben wir dabei.</span></div>
+              </li>
+              <li>
+                <span class="zahlung-method-icon" aria-hidden="true">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" focusable="false"><rect x="6.5" y="2.5" width="11" height="19" rx="2.5" /><path d="M10.5 18h3" stroke-linecap="round" /></svg>
+                </span>
+                <div><strong>PayPal</strong><span>Per QR-Code direkt am Stand.</span></div>
+              </li>
+              <li class="zahlung-method--crypto">
+                <span class="zahlung-method-icon" aria-hidden="true">&#x20BF;</span>
+                <div><strong>Krypto <em class="zahlung-method-tag">Schnelle Coins</em></strong><span>Solana, Litecoin, Bitcoin über Lightning und Stablecoins. <a href="#krypto">Welche genau?</a></span></div>
+              </li>
+            </ul>
+            <a class="zahlung-context-link" href="index.html#locations">Zu den Pop-ups <span aria-hidden="true">↗</span></a>
+          </article>
+
+          <article id="catering" class="zahlung-context zahlung-context--catering" aria-labelledby="zahlungCateringTitle">
+            <p class="zahlung-context-label"><span aria-hidden="true">02</span> Catering</p>
+            <h3 id="zahlungCateringTitle">Burger-Bar, Buffet &amp; Wunschmenü</h3>
+            <p class="zahlung-context-intro">Du buchst uns für deine Feier und bekommst eine Rechnung.</p>
+            <ul class="zahlung-methods" role="list">
+              <li>
+                <span class="zahlung-method-icon" aria-hidden="true">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" focusable="false"><path d="M3.5 9.5 12 4.5l8.5 5M5.5 10.5v6.5M10 10.5v6.5M14 10.5v6.5M18.5 10.5v6.5M3.5 19.5h17" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                </span>
+                <div><strong>Überweisung</strong><span>Ganz klassisch per Rechnung. Die Zahlungsbedingungen stehen in deinem Angebot.</span></div>
+              </li>
+              <li>
+                <span class="zahlung-method-icon" aria-hidden="true">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" focusable="false"><rect x="2.5" y="6" width="19" height="12" rx="2" /><circle cx="12" cy="12" r="2.6" /><path d="M6 9.5v5M18 9.5v5" stroke-linecap="round" /></svg>
+                </span>
+                <div><strong>Bar</strong><span>Am Veranstaltungstag, natürlich mit Quittung.</span></div>
+              </li>
+              <li class="zahlung-method--crypto">
+                <span class="zahlung-method-icon" aria-hidden="true">&#x20BF;</span>
+                <div><strong>Krypto <em class="zahlung-method-tag">Alle etablierten Coins</em></strong><span>Von Bitcoin bis Ethereum, keine Memecoins. <a href="#krypto">Welche genau?</a></span></div>
+              </li>
+            </ul>
+            <a class="zahlung-context-link" href="catering.html#event-anfragen">Catering anfragen <span aria-hidden="true">↗</span></a>
+          </article>
+        </div>
+
+        <p class="zahlung-note">Beim Event-Stand zahlen eure Gäste direkt bei uns, also mit allen Zahlungsarten für vor Ort.</p>
       </div>
     </section>
 
-    <!-- Payment Methods Grid -->
-    <section class="zahlung-grid-section">
-      <div class="zahlung-grid">
+    <!-- Krypto: vor Ort nur schnelle Netzwerke, beim Catering alle etablierten Coins, nie Memecoins -->
+    <section id="krypto" class="zahlung-crypto" aria-labelledby="zahlungCryptoTitle">
+      <div class="zahlung-inner zahlung-crypto-grid">
+        <div class="zahlung-crypto-intro">
+          <p class="zahlung-eyebrow">Krypto bei Just A Buck</p>
+          <h2 id="zahlungCryptoTitle">Krypto. <span>Aber mit Plan.</span></h2>
+          <p>Wir nehmen Krypto, weil wir selbst Lust drauf haben. Welche Coins gehen, hängt davon ab, wo du zahlst.</p>
+        </div>
 
-        <!-- Karte -->
-        <article class="zahlung-card">
-          <div class="zahlung-card-icon">💳</div>
-          <h2>Kartenzahlung</h2>
-          <p>Visa, Mastercard, EC-Karte &ndash; kontaktlos oder mit Chip. Schnell, sicher und unkompliziert.</p>
-          <ul class="zahlung-card-details">
-            <li>Kontaktlos (NFC) verfügbar</li>
-            <li>Visa, Mastercard, Maestro, girocard</li>
-            <li>Keine Mindestbeträge</li>
-          </ul>
-          <span class="zahlung-status zahlung-status--live">Verfügbar</span>
-        </article>
+        <div class="zahlung-coin-groups">
+          <div class="zahlung-coin-group">
+            <h3><span>Vor Ort</span> In Sekunden bestätigt</h3>
+            <p>Am Stand soll niemand warten. Deshalb nehmen wir hier nur schnelle Netzwerke.</p>
+            <ul class="zahlung-coins zahlung-coins--fast" role="list">
+              <li><b>SOL</b> Solana</li>
+              <li><b>LTC</b> Litecoin</li>
+              <li><b>BTC</b> Bitcoin über Lightning</li>
+              <li><b>USDC · USDT</b> im Solana-Netzwerk</li>
+            </ul>
+          </div>
 
-        <!-- Bar -->
-        <article class="zahlung-card">
-          <div class="zahlung-card-icon">💵</div>
-          <h2>Barzahlung</h2>
-          <p>Cash is King &ndash; klassisch mit Bargeld bezahlen, natürlich mit Wechselgeld.</p>
-          <ul class="zahlung-card-details">
-            <li>Immer akzeptiert</li>
-            <li>Wechselgeld vorhanden</li>
-            <li>Keine Gebühren</li>
-          </ul>
-          <span class="zahlung-status zahlung-status--live">Verfügbar</span>
-        </article>
+          <div class="zahlung-coin-group">
+            <h3><span>Catering</span> Alle etablierten Coins</h3>
+            <p>Beim Catering ist Zeit für die Bestätigung. Weitere etablierte Coins gern auf Anfrage.</p>
+            <ul class="zahlung-coins" role="list">
+              <li><b>BTC</b> Bitcoin</li>
+              <li><b>ETH</b> Ethereum</li>
+              <li><b>SOL</b> Solana</li>
+              <li><b>LTC</b> Litecoin</li>
+              <li><b>BCH</b> Bitcoin Cash</li>
+              <li><b>USDC · USDT</b> Stablecoins</li>
+            </ul>
+          </div>
 
-        <!-- PayPal -->
-        <article class="zahlung-card">
-          <div class="zahlung-card-icon zahlung-pp-icon">P</div>
-          <h2>PayPal</h2>
-          <p>Bezahlt bequem per PayPal &ndash; per QR-Code am Stand, beim Catering oder auch online.</p>
-          <ul class="zahlung-card-details">
-            <li>QR-Code-Zahlung am Stand</li>
-            <li>Online-Zahlung m&ouml;glich</li>
-            <li>PayPal-Guthaben & verknüpfte Konten</li>
-            <li>Käuferschutz inklusive</li>
-          </ul>
-          <span class="zahlung-status zahlung-status--live">Verfügbar</span>
-        </article>
+          <div class="zahlung-coin-group zahlung-coin-group--excluded">
+            <h3><span>Nirgends</span> Memecoins</h3>
+            <p>Ihre Kurse schwanken zu stark, um fair damit zu planen. Deshalb nehmen wir sie nicht an.</p>
+            <ul class="zahlung-coins zahlung-coins--excluded" role="list" aria-label="Nicht akzeptiert">
+              <li><b>DOGE</b></li>
+              <li><b>SHIB</b></li>
+              <li><b>PEPE</b></li>
+              <li>&amp; Co.</li>
+            </ul>
+          </div>
+        </div>
 
-        <!-- Krypto -->
-        <article class="zahlung-card">
-          <div class="zahlung-card-icon">&#x20BF;</div>
-          <h2>Krypto</h2>
-          <p>Streetfood meets Zukunft &ndash; bezahlt mit Bitcoin, Ethereum, Solana und mehr. Innovativ und dezentral.</p>
-          <ul class="zahlung-card-details">
-            <li>Bitcoin (BTC), Ethereum (ETH)</li>
-            <li>Solana (SOL), Litecoin (LTC)</li>
-            <li>Stablecoins (USDT / USDC)</li>
-            <li>Bitcoin Cash (BCH)</li>
-            <li>Zahlung per Wallet-QR-Code</li>
-          </ul>
-          <span class="zahlung-status zahlung-status--beta">Beta</span>
-        </article>
-
+        <ol class="zahlung-steps" role="list" aria-label="So zahlst du mit Krypto">
+          <li>
+            <span class="zahlung-step-number" aria-hidden="true">01</span>
+            <strong>Betrag in Euro</strong>
+            <p>Unsere Preise stehen immer in Euro, an der Kasse oder auf der Rechnung.</p>
+          </li>
+          <li>
+            <span class="zahlung-step-number" aria-hidden="true">02</span>
+            <strong>QR-Code scannen</strong>
+            <p>Du scannst unseren Wallet-QR-Code. Umgerechnet wird zum aktuellen Kurs.</p>
+          </li>
+          <li>
+            <span class="zahlung-step-number" aria-hidden="true">03</span>
+            <strong>Bestätigt, fertig</strong>
+            <p>Sobald die Zahlung bestätigt ist, ist alles erledigt. Vor Ort in wenigen Sekunden.</p>
+          </li>
+        </ol>
       </div>
     </section>
 
     <!-- FAQ -->
-    <section class="zahlung-faq">
-      <h2>Häufige Fragen</h2>
-      <div class="zahlung-faq-list">
-        <details class="zahlung-faq-item">
-          <summary>Wo kann ich diese Zahlungsmethoden nutzen?</summary>
-          <p>Karte, Bar und PayPal sind überall verfügbar &ndash; auch online. Krypto befindet sich aktuell in der Beta und ist ausschließlich bei Vor-Ort-Events und Catering-Aufträgen nutzbar.</p>
-        </details>
-        <details class="zahlung-faq-item">
-          <summary>Welche Kryptowährungen akzeptiert ihr?</summary>
-          <p>Wir akzeptieren Bitcoin (BTC), Ethereum (ETH), Solana (SOL), Litecoin (LTC), Bitcoin Cash (BCH) sowie Stablecoins (USDT / USDC).</p>
-        </details>
-        <details class="zahlung-faq-item">
-          <summary>Gibt es einen Mindestbetrag?</summary>
-          <p>Nein. Ob Pommes für 3 &euro; oder ein ganzes Catering-Paket &ndash; alle Zahlungsmethoden funktionieren ohne Mindestbetrag.</p>
-        </details>
-        <details class="zahlung-faq-item">
-          <summary>Wann wird Online-Zahlung verfügbar sein?</summary>
-          <p>Wir arbeiten daran! Sobald es soweit ist, erfahrt ihr es als Erstes über unseren Instagram- und WhatsApp-Kanal.</p>
-        </details>
+    <section class="zahlung-faq" aria-labelledby="zahlungFaqTitle">
+      <div class="zahlung-inner zahlung-faq-grid">
+        <div>
+          <p class="zahlung-eyebrow">Gut zu wissen</p>
+          <h2 id="zahlungFaqTitle">Häufige Fragen</h2>
+        </div>
+        <div class="zahlung-faq-list">
+          <details class="zahlung-faq-item">
+            <summary>Kann ich beim Catering auch mit Karte oder PayPal zahlen?</summary>
+            <p>Für Caterings bieten wir Überweisung, Bar und Krypto an. Bucht ihr uns als Event-Stand, zahlen eure Gäste direkt bei uns, mit Karte, Bar, PayPal oder schnellen Coins.</p>
+          </details>
+          <details class="zahlung-faq-item">
+            <summary>Warum gehen am Stand nicht alle Coins?</summary>
+            <p>Manche Netzwerke brauchen Minuten bis zur Bestätigung. Am Stand soll niemand warten, deshalb nehmen wir dort nur Coins, die in Sekunden durch sind.</p>
+          </details>
+          <details class="zahlung-faq-item">
+            <summary>Welcher Kurs gilt bei Krypto?</summary>
+            <p>Unsere Preise stehen immer in Euro. Umgerechnet wird zum aktuellen Kurs im Moment der Zahlung.</p>
+          </details>
+          <details class="zahlung-faq-item">
+            <summary>Gibt es einen Mindestbetrag?</summary>
+            <p>Nein. Ob Fries für zwischendurch oder ein ganzes Catering: Alle Zahlungsarten funktionieren ohne Mindestbetrag.</p>
+          </details>
+          <details class="zahlung-faq-item">
+            <summary>Bekomme ich einen Beleg?</summary>
+            <p>Ja. Am Stand bekommst du einen Beleg, beim Catering eine Rechnung.</p>
+          </details>
+        </div>
       </div>
     </section>
 
     <!-- CTA -->
-    <section class="zahlung-cta">
-      <p>Fragen zu unseren Zahlungsmethoden?</p>
-      <a href="mailto:justin.buck@sportbuck.com?subject=Frage%20zu%20Zahlungsmethoden" class="zahlung-cta-btn">Kontakt aufnehmen</a>
+    <section class="zahlung-cta" aria-labelledby="zahlungCtaTitle">
+      <div class="zahlung-inner zahlung-cta-inner">
+        <div>
+          <h2 id="zahlungCtaTitle">Du planst ein Catering?</h2>
+          <p>Schick uns ein paar Eckdaten. Zahlungsart und Ablauf klären wir gemeinsam.</p>
+        </div>
+        <div class="zahlung-cta-actions">
+          <a class="zahlung-cta-btn" href="catering.html#event-anfragen">Catering anfragen <span aria-hidden="true">↗</span></a>
+          <a class="zahlung-cta-link" href="mailto:justin.buck@sportbuck.com?subject=Frage%20zu%20Zahlungsarten">Frage zur Zahlung</a>
+        </div>
+      </div>
     </section>
 
   </main>

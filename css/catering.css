@@ -1,4 +1,5 @@
 /* Catering detail page: shared offer, contact and navigation styles live in site.css. */
+.catering-page #event-anfragen { scroll-margin-top: 155px; }
 .catering-page .navbar {
   background: rgba(255, 255, 255, .96);
   box-shadow: 0 3px 14px rgba(17, 24, 39, .06);
@@ -220,4 +221,97 @@
   .catering-addons-grid{ grid-template-columns:minmax(0, 1fr); }
   .catering-facts{ grid-template-columns:minmax(0, 1fr); }
   .catering-facts-grid{ grid-template-columns:minmax(0, 1fr); gap:1.25rem; }
+}
+
+/* Catering inquiry: essential details first, further wishes optional. */
+.catering-page .catering-inquiry {
+  grid-template-columns: minmax(0, .75fr) minmax(0, 1.35fr);
+  align-items: start;
+  gap: 2.5rem clamp(2rem, 5vw, 4.5rem);
+  padding-top: clamp(2.5rem, 5vw, 4rem);
+}
+.catering-inquiry [hidden] { display: none !important; }
+.catering-inquiry-intro { min-width: 0; }
+.catering-inquiry-intro h2 { max-width: 400px; font-size: clamp(2rem, 3.3vw, 3rem); }
+.catering-inquiry-person { margin-top: 2rem; padding-left: 1rem; border-left: 2px solid var(--brand); }
+.catering-inquiry-person > span { display: block; color: var(--muted); font-size: .78rem; }
+.catering-inquiry-person > strong { display: block; margin: .3rem 0 .65rem; font-size: 1.1rem; }
+.catering-inquiry .catering-inquiry-person p { font-size: .88rem; }
+.catering-inquiry .catering-inquiry-note { margin-top: 1.5rem; color: var(--muted); font-size: .8rem; }
+.catering-form-panel { min-width: 0; padding: clamp(1.25rem, 3vw, 2.25rem); background: var(--surface); border: 1px solid var(--catering-rule); border-top: 3px solid var(--brand); border-radius: 6px; }
+.catering-inquiry .catering-form-required { margin: 0 0 1.5rem; font-size: .78rem; }
+.catering-form fieldset { min-width: 0; margin: 0; padding: 0; border: 0; }
+.catering-form fieldset + fieldset { margin-top: 1.75rem; }
+.catering-form legend { display: flex; align-items: center; gap: .75rem; margin-bottom: 1.15rem; padding: 0; color: var(--ink); font-size: 1.05rem; font-weight: 700; }
+.catering-form legend > span { color: var(--brand); font-family: var(--font-display); font-size: 1.25rem; font-weight: 400; }
+.catering-form-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.15rem 1.1rem; }
+.catering-field { min-width: 0; }
+.catering-field--full { grid-column: 1 / -1; }
+.catering-field > label { display: block; margin-bottom: .45rem; color: var(--ink); font-size: .85rem; font-weight: 700; line-height: 1.5; }
+.catering-field :is(input:not([type="checkbox"]), select, textarea) {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  min-height: 48px;
+  margin: 0;
+  padding: .72rem .85rem;
+  border: 1px solid #b9aeb9;
+  border-radius: 4px;
+  background: #fff;
+  color: var(--ink);
+  font: inherit;
+  font-size: 1rem;
+  line-height: 1.5;
+  scroll-margin-top: 170px;
+}
+.catering-field input[type="date"] { appearance: none; }
+.catering-field input[type="date"]::-webkit-date-and-time-value { text-align: left; }
+.catering-field textarea { min-height: 110px; resize: vertical; }
+.catering-field input::placeholder,
+.catering-field textarea::placeholder { color: #776e76; opacity: 1; }
+.catering-field :is(input, select, textarea):focus-visible,
+.catering-form-optional summary:focus-visible,
+.catering-new-inquiry:focus-visible,
+.catering-form-alternative a:focus-visible,
+.catering-form-privacy a:focus-visible { outline: 3px solid var(--brand); outline-offset: 3px; }
+.catering-field :is(input, select, textarea)[aria-invalid="true"] { border-color: #a02727; background: #fffafa; }
+.catering-field :is(input, select, textarea):disabled { background: var(--surface-soft); color: var(--muted); opacity: .7; }
+.catering-inquiry .catering-field-hint { margin-top: .4rem; font-size: .75rem; line-height: 1.55; }
+.catering-field-error { display: block; margin-top: .45rem; color: #a02727; font-size: .78rem; line-height: 1.55; }
+.catering-field > .catering-checkbox { display: flex; align-items: center; gap: .5rem; min-height: 36px; margin: .25rem 0 0; color: var(--muted); font-size: .74rem; font-weight: 400; cursor: pointer; }
+.catering-checkbox input { flex-shrink: 0; width: 17px; height: 17px; margin: 0; accent-color: var(--brand); }
+.catering-label-optional { color: var(--muted); font-weight: 400; }
+.catering-form-optional { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.catering-form-optional summary { padding: 1rem 0; color: var(--brand); font-size: .85rem; font-weight: 700; line-height: 1.55; cursor: pointer; }
+.catering-form-optional summary > span { color: var(--muted); font-weight: 400; }
+.catering-form-optional .catering-form-grid { padding: .25rem 0 1.5rem; }
+.catering-form-submit { margin-top: 1.4rem; }
+.catering-inquiry .catering-form-privacy { margin-bottom: 1rem; color: var(--muted); font-size: .75rem; line-height: 1.65; }
+.catering-form-privacy a { text-decoration: underline; text-underline-offset: 3px; }
+.catering-form-submit .catering-cta { width: 100%; border: 0; font-family: inherit; cursor: pointer; }
+.catering-form-submit .catering-cta:disabled { opacity: .65; cursor: wait; }
+.catering-inquiry .catering-form-status { margin-top: 1rem; font-size: .85rem; }
+.catering-form-status:empty { display: none; }
+.catering-inquiry .catering-form-status.is-error { color: #a02727; }
+.catering-form-status:focus,
+.catering-form-success:focus { outline: 2px solid var(--brand); outline-offset: 5px; }
+.catering-form-success { padding: .5rem 0 1.5rem; overflow-wrap: anywhere; }
+.catering-success-mark { display: grid; place-items: center; width: 48px; height: 48px; margin-bottom: 1.25rem; border-radius: 50%; background: var(--surface-brand); color: var(--brand); font-size: 1.7rem; }
+.catering-form-success h3 { margin: 0 0 1rem; font-size: 1.6rem; line-height: 1.25; }
+.catering-inquiry .catering-form-success p { margin: 0 0 1rem; font-size: .95rem; }
+.catering-new-inquiry { min-height: 44px; padding: .6rem 1rem; border: 1px solid var(--brand); border-radius: 4px; background: var(--surface); color: var(--brand); font: inherit; font-size: .85rem; font-weight: 700; cursor: pointer; }
+.catering-new-inquiry:hover { background: var(--surface-brand); }
+.catering-inquiry .catering-form-alternative { margin-top: 1.4rem; padding-top: 1.25rem; border-top: 1px solid var(--line); font-size: .8rem; line-height: 1.8; }
+.catering-form-alternative a { color: var(--brand); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+.catering-visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+@media (max-width: 1000px) {
+  .catering-page .catering-inquiry { grid-template-columns: minmax(0, 1fr); gap: 2rem; }
+  .catering-inquiry-intro h2 { max-width: none; }
+  .catering-inquiry-person { margin-top: 1.25rem; }
+  .catering-inquiry-intro > p { max-width: 650px; }
+}
+@media (max-width: 520px) {
+  .catering-form-grid { grid-template-columns: minmax(0, 1fr); }
+  .catering-form legend { font-size: 1rem; }
+  .catering-inquiry .catering-form-required { font-size: .75rem; }
 }

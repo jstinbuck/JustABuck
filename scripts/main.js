@@ -63,12 +63,8 @@
     // Elements to animate
     const selectors = [
       '.menu-card',
-      '.social-card',
-      '.review-card',
       '.duo-card',
-      '.location-content-full',
-      '.careers-card',
-      '.feedback-container'
+      '.careers-card'
     ];
 
     selectors.forEach(selector => {
@@ -221,57 +217,6 @@
     window.addEventListener('scroll', updateActiveLink, { passive: true });
   };
 
-  // Web3Forms Feedback Submission
-  const initFeedbackForm = () => {
-    const form = document.getElementById('feedbackForm');
-    if (!form) return;
-
-    const statusEl = document.getElementById('feedbackStatus');
-    const submitBtn = document.getElementById('feedbackSubmit');
-
-    const setStatus = (message, isError = false) => {
-      if (!statusEl) return;
-      statusEl.textContent = message;
-      statusEl.classList.toggle('is-error', isError);
-    };
-
-    form.addEventListener('submit', async (event) => {
-      event.preventDefault();
-      setStatus('');
-
-      const feedbackText = form.querySelector('[name="Feedback"]');
-      if (!feedbackText || !feedbackText.value.trim()) {
-        setStatus('Bitte schreib dein Feedback ins Textfeld.', true);
-        return;
-      }
-
-      submitBtn.disabled = true;
-      submitBtn.textContent = 'Wird gesendet...';
-
-      try {
-        const formData = new FormData(form);
-        const response = await fetch('https://api.web3forms.com/submit', {
-          method: 'POST',
-          body: formData
-        });
-
-        const result = await response.json();
-
-        if (result.success) {
-          form.reset();
-          setStatus('Danke! Dein Feedback wurde anonym gesendet.');
-        } else {
-          setStatus('Senden fehlgeschlagen. Bitte versuche es erneut.', true);
-        }
-      } catch (_error) {
-        setStatus('Verbindungsfehler. Bitte pruefe deine Internetverbindung.', true);
-      }
-
-      submitBtn.disabled = false;
-      submitBtn.textContent = 'Anonym absenden';
-    });
-  };
-
   // Performance: Use RequestAnimationFrame for smooth animations
   let ticking = false;
   const rafCallbacks = [];
@@ -288,41 +233,6 @@
 
   window.addEventListener('scroll', onScroll, { passive: true });
 
-  // Highlight Product Popup
-  const initHighlightPopup = () => {
-    const popup = document.getElementById('highlightPopup');
-    if (!popup) return;
-
-    const POPUP_KEY = 'jab_highlight_popup_seen';
-    if (sessionStorage.getItem(POPUP_KEY) === '1') return;
-
-    const closeBtn = popup.querySelector('.highlight-popup-close');
-    const backdrop = popup.querySelector('.highlight-popup-backdrop');
-    const ctaBtn = document.getElementById('popupNewsletterBtn');
-
-    const closePopup = () => {
-      popup.classList.remove('is-active');
-      sessionStorage.setItem(POPUP_KEY, '1');
-    };
-
-    closeBtn?.addEventListener('click', closePopup);
-    backdrop?.addEventListener('click', closePopup);
-
-    ctaBtn?.addEventListener('click', () => {
-      closePopup();
-    });
-
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && popup.classList.contains('is-active')) {
-        closePopup();
-      }
-    });
-
-    setTimeout(() => {
-      popup.classList.add('is-active');
-    }, 1500);
-  };
-
   // Initialize all enhancements
   const init = () => {
     // Check if reduced motion is preferred
@@ -336,8 +246,6 @@
     }
     createBackToTop();
     initActiveNav();
-    initFeedbackForm();
-    initHighlightPopup();
 
     if (!prefersReducedMotion) {
       initScrollAnimations();

@@ -284,18 +284,126 @@
         </ol>
       </section>
 
-      <section id="event-anfragen" class="catering-invitation" aria-labelledby="cateringContactTitle">
-        <div>
+      <section id="event-anfragen" class="catering-invitation catering-inquiry" aria-labelledby="cateringContactTitle">
+        <div class="catering-inquiry-intro">
           <p class="catering-eyebrow">Dein Event beginnt hier</p>
           <h2 id="cateringContactTitle">Erzähl uns von deiner Feier.</h2>
-          <p>Schick Justin Datum, Ort, ungefähre Gästezahl und das Format, das euch vorschwebt. Gemeinsam besprechen wir, welches Essen und welcher Ablauf zu euch passen.</p>
+          <p>Du brauchst noch keinen fertigen Plan. Ein paar Eckdaten genügen – die passende Auswahl besprechen wir gemeinsam.</p>
+          <div class="catering-inquiry-person">
+            <span>Dein Ansprechpartner</span>
+            <strong>Justin Buck</strong>
+            <p>Ich schaue mir eure Wünsche an und melde mich persönlich bei dir. Danach stimmen wir Menü und Ablauf ab.</p>
+          </div>
+          <p class="catering-inquiry-note">Deine Anfrage ist unverbindlich. Eine Buchung entsteht erst nach gemeinsamer Abstimmung.</p>
         </div>
-        <div class="catering-contact">
-          <a href="mailto:justin.buck@sportbuck.com?subject=Unverbindliche%20Catering-Anfrage&amp;body=Hallo%20Justin%2C%0D%0A%0D%0Awir%20m%C3%B6chten%20ein%20Catering%20anfragen.%0D%0A%0D%0ADatum%3A%20%0D%0AOrt%3A%20%0D%0AUngef%C3%A4hre%20G%C3%A4stezahl%3A%20%0D%0A%0D%0AUnsere%20W%C3%BCnsche%3A%20" class="catering-cta">
-            <span>Catering unverbindlich anfragen</span>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true" focusable="false"><path d="M4 12h15m-6-6 6 6-6 6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-          </a>
-          <a href="mailto:justin.buck@sportbuck.com" class="catering-email">justin.buck@sportbuck.com</a>
+
+        <div class="catering-form-panel">
+          <form id="cateringForm" class="catering-form" action="https://api.web3forms.com/submit" method="post" aria-label="Unverbindliche Catering-Anfrage">
+            <input type="hidden" name="access_key" value="71d595b3-21dd-41f2-805b-842943262a0b">
+            <input type="hidden" name="subject" value="Neue Catering-Anfrage – Just A Buck">
+            <input type="hidden" name="from_name" value="Just A Buck Catering">
+            <input type="checkbox" name="botcheck" hidden tabindex="-1" autocomplete="off">
+            <p class="catering-form-required">Mit * markierte Angaben brauchen wir für deine Anfrage.</p>
+
+            <fieldset>
+              <legend><span aria-hidden="true">01</span> Dein Event</legend>
+              <div class="catering-form-grid">
+                <div class="catering-field catering-field--full">
+                  <label for="cateringPackage">Welches Format interessiert dich?</label>
+                  <select id="cateringPackage" name="Format" aria-describedby="cateringPackageNotice">
+                    <option value="">Noch offen – gemeinsam planen</option>
+                    <option value="burger-bar">Burger-Bar</option>
+                    <option value="streetfood-buffet">Streetfood-Buffet</option>
+                    <option value="event-stand">Event-Stand</option>
+                    <option value="wunschmenue">Individuelles Wunschmenü</option>
+                  </select>
+                  <p id="cateringPackageNotice" class="catering-field-hint" aria-live="polite">Du kannst deine Auswahl jederzeit ändern.</p>
+                </div>
+
+                <div class="catering-field">
+                  <label for="cateringDate">Veranstaltungsdatum <span aria-hidden="true">*</span></label>
+                  <input id="cateringDate" name="Datum" type="date" required aria-describedby="cateringDateError">
+                  <span id="cateringDateError" class="catering-field-error" hidden></span>
+                  <label id="cateringDateUnknownWrap" class="catering-checkbox" for="cateringDateUnknown" hidden>
+                    <input id="cateringDateUnknown" name="Termin_offen" type="checkbox" value="Ja">
+                    <span>Termin steht noch nicht fest</span>
+                  </label>
+                </div>
+                <div class="catering-field">
+                  <label id="cateringGuestsLabel" for="cateringGuests">Ungefähre Gästezahl <span aria-hidden="true">*</span></label>
+                  <input id="cateringGuests" name="Gaeste" type="number" min="1" step="1" inputmode="numeric" placeholder="z. B. 50" required aria-describedby="cateringGuestsHint cateringGuestsError">
+                  <p id="cateringGuestsHint" class="catering-field-hint">Eine ungefähre Zahl reicht.</p>
+                  <span id="cateringGuestsError" class="catering-field-error" hidden></span>
+                </div>
+                <div class="catering-field catering-field--full">
+                  <label for="cateringLocation">Veranstaltungsort <span aria-hidden="true">*</span></label>
+                  <input id="cateringLocation" name="Ort" type="text" maxlength="160" placeholder="z. B. Kempten oder 87439" required aria-describedby="cateringLocationHint cateringLocationError">
+                  <p id="cateringLocationHint" class="catering-field-hint">Ort oder Postleitzahl reichen fürs Erste.</p>
+                  <span id="cateringLocationError" class="catering-field-error" hidden></span>
+                </div>
+              </div>
+            </fieldset>
+
+            <fieldset>
+              <legend><span aria-hidden="true">02</span> So erreichen wir dich</legend>
+              <div class="catering-form-grid">
+                <div class="catering-field">
+                  <label for="cateringName">Dein Name <span aria-hidden="true">*</span></label>
+                  <input id="cateringName" name="name" type="text" autocomplete="name" maxlength="100" placeholder="Vor- und Nachname" required aria-describedby="cateringNameError">
+                  <span id="cateringNameError" class="catering-field-error" hidden></span>
+                </div>
+                <div class="catering-field">
+                  <label for="cateringEmail">E-Mail-Adresse <span aria-hidden="true">*</span></label>
+                  <input id="cateringEmail" name="email" type="email" autocomplete="email" inputmode="email" maxlength="254" placeholder="du@beispiel.de" required aria-describedby="cateringEmailError">
+                  <span id="cateringEmailError" class="catering-field-error" hidden></span>
+                </div>
+              </div>
+            </fieldset>
+
+            <fieldset class="catering-optional-fieldset">
+              <legend class="catering-visually-hidden">Weitere Angaben, freiwillig</legend>
+              <details id="cateringOptional" class="catering-form-optional">
+                <summary>Anlass &amp; Wünsche ergänzen <span>(optional)</span></summary>
+                <div class="catering-form-grid">
+                  <div class="catering-field">
+                    <label for="cateringOccasion">Anlass <span class="catering-label-optional">(optional)</span></label>
+                    <select id="cateringOccasion" name="Anlass">
+                      <option value="">Bitte auswählen</option>
+                      <option>Geburtstag / private Feier</option>
+                      <option>Firmenfeier</option>
+                      <option>Vereinsfest / Sommerfest</option>
+                      <option>Hochzeitsparty</option>
+                      <option>Öffentliche Veranstaltung</option>
+                      <option>Anderer Anlass</option>
+                    </select>
+                  </div>
+                  <div class="catering-field">
+                    <label for="cateringPhone">Telefon <span class="catering-label-optional">(optional)</span></label>
+                    <input id="cateringPhone" name="Telefon" type="tel" autocomplete="tel" maxlength="40" placeholder="Für einen Rückruf">
+                  </div>
+                  <div class="catering-field catering-field--full">
+                    <label for="cateringMessage">Deine Wünsche <span class="catering-label-optional">(optional)</span></label>
+                    <textarea id="cateringMessage" name="Nachricht" rows="4" maxlength="2000" placeholder="Zum Beispiel Uhrzeit, Essenswünsche oder Fragen zum Aufbau."></textarea>
+                  </div>
+                </div>
+              </details>
+            </fieldset>
+
+            <div class="catering-form-submit">
+              <p class="catering-form-privacy">Wir verwenden deine Angaben zur Bearbeitung deiner Anfrage. Mehr dazu in unserer <a href="datenschutz.html#kontaktaufnahme" target="_blank" rel="noopener">Datenschutzerklärung<span class="catering-visually-hidden"> (öffnet in einem neuen Tab)</span></a>.</p>
+              <button id="cateringSubmit" class="catering-cta" type="submit">Anfrage unverbindlich senden</button>
+              <p id="cateringStatus" class="catering-form-status" role="status" aria-live="polite" tabindex="-1"></p>
+            </div>
+          </form>
+
+          <div id="cateringSuccess" class="catering-form-success" tabindex="-1" hidden>
+            <span class="catering-success-mark" aria-hidden="true">✓</span>
+            <h3>Danke für deine Anfrage.</h3>
+            <p>Deine Anfrage wurde gesendet. Justin meldet sich bei dir unter <strong id="cateringSuccessEmail"></strong>, um die nächsten Schritte zu besprechen.</p>
+            <p>Dein Termin wird im persönlichen Austausch abgestimmt.</p>
+            <button id="cateringNewInquiry" class="catering-new-inquiry" type="button">Weitere Anfrage stellen</button>
+          </div>
+          <p class="catering-form-alternative">Lieber per E-Mail? <a id="cateringEmailFallback" href="mailto:justin.buck@sportbuck.com?subject=Unverbindliche%20Catering-Anfrage">Anfrage als E-Mail öffnen <span aria-hidden="true">↗</span></a></p>
         </div>
       </section>
     </div>
@@ -321,5 +429,6 @@
     </div>
   </footer>
   <script src="scripts/main.js" defer></script>
+  <script src="scripts/catering.js" defer></script>
 </body>
 </html>

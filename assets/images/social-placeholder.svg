@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" fill="none" role="img" aria-labelledby="title description">
+  <title id="title">Platzhalter für einen Einblick hinter den Grill</title>
+  <desc id="description">Eine schlichte violette Linienillustration zeigt einen Burger auf einem Grill und einen Pfannenwender vor einem hellen Hintergrund.</desc>
+  <rect width="800" height="600" fill="#FAF8FB"/>
+  <rect x="76" y="64" width="648" height="472" rx="32" stroke="#ECE3F2" stroke-width="2"/>
+  <circle cx="397" cy="293" r="167" fill="#ECE3F2"/>
+  <g stroke="#4A235A" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M266 325h264c-10 53-47 89-132 89s-122-36-132-89Z" fill="#FAF8FB"/>
+    <path d="M252 325h292M322 402l-28 78m180-78 28 78M307 446h181"/>
+    <path d="M332 285c4-35 28-57 66-57s62 22 66 57H332Z" fill="#FAF8FB"/>
+    <path d="M338 297h120m-127 11 28 7 28-7 28 7 28-7 22 5"/>
+    <path d="m372 255 4-4m24 9 3-5m23 0 4 4" stroke-width="4"/>
+    <path d="M367 199c-14-19 15-22 1-41m42 40c-14-19 15-22 1-41" stroke="#6A35A5" stroke-width="4"/>
+  </g>
+  <g transform="rotate(24 535 271)" stroke="#6A35A5" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="508" y="176" width="54" height="72" rx="10" fill="#FAF8FB"/>
+    <path d="M526 190v29m18-29v29m-9 29v65"/>
+    <rect x="527" y="299" width="16" height="54" rx="8" fill="#6A35A5"/>
+  </g>
+  <g stroke="#5F535A" stroke-width="3" stroke-linecap="round" opacity=".45">
+    <path d="M190 240h15m-7.5-7.5v15M598 396h12m-6-6v12"/>
+  </g>
+</svg>
