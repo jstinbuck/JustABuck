@@ -1,30 +1,31 @@
-/* Catering detail page: shared offer, contact and navigation styles live in site.css. */
+/* Catering overview: short choices first, practical details on demand. */
 .catering-page #event-anfragen { scroll-margin-top: 155px; }
 .catering-page .navbar {
   background: rgba(255, 255, 255, .96);
   box-shadow: 0 3px 14px rgba(17, 24, 39, .06);
 }
+.catering-page .navbar .nav-links a[aria-current="page"] { color: var(--brand); }
+.catering-page .navbar .nav-links a[aria-current="page"]::after { width: 100%; }
+.catering-page .catering-section { padding-top: clamp(2.75rem, 5vw, 5rem); }
 
-.catering-page .navbar .nav-links a[aria-current="page"] {
-  color: var(--brand);
-}
-
-.catering-page .navbar .nav-links a[aria-current="page"]::after {
-  width: 100%;
-}
-
-.catering-page .catering-section {
-  padding-top: clamp(2.75rem, 5vw, 5rem);
-}
-
-.catering-page .catering-intro {
+.catering-page .catering-overview {
+  grid-template-columns: minmax(0, 1.12fr) minmax(0, 1fr);
+  grid-template-areas: "copy photo";
   gap: 2rem clamp(2rem, 4vw, 4rem);
 }
-
-.catering-page .catering-title {
-  font-size: clamp(2.5rem, 4.3vw, 4rem);
+.catering-overview .catering-copy { min-width: 0; }
+.catering-page .catering-title { font-size: clamp(2.5rem, 4.3vw, 4rem); }
+.catering-overview .catering-lead { max-width: 47ch; }
+.catering-welcome {
+  max-width: 49ch;
+  margin: 1.4rem 0 0;
+  padding-left: 1rem;
+  border-left: 2px solid var(--brand);
+  color: var(--muted);
+  font-size: .93rem;
+  line-height: 1.7;
 }
-
+.catering-welcome strong { display: block; color: var(--ink); }
 .catering-hero-actions {
   display: flex;
   flex-wrap: wrap;
@@ -32,12 +33,7 @@
   gap: .7rem 1.5rem;
   margin-top: 1.65rem;
 }
-
-.catering-hero-actions .catering-cta {
-  background: var(--brand);
-  font-size: .88rem;
-}
-
+.catering-hero-actions .catering-cta { background: var(--brand); font-size: .9rem; }
 .catering-detail-link {
   display: inline-flex;
   align-items: center;
@@ -49,178 +45,140 @@
   text-decoration: underline;
   text-underline-offset: 4px;
 }
+.catering-detail-link > span { flex-shrink: 0; }
+.catering-detail-link:focus-visible { outline: 3px solid var(--brand); outline-offset: 4px; }
+.catering-founder { margin: 1.1rem 0 0; color: var(--muted); font-size: .78rem; }
+.catering-founder strong { color: var(--ink); }
 
-.catering-page .catering-offer {
+.catering-formats { margin-top: clamp(3.5rem, 6vw, 5rem); }
+.catering-section-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.25rem 3rem;
+  margin-bottom: 1.75rem;
+}
+.catering-section-heading .catering-eyebrow { margin-bottom: .75rem; }
+.catering-section-heading h2,
+.catering-questions h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.9rem, 3.4vw, 2.85rem);
+  font-weight: 400;
+  line-height: 1.15;
+  text-transform: uppercase;
+}
+.catering-section-heading > p { max-width: 36ch; margin: 0; color: var(--muted); font-size: .94rem; line-height: 1.7; }
+.catering-format-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.2rem; }
+.catering-format {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: clamp(1.25rem, 2.5vw, 2rem);
+  border: 1px solid var(--catering-rule);
+  border-radius: 6px;
+  background: var(--surface);
   scroll-margin-top: 160px;
 }
-
-.catering-process {
-  margin: clamp(3rem, 5vw, 4.5rem) 0 3rem;
+.catering-format-top { display: flex; align-items: center; justify-content: space-between; gap: .75rem; margin-bottom: 1.6rem; }
+.catering-format-label { margin: 0; color: var(--brand); font-size: .72rem; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; }
+.catering-format-number { color: var(--brand); font-family: var(--font-display); font-size: 1.4rem; line-height: 1; }
+.catering-format h3 { margin: 0 0 .85rem; font-size: clamp(1.3rem, 1.8vw, 1.55rem); font-weight: 700; letter-spacing: -.035em; line-height: 1.25; }
+.catering-format-description { margin: 0 0 1rem; font-size: .95rem; line-height: 1.7; }
+.catering-format-occasion { margin: 0 0 1.75rem; color: var(--muted); font-size: .81rem; line-height: 1.65; }
+.catering-format-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .6rem;
+  min-height: 48px;
+  margin-top: auto;
+  padding-top: .9rem;
+  border-top: 1px solid var(--line);
+  color: var(--brand);
+  font-size: .84rem;
+  font-weight: 700;
+  line-height: 1.5;
 }
-
-.catering-process .catering-eyebrow {
-  margin-bottom: 1rem;
+.catering-format-link > span { flex-shrink: 0; font-size: 1.2rem; }
+.catering-format-link:hover { text-decoration: underline; text-underline-offset: 4px; }
+.catering-format-link:focus-visible { outline: 3px solid var(--brand); outline-offset: 5px; }
+.catering-included { display: flex; justify-content: space-between; align-items: center; gap: .75rem 2rem; padding: 1.25rem 0; }
+.catering-included p { max-width: 78ch; margin: 0; color: var(--muted); font-size: .83rem; line-height: 1.7; }
+.catering-included strong { color: var(--ink); }
+.catering-included .catering-detail-link { flex-shrink: 0; font-size: .83rem; }
+.catering-open-choice {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem 2rem;
+  margin-top: 1rem;
+  padding: 1.5rem 1.75rem;
+  border-left: 3px solid var(--brand);
+  background: var(--surface-brand);
+  scroll-margin-top: 160px;
 }
+.catering-open-choice h3 { margin: 0 0 .4rem; font-size: 1.1rem; line-height: 1.4; }
+.catering-open-choice p { max-width: 68ch; margin: 0; color: var(--muted); font-size: .9rem; line-height: 1.7; }
+.catering-open-choice .catering-detail-link { flex-shrink: 0; }
 
-.catering-process h2 {
-  margin: 0;
-  font-size: clamp(1.65rem, 3vw, 2.5rem);
-  line-height: 1.2;
-  letter-spacing: -.035em;
-}
+.catering-how { margin: clamp(3.5rem, 6vw, 5rem) 0; }
+.catering-how-steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2.25rem; margin: 0; padding: 1.75rem 0 0; border-top: 1px solid var(--catering-rule); list-style: none; }
+.catering-how-steps li { display: grid; grid-template-columns: 1.75rem minmax(0, 1fr); gap: .85rem; }
+.catering-how-steps li > span { color: var(--brand); font-family: var(--font-display); font-size: 1.5rem; line-height: 1.35; }
+.catering-how-steps h3 { margin: 0 0 .5rem; font-size: 1rem; line-height: 1.4; }
+.catering-how-steps p { margin: 0; color: var(--muted); font-size: .9rem; line-height: 1.7; }
 
-.catering-process .catering-steps {
-  margin-top: 1.75rem;
-  margin-bottom: 0;
-}
+.catering-questions { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.4fr); align-items: start; gap: 1.5rem 4rem; margin-bottom: clamp(3rem, 5vw, 4rem); }
+.catering-questions-intro .catering-eyebrow { margin-bottom: .75rem; }
+.catering-questions-intro > p:last-child { max-width: 30ch; margin: .8rem 0 0; color: var(--muted); font-size: .9rem; }
+.catering-answers { border-top: 1px solid var(--catering-rule); }
+.catering-answers details { border-bottom: 1px solid var(--catering-rule); }
+.catering-answers summary { display: flex; align-items: center; justify-content: space-between; gap: 1.25rem; min-height: 62px; padding: 1rem 0; font-size: .93rem; font-weight: 700; line-height: 1.5; cursor: pointer; list-style: none; }
+.catering-answers summary::-webkit-details-marker { display: none; }
+.catering-answers summary::after { content: "+"; flex-shrink: 0; color: var(--brand); font-size: 1.4rem; font-weight: 400; }
+.catering-answers details[open] summary::after { content: "−"; }
+.catering-answers summary:hover { color: var(--brand); }
+.catering-answers summary:focus-visible { outline: 3px solid var(--brand); outline-offset: 4px; }
+.catering-answers details > p { margin: 0; padding: 0 2rem 1.25rem 0; color: var(--muted); font-size: .9rem; line-height: 1.75; }
 
-.catering-page .catering-invitation .catering-eyebrow {
-  margin-bottom: 1rem;
-  color: var(--ink);
-  font-size: .72rem;
-}
-
-.catering-page .site-footer {
-  margin-top: 0;
-}
-
-.catering-page .footer-inner {
-  max-width: 1292px;
-}
-
+/* Keep the existing inquiry and navigation presentation. */
+.catering-page .catering-invitation .catering-eyebrow { margin-bottom: 1rem; color: var(--ink); font-size: .72rem; }
+.catering-page .site-footer { margin-top: 0; }
+.catering-page .footer-inner { max-width: 1292px; }
 @media (max-width: 900px) {
-  .catering-page .nav-toggle {
-    position: relative;
-    z-index: 1002;
-  }
-
-  .catering-page .navbar .nav-links {
-    inset: 0;
-    height: calc(100dvh - var(--site-announcement-height));
-    overflow-y: auto;
-    padding-top: 112px;
-  }
-
-  .catering-page .navbar .nav-links a[aria-current="page"]::after {
-    display: none;
-  }
+  .catering-page .nav-toggle { position: relative; z-index: 1002; }
+  .catering-page .navbar .nav-links { inset: 0; height: calc(100dvh - var(--site-announcement-height)); overflow-y: auto; padding-top: 112px; }
+  .catering-page .navbar .nav-links a[aria-current="page"]::after { display: none; }
+  .catering-page .catering-overview { grid-template-columns: minmax(0, 1fr); grid-template-areas: "copy" "photo"; }
+  .catering-overview .catering-copy { max-width: 650px; }
+  .catering-overview .catering-photo { max-width: 600px; }
+  .catering-overview .catering-lead { max-width: 54ch; }
+  .catering-section-heading { flex-direction: column; align-items: flex-start; }
+  .catering-section-heading > p { max-width: 52ch; }
+  .catering-format-grid { grid-template-columns: minmax(0, 1fr); gap: 1rem; }
+  .catering-format { padding: 1.5rem; }
+  .catering-format-top { margin-bottom: 1rem; }
+  .catering-format-occasion { margin-bottom: 1.25rem; }
+  .catering-included { flex-direction: column; align-items: flex-start; gap: .3rem; }
+  .catering-open-choice { flex-direction: column; align-items: flex-start; }
+  .catering-questions { grid-template-columns: minmax(0, 1fr); gap: 1.5rem; }
+  .catering-questions-intro > p:last-child { max-width: none; }
 }
-
 @media (max-width: 760px) {
-  .catering-page .catering-title {
-    font-size: clamp(2.45rem, 7.8vw, 4rem);
-  }
-
-  .catering-page .catering-photo {
-    max-width: 600px;
-  }
-
-  .catering-hero-actions {
-    margin-top: 1.35rem;
-  }
-
-  .catering-page .catering-invitation {
-    gap: 1.5rem;
-  }
+  .catering-page .catering-title { font-size: clamp(2rem, 8.1vw, 3.7rem); }
+  .catering-hero-actions { margin-top: 1.35rem; }
+  .catering-page .catering-invitation { gap: 1.5rem; }
+  .catering-how-steps { grid-template-columns: minmax(0, 1fr); gap: 1.5rem; padding-top: 1.5rem; }
 }
-
-@media (max-width: 380px) {
-  .catering-page .catering-title {
-    font-size: 2.15rem;
-  }
-}
-
-/* --- Cateringformate: Karten mit Vorschaubild, Anlass-Tags und Fakten --- */
-.catering-page .catering-offer{ scroll-margin-top:160px; }
-.catering-page .catering-custom{ scroll-margin-top:160px; }
-.catering-offer-head{ display:flex; align-items:flex-start; justify-content:space-between; gap:1rem; margin-bottom:1.5rem; }
-.catering-offer-head .catering-offer-topline{ margin-bottom:0; }
-.catering-offer-photo{
-  flex-shrink:0;
-  width:72px;
-  height:72px;
-  border-radius:50%;
-  object-fit:cover;
-  background:#fff;
-  border:1px solid var(--catering-rule);
-}
-.catering-offer--variety .catering-offer-photo{ border-color:rgba(255,255,255,.4); }
-.catering-page .catering-offer-description{ margin-bottom:1.25rem; }
-.catering-offer-tags{ display:flex; flex-wrap:wrap; gap:.4rem; margin:0 0 1.5rem; padding:0; list-style:none; }
-.catering-offer-tags li{
-  padding:.3rem .7rem;
-  border:1px solid var(--catering-rule);
-  border-radius:999px;
-  color:var(--muted);
-  font-size:.72rem;
-  font-weight:700;
-  letter-spacing:.02em;
-  line-height:1.4;
-}
-.catering-offer--variety .catering-offer-tags li{ border-color:rgba(255,255,255,.38); color:var(--on-dark-muted); }
-.catering-offer-facts{
-  display:grid;
-  grid-template-columns:repeat(2, minmax(0, 1fr));
-  gap:.9rem 1rem;
-  margin:0 0 1.75rem;
-  padding:1rem 0;
-  border-top:1px solid var(--line);
-  border-bottom:1px solid var(--line);
-}
-.catering-offer-facts div{ min-width:0; }
-.catering-offer-facts dt{ margin-bottom:.2rem; color:var(--muted); font-size:.66rem; font-weight:700; letter-spacing:.07em; text-transform:uppercase; }
-.catering-offer-facts dd{ margin:0; font-size:.92rem; font-weight:700; line-height:1.4; overflow-wrap:anywhere; }
-.catering-offer--variety .catering-offer-facts{ border-color:rgba(255,255,255,.25); }
-.catering-offer--variety .catering-offer-facts dt{ color:var(--on-dark-muted); }
-.catering-offer-optional{ margin:0 0 1.75rem; color:var(--muted); font-size:.86rem; line-height:1.65; }
-.catering-offer--variety .catering-offer-optional{ color:var(--on-dark-muted); }
-
-/* Wunschmenü-Zeile unter den Formaten */
-.catering-custom{ align-items:center; }
-.catering-custom-links{ display:flex; flex-wrap:wrap; gap:.25rem 1.75rem; }
-.catering-custom-links a{ display:inline-flex; align-items:center; gap:.8rem; min-height:44px; color:var(--brand); font-weight:700; text-decoration:underline; text-underline-offset:4px; }
-.catering-custom-links a:focus-visible{ outline:3px solid var(--brand); outline-offset:5px; }
-
-/* Extras */
-.catering-addons{ margin:0 0 2rem; padding-top:2rem; border-top:1px solid var(--catering-rule); }
-.catering-addons-heading{ margin-bottom:1.5rem; }
-.catering-addons-heading .catering-eyebrow{ margin-bottom:.75rem; font-size:.68rem; }
-.catering-addons-heading h3{ margin:0; font-size:1.5rem; line-height:1.3; letter-spacing:-.025em; }
-.catering-addons-grid{
-  display:grid;
-  grid-template-columns:repeat(3, minmax(0, 1fr));
-  gap:1px;
-  margin:0;
-  padding:0;
-  list-style:none;
-  background:var(--catering-rule);
-  border:1px solid var(--catering-rule);
-  border-radius:3px;
-  overflow:hidden;
-}
-.catering-addons-grid li{ min-width:0; padding:1.25rem 1.35rem; background:var(--surface); }
-.catering-addons-grid strong{ display:block; margin-bottom:.35rem; font-size:.95rem; line-height:1.4; }
-.catering-addons-grid span{ display:block; color:var(--muted); font-size:.85rem; line-height:1.65; }
-
-/* Rahmenbedingungen */
-.catering-facts{ grid-template-columns:minmax(0, .8fr) minmax(0, 1.5fr); }
-.catering-facts .catering-quote-intro :is(h3, h4){ max-width:none; }
-.catering-facts-grid{ display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:1.5rem 2.5rem; }
-.catering-facts-grid > div{ min-width:0; }
-.catering-facts-grid > div + div{ margin-top:0; padding-top:0; border-top:0; }
-.catering-facts-grid dt{ display:flex; align-items:center; gap:.6rem; }
-.catering-facts-grid dt::before{ content:""; width:.9rem; height:2px; background:var(--brand); flex-shrink:0; }
-
-@media (max-width:1000px){
-  .catering-addons-grid{ grid-template-columns:repeat(2, minmax(0, 1fr)); }
-  .catering-offer-photo{ width:60px; height:60px; }
-  .catering-offer-facts{ gap:.75rem .75rem; }
-}
-@media (max-width:760px){
-  .catering-offer-photo{ width:68px; height:68px; }
-  .catering-addons-grid{ grid-template-columns:minmax(0, 1fr); }
-  .catering-facts{ grid-template-columns:minmax(0, 1fr); }
-  .catering-facts-grid{ grid-template-columns:minmax(0, 1fr); gap:1.25rem; }
+@media (max-width: 480px) {
+  .catering-overview .catering-eyebrow { font-size: .61rem; letter-spacing: .06em; gap: .5rem; }
+  .catering-hero-actions { flex-direction: column; align-items: stretch; gap: .5rem; }
+  .catering-hero-actions .catering-detail-link { justify-content: center; }
+  .catering-format { padding: 1.25rem; }
+  .catering-format h3 { font-size: 1.4rem; }
+  .catering-open-choice { padding: 1.25rem; }
+  .catering-answers details > p { padding-right: 0; }
 }
 
 /* Catering inquiry: essential details first, further wishes optional. */

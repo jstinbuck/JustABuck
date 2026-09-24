@@ -34,17 +34,22 @@ scripts/       JavaScript für die Seiten
 
 - Die Startseite zeigt einen kompakten Catering-Einstieg mit Links auf `catering.html`.
   Die drei Formate stehen unter `catering.html#catering-angebote`: Burger-Bar (`#burger-bar`)
-  für private Feiern, Streetfood-Buffet (`#streetfood-buffet`) für Vereins- und Sommerfeste
-  sowie Event-Stand (`#event-stand`) als Verkaufsstand bei Festen mit offenem Publikum.
-  Ein Wunschmenü ist unter `#wunschmenue` als individuelle Option verlinkt. Extras,
-  Rahmenbedingungen (Gästezahl, Vorlauf, Einsatzgebiet, Platz und Anschlüsse, Mengen)
-  und Ablauf werden ebenfalls auf dieser Unterseite erklärt.
-- Preise stehen weiterhin nicht auf der Seite (Preis pro Gast, Angebot nach Anfrage). In den
-  Formatkarten ist per HTML-Kommentar ein Platz für einen späteren Richtwert ("ab X € pro Gast")
-  vorbereitet.
-- Gästezahlen, Ausgabezeiten, Vorlauf, Einsatzradius, Platz- und Strombedarf, der eingeplante
-  Vegetarier-Anteil sowie die Antwortzeit "innerhalb eines Werktags" sind erste Annahmen und
-  vor dem Livegang zu prüfen.
+  mit Burgern und Fries, Streetfood-Buffet (`#streetfood-buffet`) mit zusätzlichem Chicken
+  und Loaded Fries sowie Event-Stand (`#event-stand`) für öffentliche Veranstaltungen.
+  Beim Streetfood-Buffet erklärt der Text die frische Ausgabe an einer Station.
+- Die Cateringseite lädt auch kleine private Runden zur Anfrage ein. Sie nennt keine
+  pauschalen Mindestgästezahlen, festen Ausgabezeiten oder garantierten Kapazitäten.
+  Auswahl, Umfang, Aufbau und Verfügbarkeit werden persönlich abgestimmt; die Einladung
+  zur Anfrage ist keine Zusage für jede Gruppengröße.
+- Die Übersicht besteht aus einem kurzen Einstieg, drei kompakten Formatkarten,
+  einmalig genannten gemeinsamen Leistungen, einer offenen Wunschmenü-Option
+  (`#wunschmenue`), drei Planungsschritten und fünf nativen FAQ-Aufklappern.
+  Praktische Fragen zu kleinen Feiern, Menü, Einsatzgebiet, Aufbau und Vorlauf bleiben
+  zunächst eingeklappt. Zusätzliche Angebots- und Ausstattungslisten entfallen.
+- Die Übersicht und ihre Styles sind in `catering.html` und `css/catering.css` umgesetzt.
+  Die Anfrage-Section, deren Styles und `scripts/catering.js` wurden bei dieser
+  Überarbeitung unverändert übernommen. Die bestehenden Formatnamen und Anker bleiben
+  mit dem Formular und den Links von Startseite und Speisekarte kompatibel.
 - Das Anfrageformular steht auf `catering.html#event-anfragen`. Pflichtangaben sind Datum
   (alternativ „Termin steht noch nicht fest“), Ort, ungefähre Gäste-/Besucherzahl, Name und
   E-Mail. Format, Anlass, Telefon und Wünsche sind freiwillig. Zusätzliche Angaben bleiben
@@ -64,10 +69,16 @@ scripts/       JavaScript für die Seiten
   möglich; die Angebotsbuttons öffnen dann weiterhin E-Mail-Entwürfe.
 - Der Browsercheck verwendet simulierte Serverantworten, damit keine Testanfragen versendet
   werden. Die tatsächliche Zustellung an das hinterlegte Postfach ist damit nicht geprüft.
-- Inspiration für die Angebotsstruktur: [Käfer Feinkost Catering](https://www.feinkost-kaefer.de/pages/feinkost-catering)
-  (gegliederte Speisenauswahl) und [Kuffler Catering](https://www.kuffler.de/de/catering/)
-  (individuelle Planung nach Wünschen und Budget). Texte und Gestaltung sind für
-  Just A Buck eigenständig umgesetzt.
+- Inspiration für die vereinfachte Angebotsstruktur (September 2026):
+  [Käfer Party Service](https://www.feinkost-kaefer.de/pages/party-service) für den Einstieg
+  über Anlässe und die ausdrückliche Ansprache kleiner Feiern,
+  [Kuffler Catering](https://www.kuffler.de/de/catering/) für ein knappes Portfolio mit
+  persönlicher Abstimmung und [Chipotle Catering](https://catering.chipotle.com/?zipCode=1)
+  für wenige verständliche Essensformate mit direkten Handlungsbuttons. Texte und
+  Gestaltung sind eigenständig; Mengen, Konditionen und Leistungsversprechen fremder
+  Anbieter werden nicht übernommen. Auch weitere Gestaltungsänderungen sollen sich
+  auf Wunsch des Nutzers an passenden etablierten Catering- oder Gastronomieanbietern
+  orientieren.
 - Die Gliederung des Formulars orientiert sich an [Kuffler Catering](https://www.kuffler.de/de/catering/anfrage/)
   (Veranstaltungs- und Kontaktdaten) und [Käfer](https://dachgarten-restaurant.feinkost-kaefer.de/Veranstaltungsformular/)
   (Angebotsauswahl, flexible Termine und Bestätigung), mit weniger Pflichtfeldern für die erste Anfrage.
@@ -76,8 +87,8 @@ scripts/       JavaScript für die Seiten
 
 - Ein kompakter Abschnitt am Ende der Startseite ersetzt die bisherigen Plattformkarten.
   Der Anker `#community` bleibt für bestehende Direktlinks erhalten; der Menüpunkt entfällt.
-- Abschnitt und Startseiten-Footer verlinken auf ausdrücklichen Wunsch vorläufig auf
-  `https://www.instagram.com/jstin.buck/`. Sobald das Markenprofil existiert, beide Links
+- Abschnitt, Pop-up-Terminanzeige und Startseiten-Footer verlinken vorläufig auf
+  `https://www.instagram.com/jstin.buck/`. Sobald das Markenprofil existiert, alle drei Links
   in `index.html` ersetzen. Das vorläufige persönliche Profil wird nicht als `sameAs`
   der Marke in den strukturierten Daten ausgezeichnet.
 - `assets/images/social-placeholder.svg` ist ein bewusst neutraler Bildplatzhalter.
@@ -90,6 +101,12 @@ scripts/       JavaScript für die Seiten
 - `index.html#locations` zeigt einen Bereich ohne Bild mit großer Plakattypografie und einer Terminanzeige
   im Ticket-Stil. Ein ausdrücklicher Hinweis erklärt,
   dass noch kein öffentlicher Termin feststeht. Der bestehende Navigationsanker bleibt erhalten.
+- Direkt bei der Terminanzeige führt „Vom ersten Pop-up erfahren“ zum bestehenden
+  Instagram-Profil. Der sichtbare Zusatz „Auf Instagram dabei sein“ erklärt das Ziel;
+  der Link öffnet einen neuen Tab. Es gibt keine automatische Terminbenachrichtigung.
+- Die Einleitung von `menu.html` erklärt die Auswahl für Caterings und öffentliche
+  Pop-ups. „Pop-up-Termine ansehen“ führt direkt zu `index.html#locations` und bleibt
+  auch auf kleinen Bildschirmen sichtbar.
 - „Entdecke die Speisekarte“ führt zu `menu.html`; „Stand anfragen“ öffnet
   `catering.html?format=event-stand#event-anfragen`. Das bestehende Catering-Skript wählt
   dort den Event-Stand vor. Ohne JavaScript bleibt das Format manuell auswählbar.
