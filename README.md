@@ -83,6 +83,22 @@ scripts/       JavaScript für die Seiten
   (Veranstaltungs- und Kontaktdaten) und [Käfer](https://dachgarten-restaurant.feinkost-kaefer.de/Veranstaltungsformular/)
   (Angebotsauswahl, flexible Termine und Bestätigung), mit weniger Pflichtfeldern für die erste Anfrage.
 
+## Richtpreise
+
+- Vorläufige Richtpreise (September 2026, bewusst günstig angesetzt und noch nicht final):
+  Burger-Bar ab 14 €, Streetfood-Buffet ab 19 € pro Person, dazu einmalig ab 150 € für Anfahrt
+  und Aufbau. Alle Angaben inkl. MwSt. Beim Event-Stand zahlen die Gäste selbst.
+- Die Preise stehen an drei Stellen und müssen gemeinsam geändert werden: Formatkarten
+  (`.catering-format-price`) und Satz „Wir kümmern uns drum“ in `catering.html` sowie die
+  Formatliste der Startseite (`.catering-teaser-price` in `index.html`).
+- Bewusst nur „ab“-Preise: Details zu Mengen und Abrechnung klärt das persönliche Gespräch.
+  Ein Budget-Rechner wurde getestet und wieder entfernt, weil er bei kleinen Runden hohe Preise
+  pro Person zeigt und die Seite überfrachtet.
+- Vorbilder: [Holy Dogs](https://holydogs.de/privates-catering-partyservice/hochzeit/) für
+  „ab … pro Person zzgl. Bereitstellungsgebühr“ und
+  [Trucking Good](https://truckinggood.de/journal/foodtruck-catering-muenchen-kosten/) für einen
+  transparent ausgewiesenen Block für Anfahrt und Aufbau. Zahlen fremder Anbieter werden nicht übernommen.
+
 ## Instagram auf der Startseite
 
 - Ein kompakter Abschnitt am Ende der Startseite ersetzt die bisherigen Plattformkarten.
@@ -113,3 +129,13 @@ scripts/       JavaScript für die Seiten
 - Sobald ein Termin bestätigt ist, den Hinweis in `.popups-dates` durch Veranstaltungsname,
   Datum, Uhrzeit, genaue Adresse und einen Routenlink ersetzen. Angaben zu Eintritt oder
   Tickets ergänzen, wenn sie für den Besuch relevant sind. Bis dahin keine Beispieldaten anzeigen.
+
+## Zahlungsarten und Krypto
+
+- Außerhalb von `zahlung.html#krypto` erscheint Krypto wie jede andere Zahlungsart: gleiche Kachel im
+  Block „Bezahlen am Stand“ unter `index.html#locations` und gleicher Eintrag in der Übersicht der
+  Zahlungsseite, ohne Sticker, Farbfläche oder Zusatzabzeichen.
+- Nur `zahlung.html#krypto` stellt Krypto ausführlich vor: ein Gründerzitat erklärt, warum Just A Buck
+  Krypto annimmt, danach folgen die Coins je Anlass und der Ablauf. Die Coin-Auswahl steht nur dort.
+- Krypto wird sachlich als zusätzliche, freiwillige Option beschrieben, ohne Kursprognosen oder
+  Anlagetipps.

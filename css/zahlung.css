@@ -138,8 +138,6 @@
   line-height:1;
 }
 .zahlung-context--onsite .zahlung-method-icon{ border-color:rgba(246,243,236,.4); color:var(--zahlung-paper); }
-.zahlung-method--crypto .zahlung-method-icon{ color:var(--zahlung-paper); background:var(--brand-strong); border-color:var(--brand-strong); }
-.zahlung-context--onsite .zahlung-method--crypto .zahlung-method-icon{ color:var(--brand-strong); background:var(--zahlung-paper); border-color:var(--zahlung-paper); }
 .zahlung-methods strong{
   display:flex;
   flex-wrap:wrap;
@@ -160,19 +158,6 @@
 }
 .zahlung-context--onsite .zahlung-methods a{ color:var(--zahlung-paper); }
 .zahlung-context--catering .zahlung-methods a{ color:var(--brand); }
-.zahlung-method-tag{
-  padding:.2rem .5rem;
-  border-radius:999px;
-  color:var(--zahlung-paper);
-  background:var(--brand-strong);
-  font-size:.64rem;
-  font-style:normal;
-  font-weight:700;
-  line-height:1.3;
-  letter-spacing:.08em;
-  text-transform:uppercase;
-}
-.zahlung-context--onsite .zahlung-method-tag{ color:var(--brand-strong); background:var(--zahlung-paper); }
 
 .zahlung-context-link{
   align-self:flex-start;
@@ -221,13 +206,18 @@
 .zahlung-crypto .zahlung-eyebrow{ color:var(--on-dark-muted); }
 .zahlung-crypto-intro{ min-width:0; }
 .zahlung-crypto-intro h2{ color:var(--zahlung-paper); font-size:clamp(2.6rem,5vw,4.25rem); }
-.zahlung-crypto-intro h2 + p{
+.zahlung-crypto-intro h2 ~ p{
   max-width:40ch;
   margin:1.25rem 0 0;
   color:var(--on-dark-muted);
   font-size:1rem;
   line-height:1.7;
 }
+/* Gründerzitat: warum Just A Buck Krypto annimmt */
+.zahlung-crypto-quote{ margin:1.25rem 0 0; padding-left:1.1rem; border-left:2px solid rgba(246,243,236,.45); }
+.zahlung-crypto-quote blockquote{ margin:0; }
+.zahlung-crypto-quote p{ max-width:40ch; margin:0; color:var(--zahlung-paper); font-size:1rem; line-height:1.7; }
+.zahlung-crypto-quote figcaption{ margin-top:.5rem; color:var(--on-dark-muted); font-size:.85rem; font-weight:700; }
 .zahlung-coin-groups{ min-width:0; }
 .zahlung-coin-group{ padding:1.5rem 0; border-top:1px solid rgba(246,243,236,.18); }
 .zahlung-coin-group:first-child{ padding-top:0; border-top:0; }

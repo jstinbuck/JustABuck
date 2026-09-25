@@ -84,6 +84,8 @@
 .catering-format-label { margin: 0; color: var(--brand); font-size: .72rem; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; }
 .catering-format-number { color: var(--brand); font-family: var(--font-display); font-size: 1.4rem; line-height: 1; }
 .catering-format h3 { margin: 0 0 .85rem; font-size: clamp(1.3rem, 1.8vw, 1.55rem); font-weight: 700; letter-spacing: -.035em; line-height: 1.25; }
+.catering-format-price { margin: -.35rem 0 1rem; color: var(--muted); font-size: .85rem; line-height: 1.5; }
+.catering-format-price strong { color: var(--brand); font-size: 1rem; }
 .catering-format-description { margin: 0 0 1rem; font-size: .95rem; line-height: 1.7; }
 .catering-format-occasion { margin: 0 0 1.75rem; color: var(--muted); font-size: .81rem; line-height: 1.65; }
 .catering-format-link {
