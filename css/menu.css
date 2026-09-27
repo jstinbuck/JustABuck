@@ -138,11 +138,12 @@
 .catalog-item-copy{ padding:1.5rem; }
 .catalog-item-heading{ display:flex; align-items:baseline; justify-content:space-between; gap:.6rem 1rem; }
 .catalog-item-heading h3{ margin:0; font-size:1.13rem; font-weight:700; line-height:1.35; letter-spacing:-.025em; overflow-wrap:break-word; }
-.catalog-price{ flex-shrink:0; margin:0; color:var(--ink); font-size:1rem; font-weight:700; line-height:1.35; font-variant-numeric:tabular-nums; white-space:nowrap; }
 .catalog-item-description{ margin:.7rem 0 0; color:var(--muted); font-size:.875rem; line-height:1.7; }
 .catalog-item-tag{ display:inline-flex; margin:0 0 .8rem; padding:.22rem .5rem; border-radius:4px; font-size:.63rem; font-weight:700; letter-spacing:.05em; line-height:1.5; text-transform:uppercase; }
 .catalog-item-tag--hot{ background:#fbece9; color:#9b271b; }
 .catalog-item-tag--plant{ background:#eff4e4; color:#42551c; }
+.catalog-item-tag--vegan{ background:#e3f2e6; color:#1d5f35; }
+.catalog-item-tag--kids{ background:#fff3d1; color:#6f4a00; }
 .catalog-allergens{ margin-top:.85rem; }
 .catalog-allergens summary{ display:inline-flex; align-items:center; gap:.6rem; min-height:44px; color:var(--muted); font-size:.75rem; cursor:pointer; list-style:none; }
 .catalog-allergens summary::-webkit-details-marker{ display:none; }
@@ -163,7 +164,6 @@
 .catalog-item--royal .catalog-item-copy{ padding:1.75rem 0 1.5rem 1.75rem; }
 .catalog-item--royal .catalog-item-heading{ display:block; }
 .catalog-item--royal h3{ font-family:var(--font-display); font-size:clamp(1.7rem, 2.4vw, 2.1rem); font-weight:400; line-height:1.2; letter-spacing:0; }
-.catalog-item--royal .catalog-price{ margin-top:.75rem; color:#fff; font-size:1.6rem; }
 .catalog-item--royal .catalog-item-description{ color:#e3d8e7; }
 .catalog-item-tag--royal{ border:1px solid #7d638a; color:#eee1f4; }
 .catalog-item--royal .catalog-allergens summary{ color:#e3d8e7; }
@@ -209,7 +209,7 @@
   .catalog-layout{ display:block; padding:0 1.25rem 3rem; }
   .catalog-sidebar{ top:calc(var(--site-announcement-height) + var(--catalog-header-height)); z-index:100; margin:0 -1.25rem 1.5rem; padding:0 1rem; background:#fff; border-bottom:1px solid var(--line); }
   .catalog-sidebar-label, .catalog-sidebar-help, .catalog-category-count{ display:none; }
-  .catalog-categories{ display:grid; grid-template-columns:repeat(5, minmax(0, 1fr)); gap:0; height:60px; }
+  .catalog-categories{ display:grid; grid-template-columns:repeat(6, minmax(0, 1fr)); gap:0; height:60px; }
   .catalog-categories a{ justify-content:center; gap:0; min-width:0; min-height:44px; padding:.75rem .1rem; border:0; border-bottom:3px solid transparent; border-radius:0; font-size:.8rem; }
   .catalog-categories a[aria-current="location"]{ border-color:var(--brand); background:transparent; }
   .catalog-tools{ margin:0 0 1.5rem; padding-bottom:1rem; }
@@ -231,7 +231,6 @@
   .catalog-item--royal .catalog-item-copy{ padding:.5rem 1.25rem 1.25rem; }
   .catalog-item--royal .catalog-item-heading{ display:flex; flex-wrap:wrap; align-items:baseline; }
   .catalog-item--royal h3{ font-size:1.65rem; }
-  .catalog-item--royal .catalog-price{ margin:0; font-size:1.35rem; }
   .catalog-section-description{ font-size:.875rem; }
   .catalog-category-photo{ width:76px; height:76px; }
   .catalog-tools{ gap:.5rem; }
@@ -251,7 +250,7 @@
   .catalog-layout{ display:block; padding:1rem 0; }
   .catalog-section, .catalog-item{ break-inside:avoid; }
   .catalog-item--royal{ background:#fff; border-color:#bbb; color:#000; }
-  .catalog-item--royal :is(.catalog-price, .catalog-item-description, .catalog-item-tag, .catalog-allergens summary){ color:#000; }
+  .catalog-item--royal :is(.catalog-item-description, .catalog-item-tag, .catalog-allergens summary){ color:#000; }
   .catalog-royal-visual{ background:none; }
   .catalog-royal-visual > span{ display:none; }
 }

@@ -29,9 +29,17 @@
     'burger-bar': 'Burger-Bar',
     'streetfood-buffet': 'Streetfood-Buffet',
     'event-stand': 'Event-Stand',
+    mitternachtsburger: 'Mitternachtsburger',
+    'burger-tag': 'Burger-Tag im Betrieb',
     wunschmenue: 'Wunschmenü'
   });
   const isKnownPackage = value => Object.prototype.hasOwnProperty.call(packages, value);
+  // ?anlass= preselects the optional occasion, e.g. from firmen.html and hochzeit.html.
+  const occasions = Object.freeze({ firmenfeier: 'Firmenfeier', hochzeit: 'Hochzeitsparty' });
+  const guestsLabelText = () => ({
+    'event-stand': 'Erwartete Besucher',
+    'burger-tag': 'Mitarbeitende vor Ort'
+  })[packageSelect.value] || 'Ungefähre Gästezahl';
   const packageName = () => isKnownPackage(packageSelect.value)
     ? packages[packageSelect.value] : 'Noch offen';
   const subject = () => `Unverbindliche Catering-Anfrage – ${packageName()}`;
@@ -115,9 +123,10 @@
       `Format: ${packageName()}`,
       `Datum: ${dateUnknown.checked ? 'Termin noch offen' : date.value}`,
       `Veranstaltungsort: ${location.value.trim()}`,
-      `${packageSelect.value === 'event-stand' ? 'Erwartete Besucher' : 'Ungefähre Gästezahl'}: ${guests.value}`,
+      `${guestsLabelText()}: ${guests.value}`,
       `Anlass: ${selectedOccasion?.value ? occasion : ''}`,
       `Name: ${name.value.trim()}`,
+      `Firma: ${byId('cateringCompany')?.value.trim() || ''}`,
       `E-Mail: ${email.value.trim()}`,
       `Telefon: ${byId('cateringPhone')?.value.trim() || ''}`,
       '',
@@ -128,8 +137,9 @@
 
   const updatePackage = (announce = false) => {
     const eventStand = packageSelect.value === 'event-stand';
+    const burgerTag = packageSelect.value === 'burger-tag';
     if (guestsLabel) {
-      guestsLabel.textContent = eventStand ? 'Erwartete Besucher ' : 'Ungefähre Gästezahl ';
+      guestsLabel.textContent = `${guestsLabelText()} `;
       const marker = document.createElement('span');
       marker.setAttribute('aria-hidden', 'true');
       marker.textContent = '*';
@@ -138,7 +148,9 @@
     if (guestsHint) {
       guestsHint.textContent = eventStand
         ? 'Wie viele Besucher erwartet ihr bei eurem Fest? Eine erste Schätzung genügt.'
-        : 'Eine erste Schätzung genügt. Die genaue Zahl stimmen wir später ab.';
+        : burgerTag
+          ? 'Wie viele Mitarbeitende sind ungefähr am Standort? Eine Schätzung genügt.'
+          : 'Eine erste Schätzung genügt. Die genaue Zahl stimmen wir später ab.';
     }
     if (notice) notice.textContent = announce && isKnownPackage(packageSelect.value)
       ? `${packageName()} ist vorausgewählt. Du kannst das Format jederzeit ändern.` : '';
@@ -284,8 +296,16 @@
     });
   });
 
-  const initialPackage = new URLSearchParams(window.location.search).get('format');
+  const params = new URLSearchParams(window.location.search);
+  const initialPackage = params.get('format');
+  const initialOccasion = params.get('anlass');
+  const occasionSelect = byId('cateringOccasion');
   if (isKnownPackage(initialPackage)) packageSelect.value = initialPackage;
+  if (occasionSelect && Object.prototype.hasOwnProperty.call(occasions, initialOccasion)) {
+    occasionSelect.value = occasions[initialOccasion];
+    // Companies need the company field for quotes and invoices, so show the optional details.
+    if (initialOccasion === 'firmenfeier' && optional) optional.open = true;
+  }
   updateDate();
   updatePackage(isKnownPackage(initialPackage));
   dateUnknownWrap.hidden = false;

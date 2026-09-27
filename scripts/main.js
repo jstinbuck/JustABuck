@@ -14,10 +14,10 @@
     document.body.classList.toggle('nav-open', !open);
   });
 
-  // Menü schließen nach Klick
-  nav?.querySelectorAll('a').forEach(a => {
+  // Auch der mobile Anfragebutton außerhalb des Menüs löst die Scrollsperre.
+  document.querySelectorAll('#primary-nav a, .navbar--mobile-inquiry .contact-btn').forEach(a => {
     a.addEventListener('click', () => {
-      nav.classList.remove('is-open');
+      nav?.classList.remove('is-open');
       toggle?.setAttribute('aria-expanded', 'false');
       document.body.classList.remove('nav-open');
     });
@@ -219,6 +219,21 @@
 
   // Performance: Use RequestAnimationFrame for smooth animations
   let ticking = false;
+  // FAQ: the extra questions can also be collapsed from the end of the list.
+  const initFaqCollapse = () => {
+    document.querySelectorAll('.catering-answers-less').forEach(button => {
+      const group = button.closest('details');
+      const summary = group?.querySelector(':scope > summary');
+      if (!group || !summary) return;
+      button.hidden = false;
+      button.addEventListener('click', () => {
+        group.open = false;
+        summary.focus({ preventScroll: true });
+        summary.scrollIntoView({ block: 'nearest' });
+      });
+    });
+  };
+
   const rafCallbacks = [];
 
   const onScroll = () => {
@@ -246,6 +261,7 @@
     }
     createBackToTop();
     initActiveNav();
+    initFaqCollapse();
 
     if (!prefersReducedMotion) {
       initScrollAnimations();

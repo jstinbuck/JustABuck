@@ -123,6 +123,11 @@
 .catering-open-choice h3 { margin: 0 0 .4rem; font-size: 1.1rem; line-height: 1.4; }
 .catering-open-choice p { max-width: 68ch; margin: 0; color: var(--muted); font-size: .9rem; line-height: 1.7; }
 .catering-open-choice .catering-detail-link { flex-shrink: 0; }
+/* Abschluss-Box mit Anfrage und WhatsApp (hochzeit.html, firmen.html) */
+.catering-closing { margin-top: 0; }
+.catering-closing h2 { margin: 0 0 .4rem; font-size: 1.25rem; line-height: 1.4; }
+.catering-closing .catering-cta { background: var(--brand); font-size: .9rem; }
+.catering-closing-actions { flex-shrink: 0; margin-top: 0; }
 
 .catering-how { margin: clamp(3.5rem, 6vw, 5rem) 0; }
 .catering-how-steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2.25rem; margin: 0; padding: 1.75rem 0 0; border-top: 1px solid var(--catering-rule); list-style: none; }
@@ -139,7 +144,19 @@
 .catering-answers summary { display: flex; align-items: center; justify-content: space-between; gap: 1.25rem; min-height: 62px; padding: 1rem 0; font-size: .93rem; font-weight: 700; line-height: 1.5; cursor: pointer; list-style: none; }
 .catering-answers summary::-webkit-details-marker { display: none; }
 .catering-answers summary::after { content: "+"; flex-shrink: 0; color: var(--brand); font-size: 1.4rem; font-weight: 400; }
-.catering-answers details[open] summary::after { content: "−"; }
+.catering-answers details[open] > summary::after { content: "−"; }
+/* Weitere Fragen: nur die ersten drei sind sichtbar, der Rest klappt gemeinsam auf. */
+.catering-answers details.catering-answers-more { border-bottom: 0; }
+.catering-answers-more > summary { color: var(--brand); font-size: .88rem; }
+.catering-answers-more[open] > summary { border-bottom: 1px solid var(--catering-rule); }
+.catering-answers-more-close,
+.catering-answers-more[open] .catering-answers-more-open { display: none; }
+.catering-answers-more[open] .catering-answers-more-close { display: inline; }
+.catering-answers-less { display: flex; align-items: center; justify-content: space-between; gap: 1.25rem; width: 100%; min-height: 62px; padding: 1rem 0; border: 0; background: none; color: var(--brand); font: inherit; font-size: .88rem; font-weight: 700; line-height: 1.5; text-align: left; cursor: pointer; }
+.catering-answers-less[hidden] { display: none; }
+.catering-answers-less span { font-size: 1.4rem; font-weight: 400; }
+.catering-answers-less:hover { text-decoration: underline; text-underline-offset: 4px; }
+.catering-answers-less:focus-visible { outline: 3px solid var(--brand); outline-offset: 4px; }
 .catering-answers summary:hover { color: var(--brand); }
 .catering-answers summary:focus-visible { outline: 3px solid var(--brand); outline-offset: 4px; }
 .catering-answers details > p { margin: 0; padding: 0 2rem 1.25rem 0; color: var(--muted); font-size: .9rem; line-height: 1.75; }
@@ -198,6 +215,10 @@
 .catering-inquiry-person > strong { display: block; margin: .3rem 0 .65rem; font-size: 1.1rem; }
 .catering-inquiry .catering-inquiry-person p { font-size: .88rem; }
 .catering-inquiry .catering-inquiry-note { margin-top: 1.5rem; color: var(--muted); font-size: .8rem; }
+.catering-inquiry .catering-availability { margin-top: 1.5rem; padding: .9rem 1rem; border: 1px solid var(--catering-rule); border-radius: 4px; background: var(--surface); color: var(--muted); font-size: .85rem; line-height: 1.65; }
+.catering-availability strong { display: block; color: var(--ink); }
+.catering-inquiry .catering-form-promise { display: flex; align-items: center; justify-content: center; gap: .45rem; max-width: none; margin: .75rem 0 0; color: var(--muted); font-size: .8rem; font-weight: 700; }
+.catering-form-promise svg { flex-shrink: 0; color: #1f8a4c; }
 .catering-form-panel { min-width: 0; padding: clamp(1.25rem, 3vw, 2.25rem); background: var(--surface); border: 1px solid var(--catering-rule); border-top: 3px solid var(--brand); border-radius: 6px; }
 .catering-inquiry .catering-form-required { margin: 0 0 1.5rem; font-size: .78rem; }
 .catering-form fieldset { min-width: 0; margin: 0; padding: 0; border: 0; }

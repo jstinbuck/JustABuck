@@ -1,0 +1,3 @@
+/* Hochzeitsseite: nutzt die Catering-Bausteine aus catering.css, hier nur die Abweichungen. */
+.hochzeit-page .catering-format-description { margin-bottom: 0; }
+.hochzeit-page .catering-how { margin-bottom: clamp(2.5rem, 5vw, 3.5rem); }
