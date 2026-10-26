@@ -139,11 +139,19 @@
 .catalog-item-heading{ display:flex; align-items:baseline; justify-content:space-between; gap:.6rem 1rem; }
 .catalog-item-heading h3{ margin:0; font-size:1.13rem; font-weight:700; line-height:1.35; letter-spacing:-.025em; overflow-wrap:break-word; }
 .catalog-item-description{ margin:.7rem 0 0; color:var(--muted); font-size:.875rem; line-height:1.7; }
+.catalog-item--photo .catalog-item-copy{ display:flow-root; }
+.catalog-item-photo{ float:right; width:112px; height:112px; margin:-.5rem -.5rem .5rem .75rem; object-fit:contain; }
+.catalog-item-nickname{ margin:.2rem 0 0; color:var(--brand); font-size:.78rem; font-weight:700; letter-spacing:.02em; }
+.catalog-heat{ display:flex; flex-wrap:wrap; align-items:center; gap:.35rem .6rem; margin:.75rem 0 0; color:var(--muted); font-size:.75rem; line-height:1.4; }
+.catalog-heat-label{ color:#9b271b; font-weight:700; }
+.catalog-heat-scale{ display:inline-flex; gap:3px; }
+.catalog-heat-scale span{ width:14px; height:6px; border-radius:3px; background:#f2b98a; }
+.catalog-heat-scale span:nth-child(2){ background:#e98a55; }
+.catalog-heat-scale span:nth-child(3){ background:#d4532f; }
+.catalog-heat-scale span:nth-child(4){ background:#9b271b; }
 .catalog-item-tag{ display:inline-flex; margin:0 0 .8rem; padding:.22rem .5rem; border-radius:4px; font-size:.63rem; font-weight:700; letter-spacing:.05em; line-height:1.5; text-transform:uppercase; }
 .catalog-item-tag--hot{ background:#fbece9; color:#9b271b; }
 .catalog-item-tag--plant{ background:#eff4e4; color:#42551c; }
-.catalog-item-tag--vegan{ background:#e3f2e6; color:#1d5f35; }
-.catalog-item-tag--kids{ background:#fff3d1; color:#6f4a00; }
 .catalog-allergens{ margin-top:.85rem; }
 .catalog-allergens summary{ display:inline-flex; align-items:center; gap:.6rem; min-height:44px; color:var(--muted); font-size:.75rem; cursor:pointer; list-style:none; }
 .catalog-allergens summary::-webkit-details-marker{ display:none; }
@@ -190,6 +198,7 @@
   .catalog-item-copy{ padding:1.15rem; }
   .catalog-item-heading{ flex-wrap:wrap; }
   .catalog-item-heading h3{ font-size:1.05rem; }
+  .catalog-item-photo{ width:88px; height:88px; }
   .catalog-item--royal{ grid-template-columns:minmax(0, 1.2fr) minmax(0, 1fr); }
   .catalog-item--royal .catalog-item-copy{ padding:1.5rem 0 1.25rem 1.25rem; }
   .catalog-item--royal h3{ font-size:1.65rem; }
@@ -209,7 +218,7 @@
   .catalog-layout{ display:block; padding:0 1.25rem 3rem; }
   .catalog-sidebar{ top:calc(var(--site-announcement-height) + var(--catalog-header-height)); z-index:100; margin:0 -1.25rem 1.5rem; padding:0 1rem; background:#fff; border-bottom:1px solid var(--line); }
   .catalog-sidebar-label, .catalog-sidebar-help, .catalog-category-count{ display:none; }
-  .catalog-categories{ display:grid; grid-template-columns:repeat(6, minmax(0, 1fr)); gap:0; height:60px; }
+  .catalog-categories{ display:grid; grid-template-columns:repeat(4, minmax(0, 1fr)); gap:0; height:60px; }
   .catalog-categories a{ justify-content:center; gap:0; min-width:0; min-height:44px; padding:.75rem .1rem; border:0; border-bottom:3px solid transparent; border-radius:0; font-size:.8rem; }
   .catalog-categories a[aria-current="location"]{ border-color:var(--brand); background:transparent; }
   .catalog-tools{ margin:0 0 1.5rem; padding-bottom:1rem; }
@@ -224,6 +233,7 @@
   .catalog-item-copy{ padding:1.25rem; }
   .catalog-item-heading{ flex-wrap:nowrap; }
   .catalog-item-heading h3{ font-size:1.1rem; }
+  .catalog-item-photo{ width:96px; height:96px; }
   .catalog-item--royal{ display:flex; flex-direction:column; align-items:stretch; }
   .catalog-royal-visual{ order:-1; height:210px; border-radius:12px 12px 0 0; }
   .catalog-royal-visual img{ position:absolute; width:100%; max-width:430px; }

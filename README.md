@@ -109,10 +109,10 @@ scripts/       JavaScript für die Seiten
   (`.catering-format-price`) und Satz „Wir kümmern uns drum“ in `catering.html`, die
   Formatliste der Startseite (`.catering-teaser-price` in `index.html`) und die Kennzahl
   „ab 14 €“ in `firmen.html`.
-- `menu.html` kennzeichnet Gerichte mit Tags: „Vegetarisch“ (`--plant`), „Vegan“ (`--vegan`) und
-  „Mit Überraschung“ (`--kids`). Vegan: Vegan Buck und Vegan Loaded Fries; die Kategorie Kids (`#kids`)
-  enthält Kids Box und Kids Box Veggie. Allergenangaben dieser Gerichte sind vorläufig und müssen mit
-  den tatsächlich verwendeten Produkten (Bun, Käse, Saucen, Patty) abgeglichen werden. Ein Hinweis
+- `menu.html` kennzeichnet Gerichte mit Tags: „Vegetarisch“ (`--plant`) und „Scharf“ (`--hot`).
+  Vegane Gerichte und eine Kids-Kategorie gibt es derzeit bewusst nicht. Allergenangaben sind
+  vorläufig und müssen mit den tatsächlich verwendeten Produkten (Bun, Käse, Saucen, Patty)
+  abgeglichen werden. Ein Hinweis
   am Kartenende nennt die gemeinsame Küche mit Fleisch und Chicken.
 - `menu.html` zeigt keine Einzelpreise mehr: Catering wird pro Person abgerechnet, Pop-up-Preise
   können je nach Standort variieren und stehen am Stand. `speisekarte.html` mit dem alten Kartenbild
