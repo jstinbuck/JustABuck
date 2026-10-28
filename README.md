@@ -228,7 +228,7 @@ scripts/       JavaScript für die Seiten
 - Die Einleitung von `menu.html` erklärt die Auswahl für Caterings und öffentliche
   Pop-ups. „Pop-up-Termine ansehen“ führt direkt zu `index.html#locations` und bleibt
   auch auf kleinen Bildschirmen sichtbar.
-- „Entdecke die Speisekarte“ führt zu `menu.html`; „Stand anfragen“ öffnet
+- „Entdecke unsere Produkte“ führt zu `menu.html`; „Stand anfragen“ öffnet
   `catering.html?format=event-stand#event-anfragen`. Das bestehende Catering-Skript wählt
   dort den Event-Stand vor. Ohne JavaScript bleibt das Format manuell auswählbar.
 - Sobald ein Termin bestätigt ist, den Hinweis in `.popups-dates` durch Veranstaltungsname,
