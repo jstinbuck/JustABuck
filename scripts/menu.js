@@ -21,7 +21,7 @@
   }
 
   const nav = document.querySelector('.catalog-categories');
-  const header = document.querySelector('.catalog-header');
+  const header = document.querySelector('.navbar');
   const links = Array.from(nav?.querySelectorAll('a[href^="#"]') || []);
   const sections = links.map(link => document.getElementById(link.hash.slice(1)));
   if (!links.length || sections.some(section => !section)) return;

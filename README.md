@@ -33,14 +33,55 @@ scripts/       JavaScript für die Seiten
   „Dein Ansprechpartner“ am Catering-Formular und das Krypto-Zitat auf `zahlung.html`.
   Sonst sprechen die Texte als „wir“.
 
+## Navigation
+
+- Startseite, Catering-, Firmen-, Hochzeits-, Produkt- und Zahlungsseite haben dieselbe Kopfzeile:
+  Logo (führt zur Startseite), „Catering“ mit Untermenü, „Produkte“, „Pop-ups“, „Über uns“ und
+  rechts der Button „Event anfragen“. Einen Menüpunkt „Startseite“ gibt es nicht.
+- Das Untermenü „Catering“ zeigt Privatfeier (`catering.html`), Firmenfeier (`firmen.html`) und
+  Hochzeit (`hochzeit.html`) mit je einer kurzen Zeile sowie „Alle Formate & Preise“
+  (`catering.html#catering-angebote`). Am Desktop öffnet es beim Überfahren und per Klick oder
+  Tastatur (Escape schließt), mobil steht es offen als Gruppe im Menü.
+- „Pop-ups“ und „Über uns“ springen zu `index.html#locations` und `index.html#about`; auf der
+  Startseite selbst stehen nur die Anker, damit die aktive Markierung beim Scrollen funktioniert.
+- Die aktuelle Seite trägt `aria-current="page"`; gehört sie zum Catering, ist auch „Catering“ markiert.
+- Der Button „Event anfragen“ führt zu `catering.html#event-anfragen`; auf der Firmenseite mit
+  `?anlass=firmenfeier`, auf der Hochzeitsseite mit `?format=mitternachtsburger&anlass=hochzeit`.
+- Mobil (bis 900 px) klappt das Menü unter der Kopfzeile auf einer lila Fläche auf; der Menüknopf
+  wird dabei zum Schließen-Symbol. Die Logik steht in `scripts/nav.js`, die Styles im Abschnitt
+  „Header / Navbar“ von `css/site.css`. Neue Seiten mit Kopfzeile binden `scripts/nav.js` ein.
+- Die Produktseite nutzt die gemeinsame Kopfzeile; `--catalog-header-height` in `css/menu.css`
+  entspricht ihrer Höhe (108 px, mobil 80 px), damit die mitlaufende Kategorienleiste anschließt.
+
+## Impressum und Musterhinweis
+
+- `impressum.html` kennzeichnet die Website oben als Musterseite: Angebote, Preise, Produkte, Termine
+  sowie Angaben zu Leistungen, Versicherung und Anmeldungen sind Beispiele, Abbildungen können
+  Symbolbilder sein, und die Telefon-/WhatsApp-Nummer ist ein Platzhalter.
+- Anbieter ist Justin Buck, Kempten (Allgäu). Erfundene Angaben (Musteradresse, Mustername,
+  Umsatzsteuer-ID, Handelsregister) werden nicht verwendet. Der Verantwortliche in `datenschutz.html`
+  nennt dieselben Angaben.
+- Vor dem Start: vollständige Anschrift in Impressum und Datenschutz ergänzen, Umsatzsteuer-ID und
+  Registereintrag nur aufnehmen, wenn sie vorliegen, und den Hinweis `.legal-notice` entfernen.
+
+## Über uns auf der Startseite
+
+- `index.html#about` zeigt links ein Porträt mit Namensschild und rechts die Überschrift
+  „Frisch gegründet. Ernst gemeint.“, einen kurzen Text in Ich-Form, drei Zusagen
+  (ein Ansprechpartner, Antwort in 24 Stunden, sauber abgesichert) sowie Anfrage- und WhatsApp-Button.
+  Die Namensgeschichte (JAB = Just A Buck = Justin Alexander Buck) steht als kleiner Geldschein
+  über der unteren Ecke des Porträts. Unter 960 px stehen Überschrift, Porträt und Text untereinander.
+- Das Porträt ist vorläufig eine lila Fläche mit „JAB“ (`.about-portrait-placeholder`). Für das
+  echte Foto `assets/images/justin-buck.jpg` ablegen (Hochformat 4:5, Gesicht im oberen Drittel)
+  und den Platzhalter durch das `<img>` aus dem Kommentar im Markup ersetzen. Mobil wird das Foto
+  auf 4:3 zugeschnitten.
+- Keine Kennzahlen, Kundenstimmen oder Logos ergänzen, solange es sie nicht wirklich gibt.
+
 ## Cateringformate und Anfrageformular
 
-- Auf Startseite, Catering-, Firmen- und Hochzeitsseite bleibt der vorhandene
-  Anfragebutton bis 900 px Bildschirmbreite in der festen Kopfzeile sichtbar
-  (`.navbar--mobile-inquiry`). Logo und Abstände sind dafür nur mobil kompakter.
-  Die jeweiligen Anfrageziele und Vorwahlen bleiben erhalten. Ein Klick schließt
-  auch ein offenes Mobilmenü. Die Speisekarte hat bereits einen eigenen festen CTA;
-  die Desktopdarstellung bleibt unverändert.
+- Der Button „Event anfragen“ in der Kopfzeile bleibt auch mobil sichtbar
+  (`.navbar--mobile-inquiry`, siehe „Navigation“). Auf Firmen- und Hochzeitsseite
+  wählt sein Link den Anlass im Formular vor. Ein Klick schließt auch ein offenes Mobilmenü.
 - Die Startseite zeigt einen kompakten Catering-Einstieg mit Links auf `catering.html`.
   Die drei Formate stehen unter `catering.html#catering-angebote`: Burger-Bar (`#burger-bar`)
   mit Burgern und Fries, Streetfood-Buffet (`#streetfood-buffet`) mit zusätzlichem Chicken
@@ -171,7 +212,8 @@ scripts/       JavaScript für die Seiten
   Rechnung und Überweisung. Referenzen (Logos, Zitate) vor der Abschluss-Box ergänzen, sobald vorhanden.
 - Die FAQ auf `catering.html`, `firmen.html` und `hochzeit.html` nennen Betriebshaftpflicht inkl. Produkthaftpflicht,
   Belehrung nach § 43 IfSG, angemeldetes Gewerbe und geprüfte Gasanlage (Firmen zusätzlich die
-  Registrierung bei der Lebensmittelüberwachung). Diese Angaben müssen vor dem Livegang zutreffen.
+  Registrierung bei der Lebensmittelüberwachung). Die Zusage „Sauber abgesichert“ in `index.html#about`
+  fasst Gewerbe, Haftpflicht und § 43 IfSG kurz zusammen. Diese Angaben müssen vor dem Livegang zutreffen.
 - Vorbilder: [ezCater](https://www.ezcater.com/company/corporate-solutions/) für Nutzenversprechen
   aus Sicht der Einkaufenden und FAQ, [Eurest](https://eurest.co.uk/food-services/corporate-office-catering/)
   für Teamkultur als Argument und [Chidonkey](https://foodtruck-catering.chidonkey.de/) für
@@ -180,8 +222,9 @@ scripts/       JavaScript für die Seiten
 ## Antwortzeit und Verfügbarkeit
 
 - Versprechen einer persönlichen Antwort innerhalb von 24 Stunden: unter dem Absenden-Button, bei
-  „Dein Ansprechpartner“, in der Erfolgsmeldung des Formulars (`catering.html`) und im Abschluss
-  von `hochzeit.html`. Ändert sich die Antwortzeit, alle Stellen gemeinsam anpassen.
+  „Dein Ansprechpartner“, in der Erfolgsmeldung des Formulars (`catering.html`), im Abschluss
+  von `hochzeit.html` und in den Zusagen von `index.html#about`. Ändert sich die Antwortzeit,
+  alle Stellen gemeinsam anpassen.
 - Knappheit wird ehrlich begründet statt mit einer festen Zahl: Justin betreut jedes Event
   persönlich, daher nur wenige Events pro Wochenende (`.catering-availability` am Formular,
   Abschluss von `hochzeit.html`). Eine konkrete Zahl nur nennen, wenn sie tatsächlich gilt.
@@ -217,23 +260,32 @@ scripts/       JavaScript für die Seiten
   zusätzlich zum lesbaren Plattformnamen. Die großen PNG-Logos unter `assets/images/social/`
   werden dafür nicht geladen; Texte und Layout sind eigenständig.
 
-## Öffentliche Pop-ups
+## Öffentliche Pop-ups und Pop-up-Abstimmung
 
-- `index.html#locations` zeigt einen Bereich ohne Bild mit großer Plakattypografie und einer Terminanzeige
-  im Ticket-Stil. Ein ausdrücklicher Hinweis erklärt,
-  dass noch kein öffentlicher Termin feststeht. Der bestehende Navigationsanker bleibt erhalten.
-- Direkt bei der Terminanzeige führt „Vom ersten Pop-up erfahren“ zum bestehenden
-  Instagram-Profil. Der sichtbare Zusatz „Auf Instagram dabei sein“ erklärt das Ziel;
-  der Link öffnet einen neuen Tab. Es gibt keine automatische Terminbenachrichtigung.
-- Die Einleitung von `menu.html` erklärt die Auswahl für Caterings und öffentliche
-  Pop-ups. „Pop-up-Termine ansehen“ führt direkt zu `index.html#locations` und bleibt
-  auch auf kleinen Bildschirmen sichtbar.
+- `index.html#locations` zeigt einen Bereich ohne Bild mit großer Plakattypografie. Im Ticket
+  (`.popups-dates.popups-vote`) steht statt eines Termins die Abstimmung „Wo soll das erste Pop-up hin?“
+  mit Warteliste. Das Ticket ist dafür nicht gedreht, damit die Eingabefelder ruhig wirken.
+- Felder: PLZ oder Ort (Pflicht), „Wann passt es dir?“ mit Mittags (Mo–Fr), Feierabend und Wochenende
+  (optional), E-Mail für die Warteliste (Pflicht) und eine Einwilligung zur Ankündigung des ersten
+  Pop-ups per E-Mail (Pflicht). Darunter führt „Lieber ohne E-Mail?“ zum Instagram-Profil.
+- Versand über Web3Forms mit demselben Zugangsschlüssel wie das Cateringformular. `scripts/popups.js`
+  prüft die Eingaben, sendet ohne Seitenwechsel und zeigt danach eine Bestätigung mit dem Ort.
+  Ohne JavaScript sendet das Formular direkt an Web3Forms.
+- Jede Stimme kommt als E-Mail mit dem Betreff „Pop-up-Stimme: <Ort>“ an; die Zeitwünsche stehen
+  gesammelt im Feld „Wann“. Zum Auswerten im Postfach nach dem Betreff filtern und pro Ort nur
+  eindeutige E-Mail-Adressen zählen. Nach außen (Vermieter, Bank, Veranstalter) nur zusammengefasste
+  Zahlen nennen, nie Kontaktdaten; so steht es in `datenschutz.html#popup-warteliste`.
+- Das kostenlose Web3Forms-Kontingent ist begrenzt und gilt für Catering-Anfragen und Stimmen
+  zusammen. Bei vielen Stimmen den Tarif prüfen oder auf ein eigenes Formular-Backend wechseln.
+- Wer sich austragen möchte, antwortet auf die Ankündigung; die Adresse dann aus der eigenen
+  Liste löschen. Es gibt kein automatisches Double-Opt-in.
+- Die Einleitung von `menu.html` verweist mit „Pop-up mitbestimmen“ auf `index.html#locations`.
 - „Entdecke unsere Produkte“ führt zu `menu.html`; „Stand anfragen“ öffnet
   `catering.html?format=event-stand#event-anfragen`. Das bestehende Catering-Skript wählt
   dort den Event-Stand vor. Ohne JavaScript bleibt das Format manuell auswählbar.
-- Sobald ein Termin bestätigt ist, den Hinweis in `.popups-dates` durch Veranstaltungsname,
-  Datum, Uhrzeit, genaue Adresse und einen Routenlink ersetzen. Angaben zu Eintritt oder
-  Tickets ergänzen, wenn sie für den Besuch relevant sind. Bis dahin keine Beispieldaten anzeigen.
+- Sobald der erste Termin feststeht: Veranstaltungsname, Datum, Uhrzeit, genaue Adresse und einen
+  Routenlink im Ticket zeigen und die Warteliste per E-Mail informieren. Die Abstimmung kann für
+  weitere Standorte bleiben. Bis dahin keine Beispieldaten anzeigen.
 
 ## Zahlungsarten und Krypto
 

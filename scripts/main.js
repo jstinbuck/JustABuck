@@ -4,24 +4,7 @@
   const yEl = document.getElementById('y');
   if (yEl) yEl.textContent = new Date().getFullYear();
 
-  // Mobile-Menü (Burger)
-  const toggle = document.querySelector('.nav-toggle');
-  const nav = document.getElementById('primary-nav');
-  toggle?.addEventListener('click', () => {
-    const open = toggle.getAttribute('aria-expanded') === 'true';
-    toggle.setAttribute('aria-expanded', String(!open));
-    nav?.classList.toggle('is-open');
-    document.body.classList.toggle('nav-open', !open);
-  });
-
-  // Auch der mobile Anfragebutton außerhalb des Menüs löst die Scrollsperre.
-  document.querySelectorAll('#primary-nav a, .navbar--mobile-inquiry .contact-btn').forEach(a => {
-    a.addEventListener('click', () => {
-      nav?.classList.remove('is-open');
-      toggle?.setAttribute('aria-expanded', 'false');
-      document.body.classList.remove('nav-open');
-    });
-  });
+  // Navigation (Mobilmenü, Catering-Untermenü) steht in scripts/nav.js.
 
   // =========================
   // OPTISCHE UPGRADES

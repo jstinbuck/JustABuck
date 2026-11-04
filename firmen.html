@@ -27,13 +27,26 @@
         <a href="index.html" class="brand" aria-label="Just A Buck – zur Startseite">
           <img src="assets/images/logo.png" alt="Just A Buck" class="logo">
         </a>
+
         <ul id="primary-nav" class="nav-links" role="list">
-          <li><a href="index.html">Startseite</a></li>
+          <li class="nav-group is-current">
+            <button class="nav-group-toggle" type="button" aria-expanded="false" aria-controls="navCatering">Catering <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6" stroke-linecap="round" stroke-linejoin="round" /></svg></button>
+            <span class="nav-group-label" aria-hidden="true">Catering</span>
+            <div class="nav-dropdown" id="navCatering">
+              <ul class="nav-dropdown-list" role="list" aria-label="Catering nach Anlass">
+                <li><a href="catering.html"><strong>Privatfeier</strong><span>Geburtstag, Gartenparty und kleine Runden</span></a></li>
+                <li><a href="firmen.html" aria-current="page"><strong>Firmenfeier</strong><span>Sommerfest, Team-Lunch und Jubiläum</span></a></li>
+                <li><a href="hochzeit.html"><strong>Hochzeit</strong><span>Mitternachtsburger für euch und eure Gäste</span></a></li>
+              </ul>
+              <a class="nav-dropdown-all" href="catering.html#catering-angebote">Alle Formate &amp; Preise <span aria-hidden="true">→</span></a>
+            </div>
+          </li>
           <li><a href="menu.html">Produkte</a></li>
-          <li><a href="catering.html">Catering</a></li>
-          <li class="nav-cta"><a href="catering.html?anlass=firmenfeier#event-anfragen">Angebot anfordern</a></li>
+          <li><a href="index.html#locations">Pop-ups</a></li>
+          <li><a href="index.html#about">Über uns</a></li>
         </ul>
-        <a href="catering.html?anlass=firmenfeier#event-anfragen" class="contact-btn">Angebot anfordern</a>
+
+        <a href="catering.html?anlass=firmenfeier#event-anfragen" class="contact-btn">Event anfragen</a>
         <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Menü öffnen">
           <span aria-hidden="true">☰</span>
         </button>
@@ -230,6 +243,7 @@
       </div>
     </div>
   </footer>
+  <script src="scripts/nav.js" defer></script>
   <script src="scripts/main.js" defer></script>
 </body>
 </html>

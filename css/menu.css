@@ -1,6 +1,6 @@
 /* Speisekarte: scoped to menu.html; the image menu uses its existing styles. */
 .menu-catalog-page{
-  --catalog-header-height:80px;
+  --catalog-header-height:108px;
   --catalog-sticky-offset:calc(var(--site-announcement-height) + var(--catalog-header-height));
   --catalog-paper:#f7f4ee;
   background:#fff;
@@ -8,23 +8,6 @@
 .menu-catalog-page::before{ display:none; }
 .menu-catalog-page .skip-link:focus{ z-index:1200; }
 .menu-catalog-page :is(a, button, summary):focus-visible{ outline:3px solid var(--brand); outline-offset:4px; border-radius:6px; }
-.catalog-header{ height:var(--catalog-header-height); background:rgba(255,255,255,.97); border-bottom:1px solid var(--line); backdrop-filter:blur(12px); }
-.catalog-site-nav{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:1.5rem;
-  max-width:1280px;
-  height:100%;
-  margin:0 auto;
-  padding:0 clamp(1.25rem, 4vw, 3rem);
-}
-.catalog-brand{ display:flex; align-items:center; height:100%; flex-shrink:0; }
-.catalog-brand img{ width:86px; height:68px; object-fit:contain; }
-.catalog-site-links{ display:flex; align-items:center; gap:2rem; }
-.catalog-header-link{ padding:.75rem 0; color:var(--muted); font-size:.875rem; font-weight:600; }
-.catalog-header-link[aria-current="page"]{ color:var(--brand); box-shadow:0 2px 0 var(--brand); }
-.catalog-header-link:hover{ color:var(--brand); }
 .catalog-cta{
   display:inline-flex;
   align-items:center;
@@ -204,11 +187,7 @@
   .catalog-item--royal h3{ font-size:1.65rem; }
 }
 @media (max-width:900px){
-  .menu-catalog-page{ --catalog-header-height:72px; --catalog-sticky-offset:calc(var(--site-announcement-height) + var(--catalog-header-height) + 60px); }
-  .catalog-site-nav{ padding:0 1.25rem; }
-  .catalog-brand img{ width:74px; height:62px; }
-  .catalog-site-links{ gap:1.25rem; }
-  .catalog-header-link{ display:none; }
+  .menu-catalog-page{ --catalog-header-height:80px; --catalog-sticky-offset:calc(var(--site-announcement-height) + var(--catalog-header-height) + 60px); }
   .catalog-intro-inner{ grid-template-columns:1fr; gap:1.25rem; padding:2rem 1.25rem; }
   .catalog-kicker{ margin-bottom:1rem; font-size:.65rem; }
   .catalog-intro h1{ font-size:clamp(2.75rem, 10vw, 4.5rem); }
@@ -253,7 +232,7 @@
   .menu-catalog-page *, .menu-catalog-page *::before, .menu-catalog-page *::after{ transition:none; }
 }
 @media print{
-  .menu-catalog-page .site-announcement, .catalog-header, .catalog-sidebar, .catalog-tools, .catalog-intro-links, .catalog-bottom-note, .catalog-catering, .menu-catalog-page .site-footer{ display:none; }
+  .menu-catalog-page .site-announcement, .menu-catalog-page header, .catalog-sidebar, .catalog-tools, .catalog-intro-links, .catalog-bottom-note, .catalog-catering, .menu-catalog-page .site-footer{ display:none; }
   .catalog-intro-inner{ display:block; padding:0 0 1.5rem; }
   .catalog-intro-copy{ margin-top:1rem; max-width:none; }
   .catalog-intro h1{ font-size:2.5rem; }

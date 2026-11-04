@@ -4,8 +4,6 @@
   background: rgba(255, 255, 255, .96);
   box-shadow: 0 3px 14px rgba(17, 24, 39, .06);
 }
-.catering-page .navbar .nav-links a[aria-current="page"] { color: var(--brand); }
-.catering-page .navbar .nav-links a[aria-current="page"]::after { width: 100%; }
 .catering-page .catering-section { padding-top: clamp(2.75rem, 5vw, 5rem); }
 
 .catering-page .catering-overview {
@@ -166,9 +164,6 @@
 .catering-page .site-footer { margin-top: 0; }
 .catering-page .footer-inner { max-width: 1292px; }
 @media (max-width: 900px) {
-  .catering-page .nav-toggle { position: relative; z-index: 1002; }
-  .catering-page .navbar .nav-links { inset: 0; height: calc(100dvh - var(--site-announcement-height)); overflow-y: auto; padding-top: 112px; }
-  .catering-page .navbar .nav-links a[aria-current="page"]::after { display: none; }
   .catering-page .catering-overview { grid-template-columns: minmax(0, 1fr); grid-template-areas: "copy" "photo"; }
   .catering-overview .catering-copy { max-width: 650px; }
   .catering-overview .catering-photo { max-width: 600px; }

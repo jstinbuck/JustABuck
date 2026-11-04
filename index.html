@@ -31,20 +31,30 @@
   <header>
     <nav class="navbar navbar--mobile-inquiry" aria-label="Hauptnavigation">
       <div class="nav-inner">
-        <a href="index.html" class="brand" aria-label="Startseite">
-          <img src="assets/images/logo.png" alt="Just A Buck Logo" class="logo" />
+        <a href="index.html" class="brand" aria-label="Just A Buck – zur Startseite">
+          <img src="assets/images/logo.png" alt="Just A Buck" class="logo">
         </a>
 
         <ul id="primary-nav" class="nav-links" role="list">
-          <li><a href="catering.html">Catering</a></li>
-          <li><a href="#menu">Produkte</a></li>
-          <li><a href="#locations">Wo findet ihr uns?</a></li>
+          <li class="nav-group">
+            <button class="nav-group-toggle" type="button" aria-expanded="false" aria-controls="navCatering">Catering <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6" stroke-linecap="round" stroke-linejoin="round" /></svg></button>
+            <span class="nav-group-label" aria-hidden="true">Catering</span>
+            <div class="nav-dropdown" id="navCatering">
+              <ul class="nav-dropdown-list" role="list" aria-label="Catering nach Anlass">
+                <li><a href="catering.html"><strong>Privatfeier</strong><span>Geburtstag, Gartenparty und kleine Runden</span></a></li>
+                <li><a href="firmen.html"><strong>Firmenfeier</strong><span>Sommerfest, Team-Lunch und Jubiläum</span></a></li>
+                <li><a href="hochzeit.html"><strong>Hochzeit</strong><span>Mitternachtsburger für euch und eure Gäste</span></a></li>
+              </ul>
+              <a class="nav-dropdown-all" href="catering.html#catering-angebote">Alle Formate &amp; Preise <span aria-hidden="true">→</span></a>
+            </div>
+          </li>
+          <li><a href="menu.html">Produkte</a></li>
+          <li><a href="#locations">Pop-ups</a></li>
           <li><a href="#about">Über uns</a></li>
-          <li class="nav-cta"><a href="catering.html#event-anfragen">Event anfragen</a></li>
         </ul>
 
         <a href="catering.html#event-anfragen" class="contact-btn">Event anfragen</a>
-        <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Menü öffnen">
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Menü öffnen">
           <span aria-hidden="true">☰</span>
         </button>
       </div>
@@ -241,49 +251,61 @@
     <!-- ABOUT -->
     <section id="about" class="about-section" aria-labelledby="aboutTitle">
       <div class="about-inner">
-        <div class="about-visual" aria-hidden="true">
-          <img src="assets/images/crew1.jpg" alt="" loading="lazy" width="1024" height="1024">
+        <div class="about-head">
+          <p class="about-eyebrow">Über Just A Buck</p>
+          <h2 id="aboutTitle" class="about-title"><span>Frisch gegründet.</span> <span>Ernst gemeint.</span></h2>
         </div>
 
-        <div class="about-text">
-          <h2 id="aboutTitle">Über Just A Buck</h2>
-          <h3>Gutes Essen.<br>Persönlich geplant.</h3>
-          <div class="about-copy">
-            <p>
-              Ich bin Justin Buck, Gründer von Just A Buck und in Kempten zu Hause. Meine Idee ist einfach:
-              richtig gutes Streetfood, frisch zubereitet und zu fairen Preisen. Essen, auf das man sich
-              freut und das man gerne mit anderen teilt.
+        <div class="about-media">
+          <figure class="about-portrait">
+            <!-- Platzhalter: durch Justins Foto ersetzen, z. B.
+                 <img src="assets/images/justin-buck.jpg" alt="Justin Buck, Gründer von Just A Buck, am Grill" loading="lazy" width="1200" height="1500"> -->
+            <div class="about-portrait-placeholder" aria-hidden="true"><span>JAB</span></div>
+            <figcaption><strong>Justin Buck</strong> <span>Gründer &middot; Kempten</span></figcaption>
+          </figure>
+
+          <!-- Namensgeschichte im Stil des Geldscheins aus dem Logo -->
+          <div class="about-bill">
+            <p class="about-bill-title">Mein Name steht dafür. Wortwörtlich.</p>
+            <p class="about-bill-formula">
+              <span class="about-bill-jab">JAB</span>
+              <span class="about-bill-lines">
+                <span>= <b>J</b>ust <b>A</b> <b>B</b>uck</span>
+                <span>= <b>J</b>ustin <b>A</b>lexander <b>B</b>uck</span>
+              </span>
             </p>
-            <p>
-              <strong>Wenn du dein Catering anfragst, sprichst du direkt mit mir.</strong>
-              Gemeinsam besprechen wir, was zu deiner Feier passt, was deine Gäste essen möchten und wie
-              die Zubereitung vor Ort abläuft. Klare Absprachen sind mir dabei genauso wichtig wie das Essen selbst.
-            </p>
-            <p>
-              Ob Firmenfeier, Geburtstag oder Vereinsfest: Ich möchte, dass du dich bei der Planung gut
-              aufgehoben fühlst und deine Gäste gerne an das Essen zurückdenken.
-            </p>
+            <p class="about-bill-note">Und in den USA heißt „just a buck“: nur ein Dollar. Gutes Essen zum fairen Preis.</p>
           </div>
-          <div class="about-name">
-            <p class="about-name-lead">Just A Buck hat für mich zwei Bedeutungen.</p>
-            <ol class="about-name-list" role="list">
-              <li>
-                Zum einen sagt man in den USA umgangssprachlich „just a buck“ für „nur ein Dollar“ –
-                passend zu der Idee, gutes Essen möglichst günstig anzubieten.
-              </li>
-              <li>
-                Zum anderen steckt mein Name darin:
-                <span class="about-name-formula">
-                  <span class="about-name-jab">JAB</span>
-                  <span>= <b>J</b>ust <b>A</b> <b>B</b>uck</span>
-                  <span>= <b>J</b>ustin <b>A</b>lexander <b>B</b>uck</span>
-                </span>
-              </li>
-            </ol>
-          </div>
-          <p class="about-signature">
-            <strong>Justin Buck</strong>
+        </div>
+
+        <div class="about-body">
+          <p class="about-lead">
+            Ich bin Justin und habe Just A Buck in Kempten gegründet. Meine Idee: richtig gutes Streetfood,
+            frisch vor Ort zubereitet und zu fairen Preisen.
           </p>
+          <p class="about-copy">
+            <strong>Kein Konzern, kein Callcenter.</strong> Wenn du anfragst, planst du direkt mit mir.
+            Ich nehme mir Zeit für deine Feier und betreue dein Event persönlich.
+          </p>
+
+          <ul class="about-promises" role="list" aria-label="Darauf kannst du dich verlassen">
+            <li>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true" focusable="false"><circle cx="12" cy="8" r="3.6" /><path d="M4.8 20.2c.9-3.6 3.7-5.6 7.2-5.6s6.3 2 7.2 5.6" stroke-linecap="round" /></svg>
+              <strong>Ein Ansprechpartner</strong>
+              <span>Von der ersten Nachricht bis zum Abbau.</span>
+            </li>
+            <li>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="8.6" /><path d="M12 7.4V12l3 2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+              <strong>Antwort in 24&nbsp;Stunden</strong>
+              <span>Persönlich von mir, nicht automatisch.</span>
+            </li>
+            <li>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true" focusable="false"><path d="M12 3.2 5 5.8v5.5c0 4.4 2.9 7.8 7 9.5 4.1-1.7 7-5.1 7-9.5V5.8Z" stroke-linejoin="round" /><path d="m8.9 12.1 2.2 2.2 4-4.2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+              <strong>Sauber abgesichert</strong>
+              <span>Gewerbe angemeldet, haftpflichtversichert, nach §&nbsp;43&nbsp;IfSG belehrt.</span>
+            </li>
+          </ul>
+
           <div class="direct-contact">
             <a href="catering.html#event-anfragen" class="about-cta">
               <span>Catering unverbindlich anfragen</span>
@@ -304,20 +326,59 @@
         <div class="popups-intro">
           <p class="popups-eyebrow"><span aria-hidden="true">↗</span> Pop-ups im Allgäu</p>
           <h2 id="locTitle">Just A Buck <span>unterwegs.</span></h2>
-          <p class="popups-description">Heißer Grill. Frische Burger. Gute Gesellschaft. Wir wollen mit Just A Buck auf die Märkte und Events im Allgäu.</p>
+          <p class="popups-description">Heißer Grill. Frische Burger. Gute Gesellschaft. Wir wollen mit Just A Buck auf die Märkte und Events im Allgäu. Wo wir zuerst auftauchen, entscheidest du mit.</p>
           <a class="popups-menu-link" href="menu.html">Entdecke unsere Produkte <span aria-hidden="true">↗</span></a>
         </div>
 
-        <!-- Replace this notice with confirmed event details when the first date is set. -->
-        <div class="popups-dates" aria-labelledby="popupsDatesTitle">
+        <!-- Pop-up-Abstimmung mit Warteliste: Einträge kommen per Web3Forms als E-Mail mit dem Betreff
+             „Pop-up-Stimme: <Ort>“ an. Sobald der erste Termin feststeht, Ort, Datum und Uhrzeit hier zeigen. -->
+        <div class="popups-dates popups-vote" aria-labelledby="popupsVoteTitle">
           <div class="popups-ticket-body">
-            <p class="popups-ticket-label">Öffentliche Pop-ups <span aria-hidden="true">JAB</span></p>
-            <h3 id="popupsDatesTitle">Termin <span>noch offen.</span></h3>
-            <p class="popups-date-note">Unser erster öffentlicher Termin steht noch nicht fest. Sobald er bestätigt ist, findest du hier Ort und Uhrzeit.</p>
-            <a class="popups-follow-link" href="https://www.instagram.com/jstin.buck/" target="_blank" rel="noopener" aria-label="Vom ersten Pop-up erfahren – auf Instagram dabei sein (öffnet in einem neuen Tab)">
-              <span>Vom ersten Pop-up erfahren<small>Auf Instagram dabei sein</small></span>
-              <span aria-hidden="true">↗</span>
-            </a>
+            <p class="popups-ticket-label">Pop-up-Abstimmung <span aria-hidden="true">JAB</span></p>
+            <h3 id="popupsVoteTitle">Wo soll das <span>erste Pop-up hin?</span></h3>
+            <p class="popups-date-note">Stimm für deinen Ort. Wo die meisten hinwollen, stellen wir den Grill zuerst auf. Dafür erfährst du den Termin vor allen anderen.</p>
+
+            <form id="popupVoteForm" class="popups-vote-form" action="https://api.web3forms.com/submit" method="post" aria-label="Für den Ort des ersten Pop-ups abstimmen">
+              <input type="hidden" name="access_key" value="71d595b3-21dd-41f2-805b-842943262a0b">
+              <input type="hidden" name="subject" value="Pop-up-Stimme – Just A Buck">
+              <input type="hidden" name="from_name" value="Just A Buck Pop-up-Abstimmung">
+              <input type="checkbox" name="botcheck" hidden tabindex="-1" autocomplete="off">
+
+              <div class="popups-vote-field">
+                <label for="popupVotePlace">PLZ oder Ort <span aria-hidden="true">*</span></label>
+                <input id="popupVotePlace" name="Wunschort" type="text" required maxlength="80" autocomplete="off" placeholder="z. B. 87435 oder Kempten">
+              </div>
+
+              <fieldset class="popups-vote-times">
+                <legend>Wann passt es dir? <span>(optional)</span></legend>
+                <div class="popups-vote-chips">
+                  <label class="popups-vote-chip"><input type="checkbox" name="Wann: mittags unter der Woche" value="Ja"> Mittags (Mo–Fr)</label>
+                  <label class="popups-vote-chip"><input type="checkbox" name="Wann: nach Feierabend" value="Ja"> Feierabend</label>
+                  <label class="popups-vote-chip"><input type="checkbox" name="Wann: am Wochenende" value="Ja"> Wochenende</label>
+                </div>
+              </fieldset>
+
+              <div class="popups-vote-field">
+                <label for="popupVoteEmail">E-Mail für die Warteliste <span aria-hidden="true">*</span></label>
+                <input id="popupVoteEmail" name="email" type="email" required maxlength="120" autocomplete="email" placeholder="du@beispiel.de">
+              </div>
+
+              <label class="popups-vote-consent">
+                <input id="popupVoteConsent" type="checkbox" name="Einwilligung" value="Ja, Ankündigung des ersten Pop-ups per E-Mail" required>
+                <span>Ja, sagt mir per E-Mail Bescheid, wenn das erste Pop-up steht. Abmelden geht jederzeit mit einer kurzen Antwort. Mehr in der <a href="datenschutz.html#popup-warteliste">Datenschutzerklärung</a>.</span>
+              </label>
+
+              <button id="popupVoteSubmit" class="popups-vote-submit" type="submit">Stimme abgeben <span aria-hidden="true">→</span></button>
+              <p id="popupVoteStatus" class="popups-vote-status" role="status" aria-live="polite" tabindex="-1"></p>
+            </form>
+
+            <div id="popupVoteSuccess" class="popups-vote-success" tabindex="-1" hidden>
+              <p class="popups-vote-success-title">Danke, deine Stimme ist da!</p>
+              <p>Du stehst auf der Warteliste für <strong id="popupVoteSuccessPlace"></strong>. Sobald das erste Pop-up feststeht, schreiben wir dir.</p>
+              <p>Bis dahin gibt’s Einblicke auf <a href="https://www.instagram.com/jstin.buck/" target="_blank" rel="noopener">Instagram <span aria-hidden="true">↗</span><span class="visually-hidden-new-tab"> (öffnet in einem neuen Tab)</span></a>.</p>
+            </div>
+
+            <p id="popupVoteAlt" class="popups-vote-alt">Lieber ohne E-Mail? <a href="https://www.instagram.com/jstin.buck/" target="_blank" rel="noopener">Auf Instagram mitverfolgen <span aria-hidden="true">↗</span><span class="visually-hidden-new-tab"> (öffnet in einem neuen Tab)</span></a></p>
           </div>
           <div class="popups-ticket-stub">
             <span>Kempten &amp; Allgäu</span>
@@ -465,6 +526,8 @@
   }
   </script>
 
+  <script src="scripts/nav.js" defer></script>
   <script src="scripts/main.js"></script>
+  <script src="scripts/popups.js" defer></script>
 </body>
 </html>
