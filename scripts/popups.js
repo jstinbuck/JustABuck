@@ -80,7 +80,7 @@
     // Zeitwünsche als ein Feld senden, Betreff mit Ort erleichtert das Zählen im Postfach.
     const data = new FormData(form);
     const chosenTimes = times.filter(input => input.checked)
-      .map(input => input.closest('label').textContent.trim());
+      .map(input => input.dataset.label || input.closest('label').textContent.trim());
     times.forEach(input => data.delete(input.name));
     data.set('Wann', chosenTimes.length ? chosenTimes.join(', ') : 'keine Angabe');
     data.set('subject', `Pop-up-Stimme: ${place.value}`);

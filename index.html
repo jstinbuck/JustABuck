@@ -140,13 +140,13 @@
         <ul id="catering-angebote" class="catering-teaser-options" aria-label="Unsere Cateringformate" role="list">
           <li>
             <a href="catering.html#burger-bar">
-              <span><strong>Burger-Bar</strong><span>Live gegrillt. Für Geburtstag und Gartenparty.</span><span class="catering-teaser-price">ab 14&nbsp;€ pro Person</span></span>
+              <span><strong>Burger-Bar</strong><span>Ein Smashburger pro Gast, dazu Fries satt. Für Geburtstag und Gartenparty.</span><span class="catering-teaser-price">ab 14&nbsp;€ pro Person</span></span>
               <span class="catering-teaser-arrow" aria-hidden="true">↗</span>
             </a>
           </li>
           <li>
             <a href="catering.html#streetfood-buffet">
-              <span><strong>Streetfood-Buffet</strong><span>Burger, Chicken und Loaded Fries für Vereins- und Sommerfeste.</span><span class="catering-teaser-price">ab 19&nbsp;€ pro Person</span></span>
+              <span><strong>Streetfood-Buffet</strong><span>Burger, Chicken und Loaded Fries satt. Für Vereins- und Sommerfeste.</span><span class="catering-teaser-price">ab 19&nbsp;€ pro Person</span></span>
               <span class="catering-teaser-arrow" aria-hidden="true">↗</span>
             </a>
           </li>
@@ -157,6 +157,7 @@
             </a>
           </li>
         </ul>
+        <p class="catering-teaser-note">Alle Preise inkl. MwSt., dazu einmalig ab 150&nbsp;€ für Anfahrt und Aufbau. <a href="catering.html#preise">So rechnen wir, mit Beispiel</a></p>
       </div>
     </section>
 
@@ -326,8 +327,7 @@
         <div class="popups-intro">
           <p class="popups-eyebrow"><span aria-hidden="true">↗</span> Pop-ups im Allgäu</p>
           <h2 id="locTitle">Just A Buck <span>unterwegs.</span></h2>
-          <p class="popups-description">Heißer Grill. Frische Burger. Gute Gesellschaft. Wir wollen mit Just A Buck auf die Märkte und Events im Allgäu. Wo wir zuerst auftauchen, entscheidest du mit.</p>
-          <a class="popups-menu-link" href="menu.html">Entdecke unsere Produkte <span aria-hidden="true">↗</span></a>
+          <p class="popups-description">Wir bringen den Grill auf Märkte und Events im Allgäu. Wo wir zuerst stehen, entscheidest du mit.</p>
         </div>
 
         <!-- Pop-up-Abstimmung mit Warteliste: Einträge kommen per Web3Forms als E-Mail mit dem Betreff
@@ -336,7 +336,7 @@
           <div class="popups-ticket-body">
             <p class="popups-ticket-label">Pop-up-Abstimmung <span aria-hidden="true">JAB</span></p>
             <h3 id="popupsVoteTitle">Wo soll das <span>erste Pop-up hin?</span></h3>
-            <p class="popups-date-note">Stimm für deinen Ort. Wo die meisten hinwollen, stellen wir den Grill zuerst auf. Dafür erfährst du den Termin vor allen anderen.</p>
+            <p class="popups-date-note">Wo die meisten hinwollen, steht der Grill zuerst. Du erfährst den Termin vor allen anderen.</p>
 
             <form id="popupVoteForm" class="popups-vote-form" action="https://api.web3forms.com/submit" method="post" aria-label="Für den Ort des ersten Pop-ups abstimmen">
               <input type="hidden" name="access_key" value="71d595b3-21dd-41f2-805b-842943262a0b">
@@ -344,28 +344,29 @@
               <input type="hidden" name="from_name" value="Just A Buck Pop-up-Abstimmung">
               <input type="checkbox" name="botcheck" hidden tabindex="-1" autocomplete="off">
 
-              <div class="popups-vote-field">
-                <label for="popupVotePlace">PLZ oder Ort <span aria-hidden="true">*</span></label>
-                <input id="popupVotePlace" name="Wunschort" type="text" required maxlength="80" autocomplete="off" placeholder="z. B. 87435 oder Kempten">
+              <div class="popups-vote-fields">
+                <div class="popups-vote-field">
+                  <label for="popupVotePlace">PLZ oder Ort <span aria-hidden="true">*</span></label>
+                  <input id="popupVotePlace" name="Wunschort" type="text" required maxlength="80" autocomplete="off" placeholder="87435 oder Kempten">
+                </div>
+                <div class="popups-vote-field">
+                  <label for="popupVoteEmail">E-Mail für die Warteliste <span aria-hidden="true">*</span></label>
+                  <input id="popupVoteEmail" name="email" type="email" required maxlength="120" autocomplete="email" placeholder="du@beispiel.de">
+                </div>
               </div>
 
               <fieldset class="popups-vote-times">
                 <legend>Wann passt es dir? <span>(optional)</span></legend>
                 <div class="popups-vote-chips">
-                  <label class="popups-vote-chip"><input type="checkbox" name="Wann: mittags unter der Woche" value="Ja"> Mittags (Mo–Fr)</label>
-                  <label class="popups-vote-chip"><input type="checkbox" name="Wann: nach Feierabend" value="Ja"> Feierabend</label>
-                  <label class="popups-vote-chip"><input type="checkbox" name="Wann: am Wochenende" value="Ja"> Wochenende</label>
+                  <label class="popups-vote-chip"><input type="checkbox" name="Wann: mittags unter der Woche" value="Ja" data-label="Mittags (Mo–Fr)"><span>Mittags</span></label>
+                  <label class="popups-vote-chip"><input type="checkbox" name="Wann: nach Feierabend" value="Ja"><span>Feierabend</span></label>
+                  <label class="popups-vote-chip"><input type="checkbox" name="Wann: am Wochenende" value="Ja"><span>Wochenende</span></label>
                 </div>
               </fieldset>
 
-              <div class="popups-vote-field">
-                <label for="popupVoteEmail">E-Mail für die Warteliste <span aria-hidden="true">*</span></label>
-                <input id="popupVoteEmail" name="email" type="email" required maxlength="120" autocomplete="email" placeholder="du@beispiel.de">
-              </div>
-
               <label class="popups-vote-consent">
                 <input id="popupVoteConsent" type="checkbox" name="Einwilligung" value="Ja, Ankündigung des ersten Pop-ups per E-Mail" required>
-                <span>Ja, sagt mir per E-Mail Bescheid, wenn das erste Pop-up steht. Abmelden geht jederzeit mit einer kurzen Antwort. Mehr in der <a href="datenschutz.html#popup-warteliste">Datenschutzerklärung</a>.</span>
+                <span>Ja, schreibt mir per E-Mail, sobald das erste Pop-up steht. Abmelden geht jederzeit per Antwort. <a href="datenschutz.html#popup-warteliste">Datenschutz</a></span>
               </label>
 
               <button id="popupVoteSubmit" class="popups-vote-submit" type="submit">Stimme abgeben <span aria-hidden="true">→</span></button>
@@ -377,56 +378,69 @@
               <p>Du stehst auf der Warteliste für <strong id="popupVoteSuccessPlace"></strong>. Sobald das erste Pop-up feststeht, schreiben wir dir.</p>
               <p>Bis dahin gibt’s Einblicke auf <a href="https://www.instagram.com/jstin.buck/" target="_blank" rel="noopener">Instagram <span aria-hidden="true">↗</span><span class="visually-hidden-new-tab"> (öffnet in einem neuen Tab)</span></a>.</p>
             </div>
-
-            <p id="popupVoteAlt" class="popups-vote-alt">Lieber ohne E-Mail? <a href="https://www.instagram.com/jstin.buck/" target="_blank" rel="noopener">Auf Instagram mitverfolgen <span aria-hidden="true">↗</span><span class="visually-hidden-new-tab"> (öffnet in einem neuen Tab)</span></a></p>
           </div>
           <div class="popups-ticket-stub">
             <span>Kempten &amp; Allgäu</span>
-            <span class="popups-ticket-mark" aria-hidden="true">✳︎</span>
+            <a id="popupVoteAlt" href="https://www.instagram.com/jstin.buck/" target="_blank" rel="noopener">Ohne E-Mail: Instagram <span aria-hidden="true">↗</span><span class="visually-hidden-new-tab"> (öffnet in einem neuen Tab)</span></a>
           </div>
         </div>
 
-        <!-- Zahlungsarten am Stand; Details und Coin-Liste stehen auf zahlung.html. -->
-        <div class="popups-pay" aria-labelledby="popupsPayTitle">
-          <div class="popups-pay-copy">
-            <p class="popups-pay-label">Bezahlen am Stand</p>
-            <h3 id="popupsPayTitle">Zahl, wie du willst.</h3>
-            <p>Karte, Bar, PayPal oder Krypto. Ganz ohne Mindestbetrag.</p>
-            <a class="popups-pay-link" href="zahlung.html">Alle Zahlungsarten <span aria-hidden="true">↗</span></a>
+        <!-- Kurzinfo neben dem Ticket: Stand-Anfrage für Veranstalter. -->
+        <div class="popups-facts">
+          <div class="popups-fact">
+            <div class="popups-fact-head">
+              <h3>Für Veranstalter</h3>
+              <a class="popups-fact-link" href="catering.html?format=event-stand#event-anfragen">Stand anfragen <span aria-hidden="true">↗</span></a>
+            </div>
+            <p><strong>Dein Event. Unser Stand.</strong> Hol uns auf dein Fest oder an deine Location.</p>
           </div>
-          <ul class="popups-pay-methods" role="list" aria-label="Zahlungsarten am Stand">
-            <li>
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true" focusable="false">
-                <rect x="2.5" y="5" width="19" height="14" rx="2.5" /><path d="M2.5 9.5h19M6 15h4" stroke-linecap="round" />
-              </svg>
-              <span>Karte</span>
-            </li>
-            <li>
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true" focusable="false">
-                <rect x="2.5" y="6" width="19" height="12" rx="2" /><circle cx="12" cy="12" r="2.6" /><path d="M6 9.5v5M18 9.5v5" stroke-linecap="round" />
-              </svg>
-              <span>Bar</span>
-            </li>
-            <li>
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true" focusable="false">
-                <rect x="6.5" y="2.5" width="11" height="19" rx="2.5" /><path d="M10.5 18h3" stroke-linecap="round" />
-              </svg>
-              <span>PayPal</span>
-            </li>
-            <li>
-              <span class="popups-pay-coin" aria-hidden="true">&#x20BF;</span>
-              <span>Krypto</span>
-            </li>
-          </ul>
         </div>
+      </div>
+    </section>
 
-        <div class="popups-host">
-          <div class="popups-host-copy">
-            <h3>Dein Event. Unser Stand.</h3>
-            <p>Du hast die passende Veranstaltung oder Location? Lass uns gemeinsam etwas starten.</p>
-          </div>
-          <a class="popups-host-link" href="catering.html?format=event-stand#event-anfragen">Stand anfragen <span aria-hidden="true">↗</span></a>
+    <!-- ZAHLUNGSARTEN: eigene Leiste für alle Zahlungsarten bei Just A Buck, am Stand und beim Catering.
+         Alle fünf Arten gleich dargestellt, die Kurzzeile sagt, wo sie gilt (Stand wie auf zahlung.html).
+         Details und Coin-Liste stehen auf zahlung.html. -->
+    <section id="bezahlen" class="pay-bar" aria-labelledby="payBarTitle">
+      <div class="pay-bar-inner">
+        <div class="pay-bar-copy">
+          <p class="pay-bar-label">Bezahlen bei Just A Buck</p>
+          <h2 id="payBarTitle">Zahl, wie du willst.</h2>
+          <p class="pay-bar-intro">Am Stand zahlst du sofort, beim Catering bekommst du eine Rechnung.</p>
         </div>
+        <ul class="pay-bar-methods" role="list" aria-label="Zahlungsarten und wo sie gelten">
+          <li>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true" focusable="false">
+              <rect x="2.5" y="5" width="19" height="14" rx="2.5" /><path d="M2.5 9.5h19M6 15h4" stroke-linecap="round" />
+            </svg>
+            <span><strong>Karte</strong><span>Am Stand</span></span>
+          </li>
+          <li>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true" focusable="false">
+              <rect x="2.5" y="6" width="19" height="12" rx="2" /><circle cx="12" cy="12" r="2.6" /><path d="M6 9.5v5M18 9.5v5" stroke-linecap="round" />
+            </svg>
+            <span><strong>Bar</strong><span>Stand &amp; Catering</span></span>
+          </li>
+          <li>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true" focusable="false">
+              <rect x="6.5" y="2.5" width="11" height="19" rx="2.5" /><path d="M10.5 18h3" stroke-linecap="round" />
+            </svg>
+            <span><strong>PayPal</strong><span>Am Stand</span></span>
+          </li>
+          <li>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true" focusable="false">
+              <path d="M3.5 9.5 12 4l8.5 5.5M5.5 10v7.5m4.3-7.5v7.5m4.4-7.5v7.5m4.3-7.5v7.5M3.5 20h17" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            <span><strong>Überweisung</strong><span>Beim Catering</span></span>
+          </li>
+          <li>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true" focusable="false">
+              <circle cx="12" cy="12" r="9" /><path d="M9.5 7.5h3.4a2.2 2.2 0 0 1 0 4.4H9.5Zm0 4.4h4a2.3 2.3 0 0 1 0 4.6h-4Zm0-4.4v9M11 6v1.5m0 9V18m2-12v1.5m0 9V18" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            <span><strong>Krypto</strong><span>Stand &amp; Catering</span></span>
+          </li>
+        </ul>
+        <a class="pay-bar-link" href="zahlung.html">Alle Details zur Zahlung <span aria-hidden="true">→</span></a>
       </div>
     </section>
 

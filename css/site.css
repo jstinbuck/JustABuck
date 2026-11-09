@@ -1247,6 +1247,9 @@ header{
 .catering-teaser-options a > span:first-child > .catering-teaser-price{ margin-top:.3rem; color:var(--brand); font-weight:700; }
 .catering-teaser-arrow{ flex-shrink:0; color:var(--brand); font-size:1.3rem; }
 .catering-teaser-options a:hover strong{ color:var(--brand); }
+.catering-teaser-note{ margin:1.1rem 0 0; color:var(--muted); font-size:.82rem; line-height:1.6; }
+.catering-teaser-note a{ color:var(--brand); font-weight:700; text-decoration:underline; text-underline-offset:3px; }
+.catering-teaser-note a:focus-visible{ outline:3px solid var(--brand); outline-offset:3px; }
 .catering-direct-link:focus-visible,
 .catering-teaser-options a:focus-visible{ outline:3px solid var(--brand); outline-offset:5px; }
 /* Gemeinsamer Einstieg nach Anlass auf Startseite und Cateringseite. */
@@ -1398,7 +1401,7 @@ a.social-secondary-profile:hover{ color:var(--brand); text-decoration:underline;
   --popups-paper:#f6f3ec;
   position:relative;
   overflow:hidden;
-  padding:0 1.5rem clamp(2.75rem,5vw,4.5rem);
+  padding:0 1.5rem clamp(2.5rem,4.5vw,4rem);
   color:var(--popups-paper);
   background:var(--brand-strong);
 }
@@ -1435,19 +1438,20 @@ a.social-secondary-profile:hover{ color:var(--brand); text-decoration:underline;
 .popups-inner{
   position:relative;
   display:grid;
-  grid-template-columns:minmax(0,1.3fr) minmax(0,.9fr);
-  align-items:center;
-  gap:3.25rem clamp(2rem,5vw,5rem);
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  grid-template-areas:"intro ticket" "facts ticket";
+  gap:2rem clamp(2rem,5vw,4.5rem);
   max-width:1180px;
   margin:0 auto;
-  padding-top:clamp(3rem,6vw,5.5rem);
+  padding-top:clamp(2.5rem,4.5vw,4rem);
 }
-.popups-intro{ min-width:0; }
+/* Einstieg und Kurzinfos stehen links übereinander, mittig neben dem Ticket. */
+.popups-intro{ grid-area:intro; align-self:end; min-width:0; }
 .popups-eyebrow{
   display:flex;
   align-items:center;
   gap:.8rem;
-  margin:0 0 1.65rem;
+  margin:0 0 1.1rem;
   font-size:.75rem;
   font-weight:700;
   letter-spacing:.12em;
@@ -1463,10 +1467,10 @@ a.social-secondary-profile:hover{ color:var(--brand); text-decoration:underline;
   font-size:1.1rem;
 }
 .popups-intro h2{
-  margin:0 0 1.65rem;
+  margin:0 0 1.1rem;
   color:var(--popups-paper);
   font-family:var(--font-display);
-  font-size:clamp(3rem,6.4vw,5.75rem);
+  font-size:clamp(2.8rem,5.2vw,4.6rem);
   line-height:1.08;
   font-weight:400;
   letter-spacing:-.015em;
@@ -1476,31 +1480,10 @@ a.social-secondary-profile:hover{ color:var(--brand); text-decoration:underline;
 @supports (-webkit-text-stroke:1px white){
   .popups-intro h2 span{ color:transparent; -webkit-text-stroke:1.5px var(--popups-paper); }
 }
-.popups-description{ max-width:42ch; margin:0 0 1.5rem; color:var(--on-dark-muted); font-size:1.05rem; line-height:1.75; }
-.popups-menu-link,
-.popups-host-link{
-  display:inline-flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:1.25rem;
-  min-height:48px;
-  font-weight:700;
-  line-height:1.4;
-}
-.popups-menu-link{
-  padding:.85rem 1.2rem;
-  color:var(--brand-strong);
-  background:var(--popups-paper);
-  border:1px solid var(--popups-paper);
-  border-radius:5px;
-  transition:transform .2s ease,box-shadow .2s ease;
-}
-.popups-menu-link:hover{ transform:translate(-2px,-2px); box-shadow:4px 4px 0 rgba(246,243,236,.3); }
-.popups-menu-link span,
-.popups-host-link span{ flex-shrink:0; font-size:1.3rem; }
-.popups-menu-link:focus-visible,
-.popups-host-link:focus-visible{ outline:3px solid var(--popups-paper); outline-offset:5px; }
+.popups-description{ max-width:40ch; margin:0; color:var(--on-dark-muted); font-size:1.02rem; line-height:1.7; }
 .popups-dates{
+  grid-area:ticket;
+  align-self:center;
   position:relative;
   min-width:0;
   margin:0 10px;
@@ -1510,13 +1493,13 @@ a.social-secondary-profile:hover{ color:var(--brand); text-decoration:underline;
   box-shadow:10px 12px 0 rgba(0,0,0,.17);
   transform:rotate(2deg);
 }
-.popups-ticket-body{ padding:clamp(1.5rem,3vw,2.5rem); }
+.popups-ticket-body{ padding:clamp(1.4rem,2.6vw,2.1rem); }
 .popups-ticket-label{
   display:flex;
   align-items:center;
   justify-content:space-between;
   gap:1rem;
-  margin:0 0 2rem;
+  margin:0 0 1rem;
   color:var(--brand-strong);
   font-size:.66rem;
   font-weight:700;
@@ -1562,9 +1545,10 @@ a.social-secondary-profile:hover{ color:var(--brand); text-decoration:underline;
   display:flex;
   justify-content:space-between;
   align-items:center;
-  gap:1rem;
-  min-height:76px;
-  padding:1rem clamp(1.5rem,3vw,2.5rem);
+  flex-wrap:wrap;
+  gap:0 1rem;
+  min-height:56px;
+  padding:.35rem clamp(1.4rem,2.6vw,2.1rem);
   border-top:2px dashed rgba(var(--brand-rgb),.25);
   color:var(--brand-strong);
   font-size:.7rem;
@@ -1585,13 +1569,19 @@ a.social-secondary-profile:hover{ color:var(--brand); text-decoration:underline;
 }
 .popups-ticket-stub::before{ left:-11px; }
 .popups-ticket-stub::after{ right:-11px; }
-.popups-ticket-mark{ font-size:2rem; line-height:1; }
+.popups-ticket-stub a{ display:inline-flex; align-items:center; gap:.4rem; min-height:44px; text-decoration:underline; text-underline-offset:4px; }
+.popups-ticket-stub a[hidden]{ display:none; }
+.popups-ticket-stub a:hover{ color:var(--brand); }
+.popups-ticket-stub a:focus-visible{ outline:3px solid var(--brand); outline-offset:3px; }
 /* Pop-up-Abstimmung: Formular im Ticket, ungedreht, damit Eingaben ruhig wirken */
 .popups-dates.popups-vote{ transform:none; }
-.popups-dates.popups-vote h3{ font-size:clamp(2.2rem,3.2vw,3rem); }
-.popups-vote-form{ display:grid; gap:1rem; margin-top:1.5rem; }
+.popups-dates.popups-vote h3{ margin-bottom:.65rem; font-size:clamp(1.95rem,2.7vw,2.5rem); }
+.popups-vote .popups-date-note{ font-size:.9rem; line-height:1.6; }
+.popups-vote-form{ display:grid; gap:.85rem; margin-top:1.1rem; }
 .popups-vote-form[hidden], .popups-vote-success[hidden]{ display:none; }
-.popups-vote-field{ display:grid; gap:.4rem; }
+/* PLZ und E-Mail stehen nebeneinander, sobald das Ticket breit genug ist. */
+.popups-vote-fields{ display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); align-items:start; gap:.85rem .8rem; }
+.popups-vote-field{ display:grid; gap:.4rem; min-width:0; }
 .popups-vote-field label,
 .popups-vote-times legend{ color:var(--ink); font-size:.82rem; font-weight:700; line-height:1.4; }
 .popups-vote-field label span{ color:var(--brand); }
@@ -1612,26 +1602,30 @@ a.social-secondary-profile:hover{ color:var(--brand); text-decoration:underline;
 .popups-vote-times{ min-width:0; margin:0; padding:0; border:0; }
 .popups-vote-times legend{ margin-bottom:.45rem; padding:0; }
 .popups-vote-times legend span{ color:var(--muted); font-weight:500; }
-.popups-vote-chips{ display:flex; flex-wrap:wrap; gap:.5rem; }
-.popups-vote-chip{
-  display:inline-flex;
+/* Zeitwünsche als drei gleich breite Schalter; das Kontrollkästchen liegt unsichtbar darüber. */
+.popups-vote-chips{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:.4rem; }
+.popups-vote-chip{ position:relative; display:block; min-width:0; }
+.popups-vote-chip input{ position:absolute; inset:0; width:100%; height:100%; margin:0; opacity:0; cursor:pointer; }
+.popups-vote-chip span{
+  display:flex;
   align-items:center;
-  gap:.45rem;
-  min-height:40px;
-  padding:.45rem .8rem;
+  justify-content:center;
+  min-height:42px;
+  padding:.4rem .5rem;
   border:1px solid #d9d1cd;
   border-radius:999px;
   background:#fff;
-  font-size:.82rem;
+  font-size:.8rem;
   font-weight:600;
-  cursor:pointer;
-  transition:border-color .2s ease, background .2s ease;
+  line-height:1.2;
+  text-align:center;
+  transition:border-color .2s ease, background .2s ease, color .2s ease;
 }
-.popups-vote-chip input,
+.popups-vote-chip input:hover + span{ border-color:var(--brand); }
+.popups-vote-chip input:checked + span{ border-color:var(--brand); background:var(--brand); color:var(--on-color); }
+.popups-vote-chip input:focus-visible + span{ outline:3px solid var(--brand); outline-offset:2px; }
 .popups-vote-consent input{ flex-shrink:0; width:16px; height:16px; margin:0; accent-color:var(--brand); }
-.popups-vote-chip:has(input:checked){ border-color:var(--brand); background:var(--surface-brand); color:var(--brand-strong); }
-.popups-vote-chip:has(input:focus-visible){ outline:3px solid var(--brand); outline-offset:2px; }
-.popups-vote-consent{ display:flex; align-items:flex-start; gap:.6rem; color:var(--muted); font-size:.78rem; line-height:1.55; cursor:pointer; }
+.popups-vote-consent{ display:flex; align-items:flex-start; gap:.6rem; color:var(--muted); font-size:.78rem; line-height:1.5; cursor:pointer; }
 .popups-vote-consent input{ margin-top:.15rem; }
 .popups-vote-consent a{ color:var(--brand); text-decoration:underline; text-underline-offset:2px; }
 .popups-vote-submit{
@@ -1664,147 +1658,141 @@ a.social-secondary-profile:hover{ color:var(--brand); text-decoration:underline;
 .popups-vote-success p + p{ margin-top:.3rem; }
 .popups-vote-success-title{ color:var(--brand-strong); font-weight:700; }
 .popups-vote-success:focus-visible{ outline:3px solid var(--brand); outline-offset:3px; }
-.popups-vote-alt{ margin:1.1rem 0 0; color:var(--muted); font-size:.8rem; line-height:1.5; }
-.popups-vote-alt a,
 .popups-vote-success a{ color:var(--brand-strong); font-weight:700; text-decoration:underline; text-underline-offset:3px; }
-.popups-host{
-  grid-column:1 / -1;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:2rem;
-  padding-top:1.75rem;
-  border-top:1px solid rgba(246,243,236,.3);
-}
-.popups-host-copy{ min-width:0; }
-.popups-host h3{ margin:0 0 .35rem; font-size:1.3rem; line-height:1.4; font-weight:700; }
-.popups-host p{ max-width:62ch; margin:0; color:var(--on-dark-muted); font-size:.92rem; line-height:1.65; }
-.popups-host-link{
-  flex-shrink:0;
-  padding:.8rem 1.15rem;
-  border:1px solid rgba(246,243,236,.65);
-  border-radius:5px;
-  color:var(--popups-paper);
-  transition:background .2s ease,color .2s ease;
-}
-.popups-host-link:hover{ background:var(--popups-paper); color:var(--brand-strong); }
-/* Bezahlen am Stand: einheitliche Kacheln, Krypto wie jede andere Zahlungsart */
-.popups-pay{
-  grid-column:1 / -1;
-  display:grid;
-  grid-template-columns:minmax(0,.9fr) minmax(0,1.3fr);
-  align-items:center;
-  gap:2rem clamp(2rem,5vw,5rem);
-  padding-top:2.25rem;
-  border-top:1px solid rgba(246,243,236,.3);
-}
-.popups-pay-copy{ min-width:0; }
-.popups-pay-label{
-  margin:0 0 .9rem;
-  color:var(--on-dark-muted);
-  font-size:.72rem;
-  font-weight:700;
-  letter-spacing:.12em;
-  text-transform:uppercase;
-}
-.popups-pay h3{
-  margin:0 0 .75rem;
-  color:var(--popups-paper);
-  font-family:var(--font-display);
-  font-size:clamp(2rem,3.2vw,2.75rem);
-  line-height:1.08;
-  font-weight:400;
-  letter-spacing:-.01em;
-  text-transform:uppercase;
-}
-.popups-pay h3 + p{ max-width:40ch; margin:0 0 .75rem; color:var(--on-dark-muted); font-size:.95rem; line-height:1.65; }
-.popups-pay-link{
+/* Kurzinfo neben dem Ticket: Stand-Anfrage für Veranstalter als schlanke Zeile. */
+.popups-facts{ grid-area:facts; align-self:start; min-width:0; }
+.popups-fact{ padding:.4rem 0 1rem; border-top:1px solid rgba(246,243,236,.3); }
+.popups-fact:last-child{ padding-bottom:0; }
+.popups-fact-head{ display:flex; align-items:center; justify-content:space-between; gap:.25rem 1rem; min-height:44px; }
+.popups-fact h3{ margin:0; color:var(--on-dark-muted); font-size:.72rem; font-weight:700; letter-spacing:.12em; line-height:1.4; text-transform:uppercase; }
+.popups-fact-link{
   display:inline-flex;
   align-items:center;
-  gap:.6rem;
+  flex-shrink:0;
+  gap:.45rem;
   min-height:44px;
   color:var(--popups-paper);
+  font-size:.88rem;
   font-weight:700;
   text-decoration:underline;
   text-decoration-color:rgba(246,243,236,.45);
   text-underline-offset:4px;
   transition:text-decoration-color .2s ease;
 }
-.popups-pay-link:hover{ text-decoration-color:var(--popups-paper); }
-.popups-pay-link:focus-visible{ outline:3px solid var(--popups-paper); outline-offset:5px; }
-.popups-pay-methods{
-  display:grid;
-  grid-template-columns:repeat(4,minmax(0,1fr));
-  gap:.9rem;
-  margin:0;
-  padding:0;
-  list-style:none;
-}
-.popups-pay-methods li{
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
-  gap:1.75rem;
-  min-width:0;
-  min-height:128px;
-  padding:1.1rem;
-  border:1px solid rgba(246,243,236,.3);
-  border-radius:6px;
-  font-size:.9rem;
-  font-weight:700;
-  line-height:1.3;
-}
-.popups-pay-methods svg{ flex-shrink:0; }
-.popups-pay-coin{
-  display:grid;
-  place-items:center;
-  width:28px;
-  height:28px;
-  border:1.6px solid currentColor;
-  border-radius:50%;
-  font-size:.95rem;
-  line-height:1;
-}
+.popups-fact-link:hover{ text-decoration-color:var(--popups-paper); }
+.popups-fact-link:focus-visible{ outline:3px solid var(--popups-paper); outline-offset:4px; }
+.popups-fact p{ max-width:46ch; margin:0; color:var(--on-dark-muted); font-size:.92rem; line-height:1.6; }
+.popups-fact p strong{ color:var(--popups-paper); }
 @media (max-width:1050px){
-  .popups-inner{ gap:2.75rem 2rem; grid-template-columns:minmax(0,1.15fr) minmax(0,1fr); }
-  .popups-intro h2{ font-size:clamp(3rem,6.1vw,4.75rem); }
-  .popups-ticket-body{ padding:1.5rem; }
+  .popups-inner{ gap:1.75rem 2rem; }
+  .popups-intro h2{ font-size:clamp(2.6rem,5.6vw,4rem); }
+  .popups-ticket-body{ padding:1.4rem; }
 }
 @media (max-width:700px){
-  .popups-section{ padding:0 1.25rem 2.75rem; }
+  .popups-section{ padding:0 1.25rem 2.5rem; }
   .popups-strip{ margin:0 -1.25rem; padding:.8rem 1.25rem; gap:.65rem; font-size:.57rem; letter-spacing:.08em; }
   .popups-strip span + span::before{ margin-right:.65rem; }
-  .popups-inner{ grid-template-columns:minmax(0,1fr); gap:2.5rem; padding-top:2.75rem; }
-  .popups-intro h2{ font-size:clamp(3.4rem,14.3vw,5.75rem); }
-  .popups-eyebrow{ margin-bottom:1.25rem; }
+  .popups-inner{ grid-template-columns:minmax(0,1fr); grid-template-areas:"intro" "ticket" "facts"; gap:1.75rem; padding-top:2.25rem; }
+  .popups-intro h2{ font-size:clamp(2.9rem,12.5vw,4.5rem); }
+  .popups-eyebrow{ margin-bottom:1rem; }
   .popups-description{ font-size:1rem; }
-  .popups-dates{ width:calc(100% - 20px); max-width:420px; margin:.3rem auto; transform:rotate(1deg); }
-  .popups-ticket-body{ padding:1.6rem; }
+  .popups-dates{ width:calc(100% - 20px); max-width:440px; margin:0 auto; transform:rotate(1deg); }
+  .popups-ticket-body{ padding:1.35rem; }
   .popups-dates h3{ font-size:2.8rem; }
-  .popups-dates.popups-vote h3{ font-size:2.35rem; }
-  .popups-ticket-label{ margin-bottom:1.5rem; }
-  .popups-host{ flex-direction:column; align-items:flex-start; gap:1.25rem; }
+  .popups-dates.popups-vote h3{ font-size:2.1rem; }
+  .popups-ticket-stub{ padding:.35rem 1.35rem; }
 }
-@media (max-width:900px){
-  .popups-pay{ grid-template-columns:minmax(0,1fr); gap:1.5rem; }
-}
-@media (max-width:520px){
-  .popups-pay-methods{ grid-template-columns:repeat(2,minmax(0,1fr)); }
-  .popups-pay-methods li{ min-height:108px; gap:1.25rem; }
+@media (max-width:420px){
+  .popups-vote-chip span{ padding:.4rem .3rem; font-size:.76rem; }
 }
 @media (max-width:360px){
   .popups-strip{ gap:.5rem; font-size:.52rem; }
   .popups-strip span + span::before{ margin-right:.5rem; }
-  .popups-ticket-body{ padding:1.25rem; }
-  .popups-ticket-stub{ padding:1rem 1.25rem; }
+  .popups-ticket-body{ padding:1.15rem; }
+  .popups-ticket-stub{ padding:.35rem 1.15rem; }
+  .popups-vote-chip span{ padding:.4rem .2rem; font-size:.72rem; }
 }
 @media (prefers-reduced-motion:reduce){
-  .popups-menu-link,.popups-host-link,.popups-pay-link{ transition:none; }
-  .popups-menu-link:hover{ transform:none; }
+  .popups-fact-link,.popups-vote-chip span{ transition:none; }
 }
 @media (forced-colors:active){
   .popups-intro h2 span{ color:CanvasText; -webkit-text-stroke:0; }
   .popups-dates{ border:1px solid CanvasText; }
+}
+
+/* =========================
+   Zahlungsarten-Leiste (unter den Pop-ups)
+   ========================= */
+/* Eigene schmale Leiste: Überschrift, vier gleich gestaltete Zahlungsarten, Link zur Zahlungsseite.
+   Krypto steht wie jede andere Zahlungsart in der Reihe. */
+.pay-bar{
+  padding:clamp(1.5rem,3vw,2.25rem) 1.5rem;
+  border-bottom:1px solid var(--line);
+  background:#f6f3ec;
+  color:var(--ink);
+  scroll-margin-top:150px;
+}
+.pay-bar-inner{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  grid-template-areas:"copy link" "methods methods";
+  align-items:end;
+  gap:1.1rem 1.5rem;
+  max-width:1180px;
+  margin:0 auto;
+}
+.pay-bar-copy{ grid-area:copy; display:flex; flex-wrap:wrap; align-items:baseline; gap:.2rem 1.25rem; min-width:0; }
+.pay-bar-label{ flex-basis:100%; margin:0 0 .1rem; color:var(--brand-strong); font-size:.7rem; font-weight:700; letter-spacing:.12em; line-height:1.4; text-transform:uppercase; }
+.pay-bar h2{ margin:0; color:var(--ink); font-family:var(--font-display); font-size:clamp(1.6rem,2.3vw,2rem); font-weight:400; letter-spacing:-.01em; line-height:1.1; text-transform:uppercase; }
+.pay-bar-intro{ margin:0; color:var(--muted); font-size:.9rem; line-height:1.5; }
+.pay-bar-methods{ grid-area:methods; display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:.6rem; margin:0; padding:0; list-style:none; }
+.pay-bar-methods li{
+  display:flex;
+  align-items:center;
+  gap:.7rem;
+  min-width:0;
+  min-height:64px;
+  padding:.65rem .85rem;
+  border:1px solid #d9d1cd;
+  border-radius:8px;
+  background:var(--surface);
+}
+.pay-bar-methods svg{ flex-shrink:0; color:var(--brand); }
+.pay-bar-methods li > span{ min-width:0; }
+.pay-bar-methods strong{ display:block; font-size:.92rem; line-height:1.3; }
+.pay-bar-methods li > span > span{ display:block; color:var(--muted); font-size:.76rem; line-height:1.35; }
+.pay-bar-link{
+  grid-area:link;
+  display:inline-flex;
+  align-items:center;
+  gap:.45rem;
+  min-height:44px;
+  color:var(--brand);
+  font-size:.88rem;
+  font-weight:700;
+  white-space:nowrap;
+  text-decoration:underline;
+  text-underline-offset:4px;
+}
+.pay-bar-link:hover{ color:var(--brand-strong); }
+.pay-bar-link:focus-visible{ outline:3px solid var(--brand); outline-offset:4px; }
+/* Schmaler als fünf Kacheln nebeneinander: eine Liste in einer Karte, rechts steht, wo die Zahlungsart gilt. */
+@media (max-width:960px){
+  .pay-bar-methods{ grid-template-columns:minmax(0,1fr); gap:0; border:1px solid #d9d1cd; border-radius:8px; background:var(--surface); overflow:hidden; }
+  .pay-bar-methods li{ min-height:52px; padding:.6rem .95rem; border:0; border-radius:0; background:none; }
+  .pay-bar-methods li + li{ border-top:1px solid var(--line); }
+  .pay-bar-methods li > span{ display:flex; flex:1; align-items:center; justify-content:space-between; gap:1rem; }
+  .pay-bar-methods li > span > span{ font-size:.82rem; text-align:right; }
+}
+@media (max-width:700px){
+  .pay-bar{ padding:1.5rem 1.25rem 1.6rem; }
+}
+@media (max-width:560px){
+  .pay-bar-inner{ grid-template-columns:minmax(0,1fr); grid-template-areas:"copy" "methods" "link"; gap:.9rem; }
+  .pay-bar-link{ justify-self:start; }
+}
+@media (forced-colors:active){
+  .pay-bar-methods li{ border-color:CanvasText; }
 }
 
 /* =========================

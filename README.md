@@ -93,11 +93,13 @@ scripts/       JavaScript für die Seiten
   „Hochzeit“ zu `hochzeit.html`. Die gemeinsame `.occasion-picker`-Navigation wird in
   `css/site.css` gestaltet; unter 760 px stehen die Karten untereinander.
 - Die Cateringseite lädt auch kleine private Runden zur Anfrage ein. Sie nennt keine
-  pauschalen Mindestgästezahlen, festen Ausgabezeiten oder garantierten Kapazitäten.
-  Auswahl, Umfang, Aufbau und Verfügbarkeit werden persönlich abgestimmt; die Einladung
-  zur Anfrage ist keine Zusage für jede Gruppengröße.
-- Die Übersicht besteht aus einem kurzen Einstieg, drei kompakten Formatkarten,
-  einmalig genannten gemeinsamen Leistungen, einer offenen Wunschmenü-Option
+  pauschalen Mindestgästezahlen oder garantierten Kapazitäten. Was jeder Gast bekommt und
+  dass zwei Stunden Ausgabe im Preis enthalten sind, steht seit November 2026 fest dabei
+  (siehe „Richtpreise“). Extras, Aufbau und Verfügbarkeit werden persönlich abgestimmt; die
+  Einladung zur Anfrage ist keine Zusage für jede Gruppengröße.
+- Die Übersicht besteht aus einem kurzen Einstieg, drei Formatkarten mit der Leistung pro
+  Gast (`.catering-format-includes`), dem Preisaufbau mit Rechenbeispiel (`#preise`,
+  `.catering-pricing`), einer offenen Wunschmenü-Option
   (`#wunschmenue`), drei Planungsschritten und sechs nativen FAQ-Aufklappern. Drei Fragen sind
   sichtbar, die übrigen liegen gesammelt hinter „3 weitere Fragen anzeigen“ (`.catering-answers-more`,
   ebenso auf `firmen.html`). Themen: kleine Feiern, Menü, Einsatzgebiet, Aufbau, Vorlauf sowie
@@ -146,10 +148,30 @@ scripts/       JavaScript für die Seiten
 - Vorläufige Richtpreise (September 2026, bewusst günstig angesetzt und noch nicht final):
   Burger-Bar ab 14 €, Streetfood-Buffet ab 19 € pro Person, dazu einmalig ab 150 € für Anfahrt
   und Aufbau. Alle Angaben inkl. MwSt. Beim Event-Stand zahlen die Gäste selbst.
-- Die Preise stehen an mehreren Stellen und müssen gemeinsam geändert werden: Formatkarten
-  (`.catering-format-price`) und Satz „Wir kümmern uns drum“ in `catering.html`, die
-  Formatliste der Startseite (`.catering-teaser-price` in `index.html`) und die Kennzahl
-  „ab 14 €“ in `firmen.html`.
+- Leistung pro Gast (November 2026, als erste Annahme gesetzt; vor dem Livegang mit dem
+  Wareneinsatz abgleichen): Burger-Bar = 1 Smashburger nach Wahl (auch vegetarisch), Classic
+  Fries satt, Dips und Saucen. Streetfood-Buffet = Smashburger, Chicken Fingers, Loaded Fries
+  und Classic Fries satt, Dips und Saucen. Immer inklusive: persönliche Planung, Grill und
+  Equipment, zwei Stunden Ausgabe, Schalen und Servietten, Aufbau und Abbau. Getränke sind
+  nicht enthalten und lassen sich dazubuchen.
+- Weitere Annahmen vom November 2026: Die „ab“-Preise gelten für die Klassiker; Double Smash,
+  Cheeseburger Royal und Extras kosten mehr und stehen im Angebot. Anfahrt und Aufbau kosten
+  150 € im Umkreis von 30 km um Kempten, darüber nach Entfernung. Die Pauschale gilt auch für
+  den Mitternachtsburger. Beim Event-Stand hängen die Konditionen von der Besucherzahl ab.
+- Positionierung: gutes Preis-Leistungs-Verhältnis, günstig, aber nicht verschenkt. Der
+  Abstand zwischen 14 € (ein Burger, Fries satt) und 19 € (alles satt) soll das Buffet zur
+  naheliegenden Wahl machen. Marktvergleich November 2026: Burger-Flatrates großer
+  Foodtruck-Anbieter kosten etwa 19 € pro Person für drei Stunden bei rund 1.000 €
+  Mindestbestellwert, Smashburger-Caterer nennen 18 bis 28 € pro Person.
+- Rechenbeispiele statt Rechner: `catering.html#preise` rechnet 40 Gäste vor (Burger-Bar ab
+  710 €, Streetfood-Buffet ab 910 €), `firmen.html#preise` 60 Personen (ab 990 € und ab
+  1.290 €), die Budget-Karte in `hochzeit.html` 80 Gäste (960 € plus Pauschale).
+- Preise und Leistungen stehen an mehreren Stellen und müssen gemeinsam geändert werden:
+  Formatkarten (`.catering-format-price`, `.catering-format-includes`) und Preisaufbau
+  (`.catering-pricing`) in `catering.html`, Formatliste und Hinweis darunter auf der
+  Startseite (`.catering-teaser-price`, `.catering-teaser-note` in `index.html`), Kennzahl
+  „ab 14 €“, „Passt dazu“-Zeilen und Preisaufbau in `firmen.html` sowie Einstieg und
+  Budget-Karte in `hochzeit.html`.
 - `menu.html` kennzeichnet Gerichte mit Tags: „Vegetarisch“ (`--plant`) und „Scharf“ (`--hot`).
   Vegane Gerichte und eine Kids-Kategorie gibt es derzeit bewusst nicht. Allergenangaben sind
   vorläufig und müssen mit den tatsächlich verwendeten Produkten (Bun, Käse, Saucen, Patty)
@@ -158,13 +180,17 @@ scripts/       JavaScript für die Seiten
 - `menu.html` zeigt keine Einzelpreise mehr: Catering wird pro Person abgerechnet, Pop-up-Preise
   können je nach Standort variieren und stehen am Stand. `speisekarte.html` mit dem alten Kartenbild
   (`assets/images/speisekarte.jpg`, enthält Preise) ist nicht mehr verlinkt.
-- Bewusst nur „ab“-Preise: Details zu Mengen und Abrechnung klärt das persönliche Gespräch.
+- Bewusst nur „ab“-Preise: Den verbindlichen Preis nennt das schriftliche Angebot.
   Ein Budget-Rechner wurde getestet und wieder entfernt, weil er bei kleinen Runden hohe Preise
-  pro Person zeigt und die Seite überfrachtet.
+  pro Person zeigt und die Seite überfrachtet. Feste Rechenbeispiele zeigen stattdessen die
+  Größenordnung.
 - Vorbilder: [Holy Dogs](https://holydogs.de/privates-catering-partyservice/hochzeit/) für
-  „ab … pro Person zzgl. Bereitstellungsgebühr“ und
+  „ab … pro Person zzgl. Bereitstellungsgebühr“,
   [Trucking Good](https://truckinggood.de/journal/foodtruck-catering-muenchen-kosten/) für einen
-  transparent ausgewiesenen Block für Anfahrt und Aufbau. Zahlen fremder Anbieter werden nicht übernommen.
+  transparent ausgewiesenen Block für Anfahrt und Aufbau und ein vorgerechnetes Beispiel,
+  [Foodtruck-Profi](https://www.foodtruck-profi.de/angebote) für Karten mit „ab“-Preis, Dauer
+  und Leistungsliste sowie [holy truck](https://holytruck.de/smashburger-catering/) für
+  Standardbeilagen und Saucen im Preis. Zahlen fremder Anbieter werden nicht übernommen.
 
 ## Hochzeit und Mitternachtsburger
 
@@ -173,7 +199,8 @@ scripts/       JavaScript für die Seiten
   `css/catering.css`; Abweichungen stehen in `css/hochzeit.css`.
 - Die Auswahl ist bewusst offen formuliert: klassisch ein Smashburger pro Gast, alles Weitere
   individuell. Vorläufiger Richtpreis ab 12 € pro Gast (September 2026, noch nicht final);
-  er steht im Einstieg, in der Budget-Karte und in der Meta-Beschreibung.
+  er steht im Einstieg, in der Budget-Karte und in der Meta-Beschreibung. Die Budget-Karte
+  rechnet 80 Gäste vor und nennt die Pauschale ab 150 € für Anfahrt und Aufbau.
 - Alle Anfrage-Buttons führen zu `catering.html?format=mitternachtsburger&anlass=hochzeit#event-anfragen`,
   wo Format und Anlass im Formular vorausgewählt sind.
 - Drei FAQ (Versicherung und Hygiene, Anforderungen an die Location, Vorlauf) stehen vor der Abschluss-Box.
@@ -203,7 +230,8 @@ scripts/       JavaScript für die Seiten
 
 - `firmen.html` spricht Firmen an (HR, Office-Management): Einstieg „Euer Team. Unser Grill.“,
   Kennzahlen (`.firmen-facts`: 24 h Antwort, ab 14 € pro Person, ein Ansprechpartner, Rechnung),
-  drei Anlässe mit passendem Format, der „Burger-Tag im Betrieb“ (`#burger-tag`), drei Schritte,
+  drei Anlässe mit passendem Format und Preis, der Preisaufbau mit Rechenbeispiel für
+  60 Personen (`#preise`), der „Burger-Tag im Betrieb“ (`#burger-tag`), drei Schritte,
   sechs FAQ (drei davon aufklappbar gesammelt) und eine Abschluss-Box. Bausteine aus `css/catering.css`, Eigenes in `css/firmen.css`.
 - Der Burger-Tag ist ein wiederkehrender Mittagsstand auf dem Firmengelände; Mitarbeitende zahlen
   selbst oder mit Arbeitgeberzuschuss. Anfrage über `?format=burger-tag&anlass=firmenfeier`,
@@ -265,9 +293,23 @@ scripts/       JavaScript für die Seiten
 - `index.html#locations` zeigt einen Bereich ohne Bild mit großer Plakattypografie. Im Ticket
   (`.popups-dates.popups-vote`) steht statt eines Termins die Abstimmung „Wo soll das erste Pop-up hin?“
   mit Warteliste. Das Ticket ist dafür nicht gedreht, damit die Eingabefelder ruhig wirken.
-- Felder: PLZ oder Ort (Pflicht), „Wann passt es dir?“ mit Mittags (Mo–Fr), Feierabend und Wochenende
-  (optional), E-Mail für die Warteliste (Pflicht) und eine Einwilligung zur Ankündigung des ersten
-  Pop-ups per E-Mail (Pflicht). Darunter führt „Lieber ohne E-Mail?“ zum Instagram-Profil.
+- Der Bereich ist seit November 2026 bewusst kurz (am Desktop eine Bildschirmhöhe): links Einstieg
+  und darunter die schlanke Zeile „Für Veranstalter“ (`.popups-facts`), rechts das Ticket. Mobil
+  folgen Einstieg, Ticket und Kurzinfo aufeinander. Der frühere große Block „Dein Event. Unser
+  Stand.“ und der Button „Entdecke unsere Produkte“ entfallen. Neue Inhalte hier knapp halten.
+- Die Zahlungsarten gehören nicht mehr zum Pop-up-Bereich. Sie stehen direkt darunter in einer
+  eigenen Leiste (`#bezahlen`, `.pay-bar`), die für alles gilt, Stand und Catering: Überschrift
+  „Zahl, wie du willst.“, fünf gleich gestaltete Einträge und der Link „Alle Details zur Zahlung“
+  zu `zahlung.html`. Die Kurzzeile sagt, wo die Zahlungsart gilt: Karte und PayPal am Stand,
+  Überweisung beim Catering, Bar und Krypto bei beidem. Ändert sich das auf `zahlung.html`,
+  die Leiste mit anpassen. Ab 961 px stehen fünf Kacheln nebeneinander, darunter eine Liste in
+  einer Karte. Vorbild sind die Zahlungsleisten großer Händler und Lieferdienste, die
+  Zahlungsarten als einheitliche Reihe zeigen.
+- Felder: PLZ oder Ort und E-Mail für die Warteliste (beide Pflicht, nebeneinander, sobald das
+  Ticket breit genug ist), „Wann passt es dir?“ mit den Schaltern Mittags, Feierabend und
+  Wochenende (optional; „Mittags“ wird als „Mittags (Mo–Fr)“ übermittelt) und eine Einwilligung
+  zur Ankündigung des ersten Pop-ups per E-Mail (Pflicht). Im Abriss des Tickets führt
+  „Ohne E-Mail: Instagram“ zum Instagram-Profil.
 - Versand über Web3Forms mit demselben Zugangsschlüssel wie das Cateringformular. `scripts/popups.js`
   prüft die Eingaben, sendet ohne Seitenwechsel und zeigt danach eine Bestätigung mit dem Ort.
   Ohne JavaScript sendet das Formular direkt an Web3Forms.
@@ -280,7 +322,7 @@ scripts/       JavaScript für die Seiten
 - Wer sich austragen möchte, antwortet auf die Ankündigung; die Adresse dann aus der eigenen
   Liste löschen. Es gibt kein automatisches Double-Opt-in.
 - Die Einleitung von `menu.html` verweist mit „Pop-up mitbestimmen“ auf `index.html#locations`.
-- „Entdecke unsere Produkte“ führt zu `menu.html`; „Stand anfragen“ öffnet
+- „Stand anfragen“ in der Zeile „Für Veranstalter“ öffnet
   `catering.html?format=event-stand#event-anfragen`. Das bestehende Catering-Skript wählt
   dort den Event-Stand vor. Ohne JavaScript bleibt das Format manuell auswählbar.
 - Sobald der erste Termin feststeht: Veranstaltungsname, Datum, Uhrzeit, genaue Adresse und einen
@@ -289,8 +331,8 @@ scripts/       JavaScript für die Seiten
 
 ## Zahlungsarten und Krypto
 
-- Außerhalb von `zahlung.html#krypto` erscheint Krypto wie jede andere Zahlungsart: gleiche Kachel im
-  Block „Bezahlen am Stand“ unter `index.html#locations` und gleicher Eintrag in der Übersicht der
+- Außerhalb von `zahlung.html#krypto` erscheint Krypto wie jede andere Zahlungsart: gleicher Eintrag in
+  der Leiste „Bezahlen bei Just A Buck“ (`index.html#bezahlen`) und gleicher Eintrag in der Übersicht der
   Zahlungsseite, ohne Sticker, Farbfläche oder Zusatzabzeichen.
 - Nur `zahlung.html#krypto` stellt Krypto ausführlich vor: ein Gründerzitat erklärt, warum Just A Buck
   Krypto annimmt, danach folgen die Coins je Anlass und der Ablauf. Die Coin-Auswahl steht nur dort.
