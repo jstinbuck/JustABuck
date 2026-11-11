@@ -4,16 +4,21 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>Just A Buck – Smashburger, Loaded Fries & Fried Chicken</title>
-  <meta name="description" content="Just A Buck: ehrliches Fastfood aus Kempten – Smashburger, Loaded Fries & Fried Chicken. Frisch, bezahlbar, handgemacht." />
+  <title>Burger-Catering in Kempten &amp; im Allgäu | Just A Buck</title>
+  <meta name="description" content="Burger-Catering in Kempten und im Allgäu: Smashburger, Chicken und Fries, frisch bei euch vor Ort gegrillt. Für Privatfeier, Firmenfeier und Hochzeit, ab 14 € pro Person." />
   <link rel="canonical" href="https://justabuck.de/" />
 
   <!-- Open Graph / Social -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Just A Buck" />
-  <meta property="og:description" content="Smashburger, Loaded Fries & Fried Chicken – ehrlich, frisch, bezahlbar." />
-  <meta property="og:image" content="assets/images/catering.jpg" />
+  <meta property="og:site_name" content="Just A Buck" />
+  <meta property="og:locale" content="de_DE" />
+  <meta property="og:title" content="Just A Buck – Burger-Catering &amp; Pop-ups im Allgäu" />
+  <meta property="og:description" content="Smashburger, Chicken und Fries, frisch bei euch vor Ort gegrillt. Für Privatfeier, Firmenfeier und Hochzeit in Kempten und im Allgäu." />
+  <meta property="og:image" content="https://justabuck.de/assets/images/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
   <meta property="og:url" content="https://justabuck.de/" />
+  <meta name="twitter:card" content="summary_large_image" />
   <meta name="theme-color" content="#6A35A5" />
 
   <link rel="icon" type="image/png" href="assets/images/logo.png" />
@@ -108,7 +113,7 @@
           </div>
           <figure class="catering-photo">
             <img src="assets/images/catering-setup.jpg" alt="Catering-Aufbau unter einem Pavillon mit Grill, Burger-Zutaten und Fritteuse"
-                 loading="lazy" width="1400" height="788">
+                 loading="lazy" width="1200" height="675">
             <figcaption><span>Frisch vor Ort.</span><span>Persönlich geplant.</span></figcaption>
           </figure>
         </div>
@@ -184,8 +189,8 @@
               <div class="highlight-visual highlight-visual--royal">
                 <span class="highlight-label">Im Rampenlicht</span>
                 <span class="highlight-wordmark" aria-hidden="true">Royal</span>
-                <img src="assets/images/ceeseburger-royal.png" alt="Cheeseburger Royal mit Salat, Tomate und karamellisierten Zwiebeln"
-                     loading="lazy" decoding="async" width="1536" height="1024">
+                <img src="assets/images/cheeseburger-royal.webp" alt="Cheeseburger Royal mit Salat, Tomate und karamellisierten Zwiebeln"
+                     loading="lazy" decoding="async" width="1200" height="800">
               </div>
               <div class="highlight-copy">
                 <p class="highlight-category">Beef &amp; hausgemachte Royal Sauce</p>
@@ -330,12 +335,21 @@
           <p class="popups-description">Wir bringen den Grill auf Märkte und Events im Allgäu. Wo wir zuerst stehen, entscheidest du mit.</p>
         </div>
 
-        <!-- Pop-up-Abstimmung mit Warteliste: Einträge kommen per Web3Forms als E-Mail mit dem Betreff
-             „Pop-up-Stimme: <Ort>“ an. Sobald der erste Termin feststeht, Ort, Datum und Uhrzeit hier zeigen. -->
-        <div class="popups-dates popups-vote" aria-labelledby="popupsVoteTitle">
+        <!-- Ticket mit zwei Wegen: „Pop-up wünschen“ (Abstimmung mit Warteliste, Betreff „Pop-up-Stimme: <Ort>“)
+             und „Spot anbieten“ (Vorschlag von Veranstaltern und Flächenbesitzern, Betreff „Spot-Vorschlag: …“).
+             Beide gehen per Web3Forms als E-Mail ein. Sobald der erste Termin feststeht, Ort, Datum und Uhrzeit hier zeigen. -->
+        <div id="popupTicket" class="popups-dates popups-vote" aria-labelledby="popupsVoteTitle">
           <div class="popups-ticket-body">
-            <p class="popups-ticket-label">Pop-up-Abstimmung <span aria-hidden="true">JAB</span></p>
+            <p class="popups-ticket-label">Dein Vorschlag <span aria-hidden="true">JAB</span></p>
             <h3 id="popupsVoteTitle">Wo soll das <span>erste Pop-up hin?</span></h3>
+
+            <fieldset class="popups-mode">
+              <legend class="visually-hidden-new-tab">Was trifft auf dich zu?</legend>
+              <label><input id="popupModeVote" type="radio" name="popupMode" value="vote" checked><span>Pop-up wünschen</span></label>
+              <label><input id="popupModeSpot" type="radio" name="popupMode" value="spot"><span>Spot anbieten</span></label>
+            </fieldset>
+
+            <div class="popups-panel popups-panel--vote">
             <p class="popups-date-note">Wo die meisten hinwollen, steht der Grill zuerst. Du erfährst den Termin vor allen anderen.</p>
 
             <form id="popupVoteForm" class="popups-vote-form" action="https://api.web3forms.com/submit" method="post" aria-label="Für den Ort des ersten Pop-ups abstimmen">
@@ -378,6 +392,71 @@
               <p>Du stehst auf der Warteliste für <strong id="popupVoteSuccessPlace"></strong>. Sobald das erste Pop-up feststeht, schreiben wir dir.</p>
               <p>Bis dahin gibt’s Einblicke auf <a href="https://www.instagram.com/jstin.buck/" target="_blank" rel="noopener">Instagram <span aria-hidden="true">↗</span><span class="visually-hidden-new-tab"> (öffnet in einem neuen Tab)</span></a>.</p>
             </div>
+            </div>
+
+            <div class="popups-panel popups-panel--spot">
+              <p class="popups-date-note">Festival, Markt, Firmengelände oder Laden mit Platz davor? Sag uns, wo wir stehen könnten. Antwort in 24&nbsp;Stunden.</p>
+
+              <form id="popupSpotForm" class="popups-vote-form" action="https://api.web3forms.com/submit" method="post" aria-label="Einen Spot für ein Pop-up anbieten">
+                <input type="hidden" name="access_key" value="71d595b3-21dd-41f2-805b-842943262a0b">
+                <input type="hidden" name="subject" value="Spot-Vorschlag – Just A Buck">
+                <input type="hidden" name="from_name" value="Just A Buck Spot-Vorschlag">
+                <input type="checkbox" name="botcheck" hidden tabindex="-1" autocomplete="off">
+
+                <div class="popups-vote-fields">
+                  <div class="popups-vote-field">
+                    <label for="popupSpotType">Was für ein Spot? <span aria-hidden="true">*</span></label>
+                    <select id="popupSpotType" name="Art des Spots" required>
+                      <option value="">Bitte wählen</option>
+                      <option>Festival oder Markt</option>
+                      <option>Firmengelände</option>
+                      <option>Laden oder Gastronomie</option>
+                      <option>Verein oder Sportplatz</option>
+                      <option>Etwas anderes</option>
+                    </select>
+                  </div>
+                  <div class="popups-vote-field">
+                    <label for="popupSpotVisitors">Besucher am Tag <span class="popups-vote-optional">(optional)</span></label>
+                    <select id="popupSpotVisitors" name="Besucher am Tag">
+                      <option value="">Noch offen</option>
+                      <option>Bis 200</option>
+                      <option>200 bis 1.000</option>
+                      <option>Über 1.000</option>
+                    </select>
+                  </div>
+                  <div class="popups-vote-field">
+                    <label for="popupSpotPlace">Ort oder Adresse <span aria-hidden="true">*</span></label>
+                    <input id="popupSpotPlace" name="Ort oder Adresse" type="text" required maxlength="140" autocomplete="off" placeholder="Straße und Ort">
+                  </div>
+                  <div class="popups-vote-field">
+                    <label for="popupSpotName">Event oder Location <span class="popups-vote-optional">(optional)</span></label>
+                    <input id="popupSpotName" name="Event oder Location" type="text" maxlength="120" autocomplete="off" placeholder="z. B. Stadtfest">
+                  </div>
+                  <div class="popups-vote-field popups-vote-field--full">
+                    <label for="popupSpotWhen">Wann? <span class="popups-vote-optional">(optional)</span></label>
+                    <input id="popupSpotWhen" name="Wann" type="text" maxlength="120" autocomplete="off" placeholder="z. B. 12. Juli oder jeden Freitag">
+                  </div>
+                  <div class="popups-vote-field">
+                    <label for="popupSpotContact">Dein Name <span aria-hidden="true">*</span></label>
+                    <input id="popupSpotContact" name="name" type="text" required maxlength="100" autocomplete="name" placeholder="Vor- und Nachname">
+                  </div>
+                  <div class="popups-vote-field">
+                    <label for="popupSpotEmail">E-Mail <span aria-hidden="true">*</span></label>
+                    <input id="popupSpotEmail" name="email" type="email" required maxlength="120" autocomplete="email" placeholder="du@beispiel.de">
+                  </div>
+                </div>
+
+                <p class="popups-vote-privacy">Wir nutzen deine Angaben nur, um uns zu deinem Spot zu melden. <a href="datenschutz.html#kontaktaufnahme">Datenschutz</a></p>
+
+                <button id="popupSpotSubmit" class="popups-vote-submit" type="submit">Spot anbieten <span aria-hidden="true">→</span></button>
+                <p id="popupSpotStatus" class="popups-vote-status" role="status" aria-live="polite" tabindex="-1"></p>
+              </form>
+
+              <div id="popupSpotSuccess" class="popups-vote-success" tabindex="-1" hidden>
+                <p class="popups-vote-success-title">Danke, dein Spot ist bei uns!</p>
+                <p>Wir schauen uns <strong id="popupSpotSuccessPlace"></strong> an und melden uns innerhalb von 24&nbsp;Stunden bei dir.</p>
+              </div>
+            </div>
           </div>
           <div class="popups-ticket-stub">
             <span>Kempten &amp; Allgäu</span>
@@ -385,14 +464,14 @@
           </div>
         </div>
 
-        <!-- Kurzinfo neben dem Ticket: Stand-Anfrage für Veranstalter. -->
+        <!-- Kurzinfo neben dem Ticket: Der Link schaltet das Ticket auf „Spot anbieten“ (scripts/popups.js). -->
         <div class="popups-facts">
           <div class="popups-fact">
             <div class="popups-fact-head">
               <h3>Für Veranstalter</h3>
-              <a class="popups-fact-link" href="catering.html?format=event-stand#event-anfragen">Stand anfragen <span aria-hidden="true">↗</span></a>
+              <a id="popupSpotLink" class="popups-fact-link" href="#popupTicket">Spot anbieten <span aria-hidden="true">→</span></a>
             </div>
-            <p><strong>Dein Event. Unser Stand.</strong> Hol uns auf dein Fest oder an deine Location.</p>
+            <p><strong>Festival, Markt oder Firmengelände?</strong> Biete uns deinen Spot direkt im Ticket an. Steht dein Event schon fest, geht auch die <a href="catering.html?format=event-stand#event-anfragen">Stand-Anfrage</a>.</p>
           </div>
         </div>
       </div>
@@ -529,14 +608,29 @@
   <!-- Schema -->
   <script type="application/ld+json">
   {
-    "@context":"https://schema.org",
-    "@type":"FoodEstablishment",
-    "name":"Just A Buck",
-    "servesCuisine":["Burgers","Fried Chicken","Fries"],
-    "address":{"@type":"PostalAddress","addressLocality":"Kempten","addressCountry":"DE"},
-    "url":"https://justabuck.de/",
-    "priceRange":"€€",
-    "hasMenu":"https://justabuck.de/menu"
+    "@context": "https://schema.org",
+    "@type": "FoodEstablishment",
+    "@id": "https://justabuck.de/#business",
+    "name": "Just A Buck",
+    "description": "Burger-Catering und Streetfood-Pop-ups in Kempten und im Allgäu: Smashburger, Chicken und Fries, frisch vor Ort zubereitet.",
+    "url": "https://justabuck.de/",
+    "image": "https://justabuck.de/assets/images/og-image.jpg",
+    "logo": "https://justabuck.de/assets/images/logo.png",
+    "email": "justin.buck@sportbuck.com",
+    "founder": { "@type": "Person", "name": "Justin Buck" },
+    "servesCuisine": ["Burger", "Fried Chicken", "Streetfood"],
+    "priceRange": "€€",
+    "address": { "@type": "PostalAddress", "addressLocality": "Kempten (Allgäu)", "addressRegion": "Bayern", "addressCountry": "DE" },
+    "areaServed": [
+      { "@type": "City", "name": "Kempten (Allgäu)" },
+      { "@type": "AdministrativeArea", "name": "Allgäu" }
+    ],
+    "hasMenu": "https://justabuck.de/menu.html",
+    "makesOffer": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Burger-Catering für Privatfeiern", "url": "https://justabuck.de/catering.html" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Firmen-Catering", "url": "https://justabuck.de/firmen.html" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Mitternachtsburger für Hochzeiten", "url": "https://justabuck.de/hochzeit.html" } }
+    ]
   }
   </script>
 

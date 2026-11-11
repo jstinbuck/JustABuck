@@ -1484,6 +1484,7 @@ a.social-secondary-profile:hover{ color:var(--brand); text-decoration:underline;
 .popups-dates{
   grid-area:ticket;
   align-self:center;
+  scroll-margin-top:150px;
   position:relative;
   min-width:0;
   margin:0 10px;
@@ -1577,6 +1578,37 @@ a.social-secondary-profile:hover{ color:var(--brand); text-decoration:underline;
 .popups-dates.popups-vote{ transform:none; }
 .popups-dates.popups-vote h3{ margin-bottom:.65rem; font-size:clamp(1.95rem,2.7vw,2.5rem); }
 .popups-vote .popups-date-note{ font-size:.9rem; line-height:1.6; }
+/* Umschalter im Ticket: „Pop-up wünschen“ (Abstimmung) oder „Spot anbieten“ (Vorschlag von Veranstaltern).
+   Ohne :has()-Unterstützung bleibt der Umschalter aus und beide Formulare stehen untereinander. */
+.popups-mode{ display:none; min-width:0; margin:0 0 1rem; padding:3px; border:1px solid #d9d1cd; border-radius:999px; background:#fff; }
+.popups-mode label{ position:relative; display:block; min-width:0; }
+.popups-mode input{ position:absolute; inset:0; width:100%; height:100%; margin:0; opacity:0; cursor:pointer; }
+.popups-mode span{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height:40px;
+  padding:.35rem .6rem;
+  border-radius:999px;
+  color:var(--muted);
+  font-size:.84rem;
+  font-weight:700;
+  line-height:1.2;
+  text-align:center;
+  transition:background .2s ease, color .2s ease;
+}
+.popups-mode input:hover + span{ color:var(--brand-strong); }
+.popups-mode input:checked + span{ background:var(--brand-strong); color:var(--on-color); }
+.popups-mode input:focus-visible + span{ outline:3px solid var(--brand); outline-offset:2px; }
+.popups-panel + .popups-panel{ margin-top:1.5rem; padding-top:1.35rem; border-top:2px dashed rgba(var(--brand-rgb),.25); }
+@supports selector(:has(*)){
+  .popups-mode{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:3px; }
+  .popups-panel + .popups-panel{ margin-top:0; padding-top:0; border-top:0; }
+  .popups-ticket-body:has(#popupModeVote:checked) .popups-panel--spot,
+  .popups-ticket-body:has(#popupModeSpot:checked) .popups-panel--vote{ display:none; }
+  /* Der Instagram-Hinweis gehört zur Abstimmung, nicht zum Spot-Vorschlag. */
+  .popups-vote:has(#popupModeSpot:checked) #popupVoteAlt{ display:none; }
+}
 .popups-vote-form{ display:grid; gap:.85rem; margin-top:1.1rem; }
 .popups-vote-form[hidden], .popups-vote-success[hidden]{ display:none; }
 /* PLZ und E-Mail stehen nebeneinander, sobald das Ticket breit genug ist. */
@@ -1585,7 +1617,9 @@ a.social-secondary-profile:hover{ color:var(--brand); text-decoration:underline;
 .popups-vote-field label,
 .popups-vote-times legend{ color:var(--ink); font-size:.82rem; font-weight:700; line-height:1.4; }
 .popups-vote-field label span{ color:var(--brand); }
-.popups-vote-field input{
+.popups-vote-field label .popups-vote-optional{ color:var(--muted); font-weight:500; }
+.popups-vote-field--full{ grid-column:1 / -1; }
+.popups-vote-field :is(input, select){
   width:100%;
   min-height:48px;
   padding:.7rem .85rem;
@@ -1596,9 +1630,12 @@ a.social-secondary-profile:hover{ color:var(--brand); text-decoration:underline;
   font:inherit;
   font-size:1rem;
 }
+.popups-vote-field select{ padding-left:.6rem; }
 .popups-vote-field input::placeholder{ color:#857a81; }
-.popups-vote-field input:focus-visible{ border-color:var(--brand); outline:3px solid rgba(var(--brand-rgb),.35); outline-offset:1px; }
-.popups-vote-field input[aria-invalid="true"]{ border-color:var(--cta); }
+.popups-vote-field :is(input, select):focus-visible{ border-color:var(--brand); outline:3px solid rgba(var(--brand-rgb),.35); outline-offset:1px; }
+.popups-vote-field :is(input, select)[aria-invalid="true"]{ border-color:var(--cta); }
+.popups-vote-privacy{ margin:0; color:var(--muted); font-size:.78rem; line-height:1.5; }
+.popups-vote-privacy a{ color:var(--brand); text-decoration:underline; text-underline-offset:2px; }
 .popups-vote-times{ min-width:0; margin:0; padding:0; border:0; }
 .popups-vote-times legend{ margin-bottom:.45rem; padding:0; }
 .popups-vote-times legend span{ color:var(--muted); font-weight:500; }
@@ -1683,6 +1720,9 @@ a.social-secondary-profile:hover{ color:var(--brand); text-decoration:underline;
 .popups-fact-link:focus-visible{ outline:3px solid var(--popups-paper); outline-offset:4px; }
 .popups-fact p{ max-width:46ch; margin:0; color:var(--on-dark-muted); font-size:.92rem; line-height:1.6; }
 .popups-fact p strong{ color:var(--popups-paper); }
+.popups-fact p a{ color:var(--popups-paper); font-weight:700; text-decoration:underline; text-decoration-color:rgba(246,243,236,.45); text-underline-offset:3px; }
+.popups-fact p a:hover{ text-decoration-color:var(--popups-paper); }
+.popups-fact p a:focus-visible{ outline:3px solid var(--popups-paper); outline-offset:3px; }
 @media (max-width:1050px){
   .popups-inner{ gap:1.75rem 2rem; }
   .popups-intro h2{ font-size:clamp(2.6rem,5.6vw,4rem); }
@@ -1713,7 +1753,7 @@ a.social-secondary-profile:hover{ color:var(--brand); text-decoration:underline;
   .popups-vote-chip span{ padding:.4rem .2rem; font-size:.72rem; }
 }
 @media (prefers-reduced-motion:reduce){
-  .popups-fact-link,.popups-vote-chip span{ transition:none; }
+  .popups-fact-link,.popups-vote-chip span,.popups-mode span{ transition:none; }
 }
 @media (forced-colors:active){
   .popups-intro h2 span{ color:CanvasText; -webkit-text-stroke:0; }
@@ -2842,11 +2882,15 @@ a.social-secondary-profile:hover{ color:var(--brand); text-decoration:underline;
   overflow: hidden;
   background: var(--cta);
   color: #fff;
-  font-size: clamp(.58rem, 2.2vw, .78rem);
+  font-size: clamp(.75rem, 2.2vw, .8rem);
   font-weight: 700;
   line-height: 1;
   text-align: center;
   white-space: nowrap;
+}
+/* Sehr schmale Handys: etwas kleiner, damit der Text einzeilig bleibt. */
+@media (max-width:339px){
+  .site-announcement{ padding:0 .35rem; font-size:.72rem; }
 }
 
 /* =========================

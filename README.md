@@ -14,14 +14,28 @@ Danach ist die Startseite unter `http://localhost:8000/index.html` erreichbar.
 assets/
   fonts/       Lokale Webfonts
   images/      Bilder und Social-Media-Icons
+  vendor/      Lokal eingebundene Bibliotheken (three.js r128 für zahlung.html)
   video/       Video-Dateien
 css/
   site.css     Gemeinsame Styles aller Hauptseiten
   catering.css Styles der Catering-Unterseite
-  merchdrop.css Styles der Merch-Drop-Seite
 scripts/       JavaScript für die Seiten
 *.html         Seiten der Website
 ```
+
+## Keine externen Ressourcen
+
+- Die Seiten laden nichts von fremden Servern: Schriften liegen in `assets/fonts/`, three.js für
+  den Partikeleffekt auf `zahlung.html` in `assets/vendor/three.min.js` (r128, MIT-Lizenz,
+  Prüfsumme beim Herunterladen mit der von cdnjs veröffentlichten abgeglichen). Keine Google
+  Fonts, CDNs oder eingebetteten Skripte Dritter ergänzen; sonst muss die Datenschutzerklärung
+  den Anbieter nennen.
+- Ohne WebGL entfällt auf `zahlung.html` nur der Partikeleffekt, die Seite bleibt vollständig.
+- Die Merch-Drop-Seite mit dem Spiel und die alte Bild-Speisekarte (mit Preisen) wurden im
+  November 2026 entfernt; sie waren nicht verlinkt, aber öffentlich erreichbar. Sie liegen noch
+  in der Git-Historie (Commit `7d90a45` und früher).
+- Die rote Leiste oben (`.site-announcement`) trägt auf allen Seiten denselben Text und ist
+  mindestens 12 px groß (unter 340 px Breite 11,5 px, damit sie einzeilig bleibt).
 
 ## Konventionen
 
@@ -32,6 +46,37 @@ scripts/       JavaScript für die Seiten
 - Justin wird nur an zentralen Stellen namentlich genannt: Über-uns-Bereich der Startseite,
   „Dein Ansprechpartner“ am Catering-Formular und das Krypto-Zitat auf `zahlung.html`.
   Sonst sprechen die Texte als „wir“.
+
+## Auffindbarkeit (SEO)
+
+- Zieladresse ist `https://justabuck.de/`. Canonical-Angaben, `og:url`, das Vorschaubild, die
+  strukturierten Daten, `robots.txt` und `sitemap.xml` nennen alle diese Adresse. Sie wirken erst,
+  wenn die Domain direkt mit GitHub Pages verbunden ist (Stand November 2026: nur eine
+  http-Weiterleitung beim Domain-Anbieter, https antwortet nicht). Dafür beim Anbieter die
+  Weiterleitung entfernen, vier A-Einträge auf 185.199.108.153 bis 185.199.111.153 und einen
+  CNAME-Eintrag `www` auf `jstinbuck.github.io` setzen, dann in GitHub unter Settings, Pages die
+  Domain eintragen und „Enforce HTTPS“ aktivieren. Keine `CNAME`-Datei von Hand anlegen, solange
+  die DNS-Einträge nicht stehen; sonst ist die Seite nicht mehr erreichbar.
+- Jede Seite hat genau einen Titel, eine Beschreibung und eine Canonical-Angabe. Die Startseite
+  zielt auf „Burger-Catering Kempten/Allgäu“, `catering.html` auf Geburtstag und Privatfeier,
+  `firmen.html` auf Firmen-Catering, `hochzeit.html` auf den Mitternachtsburger. Titel nicht
+  doppelt vergeben. Die Beschreibungen von Startseite, `catering.html` und `hochzeit.html` nennen
+  Preise und gehören zur Liste unter „Richtpreise“.
+- `impressum.html` und `datenschutz.html` tragen `noindex, follow` und stehen nicht in der Sitemap.
+- Vorschaubild beim Teilen ist für alle Seiten `assets/images/og-image.jpg` (1200 × 630, rund
+  80 KB): lila Karte mit „Burger-Catering“ und dem Cheeseburger Royal. Es ist ein Bildschirmfoto
+  einer kleinen HTML-Seite; ändern sich Claim oder Hauptprodukt, neu erzeugen.
+- Die strukturierten Daten in `index.html` (`FoodEstablishment`) nennen Einsatzgebiet, Gründer,
+  E-Mail und die drei Catering-Angebote mit ihren Seiten, bewusst ohne Preise und ohne Telefon,
+  solange die Nummer ein Platzhalter ist. Das persönliche Instagram-Profil steht nicht in `sameAs`.
+- `sitemap.xml` listet sieben Seiten. Neue Seiten dort ergänzen und `lastmod` bei größeren
+  Änderungen anpassen.
+- Bilder für die Ladezeit (November 2026): `catering.jpg` war eine PNG-Datei mit JPG-Endung
+  (1,7 MB) und ist jetzt ein echtes JPEG (rund 270 KB). Der Cheeseburger Royal liegt als
+  transparentes WebP vor (`cheeseburger-royal.webp`, rund 65 KB statt 1,2 MB), Logo und
+  Aufbau-Foto sind verkleinert. Offen bleibt das Hero-Video mit 3,5 MB.
+- Außerhalb der Website noch zu tun: Google Search Console einrichten und die Sitemap einreichen,
+  ein Google-Unternehmensprofil mit Einsatzgebiet statt Ladenadresse anlegen.
 
 ## Navigation
 
@@ -170,16 +215,17 @@ scripts/       JavaScript für die Seiten
   Formatkarten (`.catering-format-price`, `.catering-format-includes`) und Preisaufbau
   (`.catering-pricing`) in `catering.html`, Formatliste und Hinweis darunter auf der
   Startseite (`.catering-teaser-price`, `.catering-teaser-note` in `index.html`), Kennzahl
-  „ab 14 €“, „Passt dazu“-Zeilen und Preisaufbau in `firmen.html` sowie Einstieg und
-  Budget-Karte in `hochzeit.html`.
+  „ab 14 €“, „Passt dazu“-Zeilen und Preisaufbau in `firmen.html`, Einstieg und
+  Budget-Karte in `hochzeit.html` sowie die Meta-Beschreibungen von `index.html`,
+  `catering.html` und `hochzeit.html`.
 - `menu.html` kennzeichnet Gerichte mit Tags: „Vegetarisch“ (`--plant`) und „Scharf“ (`--hot`).
   Vegane Gerichte und eine Kids-Kategorie gibt es derzeit bewusst nicht. Allergenangaben sind
   vorläufig und müssen mit den tatsächlich verwendeten Produkten (Bun, Käse, Saucen, Patty)
   abgeglichen werden. Ein Hinweis
   am Kartenende nennt die gemeinsame Küche mit Fleisch und Chicken.
 - `menu.html` zeigt keine Einzelpreise mehr: Catering wird pro Person abgerechnet, Pop-up-Preise
-  können je nach Standort variieren und stehen am Stand. `speisekarte.html` mit dem alten Kartenbild
-  (`assets/images/speisekarte.jpg`, enthält Preise) ist nicht mehr verlinkt.
+  können je nach Standort variieren und stehen am Stand. Die alte `speisekarte.html` samt
+  Kartenbild mit Preisen ist entfernt.
 - Bewusst nur „ab“-Preise: Den verbindlichen Preis nennt das schriftliche Angebot.
   Ein Budget-Rechner wurde getestet und wieder entfernt, weil er bei kleinen Runden hohe Preise
   pro Person zeigt und die Seite überfrachtet. Feste Rechenbeispiele zeigen stattdessen die
@@ -249,6 +295,8 @@ scripts/       JavaScript für die Seiten
 
 ## Antwortzeit und Verfügbarkeit
 
+- Auch der Spot-Vorschlag im Pop-up-Ticket (`index.html`, Hinweistext und Bestätigung) nennt
+  die Antwort in 24 Stunden.
 - Versprechen einer persönlichen Antwort innerhalb von 24 Stunden: unter dem Absenden-Button, bei
   „Dein Ansprechpartner“, in der Erfolgsmeldung des Formulars (`catering.html`), im Abschluss
   von `hochzeit.html` und in den Zusagen von `index.html#about`. Ändert sich die Antwortzeit,
@@ -305,6 +353,16 @@ scripts/       JavaScript für die Seiten
   die Leiste mit anpassen. Ab 961 px stehen fünf Kacheln nebeneinander, darunter eine Liste in
   einer Karte. Vorbild sind die Zahlungsleisten großer Händler und Lieferdienste, die
   Zahlungsarten als einheitliche Reihe zeigen.
+- Das Ticket hat seit November 2026 zwei Wege, umschaltbar über „Pop-up wünschen“ und „Spot
+  anbieten“ (`.popups-mode`, reines CSS mit `:has()`; ohne Unterstützung stehen beide Formulare
+  untereinander). „Pop-up wünschen“ ist die Abstimmung mit Warteliste. „Spot anbieten“
+  (`#popupSpotForm`) richtet sich an Veranstalter und Flächenbesitzer: Art des Spots (Festival
+  oder Markt, Firmengelände, Laden oder Gastronomie, Verein oder Sportplatz, etwas anderes), Ort
+  oder Adresse, Name und E-Mail sind Pflicht; Besucher am Tag, Event oder Location und „Wann?“
+  sind freiwillig. Die Vorschläge kommen mit dem Betreff „Spot-Vorschlag: <Art> in <Ort>“ an und
+  versprechen eine Antwort in 24 Stunden (siehe „Antwortzeit und Verfügbarkeit“).
+  `datenschutz.html#kontaktaufnahme` beschreibt die Angaben. Der Link „Spot anbieten“ in der
+  Zeile „Für Veranstalter“ schaltet das Ticket um.
 - Felder: PLZ oder Ort und E-Mail für die Warteliste (beide Pflicht, nebeneinander, sobald das
   Ticket breit genug ist), „Wann passt es dir?“ mit den Schaltern Mittags, Feierabend und
   Wochenende (optional; „Mittags“ wird als „Mittags (Mo–Fr)“ übermittelt) und eine Einwilligung
@@ -322,8 +380,8 @@ scripts/       JavaScript für die Seiten
 - Wer sich austragen möchte, antwortet auf die Ankündigung; die Adresse dann aus der eigenen
   Liste löschen. Es gibt kein automatisches Double-Opt-in.
 - Die Einleitung von `menu.html` verweist mit „Pop-up mitbestimmen“ auf `index.html#locations`.
-- „Stand anfragen“ in der Zeile „Für Veranstalter“ öffnet
-  `catering.html?format=event-stand#event-anfragen`. Das bestehende Catering-Skript wählt
+- Für ein Event mit festem Datum verlinkt die Zeile „Für Veranstalter“ zusätzlich die
+  „Stand-Anfrage“ unter `catering.html?format=event-stand#event-anfragen`. Das bestehende Catering-Skript wählt
   dort den Event-Stand vor. Ohne JavaScript bleibt das Format manuell auswählbar.
 - Sobald der erste Termin feststeht: Veranstaltungsname, Datum, Uhrzeit, genaue Adresse und einen
   Routenlink im Ticket zeigen und die Warteliste per E-Mail informieren. Die Abstimmung kann für

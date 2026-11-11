@@ -563,7 +563,13 @@ class ZahlungParticleSystem {
     this.camera = new THREE.OrthographicCamera(-w / 2, w / 2, h / 2, -h / 2, 1, 1000);
     this.camera.position.z = 100;
 
-    this.renderer = new THREE.WebGLRenderer({ canvas: this.canvas, alpha: true, antialias: true });
+    // Ohne WebGL (ältere Geräte, abgeschaltete Grafikbeschleunigung) entfällt nur dieser Schmuckeffekt.
+    try {
+      this.renderer = new THREE.WebGLRenderer({ canvas: this.canvas, alpha: true, antialias: true });
+    } catch (_error) {
+      this.renderer = null;
+      return;
+    }
     this.renderer.setSize(w, h);
     this.renderer.setClearColor(0x000000, 0);
 
